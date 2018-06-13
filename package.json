@@ -72,7 +72,7 @@
     ]
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged && ./tasks/changelog-changed-check.sh"
   },
   "lint-staged": {
     "*.js": [
