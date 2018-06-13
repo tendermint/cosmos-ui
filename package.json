@@ -1,17 +1,17 @@
 {
-  "name": "ui",
+  "name": "@tendermint/ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit"
   },
   "dependencies": {
     "vue": "^2.5.16"
   },
   "devDependencies": {
+    "html-beautify": "^1.0.4",
+    "pug": "^2.0.3",
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
     "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
@@ -83,5 +83,8 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "prettier": {
+    "semi": false
   }
 }

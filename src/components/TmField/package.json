@@ -1,0 +1,28 @@
+{
+  "name": "@nylira/vue-field",
+  "version": "1.5.0",
+  "description": "Flexible field, textarea, and select component for Vue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nylira/vue-field.git"
+  },
+  "keywords": [
+    "field",
+    "toggle",
+    "textarea",
+    "input",
+    "select",
+    "html",
+    "vue"
+  ],
+  "author": "Peng Zhong <peng@nylira.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nylira/vue-field/issues"
+  },
+  "homepage": "https://github.com/nylira/vue-field#readme"
+}
