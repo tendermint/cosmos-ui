@@ -1,7 +1,11 @@
 {
   "name": "@tendermint/ui",
+  "productName": "Tendermint UI",
+  "description": "Tendermint UI contains components for front end projects.",
   "version": "0.1.0",
-  "private": true,
+  "license": "Apache-2.0",
+  "author": "Tendermint, Inc <hello@tendermint.com>",
+  "homepage": "https://tendermint.com",
   "scripts": {
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit"

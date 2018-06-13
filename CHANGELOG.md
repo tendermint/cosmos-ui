@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+* Added a README.md
 * Added a HelloWorld component
-* Added the @nylira/vue-field component
 
 ### Changes
 
-* @nylira/vue-field renamed to TmField
+* Added @nylira/vue-field renamed it to TmField
