@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import TmPageSplit from "@/components/tmPageSplit/tmPageSplit.vue"
+import { TmPageSplit } from "@/index"
 
 describe("TmPageSplit.vue", () => {
   let wrapper
