@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import TmArticleBody from "@/components/tmArticleBody/tmArticleBody.vue"
+import { TmArticleBody } from "@/index.js"
 
 describe("TmArticleBody.vue", () => {
   let wrapper
