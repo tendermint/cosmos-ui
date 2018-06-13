@@ -37,6 +37,6 @@ yarn lint
 yarn test
 ```
 
-## Thanks!
+## Components List
 
-More documentation is coming soon!
+View the `./src/components` directory. More details coming soon.
