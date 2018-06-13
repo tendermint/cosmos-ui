@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmArticleBody.vue has the expected html structure 1`] = `
+<div class="tm-article-body">
+  <div class="tm-article-body-container">
+    <div>
+      slot
+    </div>
+  </div>
+</div>
+`;
