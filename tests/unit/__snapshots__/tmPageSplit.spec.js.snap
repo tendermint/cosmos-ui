@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmPageSplit.vue has the expected html structure 1`] = `
+<div class="tm-page-split">
+  <div class="tm-page-split-header"></div>
+  <div class="tm-page-split-main">
+    <div>
+      slot
+    </div>
+  </div>
+</div>
+`;
