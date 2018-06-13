@@ -14,7 +14,7 @@ In another Vue component:
 
 ```vue
 <template>
-  <tm-field value="Hello World">
+  <tm-field value="Hello World" />
 </template>
 
 <script>

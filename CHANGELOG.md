@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+* Added `./src/index.js` for easy importing
 * Added a README and CHANGELOG
 * Added a placeholder HelloWorld component
 
