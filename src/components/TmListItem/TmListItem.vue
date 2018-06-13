@@ -40,7 +40,7 @@ transition(name="proposal")
   router-link.tm-li.tm-li-link(v-else-if="btn && to" :to="to"): .tm-li-container
     +tm-li-thumb
     +tm-li-dl
-    btn(:value="btn" icon="chevron_right" icon-pos="right" color="primary")
+    tm-btn(:value="btn" icon="chevron_right" icon-pos="right" color="primary")
 
   //- dt/dd text
   .tm-li(v-else-if='dt'): .tm-li-container
@@ -75,7 +75,7 @@ transition(name="proposal")
 </template>
 
 <script>
-import { Btn } from "@/index"
+import TmBtn from "@/components/TmBtn/Tmbtn.vue"
 export default {
   name: "tm-list-item",
   props: [
@@ -92,7 +92,7 @@ export default {
     "spin",
     "overflow"
   ],
-  components: { Btn },
+  components: { TmBtn },
   computed: {
     spinClass() {
       if (this.spin) {

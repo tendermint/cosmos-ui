@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
-import { TmListItem } from "@/index"
 import htmlBeautify from "html-beautify"
+import { TmListItem } from "@/index"
 
 describe("TmListItem", () => {
   let wrapper
@@ -17,7 +17,9 @@ describe("TmListItem", () => {
         dt: null,
         dd: null,
         href: null,
-        spin: null
+        btn: null,
+        spin: null,
+        overflow: null
       }
     })
   })
@@ -54,7 +56,7 @@ describe("TmListItem", () => {
   it("should use a slot for a description", () => {
     wrapper = shallowMount(TmListItem, {
       propsData: { dt: "Link", to: "/location" },
-      slots: { dd: "Some description here" }
+      slots: { dd: "<div>Some description here</div>" }
     })
     expect(wrapper.html()).toContain("Some description here")
   })

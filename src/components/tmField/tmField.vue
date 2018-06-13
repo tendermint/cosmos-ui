@@ -11,7 +11,7 @@
     option(v-if="options" v-for="i in options" :value="i.value") {{ i.key }}
     option(v-else-if="type === 'countries'" v-for="i in countries" :value="i.value"
     :key="i.key") {{ i.key }}
-  .ni-field-select-addon: i.material-icons arrow_drop_down
+  .tm-field-select-addon: i.material-icons arrow_drop_down
 
 // .ni-datetime(v-else-if="type === 'datetime'")
   input(
@@ -62,7 +62,7 @@ input(v-else
 // import flatpickr from 'flatpickr'
 import countries from "./countries.json"
 export default {
-  name: "ni-field",
+  name: "tm-field",
   props: [
     "placeholder",
     "type",
@@ -76,15 +76,15 @@ export default {
   ],
   computed: {
     css() {
-      let value = "ni-field"
+      let value = "tm-field"
       if (this.type === "select" || this.type === "countries") {
-        value += " ni-field-select"
+        value += " tm-field-select"
       }
       if (this.type === "toggle") {
-        value += " ni-field-toggle"
+        value += " tm-field-toggle"
       }
-      if (this.size) value += ` ni-field-size-${this.size}`
-      if (this.theme) value += ` ni-field-theme-${this.theme}`
+      if (this.size) value += ` tm-field-size-${this.size}`
+      if (this.theme) value += ` tm-field-theme-${this.theme}`
       return value
     },
     toggleClass() {
@@ -155,7 +155,7 @@ export default {
 <style lang='stylus'>
 @require '~variables'
 
-.ni-field
+.tm-field
   -webkit-appearance none
 
   border 1px solid var(--input-bc, #ccc)
@@ -175,22 +175,22 @@ export default {
   font-size 16px
   line-height 1.5rem
 
-.ni-field:disabled
+.tm-field:disabled
   color var(--dim, #666)
   text-shadow none
   box-shadow none
   background var(--app-fg, #eee)
   border var(--app-fg, #eee)
 
-.ni-field:focus
+.tm-field:focus
   outline none
   box-shadow none
   border 1px solid var(--link, #00f)
 
-input.ni-field
+input.tm-field
   height 2rem
 
-textarea.ni-field
+textarea.tm-field
   height 4rem
   resize vertical
 
@@ -298,7 +298,7 @@ textarea.ni-field
         color var(--bright, #000)
         background var(--hover-bg, #ccf)
 
-  .ni-field-select-addon
+  .tm-field-select-addon
     position absolute
     top 0
     right 0
@@ -357,37 +357,37 @@ textarea.ni-field
 /*==============================================================================*/
 /* WebKit, Blink, Edge */
 
-.ni-field::-webkit-input-placeholder
+.tm-field::-webkit-input-placeholder
   color var(--dim, #666)
 
 /* Mozilla Firefox 4 to 18 */
-.ni-field:-moz-placeholder
+.tm-field:-moz-placeholder
   color var(--dim, #666)
   opacity 1
 
 /* Mozilla Firefox 19+ */
-.ni-field::-moz-placeholder
+.tm-field::-moz-placeholder
   color var(--dim, #666)
   opacity 1
 
 /* Internet Explorer 10-11 */
-.ni-field:-ms-input-placeholder
+.tm-field:-ms-input-placeholder
   color var(--dim, #666)
 
 /* Standard (https//drafts.csswg.org/selectors-4/#placeholder) */
-.ni-field:placeholder-shown
+.tm-field:placeholder-shown
   color var(--dim, #666)
 
 /*==============================================================================*/
 /* sizes */
 
-.ni-field.ni-field-size-sm
+.tm-field.tm-field-size-sm
   height 1.5rem
   font-size 0.75rem
   padding-left 0.5rem
   padding-right 0.5rem
 
-.ni-field.ni-field-size-lg
+.tm-field.tm-field-size-lg
   height 3rem
   font-size 1.125rem
   padding-left 0.75rem
@@ -396,32 +396,32 @@ textarea.ni-field
 /*==============================================================================*/
 /* tendermint styles */
 
-.ni-field.ni-field-theme-tendermint
+.tm-field.tm-field-theme-tendermint
   color #fff
   background hsl(210,70%,18%)
   border-color hsl(210,70%,38%)
 
-.ni-field.ni-field-theme-tendermint:focus
+.tm-field.tm-field-theme-tendermint:focus
   border-color hsl(210,70%,43%)
 
-.ni-field.ni-field-theme-tendermint::-webkit-input-placeholder
+.tm-field.tm-field-theme-tendermint::-webkit-input-placeholder
   color hsl(210,70%,70%)
 
 /* Mozilla Firefox 4 to 18 */
-.ni-field.ni-field-theme-tendermint:-moz-placeholder
+.tm-field.tm-field-theme-tendermint:-moz-placeholder
   color hsl(210,70%,70%)
   opacity 1
 
 /* Mozilla Firefox 19+ */
-.ni-field.ni-field-theme-tendermint::-moz-placeholder
+.tm-field.tm-field-theme-tendermint::-moz-placeholder
   color hsl(210,70%,70%)
   opacity 1
 
 /* Internet Explorer 10-11 */
-.ni-field.ni-field-theme-tendermint:-ms-input-placeholder
+.tm-field.tm-field-theme-tendermint:-ms-input-placeholder
   color hsl(210,70%,70%)
 
 /* Standard (https//drafts.csswg.org/selectors-4/#placeholder) */
-.ni-field.ni-field-theme-tendermint:placeholder-shown
+.tm-field.tm-field-theme-tendermint:placeholder-shown
   color hsl(210,70%,70%)
 </style>

@@ -1,11 +1,10 @@
-import TmHelloWorld from "./components/tmHelloWorld"
 import TmField from "./components/tmField"
 import TmListItem from "./components/TmListItem"
-
+import TmBtn from "./components/TmBtn"
 const TendermintComponents = {
-  TmHelloWorld,
   TmField,
-  TmListItem
+  TmListItem,
+  TmBtn
 }
 
 TendermintComponents.install = Vue =>
@@ -16,8 +15,6 @@ TendermintComponents.install = Vue =>
 
 export default TendermintComponents
 
-export {
-  default as TmHelloWorld
-} from "./components/tmHelloWorld/tmHelloWorld.vue"
 export { default as TmField } from "./components/tmField/tmField.vue"
+export { default as TmBtn } from "./components/TmBtn/TmBtn.vue"
 export { default as TmListItem } from "./components/TmListItem/TmListItem.vue"
