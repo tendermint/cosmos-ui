@@ -1,0 +1,24 @@
+.tm-form-msg {
+  font-size: 0.75rem;
+  margin: 0 0 0.5rem;
+  display: flex;
+}
+.tm-form-msg:before {
+  content: '';
+  font-family: FontAwesome;
+  padding-right: 0.35rem;
+}
+.tm-form-msg.tm-form-msg-error {
+  color: #f00;
+}
+.tm-form-msg.tm-form-msg-error:before {
+  content: '\f06a';
+  color: #f00;
+}
+.tm-form-msg.tm-form-msg-desc {
+  color: #666;
+}
+.tm-form-msg.tm-form-msg-desc:before {
+  content: '\f059';
+  color: #ffbf00;
+}
