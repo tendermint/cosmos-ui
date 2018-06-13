@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import TmBtn from "@/components/tmButton/tmButton.vue"
+import { TmBtn } from "@/index.js"
 
 describe("TmBtn.vue", () => {
   let wrapper
