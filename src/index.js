@@ -18,3 +18,4 @@ export {
   default as TmHelloWorld
 } from "./components/tmHelloWorld/tmHelloWorld.vue"
 export { default as TmField } from "./components/tmField/tmField.vue"
+export { default as TmBtn } from "./components/tmField/TmButton.vue"

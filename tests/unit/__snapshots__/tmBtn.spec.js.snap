@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmBtn.vue has the expected html structure 1`] = `
+<button class="tm-btn"><span class="tm-btn__container">
+<!---->
+<!---->
+<span class="tm-btn__value">button</span></span>
+</button>
+`;
