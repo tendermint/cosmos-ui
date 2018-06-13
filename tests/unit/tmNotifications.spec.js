@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import TmNotifications from "@/components/tmNotifications/tmNotifications.vue"
+import { TmNotifications } from "@/index.js"
 
 describe("TmNotifications.vue", () => {
   let wrapper
