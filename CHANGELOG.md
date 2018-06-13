@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added a README
-* Added a HelloWorld component
+* Added a placeholder HelloWorld component
 
 ### Changes
 

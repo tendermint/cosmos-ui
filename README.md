@@ -28,6 +28,15 @@ export default {
 </script>
 ```
 
+## Test
+
+We use Prettier to lint all of our JS and Vue files. We use Jest to unit test our components.
+
+```bash
+yarn lint
+yarn test
+```
+
 ## Thanks!
 
 More documentation is coming soon!
