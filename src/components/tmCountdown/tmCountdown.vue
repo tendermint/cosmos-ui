@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      now: Math.trunc(new Date().getTime() / 1000)
+      now: this.fixednow || Math.trunc(new Date().getTime() / 1000)
     }
   },
   methods: {
@@ -69,6 +69,6 @@ export default {
       this.now = Math.trunc(new Date().getTime() / 1000)
     }, 1000)
   },
-  props: ["date", "units"]
+  props: ["date", "units", "fixednow"]
 }
 </script>

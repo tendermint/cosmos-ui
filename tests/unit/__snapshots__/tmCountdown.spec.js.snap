@@ -21,7 +21,7 @@ exports[`TmCountdown.vue has the expected html structure 1`] = `
     </div>
     <div class="tm-kv">
       <div class="tm-kv-value">
-        41
+        01
       </div>
       <div class="tm-kv-key">
         M
@@ -29,7 +29,7 @@ exports[`TmCountdown.vue has the expected html structure 1`] = `
     </div>
     <div class="tm-kv">
       <div class="tm-kv-value">
-        25
+        37
       </div>
       <div class="tm-kv-key">
         S
