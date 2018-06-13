@@ -15,4 +15,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changes
 
-* Added @nylira/vue-field renamed it to TmField
+* Added @nylira/vue-field as `tmField`
