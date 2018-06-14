@@ -75,7 +75,7 @@ transition(name="proposal")
 </template>
 
 <script>
-import TmBtn from "../TmBtn/Tmbtn.vue"
+import TmBtn from "../TmBtn/TmBtn.vue"
 export default {
   name: "tm-list-item",
   props: [

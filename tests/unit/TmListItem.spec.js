@@ -14,7 +14,7 @@ describe("TmListItem", () => {
         image: null,
         icon: null,
         to: null,
-        dt: null,
+        dt: "not null",
         dd: null,
         href: null,
         btn: null,
@@ -72,7 +72,7 @@ describe("TmListItem", () => {
   })
 
   it("should show a label", () => {
-    wrapper.setProps({ title: "Title", subtitle: "Subtitle" })
+    wrapper.setProps({ dt: null, title: "Title", subtitle: "Subtitle" })
     expect(htmlBeautify(wrapper.html())).toMatchSnapshot()
     expect(wrapper.html()).toContain("Title")
     expect(wrapper.html()).toContain("Subtitle")
