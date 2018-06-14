@@ -11,20 +11,23 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "moment": "^2.22.2",
     "vue": "^2.5.16"
   },
   "devDependencies": {
     "html-beautify": "^1.0.4",
     "pug": "^2.0.3",
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
+    "@vue/cli-plugin-babel": "^3.0.0-rc.1",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.1",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.1",
+    "@vue/cli-service": "^3.0.0-rc.1",
     "@vue/eslint-config-prettier": "^3.0.0-beta.16",
     "@vue/test-utils": "^1.0.0-beta.16",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "html-beautify": "^1.0.4",
     "lint-staged": "^6.0.0",
+    "pug": "^2.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.16"
