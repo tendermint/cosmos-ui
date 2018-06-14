@@ -12,8 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `./src/index.js` to support `import`
 - Added a README and CHANGELOG
 - Added a placeholder HelloWorld component
+- Added @nylira/vue-page-header as `tmPageHeader`
 - Added @nylira/vue-notifications as `tmNotifications`
+- Added @nylira/vue-field as `tmField`
 
 ### Changes
-
-- Added @nylira/vue-field as `tmField`

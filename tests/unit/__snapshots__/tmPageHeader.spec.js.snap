@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmPageHeader.vue has the expected html structure 1`] = `
+<header class="tm-page-header tm-page-header-default">
+  <div class="tm-page-header-container">
+    <h1 class="title">
+      Title
+    </h1>
+    <p class="subtitle">
+      Subtitle
+    </p>
+    <div>
+      slot
+    </div>
+  </div>
+</header>
+`;
