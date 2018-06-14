@@ -1,11 +1,13 @@
 import TmHelloWorld from "./components/tmHelloWorld"
 import TmField from "./components/tmField"
 import TmNotifications from "./components/tmNotifications"
+import TmCountdown from "./components/tmCountdown"
 
 const TendermintComponents = {
   TmHelloWorld,
   TmField,
-  TmNotifications
+  TmNotifications,
+  TmCountdown
 }
 
 TendermintComponents.install = Vue =>
@@ -23,3 +25,6 @@ export { default as TmField } from "./components/tmField/tmField.vue"
 export {
   default as TmNotifications
 } from "./components/tmNotifications/tmNotifications.vue"
+export {
+  default as TmCountdown
+} from "./components/tmCountdown/tmCountdown.vue"
