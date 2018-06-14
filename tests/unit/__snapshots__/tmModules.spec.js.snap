@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmModule.vue has the expected html structure 1`] = `
+<div class="tm-module">
+  <div class="tm-module-container">
+    <header class="tm-module-header">
+      <div class="tm-module-title">
+        <div>
+          title
+        </div>
+      </div>
+      <div class="tm-module-menu">
+        <div>
+          menu
+        </div>
+      </div>
+    </header>
+    <main class="tm-module-main">
+      <div>
+        default
+      </div>
+    </main>
+    <footer class="tm-module-footer">
+      <div>
+        footer
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`TmModules.vue has the expected html structure 1`] = `
+<div class="tm-modules">
+  <div>
+    slot
+  </div>
+</div>
+`;
