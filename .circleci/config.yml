@@ -10,6 +10,30 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     steps:
       - checkout
+
+      - run: tasks/changelog-changed-check.sh
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-root-{{ checksum "package.json" }}
+            - v1-dependencies-root-
+
       - run: yarn
-      - run: yarn lint
-      - run: yarn test
+
+      - save_cache:
+          paths:
+            - yarn.lock
+            - node_modules
+          key: v1-dependencies-root-{{ checksum "package.json" }}
+
+      - run:
+          name: Lint
+          command: yarn lint
+
+      - run:
+          name: Test
+          command: yarn test
+
+      - run:
+          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+          when: on_success
