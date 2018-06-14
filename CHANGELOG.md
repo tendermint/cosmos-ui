@@ -25,4 +25,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added @nylira/vue-field as `tmField`
 
 ### Changed
+
 - Used relative link for `TmListItem` to `TmBtn`
+
+### Fixed
+
+- `TmListItem` tests were failing w null props

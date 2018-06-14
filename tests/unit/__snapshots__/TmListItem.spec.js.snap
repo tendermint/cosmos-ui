@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TmListItem has the expected html structure 1`] = `undefined`;
+exports[`TmListItem has the expected html structure 1`] = `
+<div class="tm-li" name="proposal">
+  <div class="tm-li-container">
+    <div class="tm-li-thumb">
+      <!---->
+    </div>
+    <div class="tm-li-dl">
+      <div class="tm-li-dt">
+        not null
+      </div>
+      <div class="tm-li-dd"></div>
+    </div>
+  </div>
+</div>
+`;
 
 exports[`TmListItem should append the fa-spin class 1`] = `
 <div class="tm-li" name="proposal">
@@ -8,11 +22,11 @@ exports[`TmListItem should append the fa-spin class 1`] = `
     <div class="tm-li-thumb">
       <i class="material-icons fa-spin">rotate_right</i>
     </div>
-    <div class="tm-li-label">
-      <div class="tm-li-title">
-        Connecting...
+    <div class="tm-li-dl">
+      <div class="tm-li-dt">
+        not null
       </div>
-      <div class="tm-li-subtitle"></div>
+      <div class="tm-li-dd"></div>
     </div>
   </div>
 </div>
@@ -102,9 +116,11 @@ exports[`TmListItem should show a subtitle router link 1`] = `
     <div class="tm-li-thumb">
       <!---->
     </div>
-    <div class="tm-li-label">
-      <div class="tm-li-title"></div>
-      <div class="tm-li-subtitle"></div>
+    <div class="tm-li-dl">
+      <div class="tm-li-dt">
+        not null
+      </div>
+      <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
       <i class="material-icons inactive">chevron_right</i>
@@ -156,11 +172,11 @@ exports[`TmListItem should show as text 1`] = `
     <div class="tm-li-thumb">
       <!---->
     </div>
-    <div class="tm-li-label">
-      <div class="tm-li-title">
-        Link
+    <div class="tm-li-dl">
+      <div class="tm-li-dt">
+        not null
       </div>
-      <div class="tm-li-subtitle"></div>
+      <div class="tm-li-dd"></div>
     </div>
   </div>
 </div>
