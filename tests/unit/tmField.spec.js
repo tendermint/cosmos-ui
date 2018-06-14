@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import TmField from "@/components/tmField/tmField.vue"
+import { TmField } from "@/index"
 
 describe("TmField.vue", () => {
   let wrapper

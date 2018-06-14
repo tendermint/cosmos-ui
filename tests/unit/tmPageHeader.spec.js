@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-import { TmPageHeader } from "@/index.js"
+import { TmPageHeader } from "@/index"
 
 describe("TmPageHeader.vue", () => {
   let wrapper
