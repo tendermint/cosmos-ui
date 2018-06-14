@@ -13,18 +13,7 @@ jobs:
 
       - run: tasks/changelog-changed-check.sh
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-root-{{ checksum "package.json" }}
-            - v1-dependencies-root-
-
       - run: yarn
-
-      - save_cache:
-          paths:
-            - yarn.lock
-            - node_modules
-          key: v1-dependencies-root-{{ checksum "package.json" }}
 
       - run:
           name: Lint
@@ -33,7 +22,3 @@ jobs:
       - run:
           name: Test
           command: yarn test
-
-      - run:
-          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-          when: on_success
