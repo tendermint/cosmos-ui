@@ -7,13 +7,24 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/node:9.4.0-browsers
+      - image: circleci/node:8.11.3-browsers
     steps:
       - checkout
 
       - run: tasks/changelog-changed-check.sh
 
+      - restore_cache:
+          keys:
+            - v1-dependencies-root-{{ checksum "package.json" }}
+            - v1-dependencies-root-
+
       - run: yarn
+
+      - save_cache:
+          paths:
+            - yarn.lock
+            - node_modules
+          key: v1-dependencies-root-{{ checksum "package.json" }}
 
       - run:
           name: Lint
