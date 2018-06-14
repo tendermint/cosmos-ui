@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added a placeholder HelloWorld component
 - Added @nylira/vue-page-header as `tmPageHeader`
 - Added @nylira/vue-notifications as `tmNotifications`
+- Added @nylira/vue-countdown as `tmCountdown`
+
+### Changes
+
 - Added @nylira/vue-field as `tmField`
 
 ### Changes
