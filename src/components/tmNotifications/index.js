@@ -1,5 +1,5 @@
-import tmNotifications from "./tmNotifications.vue"
+import TmNotifications from "./TmNotifications.vue"
 
 export default function install(Vue) {
-  Vue.component("tm-notifications", tmNotifications)
+  Vue.component("tm-notifications", TmNotifications)
 }

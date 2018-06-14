@@ -1,5 +1,5 @@
-import tmBarDiscrete from "./tmBarDiscrete.vue"
+import TmBarDiscrete from "./TmBarDiscrete.vue"
 
 export default function install(Vue) {
-  Vue.component("tm-bar-discrete", tmBarDiscrete)
+  Vue.component("tm-bar-discrete", TmBarDiscrete)
 }

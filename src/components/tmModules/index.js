@@ -1,10 +1,10 @@
-import tmModules_ from "./tmModules.vue"
-import tmModule_ from "./tmModule.vue"
+import tmModules_ from "./TmModules.vue"
+import tmModule_ from "./TmModule.vue"
 
-export const tmModules = function install(Vue) {
+export const TmModules = function install(Vue) {
   Vue.component("tm-modules", tmModules_)
 }
 
-export const tmModule = function install(Vue) {
+export const TmModule = function install(Vue) {
   Vue.component("tm-module", tmModule_)
 }

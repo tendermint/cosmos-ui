@@ -1,5 +1,5 @@
-import tmCountdown from "./tmCountdown.vue"
+import TmCountdown from "./TmCountdown.vue"
 
 export default function install(Vue) {
-  Vue.component("tm-countdown", tmCountdown)
+  Vue.component("tm-countdown", TmCountdown)
 }

@@ -1,10 +1,10 @@
-import tmKeyValues_ from "./tmKeyValues.vue"
-import tmKeyValue_ from "./tmKeyValue.vue"
+import tmKeyValues_ from "./TmKeyValues.vue"
+import tmKeyValue_ from "./TmKeyValue.vue"
 
-export const tmKeyValues = function install(Vue) {
+export const TmKeyValues = function install(Vue) {
   Vue.component("tm-key-values", tmKeyValues_)
 }
 
-export const tmKeyValue = function install(Vue) {
+export const TmKeyValue = function install(Vue) {
   Vue.component("tm-key-value", tmKeyValue_)
 }

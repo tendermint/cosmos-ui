@@ -1,5 +1,5 @@
-import tmFormMsg from "./tmFormMsg.vue"
+import TmFormMsg from "./TmFormMsg.vue"
 
 export default function install(Vue) {
-  Vue.component("tm-form-msg", tmFormMsg)
+  Vue.component("tm-form-msg", TmFormMsg)
 }
