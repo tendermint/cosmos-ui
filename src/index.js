@@ -3,13 +3,17 @@ import TmField from "./components/tmField"
 import TmPageHeader from "./components/tmPageHeader"
 import TmNotifications from "./components/tmNotifications"
 import TmCountdown from "./components/tmCountdown"
+import { TmKeyValues } from "./components/tmKeyValues"
+import { TmKeyValue } from "./components/tmKeyValues"
 
 const TendermintComponents = {
   TmHelloWorld,
   TmField,
   TmPageHeader,
   TmNotifications,
-  TmCountdown
+  TmCountdown,
+  TmKeyValue,
+  TmKeyValues
 }
 
 TendermintComponents.install = Vue =>
@@ -33,3 +37,7 @@ export {
 export {
   default as TmCountdown
 } from "./components/tmCountdown/tmCountdown.vue"
+export { default as TmKeyValue } from "./components/TmKeyValues/TmKeyValue.vue"
+export {
+  default as TmKeyValues
+} from "./components/TmKeyValues/TmKeyValues.vue"
