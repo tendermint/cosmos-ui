@@ -23,3 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/NiListItem as `TmListItem`
 - Added @nylira/vue-button as `tmBtn`
 - Added @nylira/vue-field as `tmField`
+
+### Changed
+- Used relative link for `TmListItem` to `TmBtn`
