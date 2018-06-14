@@ -7,6 +7,7 @@ import { TmKeyValues } from "./components/tmKeyValues"
 import { TmKeyValue } from "./components/tmKeyValues"
 import { TmModule } from "./components/tmModules"
 import { TmModules } from "./components/tmModules"
+import TmFormMsg from "./components/tmFormMsg"
 
 const TendermintComponents = {
   TmHelloWorld,
@@ -17,7 +18,8 @@ const TendermintComponents = {
   TmKeyValue,
   TmKeyValues,
   TmModule,
-  TmModules
+  TmModules,
+  TmFormMsg
 }
 
 TendermintComponents.install = Vue =>
@@ -47,3 +49,4 @@ export {
 } from "./components/TmKeyValues/TmKeyValues.vue"
 export { default as TmModule } from "./components/tmModules/tmModule.vue"
 export { default as TmModules } from "./components/tmModules/tmModules.vue"
+export { default as TmFormMsg } from "./components/tmFormMsg/tmFormMsg.vue"
