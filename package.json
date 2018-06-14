@@ -15,8 +15,6 @@
     "vue": "^2.5.16"
   },
   "devDependencies": {
-    "html-beautify": "^1.0.4",
-    "pug": "^2.0.3",
     "@vue/cli-plugin-babel": "^3.0.0-rc.1",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.1",
     "@vue/cli-plugin-unit-jest": "^3.0.0-rc.1",

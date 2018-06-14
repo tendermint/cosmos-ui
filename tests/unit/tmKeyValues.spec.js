@@ -1,9 +1,7 @@
 import { shallowMount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
-// import TmKeyValues from "@/components/tmKeyValues/tmKeyValues.vue"
-// import TmKeyValue from "@/components/tmKeyValues/tmKeyValue.vue"
-import { TmKeyValues } from "@/index.js"
-import { TmKeyValue } from "@/index.js"
+import { TmKeyValues } from "@/index"
+import { TmKeyValue } from "@/index"
 
 describe("TmKeyValues.vue", () => {
   let wrapper
