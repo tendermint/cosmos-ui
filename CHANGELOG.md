@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added @nylira/vue-button as `tmBtn` @okwme
 - Added @nylira/vue-field as `tmField` @okwme
 - Added common/NiDataMsg as `TmDataMsg` @okwme
+- Added common/NiFieldGroup as `TmFieldGroup` @okwme
 
 ### Changed
 

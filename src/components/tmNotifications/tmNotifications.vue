@@ -1,17 +1,17 @@
 <template lang='pug'>
 .tm-notifications
-  notification(v-for='notification in notifications'
+  tm-notification(v-for='notification in notifications'
     :key='notification.time'
     :data='notification'
     :theme='theme')
 </template>
 
 <script>
-import Notification from "./tmNotification"
+import TmNotification from "./TmNotification.vue"
 export default {
   name: "tm-notifications",
   components: {
-    Notification
+    TmNotification
   },
   props: ["notifications", "theme"]
 }
