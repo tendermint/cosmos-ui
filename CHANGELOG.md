@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/NiDataMsg as `TmDataMsg` @okwme
 - Added common/NiFieldGroup as `TmFieldGroup` @okwme
 - Added common/NiFormGroup as `TmFormGroup` @okwme
+- Added common/NiFormStruct as `TmFormStruct` @okwme
 
 ### Changed
 
