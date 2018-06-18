@@ -9,6 +9,7 @@ import { TmKeyValue } from "./components/TmKeyValues"
 import { TmModules } from "./components/TmModules"
 import { TmModule } from "./components/TmModules"
 
+import TmDataMsg from "./components/TmDataMsg"
 import TmFormMsg from "./components/TmFormMsg"
 import TmBarDiscrete from "./components/TmBarDiscrete"
 import TmListItem from "./components/TmListItem"
@@ -23,6 +24,7 @@ const TendermintComponents = {
   TmKeyValues,
   TmModule,
   TmModules,
+  TmDataMsg,
   TmFormMsg,
   TmBarDiscrete,
   TmListItem,
@@ -56,6 +58,7 @@ export { default as TmKeyValue } from "./components/TmKeyValues/TmKeyValue.vue"
 export { default as TmModules } from "./components/TmModules/TmModules.vue"
 export { default as TmModule } from "./components/TmModules/TmModule.vue"
 
+export { default as TmDataMsg } from "./components/TmDataMsg/TmDataMsg.vue"
 export { default as TmFormMsg } from "./components/TmFormMsg/TmFormMsg.vue"
 export {
   default as TmBarDiscrete
