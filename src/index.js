@@ -1,5 +1,4 @@
 import TmField from "./components/TmField"
-import TmPageHeader from "./components/TmPageHeader"
 import TmNotifications from "./components/TmNotifications"
 import TmCountdown from "./components/TmCountdown"
 
@@ -9,6 +8,9 @@ import { TmKeyValue } from "./components/TmKeyValues"
 import { TmModules } from "./components/TmModules"
 import { TmModule } from "./components/TmModules"
 
+import TmPage from "./components/TmPage"
+import TmPageHeader from "./components/TmPageHeader"
+import TmPageFooter from "./components/TmPageFooter"
 import TmFormStruct from "./components/TmFormStruct"
 import TmFormGroup from "./components/TmFormGroup"
 import TmFieldGroup from "./components/TmFieldGroup"
@@ -20,7 +22,9 @@ import TmBtn from "./components/TmBtn"
 
 const TendermintComponents = {
   TmField,
+  TmPage,
   TmPageHeader,
+  TmPageFooter,
   TmNotifications,
   TmCountdown,
   TmKeyValue,
@@ -46,9 +50,13 @@ TendermintComponents.install = Vue =>
 export default TendermintComponents
 
 export { default as TmField } from "./components/TmField/TmField.vue"
+export { default as TmPage } from "./components/TmPage/TmPage.vue"
 export {
   default as TmPageHeader
 } from "./components/TmPageHeader/TmPageHeader.vue"
+export {
+  default as TmPageFooter
+} from "./components/TmPageFooter/TmPageFooter.vue"
 export {
   default as TmNotifications
 } from "./components/TmNotifications/TmNotifications.vue"

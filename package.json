@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "moment": "^2.22.2",
+    "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"
   },
   "devDependencies": {
