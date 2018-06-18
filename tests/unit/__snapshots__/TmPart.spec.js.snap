@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmPart has the expected html structure 1`] = `
+<section
+  class="tm-part"
+>
+  <div
+    class="tm-part-container"
+  >
+    <header
+      class="tm-part-header"
+    >
+      <div
+        class="tm-part-header-container"
+      >
+        <div
+          class="tm-part-title h5"
+        >
+          Test
+        </div>
+        <menu
+          class="tm-part-menu"
+        />
+      </div>
+    </header>
+    <main
+      class="tm-part-main"
+    />
+  </div>
+</section>
+`;
