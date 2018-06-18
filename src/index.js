@@ -9,6 +9,7 @@ import { TmKeyValue } from "./components/TmKeyValues"
 import { TmModules } from "./components/TmModules"
 import { TmModule } from "./components/TmModules"
 
+import TmFormGroup from "./components/TmFormGroup"
 import TmFieldGroup from "./components/TmFieldGroup"
 import TmDataMsg from "./components/TmDataMsg"
 import TmFormMsg from "./components/TmFormMsg"
@@ -25,6 +26,7 @@ const TendermintComponents = {
   TmKeyValues,
   TmModule,
   TmModules,
+  TmFormGroup,
   TmFieldGroup,
   TmDataMsg,
   TmFormMsg,
@@ -60,6 +62,9 @@ export { default as TmKeyValue } from "./components/TmKeyValues/TmKeyValue.vue"
 export { default as TmModules } from "./components/TmModules/TmModules.vue"
 export { default as TmModule } from "./components/TmModules/TmModule.vue"
 
+export {
+  default as TmFormGroup
+} from "./components/TmFormGroup/TmFormGroup.vue"
 export {
   default as TmFieldGroup
 } from "./components/TmFieldGroup/TmFieldGroup.vue"
