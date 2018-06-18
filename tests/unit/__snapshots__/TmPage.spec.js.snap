@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmPage has the expected html structure 1`] = `
+<div
+  class="tm-page"
+>
+  <header
+    class="tm-page-header tm-page-header-default"
+    icon="hello_icon"
+  >
+    <div
+      class="tm-page-header-container"
+    >
+      <h1
+        class="title"
+      >
+        
+      </h1>
+       
+      <!---->
+       
+    </div>
+  </header>
+  <main
+    class="tm-page-main ps"
+  >
+    <div
+      class="ps__rail-x"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="ps__thumb-x"
+        style="left: 0px; width: 0px;"
+        tabindex="0"
+      />
+    </div>
+    <div
+      class="ps__rail-y"
+      style="top: 0px; left: 0px;"
+    >
+      <div
+        class="ps__thumb-y"
+        style="top: 0px; height: 0px;"
+        tabindex="0"
+      />
+    </div>
+  </main>
+</div>
+`;
