@@ -8,6 +8,7 @@ import { TmKeyValue } from "./components/TmKeyValues"
 import { TmModules } from "./components/TmModules"
 import { TmModule } from "./components/TmModules"
 
+import TmPart from "./components/TmPart"
 import TmPage from "./components/TmPage"
 import TmPageHeader from "./components/TmPageHeader"
 import TmPageFooter from "./components/TmPageFooter"
@@ -22,6 +23,7 @@ import TmBtn from "./components/TmBtn"
 
 const TendermintComponents = {
   TmField,
+  TmPart,
   TmPage,
   TmPageHeader,
   TmPageFooter,
@@ -50,6 +52,7 @@ TendermintComponents.install = Vue =>
 export default TendermintComponents
 
 export { default as TmField } from "./components/TmField/TmField.vue"
+export { default as TmPart } from "./components/TmPart/TmPart.vue"
 export { default as TmPage } from "./components/TmPage/TmPage.vue"
 export {
   default as TmPageHeader
