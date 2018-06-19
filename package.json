@@ -2,34 +2,42 @@
   "name": "@tendermint/ui",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "Apache-2.0",
   "author": "Tendermint, Inc <hello@tendermint.com>",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit",
+    "build": "babel src/index.js --out-file dist/index.js"
   },
   "dependencies": {
-    "moment": "^2.22.2",
-    "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"
   },
   "devDependencies": {
+    "@babel/parser": "^7.0.0-beta.51",
     "@vue/cli-plugin-babel": "^3.0.0-rc.1",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.1",
     "@vue/cli-plugin-unit-jest": "^3.0.0-rc.1",
     "@vue/cli-service": "^3.0.0-rc.1",
     "@vue/eslint-config-prettier": "^3.0.0-beta.16",
-    "@vue/test-utils": "^1.0.0-beta.16",
+    "@vue/test-utils": "^1.0.0-beta.12",
+    "babel-cli": "^6.26.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "babel-preset-env": "^1.7.0",
     "html-beautify": "^1.0.4",
     "lint-staged": "^6.0.0",
+    "moment": "^2.22.2",
+    "perfect-scrollbar": "^1.4.0",
     "pug": "^2.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16"
+  },
+  "babel": {
+    "presets": ["env"]
   },
   "eslintConfig": {
     "root": true,

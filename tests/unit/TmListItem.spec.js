@@ -7,6 +7,10 @@ describe("TmListItem", () => {
 
   beforeEach(() => {
     wrapper = shallowMount(TmListItem, {
+      stubs: {
+        "router-link": "<router link />",
+        "graphic-elem": "<graphic-elem />"
+      },
       propsData: {
         type: null,
         title: null,
