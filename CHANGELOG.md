@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Used relative link for `TmListItem` to `TmBtn` @okwme
 - Updated to consistent PascalCase naming @okwme
+- Try using `module.exports` instead of ES6 modules @nylira
 
 ### Fixed
 

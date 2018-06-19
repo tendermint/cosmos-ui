@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@require '~@/styles/variables.styl'
+@require '~variables'
 
 .tm-page-header
   position relative

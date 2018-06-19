@@ -202,7 +202,7 @@ export default {
 
 .tm-li-link
   .tm-li-label
-    //padding 0 1rem 0 0
+    padding 0 1rem 0 0
 
 // type: field
 
