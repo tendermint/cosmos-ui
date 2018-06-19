@@ -12,17 +12,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `./src/index.js` to support `import` @nylira
 - Added a README and CHANGELOG @nylira
 - Added a placeholder HelloWorld component @nylira
-- Added @nylira/vue-page-header as `tmPageHeader` @okwme
-- Added @nylira/vue-notifications as `tmNotifications` @okwme
-- Added @nylira/vue-countdown as `tmCountdown` @okwme
-- Added @nylira/vue-key-value(s) as `tmKeyValue(s)` @okwme
-- Added @nylira/vue-field as `tmField` @okwme
+- Added @nylira/vue-page-header as `TmPageHeader` @okwme
+- Added @nylira/vue-notifications as `TmNotifications` @okwme
+- Added @nylira/vue-countdown as `TmCountdown` @okwme
+- Added @nylira/vue-key-value(s) as `TmKeyValue(s)` @okwme
+- Added @nylira/vue-field as `TmField` @okwme
 - Added @nylira/vue-form-msg as `TmFormMsg` @okwme
-- Added @nylira/vue-module(s) as `tmModule(s)` @okwme
+- Added @nylira/vue-module(s) as `TmModule(s)` @okwme
 - Added common/NiBarDiscrete as `TmBarDiscrete` @okwme
 - Added common/NiListItem as `TmListItem` @okwme
-- Added @nylira/vue-button as `tmBtn` @okwme
-- Added @nylira/vue-field as `tmField` @okwme
+- Added @nylira/vue-button as `TmBtn` @okwme
+- Added @nylira/vue-field as `TmField` @okwme
 - Added common/NiDataMsg as `TmDataMsg` @okwme
 - Added common/NiFieldGroup as `TmFieldGroup` @okwme
 - Added common/NiFormGroup as `TmFormGroup` @okwme
