@@ -1,13 +1,11 @@
-import setup from "../../../helpers/vuex-setup"
-import TmToolBar from "@/index"
+import { mount } from "@vue/test-utils"
+import { TmToolBar } from "@/index"
 
 describe("TmToolBar", () => {
-  let wrapper, instance
-  let { mount } = setup()
+  let wrapper
 
   beforeEach(() => {
-    instance = mount(TmToolBar)
-    wrapper = instance.wrapper
+    wrapper = mount(TmToolBar)
   })
 
   it("has the expected html structure", () => {

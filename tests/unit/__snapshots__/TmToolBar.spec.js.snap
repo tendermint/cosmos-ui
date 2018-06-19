@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmToolBar has the expected html structure 1`] = `
+<div class="tm-tool-bar">
+  <div class="tm-tool-bar-container">
+    <div class="main"></div>
+  </div>
+</div>
+`;
