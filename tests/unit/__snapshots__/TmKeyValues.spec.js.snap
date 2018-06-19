@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmKeyValue.vue has the expected html structure 1`] = `
+<div class="tm-kv">
+  <div class="tm-kv-container">
+    <div class="tm-kv-value">
+      <div>
+        value
+      </div>
+    </div>
+    <div class="tm-kv-key">
+      <div>
+        key
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TmKeyValues.vue has the expected html structure 1`] = `
+<div class="tm-kvs">
+  <div>
+    slot
+  </div>
+</div>
+`;

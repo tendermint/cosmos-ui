@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmPageFooter has the expected html structure 1`] = `
+<footer
+  class="tm-page-footer"
+>
+  <div
+    class="container"
+  />
+</footer>
+`;
