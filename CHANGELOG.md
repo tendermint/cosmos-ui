@@ -32,9 +32,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Used relative link for `TmListItem` to `TmBtn` @okwme
-- Updated to consistent PascalCase naming @okwme
+- Updated to consistent PascalCase naming @okwme @nylira
+- Distribute a babel-ified version of `index.js` @nylira
 
 ### Fixed
 
 - `TmListItem` tests were failing w null props @okwme
-- Fixed capitalization issue affecting Linux systems @nylira
