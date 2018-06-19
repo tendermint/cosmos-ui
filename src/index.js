@@ -21,6 +21,7 @@ import TmBarDiscrete from "./components/TmBarDiscrete"
 import TmListItem from "./components/TmListItem"
 import TmBtn from "./components/TmBtn"
 import TmTabBar from "./components/TmTabBar"
+import TmToolBar from "./components/TmToolBar"
 
 const TendermintComponents = {
   TmField,
@@ -42,7 +43,8 @@ const TendermintComponents = {
   TmBarDiscrete,
   TmListItem,
   TmBtn,
-  TmTabBar
+  TmTabBar,
+  TmToolBar
 }
 
 TendermintComponents.install = Vue =>
@@ -91,6 +93,7 @@ export { default as TmFormMsg } from "./components/TmFormMsg/TmFormMsg.vue"
 export {
   default as TmBarDiscrete
 } from "./components/TmBarDiscrete/TmBarDiscrete.vue"
+export { default as TmToolBar } from "./components/TmToolBar/TmToolBar.vue"
 export { default as TmTabBar } from "./components/TmTabBar/TmTabBar.vue"
 export { default as TmBtn } from "./components/TmBtn/TmBtn.vue"
 export { default as TmListItem } from "./components/TmListItem/TmListItem.vue"
