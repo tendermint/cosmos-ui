@@ -21,9 +21,10 @@ import TmBarDiscrete from "./components/TmBarDiscrete"
 import TmListItem from "./components/TmListItem"
 import TmBtn from "./components/TmBtn"
 import TmTabBar from "./components/TmTabBar"
-import TmToolBar from "./components/TmToolBar"
+import TmToolBar from "./components/TmToolBar/TmToolBar.vue"
 
 const TendermintComponents = {
+  TmToolBar,
   TmField,
   TmPart,
   TmPage,
@@ -43,8 +44,7 @@ const TendermintComponents = {
   TmBarDiscrete,
   TmListItem,
   TmBtn,
-  TmTabBar,
-  TmToolBar
+  TmTabBar
 }
 
 TendermintComponents.install = Vue =>

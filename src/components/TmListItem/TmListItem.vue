@@ -59,11 +59,10 @@ transition(name="proposal")
     +tm-li-label
     +tm-li-icon
 
-  //- button receive // this isn't used in the app anywhere and imports a heavy component that should be a slot instead
-  // .tm-li.tm-li-receive(v-else-if="title && btn && !to"): .tm-li-container
+  .tm-li.tm-li-receive(v-else-if="title && btn && !to"): .tm-li-container
     +tm-li-thumb
     +tm-li-label
-    btn-receive
+    slot(name="btn-receive")
 
   //- title/subtitle text
   .tm-li(v-else-if='title'): .tm-li-container
