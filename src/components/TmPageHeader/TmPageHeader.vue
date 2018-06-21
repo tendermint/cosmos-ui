@@ -1,113 +1,64 @@
-<template>
-<header class="tm-page-header" :class="headerClass">
-  <div class="tm-page-header-container">
-    <h1 class="title">{{ title }}</h1>
-    <p class="subtitle" v-if="subtitle" v-html="subtitle"></p>
-    <slot></slot>
-  </div>
-</header>
+<template lang='pug'>
+header.tm-page-header
+  .tm-page-header-container
+    .tm-page-header-text
+      .tm-page-header-title
+        slot(name='title')
+      .tm-page-header-subtitle
+        slot(name='subtitle')
+    menu.tm-page-header-menu
+      slot(name="menu")
 </template>
 
 <script>
-export default {
-  name: "tm-page-header",
-  computed: {
-    headerClass() {
-      let v = ""
-      switch (this.type) {
-        case "center":
-          v += "tm-page-header-center"
-          break
-        case "split":
-          v += "tm-page-header-split"
-          break
-        default:
-          v += "tm-page-header-default"
-      }
-      if (this.theme === "tendermint") {
-        v += " tm-page-header-theme-tendermint"
-      }
-      return v
-    }
-  },
-  props: ["title", "subtitle", "type", "theme"]
-}
+export default { name: "tm-page-header" }
 </script>
 
 <style lang="stylus">
-@require '~@/styles/variables.styl'
+@require '~variables'
 
 .tm-page-header
-  position relative
-  border-bottom 1px dotted bc
+  -webkit-app-region drag
 
-  .tm-page-header-container
-    padding 1.25rem
-    max-width 48rem
-    display flex
-    flex-flow column nowrap
+.tm-page-header-title
+  font-size xl
+  > div
+    display inline-block
 
-  .title
-    font-size 2em
-    line-height 1
-    color bright
-    font-weight 600
+.tm-page-header-container
+  min-height 4.22rem
+  border-bottom px solid var(--bc)
+  display flex
 
-  .subtitle
-    color dim
-    margin-top 0.75em
-    font-size 1em
-    font-weight 400
-    line-height 1.25
+.tm-page-header-text
+  flex 1
+  display flex
+  min-width 0 // fix truncation
+  padding 11px 0 0 1rem
+  align-items: center
 
-    strong
-      font-weight 500
+  i.material-icons
+    font-size 1.375 * x
+    padding-right 0.375rem
 
-  &.tm-page-header-default
-    .tm-page-header-container
-      align-items flex-start
+  > div
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
 
-  &.tm-page-header-center
-    .tm-page-header-container
-      align-items center
-      justify-content center
-      align-content center
-      text-align center
-
-  &.tm-page-header-theme-tendermint
-    background hsl(210, 70%, 13%)
-    .title
-      color hsl(210, 70%, 90%)
-    .subtitle
-      color hsl(210, 70%, 50%)
-      strong
-        font-weight 500
-        color hsl(210, 70%, 60%)
-      a
-        color hsl(210, 70%, 70%)
-        border-bottom-color hsl(210, 70%, 50%)
-        &:hover
-          color #fff
-
-@media screen and (min-width: 360px)
-  .tm-page-header
-    .tm-page-header-container
-      padding 1.5rem
-
-@media screen and (min-width: 768px)
-  .tm-page-header
-    .tm-page-header-container
-      padding 3rem
+  h2
+    font-size xl
+    font-weight 500
+    color var(--bright)
 
 @media screen and (min-width: 1024px)
   .tm-page-header
-    &.tm-page-header-split
-      border-bottom none
-      .tm-page-header-container
-        padding 3em
-        text-align left
-      .title
-        font-size 2rem
-      .subtitle
-        font-size 1rem
-        letter-spacing 0.02em
+    border-bottom-color var(--bc)
+
+  .tm-page-header-container
+    display flex
+
+  .tm-page-header-menu
+    display flex
+    align-items center
+</style>

@@ -28,6 +28,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/NiFormStruct as `TmFormStruct` @okwme
 - Added common/NiPage & common/NiPageFooter as `TmPage` & `TmPageFooter` @okwme
 - Added common/NiPart as `TmPart` @okwme
+- Added common/NiTabBar as `TmTabBar` @okwme
+- Added common/NiToolBar as `TmToolBar` @okwme
+- Added `TmCookieConsent` @nylira
 
 ### Changed
 
