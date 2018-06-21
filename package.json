@@ -2,7 +2,7 @@
   "name": "@tendermint/ui",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "Apache-2.0",
   "author": "Tendermint, Inc <hello@tendermint.com>",
   "main": "src/index.js",
@@ -11,6 +11,7 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "cookieconsent": "^3.0.6",
     "moment": "^2.22.2",
     "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"

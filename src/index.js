@@ -22,6 +22,7 @@ import TmListItem from "./components/TmListItem"
 import TmBtn from "./components/TmBtn"
 import TmTabBar from "./components/TmTabBar"
 import TmToolBar from "./components/TmToolBar"
+import TmCookieConsent from "./components/TmCookieConsent"
 
 const TendermintComponents = {
   TmField,
@@ -44,7 +45,8 @@ const TendermintComponents = {
   TmListItem,
   TmBtn,
   TmTabBar,
-  TmToolBar
+  TmToolBar,
+  TmCookieConsent
 }
 
 TendermintComponents.install = Vue =>
@@ -97,3 +99,6 @@ export { default as TmToolBar } from "./components/TmToolBar/TmToolBar.vue"
 export { default as TmTabBar } from "./components/TmTabBar/TmTabBar.vue"
 export { default as TmBtn } from "./components/TmBtn/TmBtn.vue"
 export { default as TmListItem } from "./components/TmListItem/TmListItem.vue"
+export {
+  default as TmCookieConsent
+} from "./components/TmCookieConsent/TmCookieConsent.vue"
