@@ -25,12 +25,10 @@ export default {
 @import '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css'
 @import '~variables'
 
-.cc-banner
-  background var(--app-fg)
-  background app-fg
-
 .cc-window
   font-family sans
+  background var(--app-fg)
+  background app-fg
 
 .cc-message
   color var(--txt)
