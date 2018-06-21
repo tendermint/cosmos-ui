@@ -2,7 +2,7 @@
   "name": "@tendermint/ui",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "license": "Apache-2.0",
   "author": "Tendermint, Inc <hello@tendermint.com>",
   "main": "src/index.js",
