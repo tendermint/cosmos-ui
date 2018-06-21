@@ -11,6 +11,7 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "cookieconsent": "^3.0.6",
     "moment": "^2.22.2",
     "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"
