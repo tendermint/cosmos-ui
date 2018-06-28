@@ -1,5 +1,5 @@
 <template lang="pug">
-.ni-select(v-if="type === 'select' || type === 'countries'")
+.tm-select(v-if="type === 'select' || type === 'countries'")
   select(
     :class="css"
     :value="value"
@@ -13,7 +13,7 @@
     :key="i.key") {{ i.key }}
   .tm-field-select-addon: i.material-icons arrow_drop_down
 
-// .ni-datetime(v-else-if="type === 'datetime'")
+// .tm-datetime(v-else-if="type === 'datetime'")
   input(
     type="text"
     :class="css"
@@ -33,10 +33,10 @@ textarea(v-else-if="type === 'textarea'"
   :value="value"
   @input="updateValue($event.target.value)")
 
-label.ni-toggle(
+label.tm-toggle(
   v-else-if="type === 'toggle'"
   :class="toggleClass")
-  .ni-toggle-wrapper
+  .tm-toggle-wrapper
     span {{toggleLongerWord}}
     .toggle-option-checked: div {{toggleOptions.checked}}
     .toggle-option-unchecked: div {{toggleOptions.unchecked}}
@@ -194,14 +194,14 @@ textarea.tm-field
   height 4rem
   resize vertical
 
-.ni-toggle
+.tm-toggle
   border 1px solid var(--input-bc, #ccc)
   height 2rem
   padding 0 2px
   border-radius 1rem
   *
     cursor pointer
-  .ni-toggle-wrapper
+  .tm-toggle-wrapper
     padding 0 1.25rem
     transform: rotate(0deg);
     margin-right calc(1.625rem / 2)
@@ -276,7 +276,7 @@ textarea.tm-field
     .toggle-handle:after
       right calc(100% - .7500rem)
 
-.ni-select
+.tm-select
   position relative
 
   select
@@ -318,10 +318,10 @@ textarea.tm-field
 
 /*==============================================================================*/
 
-.ni-datetime
+.tm-datetime
   position relative
 
-.ni-datetime:after
+.tm-datetime:after
   display flex
   align-items center
   justify-content center

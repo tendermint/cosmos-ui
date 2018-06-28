@@ -5,20 +5,35 @@ exports[`TmPage has the expected html structure 1`] = `
   class="tm-page"
 >
   <header
-    class="tm-page-header tm-page-header-default"
+    class="tm-page-header"
     icon="hello_icon"
   >
     <div
       class="tm-page-header-container"
     >
-      <h1
-        class="title"
+      <div
+        class="tm-page-header-text"
       >
-        
-      </h1>
-       
-      <!---->
-       
+        <div
+          class="tm-page-header-title"
+        >
+          <h2>
+            Title
+          </h2>
+        </div>
+        <div
+          class="tm-page-header-subtitle"
+        >
+          <h3>
+            Subtitle
+          </h3>
+        </div>
+      </div>
+      <menu
+        class="tm-page-header-menu"
+      >
+        <div />
+      </menu>
     </div>
   </header>
   <main
