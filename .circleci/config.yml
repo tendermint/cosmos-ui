@@ -8,6 +8,8 @@ jobs:
     working_directory: ~/project
     docker:
       - image: circleci/node:9.4.0-browsers
+        environment:
+           TZ: "/usr/share/zoneinfo/Europe/Berlin"
     steps:
       - checkout
 
