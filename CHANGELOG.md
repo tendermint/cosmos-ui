@@ -36,7 +36,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Used relative link for `TmListItem` to `TmBtn` @okwme
 - Updated to consistent PascalCase naming @okwme
+- Updated TmPageHeader Snapshots which were out of date for some reason @okwme
 
 ### Fixed
 
 - `TmListItem` tests were failing w null props @okwme
+- There were a coupld ni- prefixes remaining in TmField @okwme
