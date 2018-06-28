@@ -66,7 +66,7 @@ export default {
   },
   mounted() {
     window.setInterval(() => {
-      this.now = Math.trunc(new Date().getTime() / 1000)
+      this.now = this.fixednow || Math.trunc(new Date().getTime() / 1000)
     }, 1000)
   },
   props: ["date", "units", "fixednow"]
