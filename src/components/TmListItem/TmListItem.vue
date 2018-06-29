@@ -174,10 +174,11 @@ export default {
 
 .tm-li-thumb
   width 3rem - px
-  i.material-icons
+  i.material-icons, img
     display block
     width 3rem - px
     height 3rem - px
+  i.material-icons
     display flex
     align-items center
     justify-content center
