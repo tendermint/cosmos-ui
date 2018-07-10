@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added common/NiTextContainer as `TmTextContainer` @nylira
 - Added common/NiMdText as `TmTextMarkdown` @nylira
+- Added common/TmDataEmpty as `TmDataEmpty` @okwme
 
 ### Changed
 
