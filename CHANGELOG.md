@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.10]
+
+### Added
+
+- Added common/NiTextContainer as `TmTextContainer` @nylira
+- Added common/NiMdText as `TmTextMarkdown` @nylira
+
+### Changed
+
+- Alphabetically sorted components in `.src/index.js` @nylira
+
+## [0.2.9]
+
 ### Added
 
 - Added `./src/index.js` to support `import` @nylira

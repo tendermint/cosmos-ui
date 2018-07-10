@@ -146,7 +146,7 @@ export default {
 
 .tm-btn__container.tm-btn--primary
   background var(--primary, #99f)
-  border-color var(--primary-bc, #00f)
+  border-color hsla(0,0,100%,0.15)
   i.fa, i.material-icons
     color hsla(0,0,100%,0.667)
   .tm-btn__value

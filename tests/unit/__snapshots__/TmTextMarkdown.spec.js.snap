@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmTextMarkdown.vue has the expected html structure 1`] = `
+<div class="tm-text-markdown">
+  <h2 id="loading%E2%80%A6">
+    Loading…
+  </h2>
+  <p>
+    Loading…
+  </p>
+</div>
+`;
