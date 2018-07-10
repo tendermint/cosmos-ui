@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Alphabetically sorted components in `.src/index.js` @nylira
+- Improves the border color of `--primary` buttons. @nylira
 
 ## [0.2.9]
 
