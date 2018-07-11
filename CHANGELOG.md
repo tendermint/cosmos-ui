@@ -14,11 +14,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/NiTextContainer as `TmTextContainer` @nylira
 - Added common/NiMdText as `TmTextMarkdown` @nylira
 - Added common/TmDataEmpty as `TmDataEmpty` @okwme
+- Added common/TmDataLoading as `TmDataLoading` @okwme
+- Added common/LiTransaction as `TmLiTransaction` @okwme
 
 ### Changed
 
 - Alphabetically sorted components in `.src/index.js` @nylira
 - Improves the border color of `--primary` buttons. @nylira
+- Improved testing around TmTextMarkdown @okwme
 
 ## [0.2.9]
 

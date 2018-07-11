@@ -4,8 +4,7 @@
 
 <script>
 // eslint-disable-next-line
-import { cookieconsent } from "cookieconsent"
-
+require("cookieconsent")
 export default {
   name: "tm-cookie-consent",
   methods: {
