@@ -1,4 +1,6 @@
 import TmBarDiscrete from "./components/TmBarDiscrete"
+import TmBlock from "./components/TmBlock"
+import TmBlocks from "./components/TmBlocks"
 import TmBtn from "./components/TmBtn"
 import TmCookieConsent from "./components/TmCookieConsent"
 import TmCountdown from "./components/TmCountdown"
@@ -28,6 +30,8 @@ import TmToolBar from "./components/TmToolBar"
 
 const TendermintComponents = {
   TmBarDiscrete,
+  TmBlock,
+  TmBlocks,
   TmBtn,
   TmCookieConsent,
   TmCountdown,
@@ -67,6 +71,8 @@ export default TendermintComponents
 export {
   default as TmBarDiscrete
 } from "./components/TmBarDiscrete/TmBarDiscrete.vue"
+export { default as TmBlock } from "./components/TmBlock/TmBlock.vue"
+export { default as TmBlocks } from "./components/TmBlocks/TmBlocks.vue"
 export { default as TmBtn } from "./components/TmBtn/TmBtn.vue"
 export {
   default as TmCookieConsent

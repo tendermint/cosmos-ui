@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/TmDataEmpty as `TmDataEmpty` @okwme
 - Added common/TmDataLoading as `TmDataLoading` @okwme
 - Added common/LiTransaction as `TmLiTransaction` @okwme
+- Added common/TmBlock as `TmBlock` @okwme
+- Added common/TmBlocks as `TmBlocks` @okwme
 
 ### Changed
 

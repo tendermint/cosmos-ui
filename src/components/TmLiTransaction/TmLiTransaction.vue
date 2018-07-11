@@ -9,7 +9,6 @@ mixin tx-container-sent
       .tx-element.tx-date(v-if="devMode") {{ date }}
       .tx-element.tx-address(v-if="!sentSelf") Sent to {{ receiver }}
       .tx-element.tx-address(v-if="sentSelf") You sent this amount to yourself.
-
 .tm-li-tx(v-if="sentSelf" @click="() => devMode && viewTransaction()")
   .tx-icon: i.material-icons swap_horiz
   +tx-container-sent
@@ -51,7 +50,7 @@ const defaultTransaction = {
         value: {
           time: null,
           inputs: [defaultInput, defaultInput, defaultInput],
-          outputs: []
+          outputs: [defaultInput, defaultInput, defaultInput]
         }
       }
     }
@@ -59,10 +58,10 @@ const defaultTransaction = {
 }
 
 export default {
-  name: "tm-li-tx",
+  name: "tm-li-transaction",
   computed: {
     transactionValue() {
-      return this.transaction.tx.value.msg.value
+      return this.transaction.tx
     },
     // HERE FOR DOCUMENTATION
     // transactionHeight() {
@@ -91,9 +90,13 @@ export default {
       return this.transactionValue.inputs[0].coins
     },
     date() {
-      return moment(this.transactionValue.time).format(
-        "MMMM Do YYYY, h:mm:ss a"
-      )
+      try {
+        return moment(this.transactionValue.time).format(
+          "MMMM Do YYYY, h:mm:ss a"
+        )
+      } catch (error) {
+        return null
+      }
     }
   },
   data: () => ({
@@ -113,7 +116,7 @@ export default {
   props: {
     transaction: {
       type: Object,
-      default: defaultTransaction
+      default: () => defaultTransaction
     },
     address: { type: String, default: null }
   }

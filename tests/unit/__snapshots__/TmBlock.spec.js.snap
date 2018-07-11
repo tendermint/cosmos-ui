@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmBlock.vue has the expected html structure 1`] = `
+<div>
+  <install-stub title=""></install-stub>
+  <install-stub title="Header"></install-stub>
+  <install-stub title="Last Block"></install-stub>
+  <install-stub title="Precommit"></install-stub>
+  <install-stub title="Transactions"></install-stub>
+</div>
+`;
