@@ -35,27 +35,18 @@
           :key="tkey + '-tx'"
           v-for="(tx, tkey) in txs"
           v-if="isObj(tx)"
-          :transaction="transactionValueify(tx)"
+          :transaction="tx"
           :address="tx.tx.msg.inputs[0].address"
           )
+        //- TODO why is address set to be the first tx? shouldn't it be current user?
 </template>
 <script>
-// import * as foo from "../../index.js"
 import TmPart from "../TmPart/TmPart.vue"
 import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
-// console.log(foo)
-// import {
-//   TmPart,
-//   TmListItem,
-//   TmDataEmpty,
-//   TmDataLoading,
-//   TmLiTransaction
-// } from "../../index.js"
 import moment from "moment"
-
 export default {
   name: "tm-block",
   components: {
@@ -137,14 +128,6 @@ export default {
   methods: {
     isObj(thing) {
       return typeof thing === "object"
-    },
-
-    transactionValueify(tv) {
-      tv = JSON.parse(JSON.stringify(tv))
-      tv.tx.inputs = tv.tx.msg.inputs
-      tv.tx.outputs = tv.tx.msg.outputs
-      tv.time = this.block && this.block.blockHeaderTime
-      return tv
     }
   }
 }

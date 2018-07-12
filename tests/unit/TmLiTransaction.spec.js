@@ -35,6 +35,8 @@ describe("TmLiTransaction", () => {
       transaction: transactions[2],
       address: "tb1d4u5zerywfjhxuc9nudvw"
     })
+    expect(wrapper.vm.$el).toMatchSnapshot()
+
     expect(wrapper.findAll(".tx-coin").length).toBe(3)
     expect(
       wrapper

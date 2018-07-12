@@ -21,7 +21,7 @@ mixin tx-container-sent
   .tx-icon: i.material-icons add_circle
   .tx-container
     .tx-element.tx-coins
-      .tx-coin(v-for='coin in coinsReceived')
+      .tx-coin(v-for='coin, key in coinsReceived' :key="key")
         .key {{ coin.denom.toUpperCase() }}
         .value {{ pretty(coin.amount) }}
     div
@@ -60,7 +60,7 @@ const defaultTransaction = {
 export default {
   name: "tm-li-transaction",
   computed: {
-    transactionValue() {
+    tx() {
       return this.transaction.tx
     },
     // HERE FOR DOCUMENTATION
@@ -69,31 +69,26 @@ export default {
     // },
     // TODO: sum relevant inputs/outputs
     sentSelf() {
-      return (
-        this.transactionValue.inputs[0].address ===
-        this.transactionValue.outputs[0].address
-      )
+      return this.tx.msg.inputs[0].address === this.tx.msg.outputs[0].address
     },
     sent() {
-      return this.transactionValue.inputs[0].address === this.address
+      return this.tx.msg.inputs[0].address === this.address
     },
     sender() {
-      return this.transactionValue.inputs[0].address
+      return this.tx.msg.inputs[0].address
     },
     coinsSent() {
-      return this.transactionValue.inputs[0].coins
+      return this.tx.msg.inputs[0].coins
     },
     receiver() {
-      return this.transactionValue.outputs[0].address
+      return this.tx.msg.outputs[0].address
     },
     coinsReceived() {
-      return this.transactionValue.inputs[0].coins
+      return this.tx.msg.inputs[0].coins
     },
     date() {
       try {
-        return moment(this.transactionValue.time).format(
-          "MMMM Do YYYY, h:mm:ss a"
-        )
+        return moment(this.tx.time).format("MMMM Do YYYY, h:mm:ss a")
       } catch (error) {
         return null
       }
@@ -118,7 +113,10 @@ export default {
       type: Object,
       default: () => defaultTransaction
     },
-    address: { type: String, default: null }
+    address: {
+      type: String,
+      default: null
+    }
   }
 }
 </script>

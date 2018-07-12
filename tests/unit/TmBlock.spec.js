@@ -1,11 +1,11 @@
-import { shallowMount } from "@vue/test-utils"
+import { mount } from "@vue/test-utils"
 import htmlBeautify from "html-beautify"
 import { TmBlock } from "@/index"
 
 describe("TmBlock.vue", () => {
   let wrapper
   beforeEach(async () => {
-    wrapper = shallowMount(TmBlock, {
+    wrapper = mount(TmBlock, {
       propsData: {}
     })
   })

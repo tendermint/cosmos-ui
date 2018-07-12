@@ -2,10 +2,269 @@
 
 exports[`TmBlock.vue has the expected html structure 1`] = `
 <div>
-  <install-stub title=""></install-stub>
-  <install-stub title="Header"></install-stub>
-  <install-stub title="Last Block"></install-stub>
-  <install-stub title="Precommit"></install-stub>
-  <install-stub title="Transactions"></install-stub>
+  <section class="tm-part">
+    <div class="tm-part-container">
+      <!---->
+      <main class="tm-part-main">
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Block Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+  <section class="tm-part">
+    <div class="tm-part-container">
+      <header class="tm-part-header">
+        <div class="tm-part-header-container">
+          <div class="tm-part-title h5">
+            Header
+          </div>
+          <menu class="tm-part-menu"></menu>
+        </div>
+      </header>
+      <main class="tm-part-main">
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Chain ID
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Time
+              </div>
+              <div class="tm-li-dd">
+                Invalid date
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Transactions
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Last Commit Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Validators Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                App Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+  <section class="tm-part">
+    <div class="tm-part-container">
+      <header class="tm-part-header">
+        <div class="tm-part-header-container">
+          <div class="tm-part-title h5">
+            Last Block
+          </div>
+          <menu class="tm-part-menu"></menu>
+        </div>
+      </header>
+      <main class="tm-part-main">
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Parts Total
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Parts Hash
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+  <section class="tm-part">
+    <div class="tm-part-container">
+      <header class="tm-part-header">
+        <div class="tm-part-header-container">
+          <div class="tm-part-title h5">
+            Precommit
+          </div>
+          <menu class="tm-part-menu"></menu>
+        </div>
+      </header>
+      <main class="tm-part-main">
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Address
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Index
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Round
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li" name="proposal">
+          <div class="tm-li-container">
+            <div class="tm-li-thumb">
+              <!---->
+            </div>
+            <div class="tm-li-dl">
+              <div class="tm-li-dt">
+                Sig (null)
+              </div>
+              <div class="tm-li-dd"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+  <section class="tm-part">
+    <div class="tm-part-container">
+      <header class="tm-part-header">
+        <div class="tm-part-header-container">
+          <div class="tm-part-title h5">
+            Transactions
+          </div>
+          <menu class="tm-part-menu"></menu>
+        </div>
+      </header>
+      <main class="tm-part-main">
+        <div class="tm-data-msg">
+          <div class="tm-data-msg__icon">
+            <i class="material-icons fa-spin">rotate_right</i>
+          </div>
+          <div class="tm-data-msg__text">
+            <div class="tm-data-msg__title">
+              <div>
+                Data is loading…
+              </div>
+            </div>
+            <div class="tm-data-msg__subtitle">
+              <div>
+                Please wait a moment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
 </div>
 `;
