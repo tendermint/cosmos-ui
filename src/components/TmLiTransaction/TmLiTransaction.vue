@@ -88,7 +88,7 @@ export default {
     },
     date() {
       try {
-        return moment(this.tx.time).format("MMMM Do YYYY, h:mm:ss a")
+        return moment(this.transaction.time).format("MMMM Do YYYY, h:mm:ss a")
       } catch (error) {
         return null
       }
