@@ -1,18 +1,16 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+We use this changelog to document notable changes to the project.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The changelog format is [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.2.10]
+## [0.2.11]
 
 ### Added
 
-- Added common/NiTextContainer as `TmTextContainer` @nylira
-- Added common/NiMdText as `TmTextMarkdown` @nylira
 - Added common/TmDataEmpty as `TmDataEmpty` @okwme
 - Added common/TmDataLoading as `TmDataLoading` @okwme
 - Added common/LiTransaction as `TmLiTransaction` @okwme
@@ -21,9 +19,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Improved testing around TmTextMarkdown @okwme
+
+## [0.2.10]
+
+### Added
+
+- Added common/NiTextContainer as `TmTextContainer` @nylira
+- Added common/NiMdText as `TmTextMarkdown` @nylira
+
+### Changed
+
 - Alphabetically sorted components in `.src/index.js` @nylira
 - Improves the border color of `--primary` buttons. @nylira
-- Improved testing around TmTextMarkdown @okwme
 
 ## [0.2.9]
 
