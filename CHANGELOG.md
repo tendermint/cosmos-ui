@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.12]
+
+### Fixed
+
+- Fixed `TmModalError` not having the current URL. @nylira
+- Fixed `TmFormGroup` wrong label variable and text alighment issue. @nylira
+
 ## [0.2.11]
 
 ### Added

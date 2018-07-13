@@ -56,7 +56,8 @@ export default {
 .tm-form-group__label
   display block
   line-height 2rem
-  color txt
+  color var(--txt)
+  text-align left
 
 @media (min-width: 768px)
   .tm-form-group
