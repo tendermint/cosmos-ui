@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added common/LiTransaction as `TmLiTransaction` @okwme
 - Added common/TmBlock as `TmBlock` @okwme
 - Added common/TmBlocks as `TmBlocks` @okwme
+- Added common/TmModalError as `TmModalError` @nylira
 
 ### Changed
 
