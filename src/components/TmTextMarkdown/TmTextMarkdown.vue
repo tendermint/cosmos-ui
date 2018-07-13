@@ -13,7 +13,21 @@ export default {
   data: () => ({
     text: "## Loading...\nLoading..."
   }),
+  watch: {
+    url() {
+      this.query()
+    }
+  },
   methods: {
+    async query() {
+      if (!this.url) return
+      try {
+        let response = await axios.get(this.url)
+        this.text = Base64.decode(response.data.content)
+      } catch (error) {
+        // console.error(error)
+      }
+    },
     markdown(text) {
       let md = new MarkdownIt({
         html: true,
@@ -38,10 +52,8 @@ export default {
       scrollTo(0, y, { duration: scrollSpeed })
     }*/
   },
-  async mounted() {
-    let data = (await axios.get(this.url)).data
-    this.text = Base64.decode(data.content)
-
+  mounted() {
+    this.query()
     /*
     await this.$nextTick()
     let inlineLinks = this.$el.querySelectorAll("[href^='#']")

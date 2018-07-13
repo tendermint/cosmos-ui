@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmBlocks.vue has the expected html structure 1`] = `
+<section class="tm-part">
+  <div class="tm-part-container">
+    <header class="tm-part-header">
+      <div class="tm-part-header-container">
+        <div class="tm-part-title h5">
+          Latest Blocks
+        </div>
+        <menu class="tm-part-menu"></menu>
+      </div>
+    </header>
+    <main class="tm-part-main">
+      <div class="tm-li column-header" name="proposal">
+        <div class="tm-li-container">
+          <div class="tm-li-thumb">
+            <!---->
+          </div>
+          <div class="tm-li-dl">
+            <div class="tm-li-dt">
+              Block Height
+            </div>
+            <div class="tm-li-dd">
+              # of Transactions
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="tm-li tm-li-link" name="proposal">
+        <div class="tm-li-container">
+          <div class="tm-li-thumb">
+            <!---->
+          </div>
+          <div class="tm-li-dl">
+            <div class="tm-li-dt">
+              10
+            </div>
+            <div class="tm-li-dd">
+              0
+            </div>
+          </div>
+          <div class="tm-li-icon">
+            <i class="material-icons inactive">chevron_right</i>
+            <i class="material-icons active">my_location</i>
+          </div>
+        </div>
+      </a>
+    </main>
+  </div>
+</section>
+`;

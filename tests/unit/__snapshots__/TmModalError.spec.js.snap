@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmModalError has the expected html structure 1`] = `
+<div class="tm-modal-error__wrapper">
+  <div class="tm-modal-error">
+    <div class="tm-modal-error__icon">
+      <i class="material-icons">error_outline</i>
+    </div>
+    <div class="tm-modal-error__title">
+      This application ran into an error
+    </div>
+    <div class="tm-modal-error__body">
+      This application has encountered a critical error.
+    </div>
+    <div class="tm-modal-error__footer">
+      <a class="tm-btn tm-modal-error__btn" href="https://riot.im/app/#/room/#cosmos:matrix.org"><span class="tm-btn__container tm-btn--size-lg tm-btn--primary"><i aria-hidden="true" class="tm-btn__icon material-icons">bug_report</i><span class="tm-btn__value">Community Chat</span></span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
