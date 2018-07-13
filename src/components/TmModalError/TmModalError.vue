@@ -12,10 +12,17 @@
         :value="errorBtnValue"
         type="anchor"
         :href="errorBtnUrl")
+      tm-btn(v-if="btn-two-icon").tm-modal-error__btn(
+        size="lg"
+        :icon="errorBtnIcon"
+        color="primary"
+        :value="errorBtnValue"
+        type="anchor"
+        :href="errorBtnUrl")
 </template>
 
 <script>
-import TmBtn from "../TmBtn/TmBtn"
+import TmBtn from "../TmBtn/TmBtn.vue"
 export default {
   name: "tm-modal-error",
   components: { TmBtn },
@@ -41,7 +48,7 @@ export default {
       else return "Community Chat"
     },
     errorBtnUrl() {
-      if (this.btnValue) return this.btnValue
+      if (this.btnValue) return this.btnUrl
       else return "https://riot.im/app/#/room/#cosmos:matrix.org"
     }
   },
