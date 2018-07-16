@@ -12,7 +12,8 @@
         :value="errorBtnValue"
         type="anchor"
         :href="errorBtnUrl")
-      tm-btn(v-if="btn-two-icon").tm-modal-error__btn(
+      tm-btn.tm-modal-error__btn(
+        v-if="btn-two-icon"
         size="lg"
         :icon="errorBtnIcon"
         color="primary"
