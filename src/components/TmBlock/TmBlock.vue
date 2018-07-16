@@ -46,7 +46,8 @@ import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
-import moment from "moment"
+import moment from "moment-timezone"
+
 export default {
   name: "tm-block",
   components: {
@@ -119,9 +120,16 @@ export default {
   computed: {
     blockHeaderTime() {
       if (this.block.header) {
+        if (process.env.NODE_ENV === "testing") {
+          console.log("2 - testing")
+          moment.tz.setDefault("Etc/UTC")
+        }
         console.log("2 - moment", moment)
         console.log("2 - now", moment().format())
         console.log("2 - time", this.block.header.time)
+        console.log(
+          moment(this.block.header.time).format("MMMM Do YYYY — hh:mm:ss")
+        )
         return moment(this.block.header.time).format("MMMM Do YYYY — hh:mm:ss")
       } else {
         return "Loading..."
