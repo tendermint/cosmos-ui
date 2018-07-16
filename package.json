@@ -16,8 +16,8 @@
     "js-base64": "^2.4.5",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
-    "moment": "^2.22.2",
-    "moment-timezone": "^0.5.21",
+    "moment": "^2.22.1",
+    "moment-timezone": "0.5.16",
     "numeral": "^2.0.6",
     "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"
@@ -71,9 +71,9 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.vue$": "vue-jest",
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-      "^.+\\.jsx?$": "babel-jest"
+      ".+\\.jsx?$": "babel-jest",
+      ".+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     },
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
@@ -85,7 +85,7 @@
       "<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))"
     ],
     "setupFiles": [
-      "./test/unit/helpers/fixed_time.js"
+      "./tests/unit/helpers/fixed_time.js"
     ]
   },
   "gitHooks": {
