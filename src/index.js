@@ -16,6 +16,7 @@ import { TmKeyValue } from "./components/TmKeyValues"
 import { TmKeyValues } from "./components/TmKeyValues"
 import TmListItem from "./components/TmListItem"
 import TmLiTransaction from "./components/TmLiTransaction"
+import TmModalError from "./components/TmModalError"
 import { TmModule } from "./components/TmModules"
 import { TmModules } from "./components/TmModules"
 import TmNotifications from "./components/TmNotifications"
@@ -47,6 +48,7 @@ const TendermintComponents = {
   TmKeyValues,
   TmListItem,
   TmLiTransaction,
+  TmModalError,
   TmModule,
   TmModules,
   TmNotifications,
@@ -106,6 +108,9 @@ export { default as TmListItem } from "./components/TmListItem/TmListItem.vue"
 export {
   default as TmLiTransaction
 } from "./components/TmLiTransaction/TmLiTransaction.vue"
+export {
+  default as TmModalError
+} from "./components/TmModalError/TmModalError.vue"
 export { default as TmModule } from "./components/TmModules/TmModule.vue"
 export { default as TmModules } from "./components/TmModules/TmModules.vue"
 export {
