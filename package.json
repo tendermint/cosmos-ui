@@ -17,6 +17,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
     "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
     "numeral": "^2.0.6",
     "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16"

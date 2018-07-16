@@ -119,6 +119,8 @@ export default {
   computed: {
     blockHeaderTime() {
       if (this.block.header) {
+        console.log("2 - moment", moment)
+        console.log("2 - time", this.block.header.time)
         return moment(this.block.header.time).format("MMMM Do YYYY — hh:mm:ss")
       } else {
         return "Loading..."
