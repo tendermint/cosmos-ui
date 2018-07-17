@@ -61,7 +61,7 @@ export default {
   name: "tm-li-transaction",
   computed: {
     tx() {
-      return this.transaction.tx
+      return this.transaction.tx.msg[0]
     },
     // HERE FOR DOCUMENTATION
     // transactionHeight() {
@@ -69,22 +69,22 @@ export default {
     // },
     // TODO: sum relevant inputs/outputs
     sentSelf() {
-      return this.tx.msg.inputs[0].address === this.tx.msg.outputs[0].address
+      return this.tx.inputs[0].address === this.tx.outputs[0].address
     },
     sent() {
-      return this.tx.msg.inputs[0].address === this.address
+      return this.tx.inputs[0].address === this.address
     },
     sender() {
-      return this.tx.msg.inputs[0].address
+      return this.tx.inputs[0].address
     },
     coinsSent() {
-      return this.tx.msg.inputs[0].coins
+      return this.tx.inputs[0].coins
     },
     receiver() {
-      return this.tx.msg.outputs[0].address
+      return this.tx.outputs[0].address
     },
     coinsReceived() {
-      return this.tx.msg.inputs[0].coins
+      return this.tx.inputs[0].coins
     },
     date() {
       try {
