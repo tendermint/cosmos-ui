@@ -46,7 +46,7 @@ import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
-import moment from "moment"
+
 export default {
   name: "tm-block",
   components: {
@@ -60,6 +60,10 @@ export default {
     loading: {
       type: Boolean,
       default: true
+    },
+    blockHeaderTime: {
+      type: String,
+      default: null
     },
     blockMeta: {
       type: Object,
@@ -114,15 +118,6 @@ export default {
           ]
         }
       })
-    }
-  },
-  computed: {
-    blockHeaderTime() {
-      if (this.block.header) {
-        return moment(this.block.header.time).format("MMMM Do YYYY — hh:mm:ss")
-      } else {
-        return "Loading..."
-      }
     }
   },
   methods: {

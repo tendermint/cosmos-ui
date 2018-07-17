@@ -15,7 +15,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Block Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                asdf
+              </div>
             </div>
           </div>
         </div>
@@ -42,7 +44,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Chain ID
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                1
+              </div>
             </div>
           </div>
         </div>
@@ -56,7 +60,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 Time
               </div>
               <div class="tm-li-dd">
-                Invalid date
+                January 5th, 1988
               </div>
             </div>
           </div>
@@ -70,7 +74,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Transactions
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                3
+              </div>
             </div>
           </div>
         </div>
@@ -83,7 +89,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Last Commit Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                4
+              </div>
             </div>
           </div>
         </div>
@@ -96,7 +104,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Validators Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                5
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +119,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 App Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                6
+              </div>
             </div>
           </div>
         </div>
@@ -136,7 +148,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                7
+              </div>
             </div>
           </div>
         </div>
@@ -149,7 +163,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Parts Total
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                8
+              </div>
             </div>
           </div>
         </div>
@@ -162,7 +178,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Parts Hash
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                9
+              </div>
             </div>
           </div>
         </div>
@@ -189,7 +207,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Address
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                10
+              </div>
             </div>
           </div>
         </div>
@@ -202,7 +222,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Index
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                11
+              </div>
             </div>
           </div>
         </div>
@@ -215,7 +237,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-dt">
                 Round
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                12
+              </div>
             </div>
           </div>
         </div>
@@ -226,9 +250,11 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             </div>
             <div class="tm-li-dl">
               <div class="tm-li-dt">
-                Sig (null)
+                Sig (13)
               </div>
-              <div class="tm-li-dd"></div>
+              <div class="tm-li-dd">
+                14
+              </div>
             </div>
           </div>
         </div>
@@ -246,20 +272,91 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
         </div>
       </header>
       <main class="tm-part-main">
-        <div class="tm-data-msg">
-          <div class="tm-data-msg__icon">
-            <i class="material-icons fa-spin">rotate_right</i>
+        <div class="tm-li-tx tm-li-tx-sent">
+          <div class="tx-icon">
+            <i class="material-icons">remove_circle</i>
           </div>
-          <div class="tm-data-msg__text">
-            <div class="tm-data-msg__title">
-              <div>
-                Data is loading…
+          <div class="tx-container">
+            <div class="tx-element tx-coins">
+              <div class="tx-coin">
+                <div class="key">
+                  JBCOINS
+                </div>
+                <div class="value">
+                  1,234.00
+                </div>
               </div>
             </div>
-            <div class="tm-data-msg__subtitle">
-              <div>
-                Please wait a moment.
+            <div>
+              <!---->
+              <div class="tx-element tx-address">
+                Sent to tb1d4u5zerywfjhxuc9nudvw
               </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div class="tm-li-tx tm-li-tx-sent">
+          <div class="tx-icon">
+            <i class="material-icons">remove_circle</i>
+          </div>
+          <div class="tx-container">
+            <div class="tx-element tx-coins">
+              <div class="tx-coin">
+                <div class="key">
+                  JBCOINS
+                </div>
+                <div class="value">
+                  1,234.00
+                </div>
+              </div>
+            </div>
+            <div>
+              <!---->
+              <div class="tx-element tx-address">
+                Sent to tb1da6xsetjg9jxgun9wdesexv05j
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div class="tm-li-tx tm-li-tx-sent">
+          <div class="tx-icon">
+            <i class="material-icons">remove_circle</i>
+          </div>
+          <div class="tx-container">
+            <div class="tx-element tx-coins">
+              <div class="tx-coin">
+                <div class="key">
+                  JBCOINS
+                </div>
+                <div class="value">
+                  1,234.00
+                </div>
+              </div>
+              <div class="tx-coin">
+                <div class="key">
+                  FABOCOINS
+                </div>
+                <div class="value">
+                  1.00
+                </div>
+              </div>
+              <div class="tx-coin">
+                <div class="key">
+                  MATTCOINS
+                </div>
+                <div class="value">
+                  42.00
+                </div>
+              </div>
+            </div>
+            <div>
+              <!---->
+              <div class="tx-element tx-address">
+                Sent to tb1d4u5zerywfjhxuc9nudvw
+              </div>
+              <!---->
             </div>
           </div>
         </div>
