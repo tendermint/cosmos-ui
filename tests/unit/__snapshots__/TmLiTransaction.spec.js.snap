@@ -3,6 +3,7 @@
 exports[`TmLiTransaction has the expected html structure 1`] = `
 <div
   class="tm-li-tx tm-li-tx-received"
+  devmode="true"
 >
   <div
     class="tx-icon"
@@ -49,6 +50,7 @@ exports[`TmLiTransaction has the expected html structure 1`] = `
 exports[`TmLiTransaction should show all coins of the transaction 1`] = `
 <div
   class="tm-li-tx tm-li-tx-received"
+  devmode="true"
 >
   <div
     class="tx-icon"
