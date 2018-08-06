@@ -60,7 +60,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 Time
               </div>
               <div class="tm-li-dd">
-                January 5th, 1988
+                January 1st 1970 — 08:00:01
               </div>
             </div>
           </div>

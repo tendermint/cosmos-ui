@@ -46,7 +46,6 @@ import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
-
 export default {
   name: "tm-block",
   components: {
