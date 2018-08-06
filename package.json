@@ -19,6 +19,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
     "moment": "^2.22.2",
+    "nib": "^1.1.2",
     "numeral": "^2.0.6",
     "perfect-scrollbar": "^1.4.0",
     "vue": "^2.5.16",
@@ -37,6 +38,7 @@
     "html-beautify": "^1.0.4",
     "lint-staged": "^7.2.0",
     "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.16",
@@ -100,5 +102,8 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "prettier": {
+    "semi": false
   }
 }
