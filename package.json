@@ -2,11 +2,13 @@
   "name": "@tendermint/ui",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "license": "Apache-2.0",
   "author": "Tendermint, Inc <hello@tendermint.com>",
   "main": "src/index.js",
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit"
   },
@@ -19,19 +21,21 @@
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
     "perfect-scrollbar": "^1.4.0",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.1",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.1",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.1",
-    "@vue/cli-service": "^3.0.0-rc.1",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.16",
-    "@vue/test-utils": "^1.0.0-beta.16",
+    "@babel/parser": "^7.0.0-beta.56",
+    "@vue/cli-plugin-babel": "^3.0.0-rc.10",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.10",
+    "@vue/cli-service": "^3.0.0-rc.10",
+    "@vue/eslint-config-prettier": "^3.0.0-rc.10",
+    "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
     "html-beautify": "^1.0.4",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "^7.2.0",
     "pug": "^2.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -96,8 +100,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "prettier": {
-    "semi": false
   }
 }
