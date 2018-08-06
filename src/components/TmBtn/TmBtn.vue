@@ -70,7 +70,7 @@ export default {
   font-weight 400
   height 2em
   line-height 1
-  color var(--txt, #333) !important
+  color var(--bright, #333) !important
   padding 0 0.75em
   margin 0
   background var(--app-bg, #fff)
@@ -109,13 +109,15 @@ export default {
 .tm-btn.disabled
 .tm-btn[disabled]
   opacity 0.333
-  cursor not-allowed
   user-select none
-  pointer-events none
   color var(--dim, #666) !important
 
   &:focus:enabled
     outline none
+
+.tm-btn.disabled .tm-btn__container
+.tm-btn[disabled] .tm-btn__container
+  cursor not-allowed
 
 /* right aligned icons */
 .tm-btn__container.tm-btn__icon-right

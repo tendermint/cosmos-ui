@@ -1,0 +1,70 @@
+:root
+  // change for dark/light themes
+  --tertiary  hsl( 325,  96%,  59%)
+  --secondary hsl( 277,  92%,  58%)
+  --primary   hsl( 233,  88%,  57%)
+  --link      hsl( 217, 100%,  70%)
+  --hover     hsl( 217, 100%,  55%)
+  --bright    hsl(   0, 100%, 100%)
+  --txt       hsla(  0, 100%, 100%, 0.8)
+  --dim       hsla(  0, 100%, 100%, 0.667)
+  --bc        hsla(233,  24%,  75%, 0.175)
+  --bc-dim    hsla(233,  24%,  75%, 0.0875)
+  --app-fg    hsl( 233,  30%,  22%)
+  --app-bg    hsl( 233,  36%,  18%)
+  --app-nav   hsl( 233,  38%,  14%)
+
+  // deprecated
+  --input-bc hsla(233,36%,36%,0.12)
+  --input-bc-hover hsl(233, 100%, 70%)
+  --input-bg hsl(233, 36%, 18%)
+
+  // don't change
+  --success hsl(120,58%,55%)
+  --success-bc hsl(120,58%,41%)
+  --warning hsl(35,100%,50%)
+  --warning-bc hsl(35,75%,38%)
+  --danger hsl(0,100%,55%)
+  --danger-bc hsl(0,100%,41%)
+  --tendermint #5EAD37
+
+flex-version = flex
+support-for-ie = false
+vendor-prefixes = official
+@import '../../node_modules/nib/index.styl'
+@require './variables.styl'
+@require './vendor/*'
+
+global-reset()
+reset-html5()
+
+*
+  box-sizing border-box
+
+body
+  background var(--app-bg)
+  color var(--txt)
+
+a
+  color var(--link)
+  text-decoration none
+  cursor pointer
+  &:hover
+    color var(--hover)
+
+body, input, button, textarea
+  df()
+
+strong
+  font-weight 500
+
+em
+  font-style italic
+
+nav
+  height 3rem
+  background: var(--app-nav);
+  padding 0 0.5rem
+  a
+    line-height 3rem
+    padding 0 0.5rem
