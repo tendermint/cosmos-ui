@@ -46,13 +46,15 @@ const defaultInput = {
 const defaultTransaction = {
   tx: {
     value: {
-      msg: {
-        value: {
-          time: null,
-          inputs: [defaultInput, defaultInput, defaultInput],
-          outputs: [defaultInput, defaultInput, defaultInput]
+      msg: [
+        {
+          value: {
+            time: null,
+            inputs: [defaultInput, defaultInput, defaultInput],
+            outputs: [defaultInput, defaultInput, defaultInput]
+          }
         }
-      }
+      ]
     }
   }
 }
@@ -61,7 +63,7 @@ export default {
   name: "tm-li-transaction",
   computed: {
     tx() {
-      return this.transaction.tx
+      return this.transaction.tx.value.msg[0].value
     },
     // HERE FOR DOCUMENTATION
     // transactionHeight() {
@@ -69,22 +71,22 @@ export default {
     // },
     // TODO: sum relevant inputs/outputs
     sentSelf() {
-      return this.tx.msg.inputs[0].address === this.tx.msg.outputs[0].address
+      return this.tx.inputs[0].address === this.tx.outputs[0].address
     },
     sent() {
-      return this.tx.msg.inputs[0].address === this.address
+      return this.tx.inputs[0].address === this.address
     },
     sender() {
-      return this.tx.msg.inputs[0].address
+      return this.tx.inputs[0].address
     },
     coinsSent() {
-      return this.tx.msg.inputs[0].coins
+      return this.tx.inputs[0].coins
     },
     receiver() {
-      return this.tx.msg.outputs[0].address
+      return this.tx.outputs[0].address
     },
     coinsReceived() {
-      return this.tx.msg.inputs[0].coins
+      return this.tx.inputs[0].coins
     },
     date() {
       try {
@@ -125,93 +127,93 @@ export default {
 @require '~variables'
 
 .tm-li-tx
-  display flex
-  font-size sm
-  border-bottom 1px solid var(--bc-dim)
-
-  &:nth-of-type(2n-1)
-    background var(--app-fg)
-
-  .tx-icon
-    padding 0 0.5rem
-    background var(--app-fg)
     display flex
-    align-items center
-    justify-content center
-
-  .tx-container
-    flex-direction column
-    flex-wrap nowrap
-    padding 0.5rem 0
-    margin 0.5rem 0
-    display flex
-    width 100%
-    min-width 0 // fix text-overflow
-
-  .tx-element
-    padding 0 2rem 0 1.5rem
-    line-height 1.5rem
-
-  .tx-coin
-    .value
-      flex 0 0 100%
-      font-size sm
-      color var(--dim)
-
-      &:before
-        content ''
-        display inline
-
-    .key
-      font-weight 500
-      font-size m
-
-    .value, .key
-      line-height 1.5rem
-
-  .tx-address
-    white-space nowrap
-    overflow hidden
-    text-overflow ellipsis
-    color var(--dim)
     font-size sm
+    border-bottom 1px solid var(--bc-dim)
 
-  &.tm-li-tx-sent
-    .tx-coin .value
-      &:before
-        content '-'
+    &:nth-of-type(2n-1)
+        background var(--app-fg)
 
-  &.tm-li-tx-received
     .tx-icon
-      background var(--app-fg)
-
-    .tx-coin .value
-      color success
-
-      &:before
-        content '+'
-
-  &:hover
-    cursor pointer
-    background var(--hover-bg)
-
-@media screen and (min-width: 700px)
-  .tm-li-tx
-    font-size 0.875rem
+        padding 0 0.5rem
+        background var(--app-fg)
+        display flex
+        align-items center
+        justify-content center
 
     .tx-container
-      flex-direction row
+        flex-direction column
+        flex-wrap nowrap
+        padding 0.5rem 0
+        margin 0.5rem 0
+        display flex
+        width 100%
+        min-width 0 // fix text-overflow
 
-      .tx-coins
-        flex 0 0 9rem
-        padding 0
-        min-width 0
+    .tx-element
+        padding 0 2rem 0 1.5rem
+        line-height 1.5rem
 
-        .tx-coin
-          padding 0 1.5rem 0
+    .tx-coin
+        .value
+            flex 0 0 100%
+            font-size sm
+            color var(--dim)
 
-          .key
-            white-space nowrap
-            overflow hidden
-            text-overflow ellipsis
+            &:before
+                content ''
+                display inline
+
+        .key
+            font-weight 500
+            font-size m
+
+        .value, .key
+            line-height 1.5rem
+
+    .tx-address
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+        color var(--dim)
+        font-size sm
+
+    &.tm-li-tx-sent
+        .tx-coin .value
+            &:before
+                content '-'
+
+    &.tm-li-tx-received
+        .tx-icon
+            background var(--app-fg)
+
+        .tx-coin .value
+            color success
+
+            &:before
+                content '+'
+
+    &:hover
+        cursor pointer
+        background var(--hover-bg)
+
+@media screen and (min-width: 700px)
+    .tm-li-tx
+        font-size 0.875rem
+
+        .tx-container
+            flex-direction row
+
+            .tx-coins
+                flex 0 0 9rem
+                padding 0
+                min-width 0
+
+                .tx-coin
+                    padding 0 1.5rem 0
+
+                    .key
+                        white-space nowrap
+                        overflow hidden
+                        text-overflow ellipsis
 </style>
