@@ -105,13 +105,15 @@ describe("TmFormMsg", () => {
 
   for (let i = 0; i < propsData.length; i++) {
     it("shows correct message for " + propsData[i].type, () => {
+      let err = propsData[i].error
+      delete propsData[i].error
       wrapper.setData(propsData[i])
       expect(
         wrapper
           .find(".tm-form-msg")
           .text()
           .trim()
-      ).toContain(propsData[i].error)
+      ).toContain(err)
     })
   }
 })
