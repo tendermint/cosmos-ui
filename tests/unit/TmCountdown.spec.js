@@ -10,8 +10,7 @@ describe("TmCountdown.vue", () => {
       propsData: {
         fixednow,
         units: "short",
-        date: "February 28, 2020",
-        utc: true
+        date: "February 28, 2020"
       }
     })
   })

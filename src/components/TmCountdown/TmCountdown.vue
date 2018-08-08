@@ -79,7 +79,7 @@ export default {
     date: { type: String },
     units: { type: String },
     fixednow: { type: Number },
-    utc: { type: Boolean, default: false }
+    utc: { type: Boolean, default: process.env.NODE_ENV === "test" }
   }
 }
 </script>
