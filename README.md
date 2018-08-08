@@ -1,6 +1,6 @@
 # @tendermint/ui
 
-Vue components for front end projects. This project is in early alpha.
+Vue components for front end projects. This project is in alpha.
 
 ## Install
 
@@ -28,7 +28,36 @@ export default {
 </script>
 ```
 
-## Test
+## Development
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
+
+### Compiles and minifies for production
+```
+yarn run build
+```
+
+### Lints and fixes files
+```
+yarn run lint
+```
+
+### Run your unit tests
+```
+yarn run test:unit
+```
+
+### Run your end-to-end tests
+```
+yarn run test:e2e
+```
+## Testing
 
 We use Prettier to lint all of our JS and Vue files. We use Jest to unit test our components.
 
@@ -36,7 +65,3 @@ We use Prettier to lint all of our JS and Vue files. We use Jest to unit test ou
 yarn lint
 yarn test
 ```
-
-## Components List
-
-View the `./src/components` directory. More details coming soon.
