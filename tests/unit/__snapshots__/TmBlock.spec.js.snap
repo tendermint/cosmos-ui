@@ -272,9 +272,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
         </div>
       </header>
       <main class="tm-part-main">
-        <div class="tm-li-tx tm-li-tx-sent">
+        <div class="tm-li-tx tm-li-tx-received">
           <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
+            <i class="material-icons">add_circle</i>
           </div>
           <div class="tx-container">
             <div class="tx-element tx-coins">
@@ -290,15 +290,14 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <div>
               <!---->
               <div class="tx-element tx-address">
-                Sent to tb1d4u5zerywfjhxuc9nudvw
+                Received from tb1da6xsetjg9jxgun9wdesexv05j
               </div>
-              <!---->
             </div>
           </div>
         </div>
-        <div class="tm-li-tx tm-li-tx-sent">
+        <div class="tm-li-tx tm-li-tx-received">
           <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
+            <i class="material-icons">add_circle</i>
           </div>
           <div class="tx-container">
             <div class="tx-element tx-coins">
@@ -314,15 +313,14 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <div>
               <!---->
               <div class="tx-element tx-address">
-                Sent to tb1da6xsetjg9jxgun9wdesexv05j
+                Received from tb1d4u5zerywfjhxuc9nudvw
               </div>
-              <!---->
             </div>
           </div>
         </div>
-        <div class="tm-li-tx tm-li-tx-sent">
+        <div class="tm-li-tx tm-li-tx-received">
           <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
+            <i class="material-icons">add_circle</i>
           </div>
           <div class="tx-container">
             <div class="tx-element tx-coins">
@@ -354,9 +352,8 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <div>
               <!---->
               <div class="tx-element tx-address">
-                Sent to tb1d4u5zerywfjhxuc9nudvw
+                Received from tb1da6xsetjg9jxgun9wdesexv05j
               </div>
-              <!---->
             </div>
           </div>
         </div>
