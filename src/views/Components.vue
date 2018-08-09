@@ -42,17 +42,32 @@
         title="List Item Title"
         subtitle="List Item Subtitle" />
     </section>
+    <section>
+      <header>TmField</header>
+        <tm-field
+        type="number"
+        placeholder="Placeholder"
+        step="1"
+        min="0"
+        max="100"
+        v-model="tmFieldNumber"
+        />
+    </section>
   </div>
 </template>
 
 <script>
-import { TmBtn, TmListItem } from "../index.js"
+import { TmBtn, TmListItem, TmField } from "../index.js"
 
 export default {
   name: "home",
+  data: () => ({
+    tmFieldNumber: null
+  }),
   components: {
     TmBtn,
-    TmListItem
+    TmListItem,
+    TmField
   }
 }
 </script>
