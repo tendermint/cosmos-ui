@@ -38,7 +38,13 @@ export default {
   name: "tm-countdown",
   computed: {
     usableDate() {
-      return Math.trunc(Date.parse(this.date) / 1000)
+      if (this.utc) {
+        let offset = new Date().getTimezoneOffset() * 60 * 1000
+        let utc = Date.parse(this.date) - offset
+        return Math.trunc(utc / 1000)
+      } else {
+        return Math.trunc(Date.parse(this.date) / 1000)
+      }
     },
     seconds() {
       return (this.usableDate - this.now) % 60
@@ -69,6 +75,11 @@ export default {
       this.now = this.fixednow || Math.trunc(new Date().getTime() / 1000)
     }, 1000)
   },
-  props: ["date", "units", "fixednow"]
+  props: {
+    date: { type: String },
+    units: { type: String },
+    fixednow: { type: Number },
+    utc: { type: Boolean, default: process.env.NODE_ENV === "test" }
+  }
 }
 </script>
