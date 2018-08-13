@@ -9,9 +9,9 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     span(slot="details") To {{receiver}}
   template(v-else)
     div(slot="caption")
-      | Received
+      | Received&nbsp;
       b {{coinsReceived.amount}}
-      span {{coinsReceived.denom.toUpperCase()}}
+      span &nbsp;{{coinsReceived.denom.toUpperCase()}}
     span(slot="details") From {{sender}}
 </template>
 
