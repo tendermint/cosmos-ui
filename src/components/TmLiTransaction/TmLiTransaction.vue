@@ -19,12 +19,7 @@ export default {
   name: "tm-li-transaction",
   computed: {
     date() {
-      let today = moment()
-      var engagementDate = moment(this.time)
-
-      if (moment(engagementDate).isSame(today, "day"))
-        return engagementDate.format("H:mm")
-      return engagementDate.format("MMMM Do YYYY, h:mm")
+      return moment(this.time).format("H:mm")
     }
   },
   props: ["color", "time", "block"]

@@ -50,12 +50,19 @@
       <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-stake-transaction :transaction="txs[3]" :candidates="candidates" />
+      <tm-li-stake-transaction :transaction="txs[4]" :candidates="candidates" />
     </section>
   </div>
 </template>
 
 <script>
-import { TmBtn, TmListItem, TmLiBankTransaction } from "../index.js"
+import {
+  TmBtn,
+  TmListItem,
+  TmLiBankTransaction,
+  TmLiStakeTransaction
+} from "../index.js"
 import txs from "../../assets/txs.js"
 
 export default {
@@ -63,10 +70,17 @@ export default {
   components: {
     TmBtn,
     TmListItem,
-    TmLiBankTransaction
+    TmLiBankTransaction,
+    TmLiStakeTransaction
   },
   data: () => ({
-    txs
+    txs,
+    candidates: [
+      {
+        owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+        moniker: "cool validator"
+      }
+    ]
   })
 }
 </script>

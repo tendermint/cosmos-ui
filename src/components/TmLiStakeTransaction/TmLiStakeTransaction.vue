@@ -1,105 +1,59 @@
 <template lang='pug'>
 tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.height")
-  template(v-if="sent")
+  template(v-if="delegation")
     div(slot="caption")
-      | Sent&nbsp;
-      b {{coinsSent.amount}}
-      span &nbsp;{{coinsSent.denom.toUpperCase()}}
-      template(v-if="sentSelf") &nbsp;(to yourself)
-    span(slot="details") To {{receiver}}
-  template(v-else)
+      | Delegated&nbsp;
+      b {{tx.delegation.amount}}
+      span &nbsp;{{tx.delegation.denom.toUpperCase()}}
+    div(slot="details") 
+      | To&nbsp;
+      a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+  template(v-if="unbonding")
     div(slot="caption")
-      | Received
-      b {{coinsReceived.amount}}
-      span {{coinsReceived.denom.toUpperCase()}}
-    span(slot="details") From {{sender}}
+      | Unbonded&nbsp;
+      b {{tx.shares}}
+      span &nbsp;STEAK
+    div(slot="details") 
+      | From&nbsp;
+      a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>
-import numeral from "numeral"
-
-const defaultCoin = {
-  denom: null,
-  amount: null
-}
-
-const defaultInput = {
-  address: null,
-  coins: [defaultCoin, defaultCoin, defaultCoin]
-}
-
-const defaultTransaction = {
-  tx: {
-    value: {
-      msg: [
-        {
-          value: {
-            time: null,
-            inputs: [defaultInput, defaultInput, defaultInput],
-            outputs: [defaultInput, defaultInput, defaultInput]
-          }
-        }
-      ]
-    }
-  }
-}
-
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/tranaction-colors.js"
 
 export default {
-  name: "tm-li-bank-transaction",
+  name: "tm-li-stake-transaction",
   components: { TmLiTransaction },
   computed: {
     tx() {
       return this.transaction.tx.value.msg[0].value
     },
-    // TODO: sum relevant inputs/outputs
-    sentSelf() {
-      return this.tx.inputs[0].address === this.tx.outputs[0].address
+    type() {
+      return this.transaction.tx.value.msg[0].type
     },
-    sent() {
-      return this.tx.inputs[0].address === this.address
+    delegation() {
+      return this.type === "cosmos-sdk/MsgDelegate"
     },
-    sender() {
-      return this.tx.inputs[0].address
-    },
-    coinsSent() {
-      return this.tx.inputs[0].coins[0]
-    },
-    receiver() {
-      return this.tx.outputs[0].address
-    },
-    coinsReceived() {
-      return this.tx.inputs[0].coins[0]
+    unbonding() {
+      return this.type === "cosmos-sdk/BeginUnbonding"
     },
     color() {
-      if (this.sent) return colors.bank.sent
-      return colors.bank.received
-    },
-    details() {
-      if (this.sent) {
-        return `To ${this.receiver}`
-      }
-      return `From ${this.sender}`
+      if (this.delegation) return colors.stake.bonded
+      if (this.unbonding) return colors.stake.unbonded
     }
   },
   methods: {
-    pretty(num) {
-      return numeral(num).format("0,0.00")
-    },
-    viewTransaction() {
-      // console.log("TODO: implement tx viewer")
+    moniker(candidateAddr) {
+      return this.candidates.find(c => c.owner === candidateAddr).moniker
     }
   },
   props: {
-    transaction: {
-      type: Object,
-      default: () => defaultTransaction
-    },
-    address: {
+    transaction: Object,
+    candidates: Array,
+    validatorURL: {
       type: String,
-      default: null
+      default: ""
     }
   }
 }

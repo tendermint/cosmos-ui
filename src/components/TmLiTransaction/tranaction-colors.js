@@ -5,6 +5,7 @@ export default {
   },
   stake: {
     bonded: "#512584", // and redelegation
-    unbonded: "#9D5C19"
+    unbonded: "#9D5C19",
+    redelegate: "#7227B1"
   }
 }
