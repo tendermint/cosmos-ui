@@ -115,6 +115,9 @@ export {
   default as TmLiStakeTransaction
 } from "./components/TmLiStakeTransaction/TmLiStakeTransaction.vue"
 export {
+  default as TmLiAnyTransaction
+} from "./components/TmLiAnyTransaction/TmLiAnyTransaction.vue"
+export {
   default as TmModalError
 } from "./components/TmModalError/TmModalError.vue"
 export { default as TmModule } from "./components/TmModules/TmModule.vue"

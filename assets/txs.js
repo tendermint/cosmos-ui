@@ -8,7 +8,7 @@ module.exports = [
       value: {
         msg: [
           {
-            type: "EAFDE32A2C87F8",
+            type: "cosmos-sdk/Send",
             value: {
               inputs: [
                 {
@@ -87,7 +87,7 @@ module.exports = [
       value: {
         msg: [
           {
-            type: "EAFDE32A2C87F8",
+            type: "cosmos-sdk/Send",
             value: {
               inputs: [
                 {
@@ -166,7 +166,7 @@ module.exports = [
       value: {
         msg: [
           {
-            type: "EAFDE32A2C87F8",
+            type: "cosmos-sdk/Send",
             value: {
               inputs: [
                 {

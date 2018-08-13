@@ -272,94 +272,101 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
         </div>
       </header>
       <main class="tm-part-main">
-        <div class="tm-li-tx tm-li-tx-sent">
-          <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="~assets/cosmos-logo.png" style="border-color: #25293f;">
           </div>
-          <div class="tx-container">
-            <div class="tx-element tx-coins">
-              <div class="tx-coin">
-                <div class="key">
-                  JBCOINS
-                </div>
-                <div class="value">
-                  1,234.00
-                </div>
+          <div class="tm-li-tx__content">
+            <h1 class="tm-li-tx__content__caption">
+              <div>
+                Sent&nbsp;
+                <b>1234</b><span>&nbsp;JBCOINS</span>
+                <!---->
               </div>
-            </div>
-            <div>
-              <!---->
-              <div class="tx-element tx-address">
-                Sent to tb1d4u5zerywfjhxuc9nudvw
+            </h1>
+            <div class="tm-li-tx__content__information">
+              <div class="tm-li-tx__content__information__time">
+                1:00
               </div>
-              <!---->
-            </div>
-          </div>
-        </div>
-        <div class="tm-li-tx tm-li-tx-sent">
-          <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
-          </div>
-          <div class="tx-container">
-            <div class="tx-element tx-coins">
-              <div class="tx-coin">
-                <div class="key">
-                  JBCOINS
-                </div>
-                <div class="value">
-                  1,234.00
-                </div>
+              <div class="tm-li-tx__content__information__details">
+                <span>To tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-            </div>
-            <div>
-              <!---->
-              <div class="tx-element tx-address">
-                Sent to tb1da6xsetjg9jxgun9wdesexv05j
-              </div>
-              <!---->
+              <a href="https://explorecosmos.network/blocks/3436" class="tm-li-tx__content__information__block">Block 3436</a>
             </div>
           </div>
         </div>
-        <div class="tm-li-tx tm-li-tx-sent">
-          <div class="tx-icon">
-            <i class="material-icons">remove_circle</i>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="~assets/cosmos-logo.png" style="border-color: #215c2f;">
           </div>
-          <div class="tx-container">
-            <div class="tx-element tx-coins">
-              <div class="tx-coin">
-                <div class="key">
-                  JBCOINS
-                </div>
-                <div class="value">
-                  1,234.00
-                </div>
+          <div class="tm-li-tx__content">
+            <h1 class="tm-li-tx__content__caption">
+              <div>
+                Received&nbsp;
+                <b>1234</b><span>&nbsp;JBCOINS</span>
               </div>
-              <div class="tx-coin">
-                <div class="key">
-                  FABOCOINS
-                </div>
-                <div class="value">
-                  1.00
-                </div>
+            </h1>
+            <div class="tm-li-tx__content__information">
+              <div class="tm-li-tx__content__information__time">
+                1:00
               </div>
-              <div class="tx-coin">
-                <div class="key">
-                  MATTCOINS
-                </div>
-                <div class="value">
-                  42.00
-                </div>
+              <div class="tm-li-tx__content__information__details">
+                <span>From tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-            </div>
-            <div>
-              <!---->
-              <div class="tx-element tx-address">
-                Sent to tb1d4u5zerywfjhxuc9nudvw
-              </div>
-              <!---->
+              <a href="https://explorecosmos.network/blocks/3438" class="tm-li-tx__content__information__block">Block 3438</a>
             </div>
           </div>
         </div>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="~assets/cosmos-logo.png" style="border-color: #25293f;">
+          </div>
+          <div class="tm-li-tx__content">
+            <h1 class="tm-li-tx__content__caption">
+              <div>
+                Sent&nbsp;
+                <b>1234</b><span>&nbsp;JBCOINS</span>&nbsp;(to yourself)
+              </div>
+            </h1>
+            <div class="tm-li-tx__content__information">
+              <div class="tm-li-tx__content__information__time">
+                1:00
+              </div>
+              <div class="tm-li-tx__content__information__details">
+                <span>To tb1da6xsetjg9jxgun9wdesexv05j</span>
+              </div>
+              <a href="https://explorecosmos.network/blocks/466" class="tm-li-tx__content__information__block">Block 466</a>
+            </div>
+          </div>
+        </div>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="~assets/cosmos-logo.png" style="border-color: #512584;">
+          </div>
+          <div class="tm-li-tx__content">
+            <h1 class="tm-li-tx__content__caption">
+              <div>
+                Delegated&nbsp;
+                <b>4200</b><span>&nbsp;STEAK</span>
+              </div>
+            </h1>
+            <div class="tm-li-tx__content__information">
+              <div class="tm-li-tx__content__information__time">
+                1:00
+              </div>
+              <div class="tm-li-tx__content__information__details">
+                <div>
+                  To&nbsp;
+                  <a href="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">cool validator</a>
+                </div>
+              </div>
+              <a href="https://explorecosmos.network/blocks/566" class="tm-li-tx__content__information__block">Block 566</a>
+            </div>
+          </div>
+        </div>
+        <tm-li-transaction time="1192" block="566">
+          <span slot="caption">Unknown Transaction Type</span>
+        </tm-li-transaction>
       </main>
     </div>
   </section>

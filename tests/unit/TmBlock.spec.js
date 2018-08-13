@@ -8,6 +8,13 @@ describe("TmBlock.vue", () => {
     wrapper = mount(TmBlock, {
       propsData: {
         txs,
+        address: "tb1da6xsetjg9jxgun9wdesexv05j",
+        candidates: [
+          {
+            owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+            moniker: "cool validator"
+          }
+        ],
         loading: false,
         blockHeaderTime: "January 5th, 1988",
         blockMeta: {

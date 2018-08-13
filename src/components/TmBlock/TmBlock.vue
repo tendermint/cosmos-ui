@@ -31,12 +31,13 @@
       template(
         v-else-if="txs.length"
         )
-        tm-li-transaction(
-          :key="tkey + '-tx'"
+        tm-li-any-transaction(
+          :key="tx.hash"
           v-for="(tx, tkey) in txs"
           v-if="isObj(tx)"
           :transaction="tx"
-          :address="tx.tx.msg.inputs[0].address"
+          :address="address"
+          :candidates="candidates"
           )
         //- TODO why is address set to be the first tx? shouldn't it be current user?
 </template>
@@ -45,7 +46,7 @@ import TmPart from "../TmPart/TmPart.vue"
 import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
-import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
+import TmLiAnyTransaction from "../TmLiAnyTransaction/TmLiAnyTransaction.vue"
 
 export default {
   name: "tm-block",
@@ -54,7 +55,7 @@ export default {
     TmListItem,
     TmDataEmpty,
     TmDataLoading,
-    TmLiTransaction
+    TmLiAnyTransaction
   },
   props: {
     loading: {
@@ -78,11 +79,28 @@ export default {
       default: () => [
         {
           tx: {
-            msg: {
-              inputs: [{ address: null }],
-              outputs: null
+            value: {
+              msg: [
+                {
+                  value: {
+                    inputs: [{ address: null }],
+                    outputs: null
+                  }
+                }
+              ]
             }
           }
+        }
+      ]
+    },
+    address: String, // address of the current user, used to display txs
+    candidates: {
+      // used for displaying txs
+      type: Array,
+      default: () => [
+        {
+          owner: "",
+          moniker: ""
         }
       ]
     },
