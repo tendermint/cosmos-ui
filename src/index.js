@@ -109,6 +109,9 @@ export {
   default as TmLiTransaction
 } from "./components/TmLiTransaction/TmLiTransaction.vue"
 export {
+  default as TmLiBankTransaction
+} from "./components/TmLiBankTransaction/TmLiBankTransaction.vue"
+export {
   default as TmModalError
 } from "./components/TmModalError/TmModalError.vue"
 export { default as TmModule } from "./components/TmModules/TmModule.vue"

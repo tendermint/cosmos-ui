@@ -41,19 +41,33 @@
       <tm-list-item
         title="List Item Title"
         subtitle="List Item Subtitle" />
+      <tm-list-item
+        title="List Item Title"
+        subtitle="List Item Subtitle" />
+    </section>
+    <section>
+      <header>TmLiTransaction</header>
+      <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
     </section>
   </div>
 </template>
 
 <script>
-import { TmBtn, TmListItem } from "../index.js"
+import { TmBtn, TmListItem, TmLiBankTransaction } from "../index.js"
+import txs from "../../assets/txs.js"
 
 export default {
   name: "home",
   components: {
     TmBtn,
-    TmListItem
-  }
+    TmListItem,
+    TmLiBankTransaction
+  },
+  data: () => ({
+    txs
+  })
 }
 </script>
 
