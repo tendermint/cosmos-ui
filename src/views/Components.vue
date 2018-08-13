@@ -53,6 +53,17 @@
       <tm-li-stake-transaction :transaction="txs[3]" :candidates="candidates" />
       <tm-li-stake-transaction :transaction="txs[4]" :candidates="candidates" />
     </section>
+    <section>
+      <header>TmField</header>
+        <tm-field
+        type="number"
+        placeholder="Placeholder"
+        step="1"
+        min="0"
+        max="100"
+        v-model="tmFieldNumber"
+        />
+    </section>
   </div>
 </template>
 
@@ -74,6 +85,7 @@ export default {
     TmLiStakeTransaction
   },
   data: () => ({
+    tmFieldNumber: null,
     txs,
     candidates: [
       {

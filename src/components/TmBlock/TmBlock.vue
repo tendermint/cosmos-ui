@@ -36,10 +36,9 @@
           v-for="(tx, tkey) in txs"
           v-if="isObj(tx)"
           :transaction="tx"
-          :address="address"
+          :address="currentUser"
           :candidates="candidates"
           )
-        //- TODO why is address set to be the first tx? shouldn't it be current user?
 </template>
 <script>
 import TmPart from "../TmPart/TmPart.vue"
@@ -58,6 +57,10 @@ export default {
     TmLiAnyTransaction
   },
   props: {
+    currentUser: {
+      type: String,
+      default: null
+    },
     loading: {
       type: Boolean,
       default: true
@@ -93,7 +96,6 @@ export default {
         }
       ]
     },
-    address: String, // address of the current user, used to display txs
     candidates: {
       // used for displaying txs
       type: Array,

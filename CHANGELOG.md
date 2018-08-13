@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Component previews with `yarn serve`
+- Min and Max to TmField @okwme
 
 ## [0.2.13]
 
@@ -33,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed `TmModalError` not having the current URL. @nylira
 - Fixed `TmFormGroup` wrong label variable and text alighment issue. @nylira
+- Updated tx format @okwme
 
 ## [0.2.11]
 
