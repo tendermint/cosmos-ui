@@ -48,6 +48,7 @@ label.tm-toggle(
     )
 
 input(v-else
+  ref="numTextInput"
   :type="type"
   :class="css"
   @change="onChange"
@@ -55,6 +56,8 @@ input(v-else
   @keydown="onKeydown"
   :placeholder="placeholder"
   :value="value"
+  :max="max"
+  :min="min"
   @input="updateValue($event.target.value)")
 </template>
 
@@ -72,7 +75,9 @@ export default {
     "options",
     "change",
     "keyup",
-    "keydown"
+    "keydown",
+    "max",
+    "min"
   ],
   computed: {
     css() {
@@ -119,7 +124,12 @@ export default {
       this.value = !this.value
     },
     updateValue(value) {
-      let formattedValue = value.trim()
+      let formattedValue = this.forceMinMax(value.trim())
+      // so that the user can type in "-" and it isn't removed
+      if (formattedValue) {
+        // so the actual text box displays the correct number
+        this.$refs.numTextInput.value = formattedValue
+      }
       // Emit the number value through the input event
       this.$emit("input", formattedValue)
     },
@@ -127,10 +137,21 @@ export default {
       if (this.change) return this.change(...args)
     },
     onKeyup(...args) {
+      this.$refs.numTextInput.val = this.formattedValue
       if (this.keyup) return this.keyup(...args)
     },
     onKeydown(...args) {
       if (this.keydown) return this.keydown(...args)
+    },
+    forceMinMax(value) {
+      if (this.type !== "number") return value
+      value = value ? Number(value) : value
+      if (this.max && value > this.max) {
+        value = Number(this.max)
+      } else if (this.min && value && value < this.min) {
+        value = Number(this.min)
+      }
+      return value
     }
   },
   mounted() {

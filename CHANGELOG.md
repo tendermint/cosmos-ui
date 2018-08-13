@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.15]
+
+- Min and Max to TmField @okwme
+
 ## [0.2.14]
 
 ### Added
@@ -29,6 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed `TmModalError` not having the current URL. @nylira
 - Fixed `TmFormGroup` wrong label variable and text alighment issue. @nylira
+- Updated tx format @okwme
 
 ## [0.2.11]
 
