@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Fixed `TmModalError` having redundant button code @nylira
+- Fixed update bug @okwme
 
 ## [0.2.12]
 
