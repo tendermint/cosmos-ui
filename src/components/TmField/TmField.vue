@@ -137,7 +137,6 @@ export default {
       if (this.change) return this.change(...args)
     },
     onKeyup(...args) {
-      this.$refs.numTextInput.val = this.formattedValue
       if (this.keyup) return this.keyup(...args)
     },
     onKeydown(...args) {
