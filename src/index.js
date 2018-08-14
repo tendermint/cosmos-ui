@@ -3,7 +3,6 @@ import TmBlock from "./components/TmBlock"
 import TmBlocks from "./components/TmBlocks"
 import TmBtn from "./components/TmBtn"
 import TmCookieConsent from "./components/TmCookieConsent"
-import TmCountdown from "./components/TmCountdown"
 import TmDataMsg from "./components/TmDataMsg"
 import TmDataEmpty from "./components/TmDataEmpty"
 import TmDataLoading from "./components/TmDataLoading"
@@ -35,7 +34,6 @@ const TendermintComponents = {
   TmBlocks,
   TmBtn,
   TmCookieConsent,
-  TmCountdown,
   TmDataMsg,
   TmDataEmpty,
   TmDataLoading,
@@ -79,9 +77,6 @@ export { default as TmBtn } from "./components/TmBtn/TmBtn.vue"
 export {
   default as TmCookieConsent
 } from "./components/TmCookieConsent/TmCookieConsent.vue"
-export {
-  default as TmCountdown
-} from "./components/TmCountdown/TmCountdown.vue"
 export {
   default as TmDataEmpty
 } from "./components/TmDataEmpty/TmDataEmpty.vue"

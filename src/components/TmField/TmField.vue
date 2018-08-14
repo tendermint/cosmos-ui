@@ -126,7 +126,7 @@ export default {
     updateValue(value) {
       let formattedValue = this.forceMinMax(value.trim())
       // so that the user can type in "-" and it isn't removed
-      if (formattedValue) {
+      if (formattedValue && this.$refs.numTextInput) {
         // so the actual text box displays the correct number
         this.$refs.numTextInput.value = formattedValue
       }
@@ -137,7 +137,6 @@ export default {
       if (this.change) return this.change(...args)
     },
     onKeyup(...args) {
-      this.$refs.numTextInput.val = this.formattedValue
       if (this.keyup) return this.keyup(...args)
     },
     onKeydown(...args) {
