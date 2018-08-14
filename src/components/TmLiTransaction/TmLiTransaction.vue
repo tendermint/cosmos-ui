@@ -6,10 +6,11 @@
     h1.tm-li-tx__content__caption
       slot(name="caption")
     .tm-li-tx__content__information
-      .tm-li-tx__content__information__time {{date}}
       .tm-li-tx__content__information__details
         slot(name="details")
-      a.tm-li-tx__content__information__block(:href="'https://explorecosmos.network/blocks/' + block") Block {{block}}
+      .tm-li-tx__content__information__block
+        a(:href="'https://explorecosmos.network/blocks/' + block") Block \#{{block}}&nbsp;
+        | @ {{date}}
 </template>
 
 <script>
@@ -63,9 +64,6 @@ export default {
 
       *
         display inline-block
-
-      &__time
-        width 12rem
 
       &__block
         margin-left auto

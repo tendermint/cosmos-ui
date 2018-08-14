@@ -5,8 +5,9 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | Sent&nbsp;
       b {{coinsSent.amount}}
       span &nbsp;{{coinsSent.denom.toUpperCase()}}
-      template(v-if="sentSelf") &nbsp;(to yourself)
-    span(slot="details") To {{receiver}}
+    span(slot="details")
+      template(v-if="sentSelf") To yourself!
+      template(v-else) To {{receiver}}
   template(v-else)
     div(slot="caption")
       | Received&nbsp;
