@@ -281,17 +281,15 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div>
                 Sent&nbsp;
                 <b>1234</b><span>&nbsp;JBCOINS</span>
-                <!---->
               </div>
             </h1>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__time">
-                1:00
-              </div>
               <div class="tm-li-tx__content__information__details">
                 <span>To tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-              <a href="https://explorecosmos.network/blocks/3436" class="tm-li-tx__content__information__block">Block 3436</a>
+              <div class="tm-li-tx__content__information__block">
+                <a href="https://explorecosmos.network/blocks/3436">Block #3436&nbsp;</a>@ 1:00
+              </div>
             </div>
           </div>
         </div>
@@ -307,13 +305,12 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               </div>
             </h1>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__time">
-                1:00
-              </div>
               <div class="tm-li-tx__content__information__details">
                 <span>From tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-              <a href="https://explorecosmos.network/blocks/3438" class="tm-li-tx__content__information__block">Block 3438</a>
+              <div class="tm-li-tx__content__information__block">
+                <a href="https://explorecosmos.network/blocks/3438">Block #3438&nbsp;</a>@ 1:00
+              </div>
             </div>
           </div>
         </div>
@@ -325,17 +322,16 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <h1 class="tm-li-tx__content__caption">
               <div>
                 Sent&nbsp;
-                <b>1234</b><span>&nbsp;JBCOINS</span>&nbsp;(to yourself)
+                <b>1234</b><span>&nbsp;JBCOINS</span>
               </div>
             </h1>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__time">
-                1:00
-              </div>
               <div class="tm-li-tx__content__information__details">
-                <span>To tb1da6xsetjg9jxgun9wdesexv05j</span>
+                <span>To yourself!</span>
               </div>
-              <a href="https://explorecosmos.network/blocks/466" class="tm-li-tx__content__information__block">Block 466</a>
+              <div class="tm-li-tx__content__information__block">
+                <a href="https://explorecosmos.network/blocks/466">Block #466&nbsp;</a>@ 1:00
+              </div>
             </div>
           </div>
         </div>
@@ -351,16 +347,15 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               </div>
             </h1>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__time">
-                1:00
-              </div>
               <div class="tm-li-tx__content__information__details">
                 <div>
                   To&nbsp;
                   <a href="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">cool validator</a>
                 </div>
               </div>
-              <a href="https://explorecosmos.network/blocks/566" class="tm-li-tx__content__information__block">Block 566</a>
+              <div class="tm-li-tx__content__information__block">
+                <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 1:00
+              </div>
             </div>
           </div>
         </div>
@@ -373,11 +368,10 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <span>Unknown Transaction Type</span>
             </h1>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__time">
-                1:00
-              </div>
               <div class="tm-li-tx__content__information__details"></div>
-              <a href="https://explorecosmos.network/blocks/566" class="tm-li-tx__content__information__block">Block 566</a>
+              <div class="tm-li-tx__content__information__block">
+                <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 1:00
+              </div>
             </div>
           </div>
         </div>

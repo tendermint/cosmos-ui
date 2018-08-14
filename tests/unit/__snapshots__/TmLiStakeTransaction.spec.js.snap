@@ -32,11 +32,6 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
       class="tm-li-tx__content__information"
     >
       <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:00
-      </div>
-      <div
         class="tm-li-tx__content__information__details"
       >
         <div>
@@ -48,12 +43,16 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
           </a>
         </div>
       </div>
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/566"
       >
-        Block 566
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/566"
+        >
+          Block #566 
+        </a>
+        @ 1:00
+      </div>
     </div>
   </div>
 </div>
@@ -91,11 +90,6 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
       class="tm-li-tx__content__information"
     >
       <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:00
-      </div>
-      <div
         class="tm-li-tx__content__information__details"
       >
         <div>
@@ -107,12 +101,16 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
           </a>
         </div>
       </div>
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/566"
       >
-        Block 566
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/566"
+        >
+          Block #566 
+        </a>
+        @ 1:00
+      </div>
     </div>
   </div>
 </div>

@@ -26,23 +26,22 @@ exports[`TmLiTransaction has the expected html structure 1`] = `
       class="tm-li-tx__content__information"
     >
       <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:16
-      </div>
-      <div
         class="tm-li-tx__content__information__details"
       >
         <span>
           Some Details
         </span>
       </div>
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/500"
       >
-        Block 500
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/500"
+        >
+          Block #500 
+        </a>
+        @ 1:16
+      </div>
     </div>
   </div>
 </div>

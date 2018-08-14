@@ -26,17 +26,11 @@ exports[`TmLiAnyTransaction shows bank transactions 1`] = `
         <span>
            JBCOINS
         </span>
-        <!---->
       </div>
     </h1>
     <div
       class="tm-li-tx__content__information"
     >
-      <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:00
-      </div>
       <div
         class="tm-li-tx__content__information__details"
       >
@@ -44,12 +38,16 @@ exports[`TmLiAnyTransaction shows bank transactions 1`] = `
           To tb1d4u5zerywfjhxuc9nudvw
         </span>
       </div>
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/3436"
       >
-        Block 3436
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/3436"
+        >
+          Block #3436 
+        </a>
+        @ 1:00
+      </div>
     </div>
   </div>
 </div>
@@ -87,11 +85,6 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
       class="tm-li-tx__content__information"
     >
       <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:00
-      </div>
-      <div
         class="tm-li-tx__content__information__details"
       >
         <div>
@@ -103,12 +96,16 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
           </a>
         </div>
       </div>
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/566"
       >
-        Block 566
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/566"
+        >
+          Block #566 
+        </a>
+        @ 1:00
+      </div>
     </div>
   </div>
 </div>
@@ -139,19 +136,18 @@ exports[`TmLiAnyTransaction shows unknown transactions 1`] = `
       class="tm-li-tx__content__information"
     >
       <div
-        class="tm-li-tx__content__information__time"
-      >
-        1:00
-      </div>
-      <div
         class="tm-li-tx__content__information__details"
       />
-      <a
+      <div
         class="tm-li-tx__content__information__block"
-        href="https://explorecosmos.network/blocks/3436"
       >
-        Block 3436
-      </a>
+        <a
+          href="https://explorecosmos.network/blocks/3436"
+        >
+          Block #3436 
+        </a>
+        @ 1:00
+      </div>
     </div>
   </div>
 </div>
