@@ -45,12 +45,12 @@ export default {
   },
   methods: {
     moniker(candidateAddr) {
-      return this.candidates.find(c => c.owner === candidateAddr).moniker
+      return this.validators.find(c => c.owner === candidateAddr).moniker
     }
   },
   props: {
     transaction: Object,
-    candidates: Array,
+    validators: Array,
     validatorURL: {
       type: String,
       default: ""

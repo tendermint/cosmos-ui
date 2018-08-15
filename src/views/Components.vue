@@ -50,8 +50,8 @@
       <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
-      <tm-li-stake-transaction :transaction="txs[3]" :candidates="candidates" />
-      <tm-li-stake-transaction :transaction="txs[4]" :candidates="candidates" />
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
     </section>
     <section>
       <header>TmField</header>
@@ -87,7 +87,7 @@ export default {
   data: () => ({
     tmFieldNumber: null,
     txs,
-    candidates: [
+    validators: [
       {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         moniker: "cool validator"

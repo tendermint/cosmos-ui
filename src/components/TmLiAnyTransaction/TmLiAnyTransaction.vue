@@ -1,6 +1,6 @@
 <template lang='pug'>
 tm-li-bank-transaction(v-if="bankTx" :transaction="transaction" :address="address")
-tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :candidates="candidates" :validatorURL="validatorURL")
+tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL")
 tm-li-transaction(v-else :color="grey" :time="transaction.time" :block="transaction.height")
   span(slot="caption") Unknown Transaction Type
 </template>
@@ -31,7 +31,7 @@ export default {
   props: {
     transaction: Object,
     address: String,
-    candidates: Array,
+    validators: Array,
     validatorURL: {
       type: String,
       default: ""

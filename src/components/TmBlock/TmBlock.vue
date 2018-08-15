@@ -37,7 +37,7 @@
           v-if="isObj(tx)"
           :transaction="tx"
           :address="currentUser"
-          :candidates="candidates"
+          :validators="validators"
           )
 </template>
 <script>
@@ -96,7 +96,7 @@ export default {
         }
       ]
     },
-    candidates: {
+    validators: {
       // used for displaying txs
       type: Array,
       default: () => [

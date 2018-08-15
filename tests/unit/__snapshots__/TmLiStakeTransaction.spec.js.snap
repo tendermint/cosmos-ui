@@ -51,7 +51,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
         >
           Block #566 
         </a>
-        @ 1:00
+        @ 2:03
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
         >
           Block #566 
         </a>
-        @ 1:00
+        @ 2:03
       </div>
     </div>
   </div>

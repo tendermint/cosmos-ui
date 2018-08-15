@@ -9,7 +9,7 @@ describe("TmBlock.vue", () => {
       propsData: {
         txs,
         currentUser: "tb1da6xsetjg9jxgun9wdesexv05j",
-        candidates: [
+        validators: [
           {
             owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
             moniker: "cool validator"

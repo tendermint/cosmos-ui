@@ -252,7 +252,7 @@ module.exports = [
     }
   },
   {
-    hash: "not a real hash3",
+    hash: "not a real hash4",
 
     time: 1042 + 150, // set by Voyager
     height: "566",
@@ -315,7 +315,7 @@ module.exports = [
     }
   },
   {
-    hash: "not a real hash3",
+    hash: "not a real hash5",
 
     time: 1042 + 150, // set by Voyager
     height: "566",
