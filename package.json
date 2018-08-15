@@ -2,7 +2,7 @@
   "name": "@tendermint/ui",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "license": "Apache-2.0",
   "author": "Tendermint, Inc <hello@tendermint.com>",
   "main": "src/index.js",
@@ -18,7 +18,8 @@
     "js-base64": "^2.4.5",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
-    "moment": "^2.22.2",
+    "moment": "2.22.1",
+    "moment-timezone": "0.5.16",
     "nib": "^1.1.2",
     "numeral": "^2.0.6",
     "perfect-scrollbar": "^1.4.0",
@@ -91,6 +92,9 @@
     ],
     "testMatch": [
       "<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))"
+    ],
+    "setupFiles": [
+      "./tests/unit/helpers/fixed_time.js"
     ]
   },
   "gitHooks": {
