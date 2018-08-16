@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.17]
+
+- Toggle Color Fix @okwme
+
 ## [0.2.16]
 
-- update toggle color @okwme
+- Min and Max to TmField Bug @okwme
 
 ## [0.2.15]
 
