@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.16]
+
+- update toggle color @okwme
+
 ## [0.2.15]
 
 - Min and Max to TmField @okwme
