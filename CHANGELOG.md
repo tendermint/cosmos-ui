@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Adjust TmLiTransaction to the new transaction format @faboweb
 
+## [0.2.18]
+
+- Removed transition from <tm-list-item> @okwme
+
+## [0.2.17]
+
+- Toggle Color Fix @okwme
+
 ## [0.2.16]
 
 - Min and Max to TmField Bug @okwme
