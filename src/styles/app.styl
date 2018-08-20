@@ -5,6 +5,7 @@
   --primary   hsl( 233,  88%,  57%)
   --link      hsl( 217, 100%,  70%)
   --hover     hsl( 217, 100%,  55%)
+  --hover-bg  hsla(217, 100%,  55%, 0.1)
   --bright    hsl(   0, 100%, 100%)
   --txt       hsla(  0, 100%, 100%, 0.8)
   --dim       hsla(  0, 100%, 100%, 0.667)
@@ -42,7 +43,7 @@ reset-html5()
   box-sizing border-box
 
 body
-  background var(--app-fg)
+  background var(--app-bg)
   color var(--txt)
 
 a
@@ -63,7 +64,7 @@ em
 
 nav
   height 3rem
-  background: var(--app-nav);
+  background var(--app-nav)
   padding 0 0.5rem
   a
     line-height 3rem
