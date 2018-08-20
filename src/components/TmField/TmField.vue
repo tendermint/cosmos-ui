@@ -273,7 +273,7 @@ textarea.tm-field
         left auto
         width 1.625rem
         height 1.625rem
-        background var(--bc, #d4d5de)
+        background var(--grey, #d4d5de)
         border-radius 1rem
         z-index z(listItem)
 

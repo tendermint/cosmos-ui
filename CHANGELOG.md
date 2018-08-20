@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Adjust TmLiTransaction to the new transaction format @faboweb
+- Adjust TmLiTransaction to the new transaction format @faboweb @jbibla
+
+## [0.2.18]
+
+- Removed transition from <tm-list-item> @okwme
+
+## [0.2.17]
+
+- Toggle Color Fix @okwme
 
 ## [0.2.16]
 
