@@ -17,60 +17,59 @@ mixin tm-li-label
   .tm-li-label
     .tm-li-title {{ title }}
     .tm-li-subtitle {{ subtitle }}
-transition(name="proposal")
-  //- dt/dd anchor
-  a.tm-li.tm-li-link(v-if='dt && href' :href="href"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-dl
-    +tm-li-icon
+//- dt/dd anchor
+a.tm-li.tm-li-link(v-if='dt && href' :href="href"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-dl
+  +tm-li-icon
 
-  //- label and input
-  .tm-li.tm-li-field(v-else-if="type === 'field'"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-label
-    .tm-li-input: slot
+//- label and input
+.tm-li.tm-li-field(v-else-if="type === 'field'"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-label
+  .tm-li-input: slot
 
-  //- dt/dd router-link
-  router-link.tm-li.tm-li-link(v-else-if="dt && to && !btn" :to="to"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-dl
-    +tm-li-icon
+//- dt/dd router-link
+router-link.tm-li.tm-li-link(v-else-if="dt && to && !btn" :to="to"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-dl
+  +tm-li-icon
 
-  //- button router-link
-  router-link.tm-li.tm-li-link(v-else-if="btn && to" :to="to"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-dl
-    tm-btn(:value="btn" icon="chevron_right" icon-pos="right" color="primary")
+//- button router-link
+router-link.tm-li.tm-li-link(v-else-if="btn && to" :to="to"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-dl
+  tm-btn(:value="btn" icon="chevron_right" icon-pos="right" color="primary")
 
-  //- dt/dd text
-  .tm-li(v-else-if='dt'): .tm-li-container
-    +tm-li-thumb
-    +tm-li-dl
+//- dt/dd text
+.tm-li(v-else-if='dt'): .tm-li-container
+  +tm-li-thumb
+  +tm-li-dl
 
-  //- title/subtitle anchor
-  a.tm-li.tm-li-link(v-else-if="href" :href="href"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-label
-    +tm-li-icon
+//- title/subtitle anchor
+a.tm-li.tm-li-link(v-else-if="href" :href="href"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-label
+  +tm-li-icon
 
-  //- title/subtitle router-link
-  router-link.tm-li.tm-li-link(v-else-if="to" :to='to'): .tm-li-container
-    +tm-li-thumb
-    +tm-li-label
-    +tm-li-icon
+//- title/subtitle router-link
+router-link.tm-li.tm-li-link(v-else-if="to" :to='to'): .tm-li-container
+  +tm-li-thumb
+  +tm-li-label
+  +tm-li-icon
 
-  .tm-li.tm-li-receive(v-else-if="title && btn && !to"): .tm-li-container
-    +tm-li-thumb
-    +tm-li-label
-    slot(name="btn-receive")
+.tm-li.tm-li-receive(v-else-if="title && btn && !to"): .tm-li-container
+  +tm-li-thumb
+  +tm-li-label
+  slot(name="btn-receive")
 
-  //- title/subtitle text
-  .tm-li(v-else-if='title'): .tm-li-container
-    +tm-li-thumb
-    +tm-li-label
+//- title/subtitle text
+.tm-li(v-else-if='title'): .tm-li-container
+  +tm-li-thumb
+  +tm-li-label
 
-  //- image
-  .tm-li(v-else-if="type === 'image'"): .tm-li-container: slot
+//- image
+.tm-li(v-else-if="type === 'image'"): .tm-li-container: slot
 </template>
 
 <script>
