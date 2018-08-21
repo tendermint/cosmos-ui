@@ -8,7 +8,7 @@ exports[`TmLiTransaction has the expected html structure 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
       style="border-color: #ffffff;"
     />
   </div>

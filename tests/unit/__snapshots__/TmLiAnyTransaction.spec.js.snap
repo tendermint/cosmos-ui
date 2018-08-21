@@ -8,7 +8,7 @@ exports[`TmLiAnyTransaction shows bank transactions 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
       style="border-color: #25293f;"
     />
   </div>
@@ -61,7 +61,7 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
       style="border-color: #512584;"
     />
   </div>
@@ -119,7 +119,7 @@ exports[`TmLiAnyTransaction shows unknown transactions 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
     />
   </div>
   <div

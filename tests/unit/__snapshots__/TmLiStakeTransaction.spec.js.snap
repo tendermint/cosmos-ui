@@ -8,7 +8,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
       style="border-color: #512584;"
     />
   </div>
@@ -66,7 +66,7 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
     class="tm-li-tx__icon"
   >
     <img
-      src="~assets/cosmos-logo.png"
+      src="../../assets/cosmos-logo.png"
       style="border-color: #9d5c19;"
     />
   </div>
