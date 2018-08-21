@@ -80,7 +80,4 @@ export default {
 
       &__block
         margin-left auto
-
-@media screen and (min-width: 768px)
-  .
 </style>
