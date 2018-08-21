@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Adjust TmLiTransaction to the new transaction format @faboweb
+- Adjust TmLiTransaction to the new transaction format @faboweb @jbibla
 
 ## [0.2.18]
 

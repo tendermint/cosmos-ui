@@ -47,9 +47,11 @@
     </section>
     <section>
       <header>TmLiTransaction</header>
+      <header>TmLiBankTransaction</header>
       <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <header>TmLiStakeTransaction</header>
       <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
       <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
     </section>
@@ -70,6 +72,7 @@
 <script>
 import {
   TmBtn,
+  TmField,
   TmListItem,
   TmLiBankTransaction,
   TmLiStakeTransaction
@@ -80,6 +83,7 @@ export default {
   name: "home",
   components: {
     TmBtn,
+    TmField,
     TmListItem,
     TmLiBankTransaction,
     TmLiStakeTransaction

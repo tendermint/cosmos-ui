@@ -4,16 +4,16 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="caption")
       | Delegated&nbsp;
       b {{tx.delegation.amount}}
-      span &nbsp;{{tx.delegation.denom.toUpperCase()}}
-    div(slot="details") 
+      span &nbsp;{{tx.delegation.denom}}
+    div(slot="details")
       | To&nbsp;
       a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
       b {{tx.shares}}
-      span &nbsp;STEAK
-    div(slot="details") 
+      span &nbsp;Steak
+    div(slot="details")
       | From&nbsp;
       a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
@@ -65,10 +65,6 @@ export default {
 .tm-li-tx
   display flex
   font-size sm
-  border-bottom 1px solid var(--bc-dim)
-
-  &:nth-of-type(2n-1)
-    background var(--app-fg)
 
   .tx-icon
     padding 0 0.5rem
@@ -131,7 +127,6 @@ export default {
 
   &:hover
     cursor pointer
-    background var(--hover-bg)
 
 @media screen and (min-width: 700px)
   .tm-li-tx

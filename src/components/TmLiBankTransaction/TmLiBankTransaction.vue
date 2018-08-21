@@ -112,10 +112,6 @@ export default {
 .tm-li-tx
   display flex
   font-size sm
-  border-bottom 1px solid var(--bc-dim)
-
-  &:nth-of-type(2n-1)
-    background var(--app-fg)
 
   .tx-icon
     padding 0 0.5rem
@@ -178,7 +174,6 @@ export default {
 
   &:hover
     cursor pointer
-    background var(--hover-bg)
 
 @media screen and (min-width: 700px)
   .tm-li-tx

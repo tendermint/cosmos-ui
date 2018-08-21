@@ -3,7 +3,7 @@
   .tm-li-tx__icon
     img(src="~assets/cosmos-logo.png" :style="{ borderColor: color }")
   .tm-li-tx__content
-    h1.tm-li-tx__content__caption
+    p.tm-li-tx__content__caption
       slot(name="caption")
     .tm-li-tx__content__information
       .tm-li-tx__content__information__details
@@ -20,7 +20,7 @@ export default {
   name: "tm-li-transaction",
   computed: {
     date() {
-      return moment(this.time).format("H:mm")
+      return moment(this.time).format("h:mm a")
     }
   },
   props: ["color", "time", "block"]
@@ -32,40 +32,52 @@ export default {
 
 .tm-li-tx
   display flex
-  font-size sm
-  border 1px solid var(--bc)
-  height 4rem
-  margin-bottom 1rem
-  background var(--app-bg) !important
+  align-items center
+  height 100%
+  font-size m
+  margin-bottom 0.5rem
+  border 1px solid var(--bc-dim)
+  background var(--app-fg)
+
+  &:hover {
+    background var(--hover-bg)
+  }
+
+  b
+    font-weight 500
 
   &__icon
-    padding 0.3rem 0.3rem 0.3rem 0.8rem
+    padding 12px 0 12px 1rem
 
     img
       max-height 100%
-      border 1px solid
+      max-width: 52px;
+      border 2px solid
       border-radius 50%
+      display block
 
   &__content
     display flex
     flex-direction column
     width 100%
-    padding 0.7rem 0.5rem
-    font-size sm
+    padding 1rem
+    font-size m
 
     &__caption
-      font-size m
-      line-height m
-      margin-bottom 9px
+      font-size lg
+      line-height lg
+      color var(--bright)
 
     &__information
       display flex
       width 100%
+      font-size 14px
+      color var(--dim)
+      align-items baseline
 
-      *
-        display inline-block
+      &__details
+        padding-top 3px
 
       &__block
         margin-left auto
-        margin-right 1rem
 </style>
