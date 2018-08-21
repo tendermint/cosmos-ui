@@ -1,7 +1,7 @@
 <template lang='pug'>
 .tm-li-tx
   .tm-li-tx__icon
-    img(src="~assets/cosmos-logo.png" :style="{ borderColor: color }")
+    img(src="../../assets/cosmos-logo.png" :style="{ borderColor: color }")
   .tm-li-tx__content
     p.tm-li-tx__content__caption
       slot(name="caption")
@@ -39,9 +39,8 @@ export default {
   border 1px solid var(--bc-dim)
   background var(--app-fg)
 
-  &:hover {
+  &:hover
     background var(--hover-bg)
-  }
 
   b
     font-weight 500
@@ -51,7 +50,7 @@ export default {
 
     img
       max-height 100%
-      max-width: 52px;
+      max-width 52px
       border 2px solid
       border-radius 50%
       display block
