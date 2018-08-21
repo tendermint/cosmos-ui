@@ -35,7 +35,7 @@ export default {
   align-items center
   height 100%
   font-size m
-  margin-bottom 1rem
+  margin-bottom 0.5rem
   border 1px solid var(--bc-dim)
   background var(--app-fg)
 
@@ -76,7 +76,7 @@ export default {
       align-items baseline
 
       &__details
-        padding-top 2px
+        padding-top 3px
 
       &__block
         margin-left auto
