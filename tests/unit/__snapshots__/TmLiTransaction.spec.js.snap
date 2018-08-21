@@ -15,13 +15,13 @@ exports[`TmLiTransaction has the expected html structure 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <h1
+    <p
       class="tm-li-tx__content__caption"
     >
       <span>
         Some Caption
       </span>
-    </h1>
+    </p>
     <div
       class="tm-li-tx__content__information"
     >
@@ -40,7 +40,7 @@ exports[`TmLiTransaction has the expected html structure 1`] = `
         >
           Block #500 
         </a>
-        @ 2:03
+        @ 2:03 am
       </div>
     </div>
   </div>
