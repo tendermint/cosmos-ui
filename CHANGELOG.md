@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Adjust TmLiTransaction to the new transaction format @faboweb @jbibla
+
 ## [0.2.18]
 
 - Removed transition from <tm-list-item> @okwme

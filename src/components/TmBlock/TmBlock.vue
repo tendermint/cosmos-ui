@@ -31,12 +31,13 @@
       template(
         v-else-if="txs.length"
         )
-        tm-li-transaction(
-          :key="tkey + '-tx'"
+        tm-li-any-transaction(
+          :key="tx.hash"
           v-for="(tx, tkey) in txs"
           v-if="isObj(tx)"
           :transaction="tx"
           :address="currentUser"
+          :validators="validators"
           )
 </template>
 <script>
@@ -44,7 +45,7 @@ import TmPart from "../TmPart/TmPart.vue"
 import TmListItem from "../TmListItem/TmListItem.vue"
 import TmDataEmpty from "../TmDataEmpty/TmDataEmpty.vue"
 import TmDataLoading from "../TmDataLoading/TmDataLoading.vue"
-import TmLiTransaction from "../TmLiTransaction/TmLiTransaction.vue"
+import TmLiAnyTransaction from "../TmLiAnyTransaction/TmLiAnyTransaction.vue"
 
 export default {
   name: "tm-block",
@@ -53,7 +54,7 @@ export default {
     TmListItem,
     TmDataEmpty,
     TmDataLoading,
-    TmLiTransaction
+    TmLiAnyTransaction
   },
   props: {
     currentUser: {
@@ -81,11 +82,27 @@ export default {
       default: () => [
         {
           tx: {
-            msg: {
-              inputs: [{ address: null }],
-              outputs: null
+            value: {
+              msg: [
+                {
+                  value: {
+                    inputs: [{ address: null }],
+                    outputs: null
+                  }
+                }
+              ]
             }
           }
+        }
+      ]
+    },
+    validators: {
+      // used for displaying txs
+      type: Array,
+      default: () => [
+        {
+          owner: "",
+          moniker: ""
         }
       ]
     },

@@ -41,6 +41,19 @@
       <tm-list-item
         title="List Item Title"
         subtitle="List Item Subtitle" />
+      <tm-list-item
+        title="List Item Title"
+        subtitle="List Item Subtitle" />
+    </section>
+    <section>
+      <header>TmLiTransaction</header>
+      <header>TmLiBankTransaction</header>
+      <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <header>TmLiStakeTransaction</header>
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
     </section>
     <section>
       <header>TmField</header>
@@ -57,18 +70,34 @@
 </template>
 
 <script>
-import { TmBtn, TmListItem, TmField } from "../index.js"
+import {
+  TmBtn,
+  TmField,
+  TmListItem,
+  TmLiBankTransaction,
+  TmLiStakeTransaction
+} from "../index.js"
+import txs from "../../assets/txs.js"
 
 export default {
   name: "home",
-  data: () => ({
-    tmFieldNumber: null
-  }),
   components: {
     TmBtn,
+    TmField,
     TmListItem,
-    TmField
-  }
+    TmLiBankTransaction,
+    TmLiStakeTransaction
+  },
+  data: () => ({
+    tmFieldNumber: null,
+    txs,
+    validators: [
+      {
+        owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+        moniker: "cool validator"
+      }
+    ]
+  })
 }
 </script>
 
