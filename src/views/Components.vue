@@ -66,6 +66,11 @@
         v-model="tmFieldNumber"
         />
     </section>
+
+    <section>
+      <header>TmCookieConsent</header>
+      <tm-cookie-consent/>
+    </section>
   </div>
 </template>
 
@@ -75,7 +80,8 @@ import {
   TmField,
   TmListItem,
   TmLiBankTransaction,
-  TmLiStakeTransaction
+  TmLiStakeTransaction,
+  TmCookieConsent
 } from "../index.js"
 import txs from "../../assets/txs.js"
 
@@ -86,7 +92,8 @@ export default {
     TmField,
     TmListItem,
     TmLiBankTransaction,
-    TmLiStakeTransaction
+    TmLiStakeTransaction,
+    TmCookieConsent
   },
   data: () => ({
     tmFieldNumber: null,
