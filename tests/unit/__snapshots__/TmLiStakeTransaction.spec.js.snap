@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TmLiStakeTransaction should show delegations 1`] = `
+<div
+  class="tm-li-tx"
+>
+  <div
+    class="tm-li-tx__icon"
+  >
+    <img
+      src="../../assets/cosmos-logo.png"
+      style="border-color: #512584;"
+    />
+  </div>
+  <div
+    class="tm-li-tx__content"
+  >
+    <p
+      class="tm-li-tx__content__caption"
+    >
+      <div>
+        Delegated 
+        <b>
+          4200
+        </b>
+        <span>
+           steak
+        </span>
+      </div>
+    </p>
+    <div
+      class="tm-li-tx__content__information"
+    >
+      <div
+        class="tm-li-tx__content__information__details"
+      >
+        <div>
+          To 
+          <a
+            href="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cool validator
+          </a>
+        </div>
+      </div>
+      <div
+        class="tm-li-tx__content__information__block"
+      >
+        <a
+          href="https://explorecosmos.network/blocks/566"
+        >
+          Block #566 
+        </a>
+        @ 2:03 am
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TmLiStakeTransaction should show unbondings 1`] = `
+<div
+  class="tm-li-tx"
+>
+  <div
+    class="tm-li-tx__icon"
+  >
+    <img
+      src="../../assets/cosmos-logo.png"
+      style="border-color: #9d5c19;"
+    />
+  </div>
+  <div
+    class="tm-li-tx__content"
+  >
+    <p
+      class="tm-li-tx__content__caption"
+    >
+      <div>
+        Unbonded 
+        <b>
+          100
+        </b>
+        <span>
+           Steak
+        </span>
+      </div>
+    </p>
+    <div
+      class="tm-li-tx__content__information"
+    >
+      <div
+        class="tm-li-tx__content__information__details"
+      >
+        <div>
+          From 
+          <a
+            href="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cool validator
+          </a>
+        </div>
+      </div>
+      <div
+        class="tm-li-tx__content__information__block"
+      >
+        <a
+          href="https://explorecosmos.network/blocks/566"
+        >
+          Block #566 
+        </a>
+        @ 2:03 am
+      </div>
+    </div>
+  </div>
+</div>
+`;

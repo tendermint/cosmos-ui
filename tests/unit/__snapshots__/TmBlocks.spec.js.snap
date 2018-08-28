@@ -12,7 +12,7 @@ exports[`TmBlocks.vue has the expected html structure 1`] = `
       </div>
     </header>
     <main class="tm-part-main">
-      <div class="tm-li column-header" name="proposal">
+      <div class="tm-li column-header">
         <div class="tm-li-container">
           <div class="tm-li-thumb">
             <!---->
@@ -27,7 +27,7 @@ exports[`TmBlocks.vue has the expected html structure 1`] = `
           </div>
         </div>
       </div>
-      <a class="tm-li tm-li-link" name="proposal">
+      <a class="tm-li tm-li-link">
         <div class="tm-li-container">
           <div class="tm-li-thumb">
             <!---->

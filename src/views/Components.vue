@@ -41,19 +41,70 @@
       <tm-list-item
         title="List Item Title"
         subtitle="List Item Subtitle" />
+      <tm-list-item
+        title="List Item Title"
+        subtitle="List Item Subtitle" />
+    </section>
+    <section>
+      <header>TmLiTransaction</header>
+      <header>TmLiBankTransaction</header>
+      <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
+      <header>TmLiStakeTransaction</header>
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
+    </section>
+    <section>
+      <header>TmField</header>
+        <tm-field
+        type="number"
+        placeholder="Placeholder"
+        step="1"
+        min="0"
+        max="100"
+        v-model="tmFieldNumber"
+        />
+    </section>
+
+    <section>
+      <header>TmCookieConsent</header>
+      <tm-cookie-consent/>
     </section>
   </div>
 </template>
 
 <script>
-import { TmBtn, TmListItem } from "../index.js"
+import {
+  TmBtn,
+  TmField,
+  TmListItem,
+  TmLiBankTransaction,
+  TmLiStakeTransaction,
+  TmCookieConsent
+} from "../index.js"
+import txs from "../../assets/txs.js"
 
 export default {
   name: "home",
   components: {
     TmBtn,
-    TmListItem
-  }
+    TmField,
+    TmListItem,
+    TmLiBankTransaction,
+    TmLiStakeTransaction,
+    TmCookieConsent
+  },
+  data: () => ({
+    tmFieldNumber: null,
+    txs,
+    validators: [
+      {
+        owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+        moniker: "cool validator"
+      }
+    ]
+  })
 }
 </script>
 

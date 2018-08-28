@@ -1,123 +1,29 @@
 <template lang='pug'>
-mixin tx-container-sent
-  .tx-container
-    .tx-element.tx-coins
-      .tx-coin(v-for='coin in coinsSent')
-        .key {{ coin.denom.toUpperCase() }}
-        .value {{ pretty(coin.amount) }}
-    div
-      .tx-element.tx-date(v-if="devMode") {{ date }}
-      .tx-element.tx-address(v-if="!sentSelf") Sent to {{ receiver }}
-      .tx-element.tx-address(v-if="sentSelf") You sent this amount to yourself.
-.tm-li-tx(v-if="sentSelf" @click="() => devMode && viewTransaction()")
-  .tx-icon: i.material-icons swap_horiz
-  +tx-container-sent
-
-.tm-li-tx.tm-li-tx-sent(v-else-if="sent" @click="() => devMode && viewTransaction()")
-  .tx-icon: i.material-icons remove_circle
-  +tx-container-sent
-
-.tm-li-tx.tm-li-tx-received(v-else @click="() => devMode && viewTransaction()")
-  .tx-icon: i.material-icons add_circle
-  .tx-container
-    .tx-element.tx-coins
-      .tx-coin(v-for='coin, key in coinsReceived' :key="key")
-        .key {{ coin.denom.toUpperCase() }}
-        .value {{ pretty(coin.amount) }}
-    div
-      .tx-element.tx-date(v-if="devMode") {{ date }}
-      .tx-element.tx-address Received from {{ sender }}
+.tm-li-tx
+  .tm-li-tx__icon
+    img(src="../../assets/cosmos-logo.png" :style="{ borderColor: color }")
+  .tm-li-tx__content
+    p.tm-li-tx__content__caption
+      slot(name="caption")
+    .tm-li-tx__content__information
+      .tm-li-tx__content__information__details
+        slot(name="details")
+      .tm-li-tx__content__information__block
+        a(:href="'https://explorecosmos.network/blocks/' + block") Block \#{{block}}&nbsp;
+        | @ {{date}}
 </template>
 
 <script>
 import moment from "moment"
-import numeral from "numeral"
-
-const defaultCoin = {
-  denom: null,
-  amount: null
-}
-
-const defaultInput = {
-  address: null,
-  coins: [defaultCoin, defaultCoin, defaultCoin]
-}
-
-const defaultTransaction = {
-  tx: {
-    value: {
-      msg: {
-        value: {
-          time: null,
-          inputs: [defaultInput, defaultInput, defaultInput],
-          outputs: [defaultInput, defaultInput, defaultInput]
-        }
-      }
-    }
-  }
-}
 
 export default {
   name: "tm-li-transaction",
   computed: {
-    tx() {
-      return this.transaction.tx
-    },
-    // HERE FOR DOCUMENTATION
-    // transactionHeight() {
-    //   return this.transaction.height
-    // },
-    // TODO: sum relevant inputs/outputs
-    sentSelf() {
-      return this.tx.msg.inputs[0].address === this.tx.msg.outputs[0].address
-    },
-    sent() {
-      return this.tx.msg.inputs[0].address === this.address
-    },
-    sender() {
-      return this.tx.msg.inputs[0].address
-    },
-    coinsSent() {
-      return this.tx.msg.inputs[0].coins
-    },
-    receiver() {
-      return this.tx.msg.outputs[0].address
-    },
-    coinsReceived() {
-      return this.tx.msg.inputs[0].coins
-    },
     date() {
-      try {
-        return moment(this.transaction.time).format("MMMM Do YYYY, h:mm:ss a")
-      } catch (error) {
-        return null
-      }
+      return moment(this.time).format("h:mm a")
     }
   },
-  data: () => ({
-    devMode:
-      process.env.PREVIEW !== undefined
-        ? JSON.parse(process.env.PREVIEW)
-        : process.env.NODE_ENV === "development"
-  }),
-  methods: {
-    pretty(num) {
-      return numeral(num).format("0,0.00")
-    },
-    viewTransaction() {
-      // console.log("TODO: implement tx viewer")
-    }
-  },
-  props: {
-    transaction: {
-      type: Object,
-      default: () => defaultTransaction
-    },
-    address: {
-      type: String,
-      default: null
-    }
-  }
+  props: ["color", "time", "block"]
 }
 </script>
 
@@ -126,92 +32,51 @@ export default {
 
 .tm-li-tx
   display flex
-  font-size sm
-  border-bottom 1px solid var(--bc-dim)
-
-  &:nth-of-type(2n-1)
-    background var(--app-fg)
-
-  .tx-icon
-    padding 0 0.5rem
-    background var(--app-fg)
-    display flex
-    align-items center
-    justify-content center
-
-  .tx-container
-    flex-direction column
-    flex-wrap nowrap
-    padding 0.5rem 0
-    margin 0.5rem 0
-    display flex
-    width 100%
-    min-width 0 // fix text-overflow
-
-  .tx-element
-    padding 0 2rem 0 1.5rem
-    line-height 1.5rem
-
-  .tx-coin
-    .value
-      flex 0 0 100%
-      font-size sm
-      color var(--dim)
-
-      &:before
-        content ''
-        display inline
-
-    .key
-      font-weight 500
-      font-size m
-
-    .value, .key
-      line-height 1.5rem
-
-  .tx-address
-    white-space nowrap
-    overflow hidden
-    text-overflow ellipsis
-    color var(--dim)
-    font-size sm
-
-  &.tm-li-tx-sent
-    .tx-coin .value
-      &:before
-        content '-'
-
-  &.tm-li-tx-received
-    .tx-icon
-      background var(--app-fg)
-
-    .tx-coin .value
-      color success
-
-      &:before
-        content '+'
+  align-items center
+  height 100%
+  font-size m
+  margin-bottom 0.5rem
+  border 1px solid var(--bc-dim)
+  background var(--app-fg)
 
   &:hover
-    cursor pointer
     background var(--hover-bg)
 
-@media screen and (min-width: 700px)
-  .tm-li-tx
-    font-size 0.875rem
+  b
+    font-weight 500
 
-    .tx-container
-      flex-direction row
+  &__icon
+    padding 12px 0 12px 1rem
 
-      .tx-coins
-        flex 0 0 9rem
-        padding 0
-        min-width 0
+    img
+      max-height 100%
+      max-width 52px
+      border 2px solid
+      border-radius 50%
+      display block
 
-        .tx-coin
-          padding 0 1.5rem 0
+  &__content
+    display flex
+    flex-direction column
+    width 100%
+    padding 1rem
+    font-size m
 
-          .key
-            white-space nowrap
-            overflow hidden
-            text-overflow ellipsis
+    &__caption
+      font-size lg
+      line-height lg
+      color var(--bright)
+
+    &__information
+      display flex
+      width 100%
+      font-size 14px
+      color var(--dim)
+      align-items baseline
+
+      &__details
+        padding-top 3px
+
+      &__block
+        margin-left auto
 </style>

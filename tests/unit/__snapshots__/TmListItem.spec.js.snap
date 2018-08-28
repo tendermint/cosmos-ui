@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TmListItem has the expected html structure 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -17,7 +17,7 @@ exports[`TmListItem has the expected html structure 1`] = `
 `;
 
 exports[`TmListItem should append the fa-spin class 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <i class="material-icons fa-spin">rotate_right</i>
@@ -33,7 +33,7 @@ exports[`TmListItem should append the fa-spin class 1`] = `
 `;
 
 exports[`TmListItem should show a dd link 1`] = `
-<a href="/location" class="tm-li tm-li-link" name="proposal">
+<a href="/location" class="tm-li tm-li-link">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -53,7 +53,7 @@ exports[`TmListItem should show a dd link 1`] = `
 `;
 
 exports[`TmListItem should show a description 1`] = `
-<a href="/location" class="tm-li tm-li-link" name="proposal">
+<a href="/location" class="tm-li tm-li-link">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -73,7 +73,7 @@ exports[`TmListItem should show a description 1`] = `
 `;
 
 exports[`TmListItem should show a label 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -91,7 +91,7 @@ exports[`TmListItem should show a label 1`] = `
 `;
 
 exports[`TmListItem should show a router-link 1`] = `
-<router-link to="/location" class="tm-li tm-li-link" name="proposal">
+<router-link to="/location" class="tm-li tm-li-link">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -111,7 +111,7 @@ exports[`TmListItem should show a router-link 1`] = `
 `;
 
 exports[`TmListItem should show a subtitle router link 1`] = `
-<router-link to="/location" class="tm-li tm-li-link" name="proposal">
+<router-link to="/location" class="tm-li tm-li-link">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -131,7 +131,7 @@ exports[`TmListItem should show a subtitle router link 1`] = `
 `;
 
 exports[`TmListItem should show a thumb 1`] = `
-<a href="/location" class="tm-li tm-li-link" name="proposal">
+<a href="/location" class="tm-li tm-li-link">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -151,7 +151,7 @@ exports[`TmListItem should show a thumb 1`] = `
 `;
 
 exports[`TmListItem should show as dd text 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -167,7 +167,7 @@ exports[`TmListItem should show as dd text 1`] = `
 `;
 
 exports[`TmListItem should show as text 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->
@@ -183,7 +183,7 @@ exports[`TmListItem should show as text 1`] = `
 `;
 
 exports[`TmListItem should show as text link 1`] = `
-<div class="tm-li" name="proposal">
+<div class="tm-li">
   <div class="tm-li-container">
     <div class="tm-li-thumb">
       <!---->

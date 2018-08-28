@@ -3,7 +3,6 @@ import TmBlock from "./components/TmBlock"
 import TmBlocks from "./components/TmBlocks"
 import TmBtn from "./components/TmBtn"
 import TmCookieConsent from "./components/TmCookieConsent"
-import TmCountdown from "./components/TmCountdown"
 import TmDataMsg from "./components/TmDataMsg"
 import TmDataEmpty from "./components/TmDataEmpty"
 import TmDataLoading from "./components/TmDataLoading"
@@ -35,7 +34,6 @@ const TendermintComponents = {
   TmBlocks,
   TmBtn,
   TmCookieConsent,
-  TmCountdown,
   TmDataMsg,
   TmDataEmpty,
   TmDataLoading,
@@ -80,9 +78,6 @@ export {
   default as TmCookieConsent
 } from "./components/TmCookieConsent/TmCookieConsent.vue"
 export {
-  default as TmCountdown
-} from "./components/TmCountdown/TmCountdown.vue"
-export {
   default as TmDataEmpty
 } from "./components/TmDataEmpty/TmDataEmpty.vue"
 export { default as TmDataMsg } from "./components/TmDataMsg/TmDataMsg.vue"
@@ -108,6 +103,15 @@ export { default as TmListItem } from "./components/TmListItem/TmListItem.vue"
 export {
   default as TmLiTransaction
 } from "./components/TmLiTransaction/TmLiTransaction.vue"
+export {
+  default as TmLiBankTransaction
+} from "./components/TmLiBankTransaction/TmLiBankTransaction.vue"
+export {
+  default as TmLiStakeTransaction
+} from "./components/TmLiStakeTransaction/TmLiStakeTransaction.vue"
+export {
+  default as TmLiAnyTransaction
+} from "./components/TmLiAnyTransaction/TmLiAnyTransaction.vue"
 export {
   default as TmModalError
 } from "./components/TmModalError/TmModalError.vue"

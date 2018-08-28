@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.20]
+
+- fix bad asset location @faboweb
+- fix bad asset location (cookieconsent) @okwme
+
+## [0.2.19]
+
+- Adjust TmLiTransaction to the new transaction format @faboweb @jbibla
+
+## [0.2.18]
+
+- Removed transition from <tm-list-item> @okwme
+
+## [0.2.17]
+
+- Toggle Color Fix @okwme
+
+## [0.2.16]
+
+- Min and Max to TmField Bug @okwme
+
+## [0.2.15]
+
+- Min and Max to TmField @okwme
+
 ## [0.2.14]
 
 ### Added
@@ -23,6 +48,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed `TmModalError` having redundant button code @nylira
 - Mutate props during test bug @okwme
+- Fixed update bug @okwme
 
 ## [0.2.12]
 
@@ -30,6 +56,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fixed `TmModalError` not having the current URL. @nylira
 - Fixed `TmFormGroup` wrong label variable and text alighment issue. @nylira
+- Updated tx format @okwme
 
 ## [0.2.11]
 

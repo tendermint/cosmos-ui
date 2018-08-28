@@ -5,13 +5,14 @@
   --primary   hsl( 233,  88%,  57%)
   --link      hsl( 217, 100%,  70%)
   --hover     hsl( 217, 100%,  55%)
+  --hover-bg  hsla(217, 100%,  55%, 0.1)
   --bright    hsl(   0, 100%, 100%)
   --txt       hsla(  0, 100%, 100%, 0.8)
   --dim       hsla(  0, 100%, 100%, 0.667)
   --bc        hsla(233,  24%,  75%, 0.175)
   --bc-dim    hsla(233,  24%,  75%, 0.0875)
-  --app-fg    hsl( 233,  30%,  22%)
-  --app-bg    hsl( 233,  36%,  18%)
+  --app-bg    hsl( 233,  30%,  22%)
+  --app-fg    hsl( 233,  36%,  18%)
   --app-nav   hsl( 233,  38%,  14%)
 
   // deprecated
@@ -63,7 +64,7 @@ em
 
 nav
   height 3rem
-  background: var(--app-nav);
+  background var(--app-nav)
   padding 0 0.5rem
   a
     line-height 3rem

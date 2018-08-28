@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css'
+@import '~cookieconsent/build/cookieconsent.min.css'
 @import '~variables'
 
 .cc-window
