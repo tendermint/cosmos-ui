@@ -1,6 +1,6 @@
 <template lang="pug">
 .tm-page
-  tm-page-header(:icon='icon')
+  tm-page-header
     h2(v-if="title", slot='title') {{ title }}
     h3(v-if="subtitle", slot='subtitle') {{ subtitle }}
     template(slot='menu-body'): slot(name="menu-body")
@@ -23,10 +23,6 @@ export default {
       default: ""
     },
     "menu-body": {
-      type: String,
-      default: ""
-    },
-    icon: {
       type: String,
       default: ""
     }
