@@ -28,6 +28,7 @@ exports[`TmPage has the expected html structure 1`] = `
             Subtitle
           </h3>
         </div>
+        <!---->
       </div>
       <menu
         class="tm-page-header-menu"
