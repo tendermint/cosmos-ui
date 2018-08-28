@@ -2,16 +2,20 @@
 header.tm-page-header
   .tm-page-header-container
     .tm-page-header-text
-      .tm-page-header-title
+      .tm-page-header-title(v-if="$slots['title']")
         slot(name='title')
-      .tm-page-header-subtitle
+      .tm-page-header-subtitle(v-if="$slots['subtitle']")
         slot(name='subtitle')
+      .tm-page-header-body(v-if="$slots['menu-body']")
+        slot(name='menu-body')
     menu.tm-page-header-menu
       slot(name="menu")
 </template>
 
 <script>
-export default { name: "tm-page-header" }
+export default {
+  name: "tm-page-header"
+}
 </script>
 
 <style lang="stylus">
@@ -36,7 +40,9 @@ export default { name: "tm-page-header" }
   min-width 0 // fix truncation
   padding 11px 0 0 1rem
   align-items: center
-
+  .tm-page-header-body
+    flex 1
+    display flex
   i.material-icons
     font-size 1.375 * x
     padding-right 0.375rem
@@ -60,5 +66,6 @@ export default { name: "tm-page-header" }
 
   .tm-page-header-menu
     display flex
-    align-items center
+    align-items flex-start
+    padding-top: 11px
 </style>
