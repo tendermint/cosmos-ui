@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+* tx reduced from 100% height @okwme
+
 ## [0.2.20]
 
 - fix bad asset location @faboweb
