@@ -45,7 +45,8 @@ export default {
   },
   methods: {
     moniker(candidateAddr) {
-      return this.validators.find(c => c.owner === candidateAddr).moniker
+      let foo = this.validators.find(c => c.owner === candidateAddr)
+      return (foo && foo.moniker) || candidateAddr
     }
   },
   props: {
