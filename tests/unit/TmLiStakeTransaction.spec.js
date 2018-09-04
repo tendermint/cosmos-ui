@@ -9,7 +9,9 @@ describe("TmLiStakeTransaction", () => {
     validators: [
       {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
-        moniker: "cool validator"
+        description: {
+          moniker: "cool validator"
+        }
       }
     ],
     validatorURL: "/validator"
