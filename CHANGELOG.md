@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.21]
 
 - update TmPageHeader to allow for new voyager toolbar designs @okwme
+- tx reduced from 100% height @okwme
+- fix moniker bug that prevented stake txs from showing @okwme
 
 ## [0.2.20]
 
