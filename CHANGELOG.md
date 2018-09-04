@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.21]
+
+- update TmPageHeader to allow for new voyager toolbar designs @okwme
+
 ## [0.2.20]
 
 - fix bad asset location @faboweb
