@@ -3,10 +3,10 @@
 exports[`TmPage has the expected html structure 1`] = `
 <div
   class="tm-page"
+  icon="hello_icon"
 >
   <header
     class="tm-page-header"
-    icon="hello_icon"
   >
     <div
       class="tm-page-header-container"
@@ -28,6 +28,7 @@ exports[`TmPage has the expected html structure 1`] = `
             Subtitle
           </h3>
         </div>
+        <!---->
       </div>
       <menu
         class="tm-page-header-menu"

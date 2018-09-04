@@ -1,8 +1,9 @@
 <template lang="pug">
 .tm-page
-  tm-page-header(:icon='icon')
-    h2(slot='title') {{ title }}
-    h3(slot='subtitle') {{ subtitle }}
+  tm-page-header
+    h2(v-if="title", slot='title') {{ title }}
+    h3(v-if="subtitle", slot='subtitle') {{ subtitle }}
+    template(slot='menu-body'): slot(name="menu-body")
     div(slot="menu"): slot(name="menu")
   main.tm-page-main: slot
 </template>
@@ -12,7 +13,20 @@ import PerfectScrollbar from "perfect-scrollbar"
 import TmPageHeader from "../TmPageHeader/TmPageHeader.vue"
 export default {
   name: "tm-page",
-  props: ["title", "subtitle", "icon"],
+  props: {
+    title: {
+      type: String,
+      default: ""
+    },
+    subtitle: {
+      type: String,
+      default: ""
+    },
+    "menu-body": {
+      type: String,
+      default: ""
+    }
+  },
   components: {
     TmPageHeader
   },
