@@ -361,14 +361,24 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
         </div>
         <div class="tm-li-tx">
           <div class="tm-li-tx__icon">
-            <img src="../../assets/cosmos-logo.png">
+            <img src="../../assets/cosmos-logo.png" style="border-color: #9d5c19;">
           </div>
           <div class="tm-li-tx__content">
             <p class="tm-li-tx__content__caption">
-              <span>Unknown Transaction Type</span>
+              <div>
+                Unbonded&nbsp;
+                <b>100</b><span>&nbsp;Steak</span>
+              </div>
             </p>
             <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details"></div>
+              <div class="tm-li-tx__content__information__details">
+                <div>
+                  From&nbsp;
+                  <router-link to="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">
+                    cool validator
+                  </router-link>
+                </div>
+              </div>
               <div class="tm-li-tx__content__information__block">
                 <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
               </div>
