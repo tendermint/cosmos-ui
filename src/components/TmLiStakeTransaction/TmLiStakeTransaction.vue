@@ -15,7 +15,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       span &nbsp;Steak
     div(slot="details")
       | From&nbsp;
-      a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>

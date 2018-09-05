@@ -374,7 +374,9 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
               <div class="tm-li-tx__content__information__details">
                 <div>
                   From&nbsp;
-                  <a href="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">cool validator</a>
+                  <router-link to="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">
+                    cool validator
+                  </router-link>
                 </div>
               </div>
               <div class="tm-li-tx__content__information__block">
