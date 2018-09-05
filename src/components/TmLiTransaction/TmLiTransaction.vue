@@ -33,7 +33,6 @@ export default {
 .tm-li-tx
   display flex
   align-items center
-  height 100%
   font-size m
   margin-bottom 0.5rem
   border 1px solid var(--bc-dim)

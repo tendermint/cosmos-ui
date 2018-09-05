@@ -7,7 +7,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       span &nbsp;{{tx.delegation.denom}}
     div(slot="details")
       | To&nbsp;
-      a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
@@ -15,7 +15,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       span &nbsp;Steak
     div(slot="details")
       | From&nbsp;
-      a(:href="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>
@@ -45,7 +45,8 @@ export default {
   },
   methods: {
     moniker(candidateAddr) {
-      return this.validators.find(c => c.owner === candidateAddr).moniker
+      let validator = this.validators.find(c => c.owner === candidateAddr)
+      return (validator && validator.description.moniker) || candidateAddr
     }
   },
   props: {

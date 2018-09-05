@@ -1,7 +1,7 @@
 <template lang='pug'>
 tm-li-bank-transaction(v-if="bankTx" :transaction="transaction" :address="address")
 tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL")
-tm-li-transaction(v-else :color="grey" :time="transaction.time" :block="transaction.height")
+tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="transaction.height")
   span(slot="caption") Unknown Transaction Type
 </template>
 
@@ -9,10 +9,12 @@ tm-li-transaction(v-else :color="grey" :time="transaction.time" :block="transact
 import TmLiBankTransaction from "../TmLiBankTransaction/TmLiBankTransaction"
 import TmLiStakeTransaction from "../TmLiStakeTransaction/TmLiStakeTransaction"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
+import colors from "../TmLiTransaction/tranaction-colors.js"
 
 export default {
   name: "tm-li-any-transaction",
   components: { TmLiBankTransaction, TmLiStakeTransaction, TmLiTransaction },
+  data: () => ({ colors }),
   computed: {
     type() {
       return this.transaction.tx.value.msg[0].type
@@ -22,7 +24,7 @@ export default {
     },
     stakingTx() {
       return (
-        ["cosmos-sdk/MsgDelegate", "cosmos-sdk/MsgDelegate"].indexOf(
+        ["cosmos-sdk/MsgDelegate", "cosmos-sdk/BeginUnbonding"].indexOf(
           this.type
         ) !== -1
       )

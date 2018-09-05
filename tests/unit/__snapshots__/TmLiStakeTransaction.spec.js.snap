@@ -36,11 +36,11 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
       >
         <div>
           To 
-          <a
+          <router-link
             href="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
           >
             cool validator
-          </a>
+          </router-link>
         </div>
       </div>
       <div
@@ -94,11 +94,11 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
       >
         <div>
           From 
-          <a
-            href="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          <router-link
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
           >
             cool validator
-          </a>
+          </router-link>
         </div>
       </div>
       <div
