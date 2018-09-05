@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- fix unbonding transaction not being recognized @faboweb
+- fixed color not being passed correctly to unknown transaction @faboweb
+
 ## [0.2.21]
 
 - update TmPageHeader to allow for new voyager toolbar designs @okwme
