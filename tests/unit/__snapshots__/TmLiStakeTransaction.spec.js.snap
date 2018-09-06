@@ -37,7 +37,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
         <div>
           To 
           <router-link
-            href="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
           >
             cool validator
           </router-link>

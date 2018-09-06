@@ -90,7 +90,7 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
         <div>
           To 
           <router-link
-            href="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+            to="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
           >
             cool validator
           </router-link>
