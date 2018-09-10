@@ -15,39 +15,44 @@ exports[`TmLiAnyTransaction shows bank transactions 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <p
-      class="tm-li-tx__content__caption"
-    >
-      <div>
-        Sent 
-        <b>
-          1234
-        </b>
-        <span>
-           JBCOINS
-        </span>
-      </div>
-    </p>
     <div
-      class="tm-li-tx__content__information"
+      class="tm-li-tx__content__left"
     >
       <div
-        class="tm-li-tx__content__information__details"
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Sent 
+            <b>
+              1234
+            </b>
+            <span>
+               JBCOINS
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
       >
         <span>
           To tb1d4u5zerywfjhxuc9nudvw
         </span>
       </div>
-      <div
-        class="tm-li-tx__content__information__block"
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/3436"
       >
-        <a
-          href="https://explorecosmos.network/blocks/3436"
-        >
-          Block #3436 
-        </a>
-        @ 2:03 am
-      </div>
+        Block #3436 
+      </a>
+      @ 2:03 am
     </div>
   </div>
 </div>
@@ -68,24 +73,28 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <p
-      class="tm-li-tx__content__caption"
-    >
-      <div>
-        Delegated 
-        <b>
-          4200
-        </b>
-        <span>
-           steak
-        </span>
-      </div>
-    </p>
     <div
-      class="tm-li-tx__content__information"
+      class="tm-li-tx__content__left"
     >
       <div
-        class="tm-li-tx__content__information__details"
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Delegated 
+            <b>
+              4200
+            </b>
+            <span>
+               STEAKS
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
       >
         <div>
           To 
@@ -96,16 +105,17 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
           </router-link>
         </div>
       </div>
-      <div
-        class="tm-li-tx__content__information__block"
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
       >
-        <a
-          href="https://explorecosmos.network/blocks/566"
-        >
-          Block #566 
-        </a>
-        @ 2:03 am
-      </div>
+        Block #566 
+      </a>
+      @ 2:03 am
     </div>
   </div>
 </div>
@@ -125,29 +135,34 @@ exports[`TmLiAnyTransaction shows unknown transactions 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <p
-      class="tm-li-tx__content__caption"
-    >
-      <span>
-        Unknown Transaction Type
-      </span>
-    </p>
     <div
-      class="tm-li-tx__content__information"
+      class="tm-li-tx__content__left"
     >
       <div
-        class="tm-li-tx__content__information__details"
-      />
-      <div
-        class="tm-li-tx__content__information__block"
+        class="tm-li-tx__content__caption"
       >
-        <a
-          href="https://explorecosmos.network/blocks/3436"
+        <p
+          class="tm-li-tx__content__caption__title"
         >
-          Block #3436 
-        </a>
-        @ 2:03 am
+          <span>
+            Unknown Transaction Type
+          </span>
+        </p>
       </div>
+      <div
+        class="tm-li-tx__content__information"
+      />
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/3436"
+      >
+        Block #3436 
+      </a>
+      @ 2:03 am
     </div>
   </div>
 </div>

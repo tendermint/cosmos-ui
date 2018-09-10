@@ -372,6 +372,10 @@ module.exports = [
         ],
         fee: {}
       }
+    },
+    undelegation: {
+      amount: 105,
+      denom: "Atom"
     }
   }
 ]

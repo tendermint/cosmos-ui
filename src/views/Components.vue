@@ -52,8 +52,10 @@
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <header>TmLiStakeTransaction</header>
-      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
-      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
     </section>
     <section>
       <header>TmField</header>
@@ -101,10 +103,16 @@ export default {
     validators: [
       {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
-        moniker: "cool validator"
+        description: {
+          moniker: "cool validator"
+        }
       }
     ]
-  })
+  }),
+  methods: {
+    // eslint-disable-next-line
+    log: msg => console.log(msg)
+  }
 }
 </script>
 
