@@ -22,12 +22,15 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+    div(slot="action")
+      tm-btn(value="Claim" color="primary" :disabled="stillUnbonding" @click.native="$emit('end-unbonding')")
 </template>
 
 <script>
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/tranaction-colors.js"
 import moment from "moment"
+import TmBtn from "../TmBtn/TmBtn.vue"
 
 /*
 * undelegation tx need a preprocessing, where shares are translated into tx.undelegation: {amount, denom}
@@ -35,7 +38,7 @@ import moment from "moment"
 
 export default {
   name: "tm-li-stake-transaction",
-  components: { TmLiTransaction },
+  components: { TmLiTransaction, TmBtn },
   computed: {
     tx() {
       return this.transaction.tx.value.msg[0].value
@@ -54,6 +57,12 @@ export default {
         ? moment(this.transaction.time).fromNow()
         : ""
     },
+    stillUnbonding() {
+      return (
+        new Date(this.transaction.time + parseInt(this.unbonding_time)) >=
+        Date.now()
+      )
+    },
     color() {
       if (this.delegation) return colors.stake.bonded
       if (this.unbonding) return colors.stake.unbonded
@@ -71,7 +80,8 @@ export default {
     validatorURL: {
       type: String,
       default: ""
-    }
+    },
+    unbonding_time: String
   }
 }
 </script>

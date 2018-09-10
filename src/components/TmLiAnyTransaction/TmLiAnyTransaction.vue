@@ -1,7 +1,7 @@
 <template lang='pug'>
 tm-li-bank-transaction(v-if="bankTx" :transaction="transaction" :address="address")
 tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL")
-tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="transaction.height")
+tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="transaction.height" :unbonding_time="unbonding_time")
   span(slot="caption") Unknown Transaction Type
 </template>
 
@@ -37,7 +37,8 @@ export default {
     validatorURL: {
       type: String,
       default: ""
-    }
+    },
+    unbonding_time: String
   }
 }
 </script>

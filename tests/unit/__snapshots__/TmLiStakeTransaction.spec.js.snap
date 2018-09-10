@@ -15,24 +15,28 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <p
-      class="tm-li-tx__content__caption"
-    >
-      <div>
-        Delegated 
-        <b>
-          4200
-        </b>
-        <span>
-           steak
-        </span>
-      </div>
-    </p>
     <div
-      class="tm-li-tx__content__information"
+      class="tm-li-tx__content__left"
     >
       <div
-        class="tm-li-tx__content__information__details"
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Delegated 
+            <b>
+              4200
+            </b>
+            <span>
+               STEAKS
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
       >
         <div>
           To 
@@ -43,16 +47,17 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
           </router-link>
         </div>
       </div>
-      <div
-        class="tm-li-tx__content__information__block"
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
       >
-        <a
-          href="https://explorecosmos.network/blocks/566"
-        >
-          Block #566 
-        </a>
-        @ 2:03 am
-      </div>
+        Block #566 
+      </a>
+      @ 2:03 am
     </div>
   </div>
 </div>
@@ -73,24 +78,31 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
   <div
     class="tm-li-tx__content"
   >
-    <p
-      class="tm-li-tx__content__caption"
-    >
-      <div>
-        Unbonded 
-        <b>
-          100
-        </b>
-        <span>
-           Steak
-        </span>
-      </div>
-    </p>
     <div
-      class="tm-li-tx__content__information"
+      class="tm-li-tx__content__left"
     >
       <div
-        class="tm-li-tx__content__information__details"
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Unbonded 
+            <b>
+              105
+            </b>
+            <span>
+               ATOMS
+            </span>
+            <span>
+               - a few seconds ago
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
       >
         <div>
           From 
@@ -101,16 +113,38 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
           </router-link>
         </div>
       </div>
-      <div
-        class="tm-li-tx__content__information__block"
-      >
-        <a
-          href="https://explorecosmos.network/blocks/566"
+    </div>
+    <div
+      class="tm-li-tx__content__action"
+    >
+      <div>
+        <button
+          class="tm-btn"
+          disabled="disabled"
         >
-          Block #566 
-        </a>
-        @ 2:03 am
+          <span
+            class="tm-btn__container tm-btn--primary"
+          >
+            <!---->
+            <!---->
+            <span
+              class="tm-btn__value"
+            >
+              Claim
+            </span>
+          </span>
+        </button>
       </div>
+    </div>
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
+      >
+        Block #566 
+      </a>
+      @ 2:03 am
     </div>
   </div>
 </div>

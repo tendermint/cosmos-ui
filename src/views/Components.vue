@@ -52,8 +52,8 @@
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <header>TmLiStakeTransaction</header>
-      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" />
-      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" />
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators"/>
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
     </section>
     <section>
       <header>TmField</header>
@@ -106,7 +106,11 @@ export default {
         }
       }
     ]
-  })
+  }),
+  methods: {
+    // eslint-disable-next-line
+    log: msg => console.log(msg)
+  }
 }
 </script>
 

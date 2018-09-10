@@ -277,19 +277,22 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <img src="../../assets/cosmos-logo.png" style="border-color: #25293f;">
           </div>
           <div class="tm-li-tx__content">
-            <p class="tm-li-tx__content__caption">
-              <div>
-                Sent&nbsp;
-                <b>1234</b><span>&nbsp;JBCOINS</span>
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Sent&nbsp;
+                    <b>1234</b><span>&nbsp;JBCOINS</span>
+                  </div>
+                </p>
               </div>
-            </p>
-            <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details">
+              <div class="tm-li-tx__content__information">
                 <span>To tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-              <div class="tm-li-tx__content__information__block">
-                <a href="https://explorecosmos.network/blocks/3436">Block #3436&nbsp;</a>@ 2:03 am
-              </div>
+            </div>
+            <!---->
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/3436">Block #3436&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>
@@ -298,19 +301,22 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <img src="../../assets/cosmos-logo.png" style="border-color: #215c2f;">
           </div>
           <div class="tm-li-tx__content">
-            <p class="tm-li-tx__content__caption">
-              <div>
-                Received&nbsp;
-                <b>1234</b><span>&nbsp;JBCOINS</span>
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Received&nbsp;
+                    <b>1234</b><span>&nbsp;JBCOINS</span>
+                  </div>
+                </p>
               </div>
-            </p>
-            <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details">
+              <div class="tm-li-tx__content__information">
                 <span>From tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
-              <div class="tm-li-tx__content__information__block">
-                <a href="https://explorecosmos.network/blocks/3438">Block #3438&nbsp;</a>@ 2:03 am
-              </div>
+            </div>
+            <!---->
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/3438">Block #3438&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>
@@ -319,19 +325,22 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <img src="../../assets/cosmos-logo.png" style="border-color: #25293f;">
           </div>
           <div class="tm-li-tx__content">
-            <p class="tm-li-tx__content__caption">
-              <div>
-                Sent&nbsp;
-                <b>1234</b><span>&nbsp;JBCOINS</span>
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Sent&nbsp;
+                    <b>1234</b><span>&nbsp;JBCOINS</span>
+                  </div>
+                </p>
               </div>
-            </p>
-            <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details">
+              <div class="tm-li-tx__content__information">
                 <span>To yourself!</span>
               </div>
-              <div class="tm-li-tx__content__information__block">
-                <a href="https://explorecosmos.network/blocks/466">Block #466&nbsp;</a>@ 2:03 am
-              </div>
+            </div>
+            <!---->
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/466">Block #466&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>
@@ -340,14 +349,16 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <img src="../../assets/cosmos-logo.png" style="border-color: #512584;">
           </div>
           <div class="tm-li-tx__content">
-            <p class="tm-li-tx__content__caption">
-              <div>
-                Delegated&nbsp;
-                <b>4200</b><span>&nbsp;steak</span>
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Delegated&nbsp;
+                    <b>4200</b><span>&nbsp;STEAKS</span>
+                  </div>
+                </p>
               </div>
-            </p>
-            <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details">
+              <div class="tm-li-tx__content__information">
                 <div>
                   To&nbsp;
                   <router-link to="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">
@@ -355,9 +366,10 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                   </router-link>
                 </div>
               </div>
-              <div class="tm-li-tx__content__information__block">
-                <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
-              </div>
+            </div>
+            <!---->
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>
@@ -366,14 +378,16 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
             <img src="../../assets/cosmos-logo.png" style="border-color: #9d5c19;">
           </div>
           <div class="tm-li-tx__content">
-            <p class="tm-li-tx__content__caption">
-              <div>
-                Unbonded&nbsp;
-                <b>100</b><span>&nbsp;Steak</span>
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Unbonded&nbsp;
+                    <b>105</b><span>&nbsp;ATOMS</span><span>&nbsp;- a few seconds ago</span>
+                  </div>
+                </p>
               </div>
-            </p>
-            <div class="tm-li-tx__content__information">
-              <div class="tm-li-tx__content__information__details">
+              <div class="tm-li-tx__content__information">
                 <div>
                   From&nbsp;
                   <router-link to="/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw">
@@ -381,9 +395,18 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                   </router-link>
                 </div>
               </div>
-              <div class="tm-li-tx__content__information__block">
-                <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
+            </div>
+            <div class="tm-li-tx__content__action">
+              <div>
+                <button class="tm-btn" disabled="disabled"><span class="tm-btn__container tm-btn--primary">
+            <!---->
+            <!---->
+            <span class="tm-btn__value">Claim</span></span>
+                </button>
               </div>
+            </div>
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>

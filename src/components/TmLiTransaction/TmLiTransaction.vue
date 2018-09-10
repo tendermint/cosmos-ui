@@ -3,14 +3,19 @@
   .tm-li-tx__icon
     img(src="../../assets/cosmos-logo.png" :style="{ borderColor: color }")
   .tm-li-tx__content
-    p.tm-li-tx__content__caption
-      slot(name="caption")
-    .tm-li-tx__content__information
-      .tm-li-tx__content__information__details
+    .tm-li-tx__content__left
+      .tm-li-tx__content__caption
+        p.tm-li-tx__content__caption__title
+          slot(name="caption")
+      .tm-li-tx__content__information
         slot(name="details")
-      .tm-li-tx__content__information__block
-        a(:href="'https://explorecosmos.network/blocks/' + block") Block \#{{block}}&nbsp;
-        | @ {{date}}
+    
+    .tm-li-tx__content__action(v-if="$slots['action']")
+      slot(name="action")
+    
+    .tm-li-tx__content__block
+      a(:href="'https://explorecosmos.network/blocks/' + block") Block \#{{block}}&nbsp;
+      | @ {{date}}
 </template>
 
 <script>
@@ -37,6 +42,7 @@ export default {
   margin-bottom 0.5rem
   border 1px solid var(--bc-dim)
   background var(--app-fg)
+  min-width 45rem
 
   &:hover
     background var(--hover-bg)
@@ -56,26 +62,48 @@ export default {
 
   &__content
     display flex
-    flex-direction column
+    flex-direction row
     width 100%
     padding 1rem
     font-size m
 
+    &__left, &__action, &__block
+      display flex
+      flex-direction column
+
+    &__left
+      flex 0.5
+
+    &__action
+      flex 0.3
+      justify-content center
+      padding 0 1rem
+      border-left 1px solid var(--bc-dim)
+
+      button
+        width 9rem
+
+    &__block
+      flex 0.3
+
     &__caption
-      font-size lg
       line-height lg
+      font-size lg
       color var(--bright)
 
-    &__information
+    &__information, &__block
       display flex
       width 100%
       font-size 14px
       color var(--dim)
       align-items baseline
 
-      &__details
-        padding-top 3px
+    &__information
+      padding-top 3px
 
-      &__block
-        margin-left auto
+    &__block
+      margin-left auto
+      flex-direction row
+      align-items flex-end
+      justify-content flex-end
 </style>
