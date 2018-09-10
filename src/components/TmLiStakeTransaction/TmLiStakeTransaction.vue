@@ -23,7 +23,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
     div(slot="action")
-      tm-btn(value="Claim" color="primary" :disabled="stillUnbonding" @click.native="$emit('end-unbonding')")
+      tm-btn(:value="state === 'ended' ? 'Fulfilled' : 'Claim'" color="primary" :disabled="state === 'locked' || state === 'ended'" @click.native="$emit('end-unbonding')")
 </template>
 
 <script>
@@ -54,14 +54,15 @@ export default {
     },
     timeDiff() {
       return this.transaction.time
-        ? moment(this.transaction.time).fromNow()
+        ? moment(
+            this.transaction.time + parseInt(this.unbonding_time)
+          ).fromNow()
         : ""
     },
-    stillUnbonding() {
-      return (
-        new Date(this.transaction.time + parseInt(this.unbonding_time)) >=
-        Date.now()
-      )
+    // state needs to be calculated by a wrapping application
+    // unbonding requires state to be 'locked', 'ready', 'ended'
+    state() {
+      return this.transaction.state
     },
     color() {
       if (this.delegation) return colors.stake.bonded
