@@ -120,7 +120,6 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
       <div>
         <button
           class="tm-btn"
-          disabled="disabled"
         >
           <span
             class="tm-btn__container tm-btn--primary"
