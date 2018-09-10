@@ -4,15 +4,21 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="caption")
       | Delegated&nbsp;
       b {{tx.delegation.amount}}
-      span &nbsp;{{tx.delegation.denom}}
+      span &nbsp;{{tx.delegation.denom.toUpperCase()}}S
     div(slot="details")
       | To&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      b {{tx.shares}}
-      span &nbsp;Steak
+      template(v-if="transaction.undelegation")
+        b {{transaction.undelegation.amount}}
+        span &nbsp;{{transaction.undelegation.denom.toUpperCase()}}S
+      template(v-else)
+        b {{tx.shares}}
+        span &nbsp;Shares
+      template(v-if="transaction.time")
+        span &nbsp;- {{timeDiff}}
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
@@ -21,6 +27,11 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
 <script>
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/tranaction-colors.js"
+import moment from "moment"
+
+/*
+* undelegation tx need a preprocessing, where shares are translated into tx.undelegation: {amount, denom}
+*/
 
 export default {
   name: "tm-li-stake-transaction",
@@ -37,6 +48,11 @@ export default {
     },
     unbonding() {
       return this.type === "cosmos-sdk/BeginUnbonding"
+    },
+    timeDiff() {
+      return this.transaction.time
+        ? moment(this.transaction.time).fromNow()
+        : ""
     },
     color() {
       if (this.delegation) return colors.stake.bonded
