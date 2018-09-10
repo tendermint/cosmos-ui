@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- added action button to unbonding tx @faboweb
+
 ## [0.2.24]
 
 - fix validator link on delegation transaction not using vue-router to @faboweb
