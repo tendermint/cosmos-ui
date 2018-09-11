@@ -24,6 +24,12 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
     div(slot="action")
       tm-btn(:value="state === 'ended' ? 'Fulfilled' : 'Claim'" :color="state === 'ended' ? 'secondary' : 'primary'" :disabled="state === 'locked' || state === 'ended'" @click.native="$emit('end-unbonding')")
+  template(v-if="endUnbonding")
+    div(slot="caption")
+      | Ended Unbonding&nbsp;
+    div(slot="details")
+      | From&nbsp;
+      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>
@@ -52,6 +58,9 @@ export default {
     unbonding() {
       return this.type === "cosmos-sdk/BeginUnbonding"
     },
+    endUnbonding() {
+      return this.type === "cosmos-sdk/CompleteUnbonding"
+    },
     timeDiff() {
       return this.transaction.time
         ? moment(
@@ -68,6 +77,7 @@ export default {
     color() {
       if (this.delegation) return colors.stake.bonded
       if (this.unbonding) return colors.stake.unbonded
+      if (this.endUnbonding) return colors.stake.unbonded
     }
   },
   methods: {
