@@ -55,7 +55,8 @@ export default {
     timeDiff() {
       return this.transaction.time
         ? moment(
-            this.transaction.time + parseInt(this.unbonding_time)
+            moment(this.transaction.time).valueOf() +
+              parseInt(this.unbonding_time)
           ).fromNow()
         : ""
     },

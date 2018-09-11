@@ -1,7 +1,7 @@
 module.exports = [
   {
     hash: "not a real hash",
-    time: 1042 + 1000, // set by Voyager
+    time: new Date(1042 + 1000).toISOString(), // set by Voyager
     height: "3436",
     tx: {
       type: "8EFE47F0625DE8",
@@ -79,7 +79,7 @@ module.exports = [
   },
   {
     hash: "not a real hash2",
-    time: 1042 + 1010, // set by Voyager
+    time: new Date(1042 + 1010).toISOString(), // set by Voyager
     height: "3438",
     tx: {
       type: "8EFE47F0625DE8",
@@ -159,7 +159,7 @@ module.exports = [
   {
     hash: "not a real hash3",
 
-    time: 1042 + 100, // set by Voyager
+    time: new Date(1042 + 100).toISOString(), // set by Voyager
     height: "466",
     tx: {
       type: "8EFE47F0625DE8",
@@ -254,7 +254,7 @@ module.exports = [
   {
     hash: "not a real hash4",
 
-    time: 1042 + 150, // set by Voyager
+    time: new Date(1042 + 150).toISOString(), // set by Voyager
     height: "566",
     tx: {
       type: "8EFE47F0625DE8",
@@ -317,7 +317,7 @@ module.exports = [
   {
     hash: "not a real hash5",
 
-    time: 1042 + 150, // set by Voyager
+    time: new Date(1042 + 150).toISOString(), // set by Voyager
     height: "566",
     tx: {
       type: "8EFE47F0625DE8",
