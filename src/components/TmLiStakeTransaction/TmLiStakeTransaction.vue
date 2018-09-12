@@ -12,18 +12,18 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="caption")
       | Unbonded&nbsp;
       template(v-if="transaction.undelegation")
-        b {{transaction.undelegation.amount}}
-        span &nbsp;{{transaction.undelegation.denom.toUpperCase()}}S
+        b {{transaction.balance.amount}}
+        span &nbsp;{{transaction.balance.denom.toUpperCase()}}S
       template(v-else)
-        b {{tx.shares}}
+        b {{tx.shares_amount}}
         span &nbsp;Shares
-      template(v-if="transaction.time")
+      template(v-if="timeDiff")
         span &nbsp;- {{timeDiff}}
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
     div(slot="action")
-      tm-btn(:value="state === 'ended' ? 'Fulfilled' : 'Claim'" :color="state === 'ended' ? 'secondary' : 'primary'" :disabled="state === 'locked' || state === 'ended'" @click.native="$emit('end-unbonding')")
+      tm-btn(v-if="state !== 'ended'" value="Claim" color="primary" :disabled="state === 'locked'" @click.native="$emit('end-unbonding')")
   template(v-if="endUnbonding")
     div(slot="caption")
       | Ended Unbonding&nbsp;
@@ -39,7 +39,7 @@ import moment from "moment"
 import TmBtn from "../TmBtn/TmBtn.vue"
 
 /*
-* undelegation tx need a preprocessing, where shares are translated into tx.undelegation: {amount, denom}
+* undelegation tx need a preprocessing, where shares are translated into transaction.balance: {amount, denom}
 */
 
 export default {
@@ -62,17 +62,24 @@ export default {
       return this.type === "cosmos-sdk/CompleteUnbonding"
     },
     timeDiff() {
-      return this.transaction.time
-        ? moment(
-            moment(this.transaction.time).valueOf() +
-              parseInt(this.unbonding_time)
-          ).fromNow()
+      // only show time diff if still waiting to be terminated
+      if (this.state !== "locked") return ""
+
+      return this.transaction.unbondingDelegation
+        ? moment(this.transaction.unbondingDelegation.min_time).toNow()
         : ""
     },
     // state needs to be calculated by a wrapping application
     // unbonding requires state to be 'locked', 'ready', 'ended'
     state() {
-      return this.transaction.state
+      if (!this.transaction.unbondingDelegation) return "ended"
+      if (
+        moment(this.transaction.unbondingDelegation.min_time).valueOf() -
+          moment().valueOf() <=
+        0
+      )
+        return "ready"
+      return "locked"
     },
     color() {
       if (this.delegation) return colors.stake.bonded
@@ -92,8 +99,7 @@ export default {
     validatorURL: {
       type: String,
       default: ""
-    },
-    unbonding_time: String
+    }
   }
 }
 </script>
