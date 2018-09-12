@@ -11,7 +11,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      template(v-if="transaction.undelegation")
+      template(v-if="transaction.balance")
         b {{transaction.balance.amount}}
         span &nbsp;{{transaction.balance.denom.toUpperCase()}}S
       template(v-else)

@@ -328,7 +328,7 @@ module.exports = [
             value: {
               validator_addr:
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
-              shares: 100
+              shares_amount: 100
             }
           }
         ],
