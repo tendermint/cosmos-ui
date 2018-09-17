@@ -8,7 +8,7 @@
     @keyup="onKeyup"
     @keydown="onKeydown")
     option(value="" disabled selected hidden) {{ selectPlaceholder }}
-    option(v-if="options" v-for="i in options" :value="i.value") {{ i.key }}
+    option(v-if="options" v-for="(option, index) in options" :key="index" :value="option.value") {{ option.key }}
     option(v-else-if="type === 'countries'" v-for="i in countries" :value="i.value"
     :key="i.key") {{ i.key }}
   .tm-field-select-addon: i.material-icons arrow_drop_down
