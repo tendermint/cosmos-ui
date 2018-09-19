@@ -9,7 +9,7 @@ tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="t
 import TmLiBankTransaction from "../TmLiBankTransaction/TmLiBankTransaction"
 import TmLiStakeTransaction from "../TmLiStakeTransaction/TmLiStakeTransaction"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
-import colors from "../TmLiTransaction/tranaction-colors.js"
+import colors from "../TmLiTransaction/transaction-colors.js"
 
 export default {
   name: "tm-li-any-transaction",

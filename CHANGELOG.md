@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-- set `key=index` to TmField options @fedekunzegit
+- set `key=index` to TmField options @fedekunze
+- add redelegation to TmLiStakeTransaction @fedekunze
 
 ## [0.2.25]
 

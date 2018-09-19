@@ -56,6 +56,7 @@
       <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators"/>
     </section>
     <section>
       <header>TmField</header>
@@ -105,6 +106,12 @@ export default {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         description: {
           moniker: "cool validator"
+        }
+      },
+      {
+        owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+        description: {
+          moniker: "Kentucky val"
         }
       }
     ]
