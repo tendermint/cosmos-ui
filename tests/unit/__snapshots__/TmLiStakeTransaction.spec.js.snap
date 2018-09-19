@@ -63,6 +63,69 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
 </div>
 `;
 
+exports[`TmLiStakeTransaction should show redelegations 1`] = `
+<div
+  class="tm-li-tx"
+>
+  <div
+    class="tm-li-tx__icon"
+  >
+    <img
+      src="../../assets/cosmos-logo.png"
+      style="border-color: #512584;"
+    />
+  </div>
+  <div
+    class="tm-li-tx__content"
+  >
+    <div
+      class="tm-li-tx__content__left"
+    >
+      <div
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Delegated 
+            <b>
+              4200
+            </b>
+            <span>
+               STEAKS
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
+      >
+        <div>
+          To 
+          <router-link
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cool validator
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
+      >
+        Block #566 
+      </a>
+      @ 2:03 am
+    </div>
+  </div>
+</div>
+`;
+
 exports[`TmLiStakeTransaction should show unbondings 1`] = `
 <div
   class="tm-li-tx"

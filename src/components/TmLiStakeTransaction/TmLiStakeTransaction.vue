@@ -11,7 +11,11 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
-      b {{tx.redelegation.amount}}
+      template(v-if="transaction.redelegation")
+        b {{transaction.redelegation.amount}}
+        span &nbsp;{{transaction.undelegation.denom.toUpperCase()}}S
+      template(v-else)
+        b {{tx.shares}}
       span &nbsp;{{tx.redelegation.denom.toUpperCase()}}S
     div(slot="details")
       | To&nbsp;
