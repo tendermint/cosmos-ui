@@ -21,7 +21,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
       |  to&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_dst_addr)}}
+      router-link(:to="this.validatorURL + '/' + tx.validator_dst_addr") {{moniker(tx.validator_dst_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;

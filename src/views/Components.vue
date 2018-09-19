@@ -56,7 +56,7 @@
       <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" v-on:end-redelegation="log('end redelegation')"/>
+      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators"/>
     </section>
     <section>
       <header>TmField</header>
