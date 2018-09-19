@@ -13,13 +13,15 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | Redelegated&nbsp;
       template(v-if="transaction.redelegation")
         b {{transaction.redelegation.amount}}
-        span &nbsp;{{transaction.undelegation.denom.toUpperCase()}}S
+        span &nbsp;{{transaction.redelegation.denom.toUpperCase()}}S
       template(v-else)
         b {{tx.shares}}
-      span &nbsp;{{tx.redelegation.denom.toUpperCase()}}S
+        span &nbsp;Shares
     div(slot="details")
-      | To&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      | From&nbsp;
+      router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
+      |  to&nbsp;
+      router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_dst_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;

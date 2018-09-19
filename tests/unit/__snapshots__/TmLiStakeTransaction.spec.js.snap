@@ -72,7 +72,7 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
   >
     <img
       src="../../assets/cosmos-logo.png"
-      style="border-color: #512584;"
+      style="border-color: #7227b1;"
     />
   </div>
   <div
@@ -88,12 +88,12 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
           class="tm-li-tx__content__caption__title"
         >
           <div>
-            Delegated 
+            Redelegated 
             <b>
-              4200
+              20
             </b>
             <span>
-               STEAKS
+               ATOMS
             </span>
           </div>
         </p>
@@ -102,11 +102,17 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
         class="tm-li-tx__content__information"
       >
         <div>
-          To 
+          From 
           <router-link
             to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
           >
             cool validator
+          </router-link>
+           to 
+          <router-link
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw
           </router-link>
         </div>
       </div>
