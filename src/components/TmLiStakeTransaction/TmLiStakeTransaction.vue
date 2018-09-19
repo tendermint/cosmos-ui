@@ -8,6 +8,14 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="details")
       | To&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+  template(v-if="redelegation")
+    div(slot="caption")
+      | Redelegated&nbsp;
+      b {{tx.redelegation.amount}}
+      span &nbsp;{{tx.redelegation.denom.toUpperCase()}}S
+    div(slot="details")
+      | To&nbsp;
+      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
@@ -28,7 +36,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
 
 <script>
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
-import colors from "../TmLiTransaction/tranaction-colors.js"
+import colors from "../TmLiTransaction/transaction-colors.js"
 import moment from "moment"
 import TmBtn from "../TmBtn/TmBtn.vue"
 
@@ -49,6 +57,9 @@ export default {
     delegation() {
       return this.type === "cosmos-sdk/MsgDelegate"
     },
+    redelegation() {
+      return this.type === "cosmos-sdk/BeginRedelegate"
+    },
     unbonding() {
       return this.type === "cosmos-sdk/BeginUnbonding"
     },
@@ -66,6 +77,7 @@ export default {
     },
     color() {
       if (this.delegation) return colors.stake.bonded
+      if (this.redelegation) return colors.stake.redelegate
       if (this.unbonding) return colors.stake.unbonded
     }
   },
