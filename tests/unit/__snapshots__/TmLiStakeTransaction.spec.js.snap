@@ -159,14 +159,12 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
           <div>
             Unbonded 
             <b>
-              105
+              100
             </b>
             <span>
-               ATOMS
+               Shares
             </span>
-            <span>
-               - a few seconds ago
-            </span>
+            <!---->
           </div>
         </p>
       </div>
@@ -187,21 +185,7 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
       class="tm-li-tx__content__action"
     >
       <div>
-        <button
-          class="tm-btn"
-        >
-          <span
-            class="tm-btn__container tm-btn--primary"
-          >
-            <!---->
-            <!---->
-            <span
-              class="tm-btn__value"
-            >
-              Claim
-            </span>
-          </span>
-        </button>
+        <!---->
       </div>
     </div>
     <div

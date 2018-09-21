@@ -1,6 +1,6 @@
 <template lang='pug'>
 tm-li-bank-transaction(v-if="bankTx" :transaction="transaction" :address="address")
-tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL" :unbonding_time="unbonding_time")
+tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL" :unbonding_time="unbonding_time" v-on:end-unbonding="$emit('end-unbonding')")
 tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="transaction.height")
   span(slot="caption") Unknown Transaction Type
 </template>
@@ -24,9 +24,11 @@ export default {
     },
     stakingTx() {
       return (
-        ["cosmos-sdk/MsgDelegate", "cosmos-sdk/BeginUnbonding"].indexOf(
-          this.type
-        ) !== -1
+        [
+          "cosmos-sdk/MsgDelegate",
+          "cosmos-sdk/BeginUnbonding",
+          "cosmos-sdk/CompleteUnbonding"
+        ].indexOf(this.type) !== -1
       )
     }
   },
