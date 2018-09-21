@@ -33,4 +33,12 @@ describe("TmLiStakeTransaction", () => {
     expect(wrapper.vm.unbonding).toBe(true)
     expect(wrapper.vm.$el).toMatchSnapshot()
   })
+
+  it("should show redelegations", () => {
+    wrapper.setProps({
+      transaction: transactions[5]
+    })
+    expect(wrapper.vm.redelegation).toBe(true)
+    expect(wrapper.vm.$el).toMatchSnapshot()
+  })
 })

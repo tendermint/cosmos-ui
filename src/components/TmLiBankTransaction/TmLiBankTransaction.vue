@@ -46,7 +46,7 @@ const defaultTransaction = {
 }
 
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
-import colors from "../TmLiTransaction/tranaction-colors.js"
+import colors from "../TmLiTransaction/transaction-colors.js"
 
 export default {
   name: "tm-li-bank-transaction",
