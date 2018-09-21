@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.26]
+
 - added ended unbonding tx @faboweb
 - set `key=index` to TmField options @fedekunze
 - add redelegation to TmLiStakeTransaction @fedekunze
