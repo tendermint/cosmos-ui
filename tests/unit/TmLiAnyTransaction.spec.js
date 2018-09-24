@@ -12,6 +12,12 @@ describe("TmLiAnyTransaction", () => {
         description: {
           moniker: "cool validator"
         }
+      },
+      {
+        owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+        description: {
+          moniker: "Kentucky val"
+        }
       }
     ],
     address: "tb1da6xsetjg9jxgun9wdesexv05j"
