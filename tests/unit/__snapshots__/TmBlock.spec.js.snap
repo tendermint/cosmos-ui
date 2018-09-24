@@ -429,7 +429,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                   </router-link>
                   to&nbsp;
                   <router-link to="/cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw">
-                    cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw
+                    Kentucky val
                   </router-link>
                 </div>
               </div>
