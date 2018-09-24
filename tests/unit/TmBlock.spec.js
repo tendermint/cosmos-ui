@@ -15,6 +15,12 @@ describe("TmBlock.vue", () => {
             description: {
               moniker: "cool validator"
             }
+          },
+          {
+            owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+            description: {
+              moniker: "Kentucky val"
+            }
           }
         ],
         loading: false,

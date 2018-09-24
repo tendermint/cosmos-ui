@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- fix BeginRedelegate tx that was being shown as `Unknown Transaction Type` @fedekunze
+
 ## [0.2.26]
 
 - added ended unbonding tx @faboweb

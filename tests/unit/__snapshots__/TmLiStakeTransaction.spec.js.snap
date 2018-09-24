@@ -112,7 +112,7 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
           <router-link
             to="/validator/cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw"
           >
-            cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw
+            Kentucky val
           </router-link>
         </div>
       </div>
