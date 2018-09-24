@@ -27,7 +27,8 @@ export default {
         [
           "cosmos-sdk/MsgDelegate",
           "cosmos-sdk/BeginUnbonding",
-          "cosmos-sdk/CompleteUnbonding"
+          "cosmos-sdk/CompleteUnbonding",
+          "cosmos-sdk/BeginRedelegate"
         ].indexOf(this.type) !== -1
       )
     }
