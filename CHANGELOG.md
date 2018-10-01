@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-- fix BeginRedelegate tx that was being shown as `Unknown Transaction Type` @fedekunze
+## [0.2.28]
+
 - fix transaction history components. Redelegations and Unbondings now show tokens instead of shares @fedekunze
+
+## [0.2.27]
+
+- fix BeginRedelegate tx that was being shown as `Unknown Transaction Type` @fedekunze
 
 ## [0.2.26]
 
