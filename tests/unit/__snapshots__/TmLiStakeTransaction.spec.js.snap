@@ -201,7 +201,7 @@ exports[`TmLiStakeTransaction redelegations should show redelegations by display
 </div>
 `;
 
-exports[`TmLiStakeTransaction unbonding delegations should show unbondings 1`] = `
+exports[`TmLiStakeTransaction unbonding delegations should show unbondings and calculate tokens from shares 1`] = `
 <div
   class="tm-li-tx"
 >
