@@ -4,7 +4,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="caption")
       | Delegated&nbsp;
       b {{ prettify(tx.delegation.amount) }}
-      span &nbsp;{{ displayDenom(tx.delegation.amount) }}
+      span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | To&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
@@ -13,7 +13,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | Redelegated&nbsp;
       template
         b {{ calculatePrettifiedTokens(tx.validator_src_addr, tx.shares_amount) }}
-        span &nbsp;{{ displayDenom(sharesToTokens) }}
+        span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
@@ -24,7 +24,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | Unbonded&nbsp;
       template
         b {{ calculatePrettifiedTokens(tx.validator_addr, tx.shares_amount) }}
-        span &nbsp;{{ displayDenom(sharesToTokens) }}
+        span &nbsp;{{ bondingDenom }}s
       template(v-if="timeDiff")
         span &nbsp;- {{timeDiff}}
     div(slot="details")
@@ -144,12 +144,6 @@ export default {
           .toNumber()
       }
       return this.prettify(tokens)
-    },
-    displayDenom(amount) {
-      if (Number(amount) === 1) {
-        return this.bondingDenom
-      }
-      return `${this.bondingDenom}s`
     }
   },
   props: {
