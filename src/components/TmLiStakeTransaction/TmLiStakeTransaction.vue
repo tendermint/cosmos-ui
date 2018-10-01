@@ -11,10 +11,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
-      template(v-if="sharesToTokens")
-        b {{ prettify(sharesToTokens) }}
-        span &nbsp;{{ displayDenom(sharesToTokens) }}
-      template(v-else)
+      template
         b {{ calculatePrettifiedTokens(tx.validator_src_addr, tx.shares_amount) }}
         span &nbsp;{{ displayDenom(sharesToTokens) }}
     div(slot="details")
@@ -25,10 +22,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      template(v-if="sharesToTokens")
-        b {{ prettify(sharesToTokens) }}
-        span &nbsp;{{ displayDenom(sharesToTokens) }}
-      template(v-else)
+      template
         b {{ calculatePrettifiedTokens(tx.validator_addr, tx.shares_amount) }}
         span &nbsp;{{ displayDenom(sharesToTokens) }}
       template(v-if="timeDiff")
@@ -113,7 +107,7 @@ export default {
       return (validator && validator.description.moniker) || validatorAddr
     },
     prettify(amount) {
-      let amountNumber = Number(amount)
+      const amountNumber = Number(amount)
       if (Number.isInteger(amountNumber)) {
         return numeral(amountNumber).format(`0,0`)
       }
@@ -142,7 +136,7 @@ export default {
       let totalTokens = totalTokensN.div(totalTokensD)
 
       if (totalSharesN.eq(0)) {
-        tokens = new BigNumber(0).toNumber()
+        tokens = 0
       } else {
         tokens = myShares
           .times(totalTokens)
@@ -168,10 +162,6 @@ export default {
     bondingDenom: {
       type: String,
       default: "atom"
-    },
-    sharesToTokens: {
-      type: String,
-      default: ""
     }
   }
 }

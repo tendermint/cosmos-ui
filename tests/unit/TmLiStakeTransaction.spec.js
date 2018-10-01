@@ -47,30 +47,12 @@ describe("TmLiStakeTransaction", () => {
       expect(wrapper.vm.unbonding).toBe(true)
       expect(wrapper.vm.$el).toMatchSnapshot()
     })
-
-    it("should show unbondings by displaying the given token amount", () => {
-      wrapper.setProps({
-        transaction: transactions[4],
-        sharesToTokens: "100"
-      })
-      expect(wrapper.vm.unbonding).toBe(true)
-      expect(wrapper.vm.$el).toMatchSnapshot()
-    })
   })
 
   describe(`redelegations`, () => {
     it("should show redelegations and calculate tokens from shares", () => {
       wrapper.setProps({
         transaction: transactions[5]
-      })
-      expect(wrapper.vm.redelegation).toBe(true)
-      expect(wrapper.vm.$el).toMatchSnapshot()
-    })
-
-    it("should show redelegations by displaying the given token amount", () => {
-      wrapper.setProps({
-        transaction: transactions[5],
-        sharesToTokens: "15"
       })
       expect(wrapper.vm.redelegation).toBe(true)
       expect(wrapper.vm.$el).toMatchSnapshot()
