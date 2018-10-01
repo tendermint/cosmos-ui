@@ -20,13 +20,12 @@ describe("TmLiStakeTransaction", () => {
         description: {
           moniker: "Kentucky val"
         },
-        tokens: "100",
-        delegator_shares: "20"
+        tokens: "20",
+        delegator_shares: "100"
       }
     ],
     validatorURL: "/validator",
-    bondingDenom: "stake",
-    sharesToTokens: undefined
+    bondingDenom: "stake"
   }
 
   beforeEach(() => {
@@ -41,6 +40,14 @@ describe("TmLiStakeTransaction", () => {
   })
 
   describe(`unbonding delegations`, () => {
+    it("should show unbondings and calculate tokens from shares", () => {
+      wrapper.setProps({
+        transaction: transactions[4]
+      })
+      expect(wrapper.vm.unbonding).toBe(true)
+      expect(wrapper.vm.$el).toMatchSnapshot()
+    })
+
     it("should show unbondings by displaying the given token amount", () => {
       wrapper.setProps({
         transaction: transactions[4],
@@ -52,6 +59,14 @@ describe("TmLiStakeTransaction", () => {
   })
 
   describe(`redelegations`, () => {
+    it("should show redelegations and calculate tokens from shares", () => {
+      wrapper.setProps({
+        transaction: transactions[5]
+      })
+      expect(wrapper.vm.redelegation).toBe(true)
+      expect(wrapper.vm.$el).toMatchSnapshot()
+    })
+
     it("should show redelegations by displaying the given token amount", () => {
       wrapper.setProps({
         transaction: transactions[5],

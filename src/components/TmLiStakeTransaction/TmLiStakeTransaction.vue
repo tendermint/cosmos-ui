@@ -11,8 +11,11 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
-      template
+      template(v-if="sharesToTokens")
         b {{ prettify(sharesToTokens) }}
+        span &nbsp;{{ displayDenom(sharesToTokens) }}
+      template(v-else)
+        b {{ calculatePrettifiedTokens(tx.validator_src_addr, tx.shares_amount) }}
         span &nbsp;{{ displayDenom(sharesToTokens) }}
     div(slot="details")
       | From&nbsp;
@@ -22,8 +25,11 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      template
+      template(v-if="sharesToTokens")
         b {{ prettify(sharesToTokens) }}
+        span &nbsp;{{ displayDenom(sharesToTokens) }}
+      template(v-else)
+        b {{ calculatePrettifiedTokens(tx.validator_addr, tx.shares_amount) }}
         span &nbsp;{{ displayDenom(sharesToTokens) }}
       template(v-if="timeDiff")
         span &nbsp;- {{timeDiff}}
@@ -46,6 +52,7 @@ import colors from "../TmLiTransaction/transaction-colors.js"
 import moment from "moment"
 import TmBtn from "../TmBtn/TmBtn.vue"
 import numeral from "numeral"
+import { BigNumber } from "bignumber.js"
 
 /*
 * undelegation tx need a preprocessing, where shares are translated into transaction.balance: {amount, denom}
@@ -106,11 +113,43 @@ export default {
       return (validator && validator.description.moniker) || validatorAddr
     },
     prettify(amount) {
-      const amountNumber = Number(amount)
+      let amountNumber = Number(amount)
       if (Number.isInteger(amountNumber)) {
         return numeral(amountNumber).format(`0,0`)
       }
       return numeral(amountNumber).format(`0,0.00`)
+    },
+    // TODO duplicated code from voyager. Delete when the two repositories are merged
+    calculatePrettifiedTokens(validatorAddr, shares) {
+      // this is the based on the idea that tokens should equal
+      // (myShares / totalShares) * totalTokens where totalShares
+      // and totalTokens are both represented as fractions
+      let tokens
+      let validator = this.validators.find(val => val.owner === validatorAddr)
+
+      let sharesN = new BigNumber(shares.split(`/`)[0])
+      let sharesD = new BigNumber(shares.split(`/`)[1] || 1)
+      let myShares = sharesN.div(sharesD)
+
+      let totalSharesN = new BigNumber(validator.delegator_shares.split(`/`)[0])
+      let totalSharesD = new BigNumber(
+        validator.delegator_shares.split(`/`)[1] || 1
+      )
+      let totalShares = totalSharesN.div(totalSharesD)
+
+      let totalTokensN = new BigNumber(validator.tokens.split(`/`)[0])
+      let totalTokensD = new BigNumber(validator.tokens.split(`/`)[1] || 1)
+      let totalTokens = totalTokensN.div(totalTokensD)
+
+      if (totalSharesN.eq(0)) {
+        tokens = new BigNumber(0).toNumber()
+      } else {
+        tokens = myShares
+          .times(totalTokens)
+          .div(totalShares)
+          .toNumber()
+      }
+      return this.prettify(tokens)
     },
     displayDenom(amount) {
       if (Number(amount) === 1) {
