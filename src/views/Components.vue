@@ -53,10 +53,11 @@
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <header>TmLiStakeTransaction</header>
       <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" :bondingDenom="bondingDenom"/>
-      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" :bondingDenom="bondingDenom"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" sharesToTokens="100" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" sharesToTokens="100" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" sharesToTokens="100" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" :bondingDenom="bondingDenom" sharesToTokens="15"/>
+      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" :bondingDenom="bondingDenom" sharesToTokens="0.1"/>
     </section>
     <section>
       <header>TmField</header>
@@ -107,16 +108,16 @@ export default {
         description: {
           moniker: "cool validator"
         },
-        tokens: "20",
-        delegator_shares: "100"
+        tokens: "100000",
+        delegator_shares: "100000"
       },
       {
         owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
         description: {
           moniker: "Kentucky val"
         },
-        tokens: "10",
-        delegator_shares: "40"
+        tokens: "100",
+        delegator_shares: "20"
       }
     ],
     bondingDenom: "stake"

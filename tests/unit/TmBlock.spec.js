@@ -15,16 +15,16 @@ describe("TmBlock.vue", () => {
             description: {
               moniker: "cool validator"
             },
-            tokens: "20",
-            delegator_shares: "100"
+            tokens: "100000",
+            delegator_shares: "100000"
           },
           {
             owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
             description: {
               moniker: "Kentucky val"
             },
-            tokens: "10",
-            delegator_shares: "40"
+            tokens: "100",
+            delegator_shares: "20"
           }
         ],
         loading: false,
