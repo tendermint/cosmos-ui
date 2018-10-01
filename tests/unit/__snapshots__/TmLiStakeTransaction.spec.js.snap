@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TmLiStakeTransaction should show delegations 1`] = `
+exports[`TmLiStakeTransaction delegations should show delegations 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -30,7 +30,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
               4200
             </b>
             <span>
-               STEAKS
+               stakes
             </span>
           </div>
         </p>
@@ -63,7 +63,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
 </div>
 `;
 
-exports[`TmLiStakeTransaction should show redelegations 1`] = `
+exports[`TmLiStakeTransaction redelegations should show redelegations and calculate tokens from shares 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -90,10 +90,10 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
           <div>
             Redelegated 
             <b>
-              20
+              0
             </b>
             <span>
-               ATOMS
+               stakes
             </span>
           </div>
         </p>
@@ -132,7 +132,76 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
 </div>
 `;
 
-exports[`TmLiStakeTransaction should show unbondings 1`] = `
+exports[`TmLiStakeTransaction redelegations should show redelegations by displaying the given token amount 1`] = `
+<div
+  class="tm-li-tx"
+>
+  <div
+    class="tm-li-tx__icon"
+  >
+    <img
+      src="../../assets/cosmos-logo.png"
+      style="border-color: #7227b1;"
+    />
+  </div>
+  <div
+    class="tm-li-tx__content"
+  >
+    <div
+      class="tm-li-tx__content__left"
+    >
+      <div
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Redelegated 
+            <b>
+              15
+            </b>
+            <span>
+               stakes
+            </span>
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
+      >
+        <div>
+          From 
+          <router-link
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cool validator
+          </router-link>
+           to 
+          <router-link
+            to="/validator/cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw"
+          >
+            Kentucky val
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
+      >
+        Block #566 
+      </a>
+      @ 2:03 am
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TmLiStakeTransaction unbonding delegations should show unbondings 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -159,10 +228,80 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
           <div>
             Unbonded 
             <b>
-              100
+              20
             </b>
             <span>
-               Shares
+               stakes
+            </span>
+            <!---->
+          </div>
+        </p>
+      </div>
+      <div
+        class="tm-li-tx__content__information"
+      >
+        <div>
+          From 
+          <router-link
+            to="/validator/cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw"
+          >
+            cool validator
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tm-li-tx__content__action"
+    >
+      <div>
+        <!---->
+      </div>
+    </div>
+    <div
+      class="tm-li-tx__content__block"
+    >
+      <a
+        href="https://explorecosmos.network/blocks/566"
+      >
+        Block #566 
+      </a>
+      @ 2:03 am
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TmLiStakeTransaction unbonding delegations should show unbondings by displaying the given token amount 1`] = `
+<div
+  class="tm-li-tx"
+>
+  <div
+    class="tm-li-tx__icon"
+  >
+    <img
+      src="../../assets/cosmos-logo.png"
+      style="border-color: #9d5c19;"
+    />
+  </div>
+  <div
+    class="tm-li-tx__content"
+  >
+    <div
+      class="tm-li-tx__content__left"
+    >
+      <div
+        class="tm-li-tx__content__caption"
+      >
+        <p
+          class="tm-li-tx__content__caption__title"
+        >
+          <div>
+            Unbonded 
+            <b>
+              15
+            </b>
+            <span>
+               stakes
             </span>
             <!---->
           </div>

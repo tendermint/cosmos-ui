@@ -88,7 +88,7 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
               4200
             </b>
             <span>
-               STEAKS
+               atoms
             </span>
           </div>
         </p>

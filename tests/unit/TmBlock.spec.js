@@ -14,13 +14,17 @@ describe("TmBlock.vue", () => {
             owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
             description: {
               moniker: "cool validator"
-            }
+            },
+            tokens: "20",
+            delegator_shares: "100"
           },
           {
             owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
             description: {
               moniker: "Kentucky val"
-            }
+            },
+            tokens: "10",
+            delegator_shares: "40"
           }
         ],
         loading: false,

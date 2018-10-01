@@ -52,11 +52,11 @@
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[2]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <header>TmLiStakeTransaction</header>
-      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators"/>
-      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators"/>
+      <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" :bondingDenom="bondingDenom"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
+      <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" :bondingDenom="bondingDenom"/>
     </section>
     <section>
       <header>TmField</header>
@@ -106,15 +106,20 @@ export default {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         description: {
           moniker: "cool validator"
-        }
+        },
+        tokens: "20",
+        delegator_shares: "100"
       },
       {
         owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
         description: {
           moniker: "Kentucky val"
-        }
+        },
+        tokens: "10",
+        delegator_shares: "40"
       }
-    ]
+    ],
+    bondingDenom: "stake"
   }),
   methods: {
     // eslint-disable-next-line

@@ -4,19 +4,19 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="caption")
       | Delegated&nbsp;
       b {{tx.delegation.amount}}
-      span &nbsp;{{tx.delegation.denom.toUpperCase()}}S
+      span &nbsp;{{bondingDenom}}s
     div(slot="details")
       | To&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
-      template(v-if="transaction.redelegation")
-        b {{transaction.redelegation.amount}}
-        span &nbsp;{{transaction.redelegation.denom.toUpperCase()}}S
+      template(v-if="sharesToTokens")
+        b {{sharesToTokens}}
+        span &nbsp;{{bondingDenom}}s
       template(v-else)
-        b {{tx.shares}}
-        span &nbsp;Shares
+        b {{calculatePrettyfiedTokens(tx.validator_src_addr, tx.shares_amount)}}
+        span &nbsp;{{bondingDenom}}s
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
@@ -25,12 +25,12 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      template(v-if="transaction.balance")
-        b {{transaction.balance.amount}}
-        span &nbsp;{{transaction.balance.denom.toUpperCase()}}S
+      template(v-if="sharesToTokens")
+        b {{sharesToTokens}}
+        span &nbsp;{{bondingDenom}}s
       template(v-else)
-        b {{tx.shares_amount}}
-        span &nbsp;Shares
+        b {{calculatePrettyfiedTokens(tx.validator_addr, tx.shares_amount)}}
+        span &nbsp;{{bondingDenom}}s
       template(v-if="timeDiff")
         span &nbsp;- {{timeDiff}}
     div(slot="details")
@@ -50,6 +50,8 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/transaction-colors.js"
 import moment from "moment"
+import numeral from "numeral"
+import { BigNumber } from "bignumber.js"
 import TmBtn from "../TmBtn/TmBtn.vue"
 
 /*
@@ -106,9 +108,40 @@ export default {
     }
   },
   methods: {
-    moniker(candidateAddr) {
-      let validator = this.validators.find(c => c.owner === candidateAddr)
-      return (validator && validator.description.moniker) || candidateAddr
+    moniker(validatorAddr) {
+      let validator = this.validators.find(c => c.owner === validatorAddr)
+      return (validator && validator.description.moniker) || validatorAddr
+    },
+    prettyInt(amount) {
+      return numeral(amount).format(`0,0`)
+    },
+    pretty(amount) {
+      return numeral(amount).format(`0,0.00`)
+    },
+    calculatePrettyfiedTokens(validatorAddr, shares) {
+      // this is the based on the idea that tokens should equal
+      // (myShares / totalShares) * totalTokens where totalShares
+      // and totalTokens are both represented as fractions
+      let validator = this.validators.find(val => val.owner === validatorAddr)
+      let myShares = new BigNumber(shares || 0)
+      let totalSharesN = new BigNumber(validator.delegator_shares.split(`/`)[0])
+      let totalSharesD = new BigNumber(
+        validator.delegator_shares.split(`/`)[1] || 1
+      )
+
+      let totalTokensN = new BigNumber(validator.tokens.split(`/`)[0])
+      let totalTokensD = new BigNumber(validator.tokens.split(`/`)[1] || 1)
+      if (totalSharesN.eq(0)) return new BigNumber(0)
+      let tokens = myShares
+        .times(totalSharesD)
+        .times(totalTokensN)
+        .div(totalSharesN.times(totalTokensD))
+        .toNumber()
+
+      if (Number.isInteger(tokens)) {
+        return this.prettyInt(tokens)
+      }
+      return this.pretty(tokens)
     }
   },
   props: {
@@ -117,7 +150,12 @@ export default {
     validatorURL: {
       type: String,
       default: ""
-    }
+    },
+    bondingDenom: {
+      type: String,
+      default: "atom"
+    },
+    sharesToTokens: String
   }
 }
 </script>

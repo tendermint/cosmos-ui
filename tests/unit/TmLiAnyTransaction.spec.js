@@ -20,7 +20,8 @@ describe("TmLiAnyTransaction", () => {
         }
       }
     ],
-    address: "tb1da6xsetjg9jxgun9wdesexv05j"
+    address: "tb1da6xsetjg9jxgun9wdesexv05j",
+    bondingDenom: `atom`
   }
 
   beforeEach(() => {

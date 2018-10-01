@@ -438,10 +438,6 @@ module.exports = [
         ],
         fee: {}
       }
-    },
-    redelegation: {
-      amount: 20,
-      denom: "Atom"
     }
   }
 ]

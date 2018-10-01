@@ -354,7 +354,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <p class="tm-li-tx__content__caption__title">
                   <div>
                     Delegated&nbsp;
-                    <b>4200</b><span>&nbsp;STEAKS</span>
+                    <b>4200</b><span>&nbsp;atoms</span>
                   </div>
                 </p>
               </div>
@@ -383,7 +383,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <p class="tm-li-tx__content__caption__title">
                   <div>
                     Unbonded&nbsp;
-                    <b>100</b><span>&nbsp;Shares</span>
+                    <b>20</b><span>&nbsp;atoms</span>
                     <!---->
                   </div>
                 </p>
@@ -417,7 +417,7 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <p class="tm-li-tx__content__caption__title">
                   <div>
                     Redelegated&nbsp;
-                    <b>20</b><span>&nbsp;ATOMS</span>
+                    <b>0</b><span>&nbsp;atoms</span>
                   </div>
                 </p>
               </div>
