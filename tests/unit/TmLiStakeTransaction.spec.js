@@ -41,7 +41,7 @@ describe("TmLiStakeTransaction", () => {
   })
 
   describe(`unbonding delegations`, () => {
-    it("should show unbondings", () => {
+    it("should show unbondings and calculate tokens from shares", () => {
       wrapper.setProps({
         transaction: transactions[4]
       })
