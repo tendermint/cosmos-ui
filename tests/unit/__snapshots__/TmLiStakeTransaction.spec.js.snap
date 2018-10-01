@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TmLiStakeTransaction should show delegations 1`] = `
+exports[`TmLiStakeTransaction delegations should show delegations 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -27,10 +27,10 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
           <div>
             Delegated 
             <b>
-              4200
+              4,200
             </b>
             <span>
-               STEAKS
+               stakes
             </span>
           </div>
         </p>
@@ -63,7 +63,7 @@ exports[`TmLiStakeTransaction should show delegations 1`] = `
 </div>
 `;
 
-exports[`TmLiStakeTransaction should show redelegations 1`] = `
+exports[`TmLiStakeTransaction redelegations should show redelegations and calculate tokens from shares 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -90,10 +90,10 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
           <div>
             Redelegated 
             <b>
-              20
+              0.15
             </b>
             <span>
-               ATOMS
+               stakes
             </span>
           </div>
         </p>
@@ -132,7 +132,7 @@ exports[`TmLiStakeTransaction should show redelegations 1`] = `
 </div>
 `;
 
-exports[`TmLiStakeTransaction should show unbondings 1`] = `
+exports[`TmLiStakeTransaction unbonding delegations should show unbondings and calculate tokens from shares 1`] = `
 <div
   class="tm-li-tx"
 >
@@ -159,10 +159,10 @@ exports[`TmLiStakeTransaction should show unbondings 1`] = `
           <div>
             Unbonded 
             <b>
-              100
+              0.01
             </b>
             <span>
-               Shares
+               stakes
             </span>
             <!---->
           </div>

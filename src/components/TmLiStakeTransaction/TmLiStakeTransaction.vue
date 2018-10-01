@@ -3,20 +3,17 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="delegation")
     div(slot="caption")
       | Delegated&nbsp;
-      b {{tx.delegation.amount}}
-      span &nbsp;{{tx.delegation.denom.toUpperCase()}}S
+      b {{ prettify(tx.delegation.amount) }}
+      span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | To&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
-      template(v-if="transaction.redelegation")
-        b {{transaction.redelegation.amount}}
-        span &nbsp;{{transaction.redelegation.denom.toUpperCase()}}S
-      template(v-else)
-        b {{tx.shares}}
-        span &nbsp;Shares
+      template
+        b {{ calculatePrettifiedTokens(tx.validator_src_addr, tx.shares_amount) }}
+        span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
@@ -25,12 +22,9 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
-      template(v-if="transaction.balance")
-        b {{transaction.balance.amount}}
-        span &nbsp;{{transaction.balance.denom.toUpperCase()}}S
-      template(v-else)
-        b {{tx.shares_amount}}
-        span &nbsp;Shares
+      template
+        b {{ calculatePrettifiedTokens(tx.validator_addr, tx.shares_amount) }}
+        span &nbsp;{{ bondingDenom }}s
       template(v-if="timeDiff")
         span &nbsp;- {{timeDiff}}
     div(slot="details")
@@ -51,6 +45,8 @@ import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/transaction-colors.js"
 import moment from "moment"
 import TmBtn from "../TmBtn/TmBtn.vue"
+import numeral from "numeral"
+import { BigNumber } from "bignumber.js"
 
 /*
 * undelegation tx need a preprocessing, where shares are translated into transaction.balance: {amount, denom}
@@ -106,9 +102,48 @@ export default {
     }
   },
   methods: {
-    moniker(candidateAddr) {
-      let validator = this.validators.find(c => c.owner === candidateAddr)
-      return (validator && validator.description.moniker) || candidateAddr
+    moniker(validatorAddr) {
+      let validator = this.validators.find(c => c.owner === validatorAddr)
+      return (validator && validator.description.moniker) || validatorAddr
+    },
+    prettify(amount) {
+      const amountNumber = Number(amount)
+      if (Number.isInteger(amountNumber)) {
+        return numeral(amountNumber).format(`0,0`)
+      }
+      return numeral(amountNumber).format(`0,0.00`)
+    },
+    // TODO duplicated code from voyager. Delete when the two repositories are merged
+    calculatePrettifiedTokens(validatorAddr, shares) {
+      // this is the based on the idea that tokens should equal
+      // (myShares / totalShares) * totalTokens where totalShares
+      // and totalTokens are both represented as fractions
+      let tokens
+      let validator = this.validators.find(val => val.owner === validatorAddr)
+
+      let sharesN = new BigNumber(shares.split(`/`)[0])
+      let sharesD = new BigNumber(shares.split(`/`)[1] || 1)
+      let myShares = sharesN.div(sharesD)
+
+      let totalSharesN = new BigNumber(validator.delegator_shares.split(`/`)[0])
+      let totalSharesD = new BigNumber(
+        validator.delegator_shares.split(`/`)[1] || 1
+      )
+      let totalShares = totalSharesN.div(totalSharesD)
+
+      let totalTokensN = new BigNumber(validator.tokens.split(`/`)[0])
+      let totalTokensD = new BigNumber(validator.tokens.split(`/`)[1] || 1)
+      let totalTokens = totalTokensN.div(totalTokensD)
+
+      if (totalSharesN.eq(0)) {
+        tokens = 0
+      } else {
+        tokens = myShares
+          .times(totalTokens)
+          .div(totalShares)
+          .toNumber()
+      }
+      return this.prettify(tokens)
     }
   },
   props: {
@@ -117,6 +152,10 @@ export default {
     validatorURL: {
       type: String,
       default: ""
+    },
+    bondingDenom: {
+      type: String,
+      default: "atom"
     }
   }
 }

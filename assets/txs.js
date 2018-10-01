@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     hash: "not a real hash",
     time: 1042 + 1000, // set by Voyager
@@ -15,7 +15,7 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     }
                   ],
                   address: "tb1da6xsetjg9jxgun9wdesexv05j"
@@ -26,7 +26,7 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     }
                   ],
                   address: "tb1d4u5zerywfjhxuc9nudvw"
@@ -39,12 +39,12 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
-        gas: 500000,
+        gas: "500000",
         signatures: [
           {
             pub_key: {
@@ -56,8 +56,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -94,7 +94,7 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     }
                   ],
                   address: "tb1d4u5zerywfjhxuc9nudvw"
@@ -105,7 +105,7 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     }
                   ],
                   address: "tb1da6xsetjg9jxgun9wdesexv05j"
@@ -118,12 +118,12 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
-        gas: 500000,
+        gas: "500000",
         signatures: [
           {
             pub_key: {
@@ -135,8 +135,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -173,15 +173,15 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     },
                     {
                       denom: "fabocoins",
-                      amount: 1
+                      amount: "1"
                     },
                     {
                       denom: "mattcoins",
-                      amount: 42
+                      amount: "42"
                     }
                   ],
                   address: "tb1da6xsetjg9jxgun9wdesexv05j"
@@ -192,15 +192,15 @@ module.exports = [
                   coins: [
                     {
                       denom: "jbcoins",
-                      amount: 1234
+                      amount: "1234"
                     },
                     {
                       denom: "fabocoins",
-                      amount: 1
+                      amount: "1"
                     },
                     {
                       denom: "mattcoins",
-                      amount: 42
+                      amount: "42"
                     }
                   ],
                   address: "tb1da6xsetjg9jxgun9wdesexv05j"
@@ -213,12 +213,12 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
-        gas: 500000,
+        gas: "500000",
         signatures: [
           {
             pub_key: {
@@ -230,8 +230,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -266,7 +266,7 @@ module.exports = [
               validator_addr:
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
               delegation: {
-                amount: 4200,
+                amount: "4200",
                 denom: "steak"
               }
             }
@@ -276,10 +276,10 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
         gas: 500000,
         signatures: [
@@ -293,8 +293,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -328,7 +328,7 @@ module.exports = [
             value: {
               validator_addr:
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
-              shares_amount: 100
+              shares_amount: "1000/100000"
             }
           }
         ],
@@ -336,12 +336,12 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
-        gas: 500000,
+        gas: "500000",
         signatures: [
           {
             pub_key: {
@@ -353,8 +353,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -372,10 +372,6 @@ module.exports = [
         ],
         fee: {}
       }
-    },
-    undelegation: {
-      amount: 105,
-      denom: "Atom"
     }
   },
   {
@@ -394,7 +390,7 @@ module.exports = [
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
               validator_dst_addr:
                 "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
-              shares: 20
+              shares_amount: "3/20"
             }
           }
         ],
@@ -402,12 +398,12 @@ module.exports = [
           amount: [
             {
               denom: "",
-              amount: 0
+              amount: "0"
             }
           ],
-          gas: 500000
+          gas: "500000"
         },
-        gas: 500000,
+        gas: "500000",
         signatures: [
           {
             pub_key: {
@@ -419,8 +415,8 @@ module.exports = [
               value:
                 "oODzZz2t1u678Jhy2zFnFbBu7S2IP1zjOIoyVDOvGkQ6WkiiRF3zxEJbNAjHGdDjXf7/NQpMOtpt8FC1x6e6DA=="
             },
-            account_number: 28,
-            sequence: 0
+            account_number: "28",
+            sequence: "0"
           }
         ]
       },
@@ -438,10 +434,6 @@ module.exports = [
         ],
         fee: {}
       }
-    },
-    redelegation: {
-      amount: 20,
-      denom: "Atom"
     }
   }
 ]

@@ -85,10 +85,10 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
           <div>
             Delegated 
             <b>
-              4200
+              4,200
             </b>
             <span>
-               STEAKS
+               atoms
             </span>
           </div>
         </p>

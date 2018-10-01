@@ -11,40 +11,51 @@ describe("TmLiStakeTransaction", () => {
         owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         description: {
           moniker: "cool validator"
-        }
+        },
+        tokens: "100000",
+        delegator_shares: "100000"
       },
       {
         owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
         description: {
           moniker: "Kentucky val"
-        }
+        },
+        tokens: "20",
+        delegator_shares: "100"
       }
     ],
-    validatorURL: "/validator"
+    validatorURL: "/validator",
+    bondingDenom: "stake"
   }
 
   beforeEach(() => {
     wrapper = mount(TmLiStakeTransaction, { propsData })
   })
 
-  it("should show delegations", () => {
-    expect(wrapper.vm.delegation).toBe(true)
-    expect(wrapper.vm.$el).toMatchSnapshot()
+  describe(`delegations`, () => {
+    it("should show delegations", () => {
+      expect(wrapper.vm.delegation).toBe(true)
+      expect(wrapper.vm.$el).toMatchSnapshot()
+    })
   })
 
-  it("should show unbondings", () => {
-    wrapper.setProps({
-      transaction: transactions[4]
+  describe(`unbonding delegations`, () => {
+    it("should show unbondings and calculate tokens from shares", () => {
+      wrapper.setProps({
+        transaction: transactions[4]
+      })
+      expect(wrapper.vm.unbonding).toBe(true)
+      expect(wrapper.vm.$el).toMatchSnapshot()
     })
-    expect(wrapper.vm.unbonding).toBe(true)
-    expect(wrapper.vm.$el).toMatchSnapshot()
   })
 
-  it("should show redelegations", () => {
-    wrapper.setProps({
-      transaction: transactions[5]
+  describe(`redelegations`, () => {
+    it("should show redelegations and calculate tokens from shares", () => {
+      wrapper.setProps({
+        transaction: transactions[5]
+      })
+      expect(wrapper.vm.redelegation).toBe(true)
+      expect(wrapper.vm.$el).toMatchSnapshot()
     })
-    expect(wrapper.vm.redelegation).toBe(true)
-    expect(wrapper.vm.$el).toMatchSnapshot()
   })
 })
