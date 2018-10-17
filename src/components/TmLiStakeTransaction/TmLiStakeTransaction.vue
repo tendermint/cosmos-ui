@@ -103,7 +103,9 @@ export default {
   },
   methods: {
     moniker(validatorAddr) {
-      let validator = this.validators.find(c => c.owner === validatorAddr)
+      let validator = this.validators.find(
+        c => c.operator_address === validatorAddr
+      )
       return (validator && validator.description.moniker) || validatorAddr
     },
     prettify(amount) {
@@ -119,7 +121,9 @@ export default {
       // (myShares / totalShares) * totalTokens where totalShares
       // and totalTokens are both represented as fractions
       let tokens
-      let validator = this.validators.find(val => val.owner === validatorAddr)
+      let validator = this.validators.find(
+        val => val.operator_address === validatorAddr
+      )
 
       let sharesN = new BigNumber(shares.split(`/`)[0])
       let sharesD = new BigNumber(shares.split(`/`)[1] || 1)
