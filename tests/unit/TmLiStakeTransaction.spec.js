@@ -13,8 +13,8 @@ describe("TmLiStakeTransaction", () => {
         description: {
           moniker: "cool validator"
         },
-        tokens: "100000",
-        delegator_shares: "100000"
+        tokens: "1000000000000000",
+        delegator_shares: "1000000000000000"
       },
       {
         operator_address:
@@ -22,8 +22,8 @@ describe("TmLiStakeTransaction", () => {
         description: {
           moniker: "Kentucky val"
         },
-        tokens: "20",
-        delegator_shares: "100"
+        tokens: "200000000000",
+        delegator_shares: "1000000000000"
       }
     ],
     validatorURL: "/validator",

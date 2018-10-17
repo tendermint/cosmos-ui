@@ -16,8 +16,8 @@ describe("TmBlock.vue", () => {
             description: {
               moniker: "cool validator"
             },
-            tokens: "100000",
-            delegator_shares: "100000"
+            tokens: "1000000000000000",
+            delegator_shares: "1000000000000000"
           },
           {
             operator_address:
@@ -25,8 +25,8 @@ describe("TmBlock.vue", () => {
             description: {
               moniker: "Kentucky val"
             },
-            tokens: "100",
-            delegator_shares: "20"
+            tokens: "1000000000000",
+            delegator_shares: "200000000000"
           }
         ],
         loading: false,
