@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- added contribution information @faboweb 
+
 ## [0.2.28]
 
 - fix transaction history components. Redelegations and Unbondings now show tokens instead of shares @fedekunze
