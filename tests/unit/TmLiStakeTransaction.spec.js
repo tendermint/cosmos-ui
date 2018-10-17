@@ -8,20 +8,22 @@ describe("TmLiStakeTransaction", () => {
     transaction: transactions[3],
     validators: [
       {
-        owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+        operator_address:
+          "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         description: {
           moniker: "cool validator"
         },
-        tokens: "100000",
-        delegator_shares: "100000"
+        tokens: "1000000000000000",
+        delegator_shares: "1000000000000000"
       },
       {
-        owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+        operator_address:
+          "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
         description: {
           moniker: "Kentucky val"
         },
-        tokens: "20",
-        delegator_shares: "100"
+        tokens: "200000000000",
+        delegator_shares: "1000000000000"
       }
     ],
     validatorURL: "/validator",
