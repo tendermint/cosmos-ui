@@ -10,9 +10,6 @@
       .tm-li-tx__content__information
         slot(name="details")
     
-    .tm-li-tx__content__action(v-if="$slots['action']")
-      slot(name="action")
-    
     .tm-li-tx__content__block
       a(:href="'https://explorecosmos.network/blocks/' + block") Block \#{{block}}&nbsp;
       | @ {{date}}
