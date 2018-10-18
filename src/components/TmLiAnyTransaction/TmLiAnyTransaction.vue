@@ -1,6 +1,7 @@
 <template lang='pug'>
 tm-li-bank-transaction(v-if="bankTx" :transaction="transaction" :address="address")
-tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :validatorURL="validatorURL" :unbonding_time="unbonding_time" :bondingDenom="bondingDenom" v-on:end-unbonding="$emit('end-unbonding')")
+tm-li-stake-transaction(v-else-if="stakingTx" :transaction="transaction" :validators="validators" :URL="URL" :unbonding_time="unbonding_time" :bondingDenom="bondingDenom" v-on:end-unbonding="$emit('end-unbonding')")
+tm-li-gov-transaction(v-else-if="governanceTx" :transaction="transaction" :bondingDenom="bondingDenom" :URL="URL")
 tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="transaction.height")
   span(slot="caption") Unknown Transaction Type
 </template>
@@ -8,12 +9,18 @@ tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="t
 <script>
 import TmLiBankTransaction from "../TmLiBankTransaction/TmLiBankTransaction"
 import TmLiStakeTransaction from "../TmLiStakeTransaction/TmLiStakeTransaction"
+import TmLiGovTransaction from "../TmLiGovTransaction/TmLiGovTransaction"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/transaction-colors.js"
 
 export default {
   name: "tm-li-any-transaction",
-  components: { TmLiBankTransaction, TmLiStakeTransaction, TmLiTransaction },
+  components: {
+    TmLiBankTransaction,
+    TmLiGovTransaction,
+    TmLiStakeTransaction,
+    TmLiTransaction
+  },
   data: () => ({ colors }),
   computed: {
     type() {
@@ -31,13 +38,20 @@ export default {
           "cosmos-sdk/BeginRedelegate"
         ].indexOf(this.type) !== -1
       )
+    },
+    governanceTx() {
+      return (
+        ["cosmos-sdk/MsgSubmitProposal", "cosmos-sdk/MsgDeposit"].indexOf(
+          this.type
+        ) !== -1
+      )
     }
   },
   props: {
     transaction: Object,
     address: String,
     validators: Array,
-    validatorURL: {
+    URL: {
       type: String,
       default: ""
     },

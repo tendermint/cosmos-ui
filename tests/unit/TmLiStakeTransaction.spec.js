@@ -26,7 +26,7 @@ describe("TmLiStakeTransaction", () => {
         delegator_shares: "1000000000000"
       }
     ],
-    validatorURL: "/validator",
+    URL: "/validator",
     bondingDenom: "stake"
   }
 

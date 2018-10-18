@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Add governance transactions @fedekunze
+
 ## [0.3.0]
 
 - make staking transactions ready for new SDK version @faboweb

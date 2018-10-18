@@ -7,7 +7,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | To&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
@@ -16,9 +16,9 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
         span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
       |  to&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_dst_addr") {{moniker(tx.validator_dst_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_dst_addr") {{moniker(tx.validator_dst_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
@@ -29,7 +29,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
         span &nbsp;- {{timeDiff}}
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
     div(slot="action")
       tm-btn(v-if="state !== 'ended'" value="Claim" color="primary" :disabled="state === 'locked'" @click.native="$emit('end-unbonding')")
   template(v-if="endUnbonding")
@@ -37,7 +37,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       | Ended Unbonding&nbsp;
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>
@@ -153,7 +153,7 @@ export default {
   props: {
     transaction: Object,
     validators: Array,
-    validatorURL: {
+    URL: {
       type: String,
       default: ""
     },
