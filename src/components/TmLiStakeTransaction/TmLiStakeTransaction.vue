@@ -30,8 +30,6 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
     div(slot="details")
       | From&nbsp;
       router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
-    div(slot="action")
-      tm-btn(v-if="state !== 'ended'" value="Claim" color="primary" :disabled="state === 'locked'" @click.native="$emit('end-unbonding')")
   template(v-if="endUnbonding")
     div(slot="caption")
       | Ended Unbonding&nbsp;
