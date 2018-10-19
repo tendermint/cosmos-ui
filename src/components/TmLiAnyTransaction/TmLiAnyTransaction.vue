@@ -9,7 +9,7 @@ tm-li-transaction(v-else :color="colors.grey" :time="transaction.time" :block="t
 <script>
 import TmLiBankTransaction from "../TmLiBankTransaction/TmLiBankTransaction"
 import TmLiStakeTransaction from "../TmLiStakeTransaction/TmLiStakeTransaction"
-import TmLiGovTransaction from "../TmLiGovTransaction/TmLiGovTransaction"
+import TmLiGovTransaction from "../TmLiGovTransaction"
 import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
 import colors from "../TmLiTransaction/transaction-colors.js"
 
@@ -27,23 +27,19 @@ export default {
       return this.transaction.tx.value.msg[0].type
     },
     bankTx() {
-      return ["cosmos-sdk/Send"].indexOf(this.type) !== -1
+      return ["cosmos-sdk/Send"].includes(this.type)
     },
     stakingTx() {
-      return (
-        [
-          "cosmos-sdk/MsgDelegate",
-          "cosmos-sdk/BeginUnbonding",
-          "cosmos-sdk/CompleteUnbonding",
-          "cosmos-sdk/BeginRedelegate"
-        ].indexOf(this.type) !== -1
-      )
+      return [
+        "cosmos-sdk/MsgDelegate",
+        "cosmos-sdk/BeginUnbonding",
+        "cosmos-sdk/CompleteUnbonding",
+        "cosmos-sdk/BeginRedelegate"
+      ].includes(this.type)
     },
     governanceTx() {
-      return (
-        ["cosmos-sdk/MsgSubmitProposal", "cosmos-sdk/MsgDeposit"].indexOf(
-          this.type
-        ) !== -1
+      return [`cosmos-sdk/MsgSubmitProposal`, `cosmos-sdk/MsgDeposit`].includes(
+        this.type
       )
     }
   },

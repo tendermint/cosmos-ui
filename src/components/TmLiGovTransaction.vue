@@ -20,8 +20,8 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
 </template>
 
 <script>
-import TmLiTransaction from "../TmLiTransaction/TmLiTransaction"
-import colors from "../TmLiTransaction/transaction-colors.js"
+import TmLiTransaction from "./TmLiTransaction/TmLiTransaction"
+import colors from "./TmLiTransaction/transaction-colors.js"
 import numeral from "numeral"
 
 export default {
@@ -48,10 +48,9 @@ export default {
   methods: {
     prettify(amount) {
       const amountNumber = Number(amount)
-      if (Number.isInteger(amountNumber)) {
-        return numeral(amountNumber).format(`0,0`)
-      }
-      return numeral(amountNumber).format(`0,0.00`)
+      return numeral(amountNumber).format(
+        Number.isInteger(amountNumber) ? `0,0` : `0,0.00`
+      )
     }
   },
   props: {

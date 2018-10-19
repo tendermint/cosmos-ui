@@ -108,7 +108,7 @@ export {
 } from "./components/TmLiBankTransaction/TmLiBankTransaction.vue"
 export {
   default as TmLiGovTransaction
-} from "./components/TmLiGovTransaction/TmLiGovTransaction.vue"
+} from "./components/TmLiGovTransaction.vue"
 export {
   default as TmLiStakeTransaction
 } from "./components/TmLiStakeTransaction/TmLiStakeTransaction.vue"
