@@ -451,7 +451,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 </div>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/56673">Block #56673&nbsp;</a>@ 2:03 am
             </div>
@@ -480,7 +479,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 </div>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/56673">Block #56673&nbsp;</a>@ 2:03 am
             </div>

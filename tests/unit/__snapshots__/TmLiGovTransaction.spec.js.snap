@@ -48,7 +48,6 @@ exports[`TmLiGovTransaction deposits should show deposits 1`] = `
         </div>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
@@ -109,7 +108,6 @@ exports[`TmLiGovTransaction proposals should show proposals submission transacti
         </div>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
