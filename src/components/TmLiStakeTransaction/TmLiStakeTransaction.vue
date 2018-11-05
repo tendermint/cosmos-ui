@@ -125,7 +125,7 @@ export default {
 
       let sharesN = new BigNumber(shares.split(`/`)[0])
       let sharesD = new BigNumber(shares.split(`/`)[1] || 1)
-      let myShares = sharesN.div(sharesD).div(10000000000) // TODO remove when sdk.Dec mashalling bug is fixed
+      let myShares = sharesN.div(sharesD)
 
       let totalSharesN = new BigNumber(validator.delegator_shares.split(`/`)[0])
       let totalSharesD = new BigNumber(

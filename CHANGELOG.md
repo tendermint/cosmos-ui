@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1]
+
 - Add governance transactions @fedekunze
+- Removed decimal fix for tokens not serialized correctly by the SDK @faboweb
 
 ## [0.4.0]
 
