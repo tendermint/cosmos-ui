@@ -77,7 +77,7 @@ export default {
       if (this.state !== "locked") return ""
 
       return this.transaction.unbondingDelegation
-        ? moment(this.transaction.unbondingDelegation.min_time).toNow()
+        ? moment(this.transaction.unbondingDelegation.min_time).fromNow()
         : ""
     },
     // state needs to be calculated by a wrapping application

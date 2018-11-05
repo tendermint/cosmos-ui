@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 - Add governance transactions @fedekunze
+- Correctly show end of unbonding transactions @faboweb
 
 ## [0.4.0]
 
