@@ -328,7 +328,7 @@ export default [
             value: {
               validator_addr:
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
-              shares_amount: "10000000000000/100000"
+              shares_amount: "1000/100000"
             }
           }
         ],
@@ -390,7 +390,7 @@ export default [
                 "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
               validator_dst_addr:
                 "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
-              shares_amount: "30000000000/20"
+              shares_amount: "3/20"
             }
           }
         ],
