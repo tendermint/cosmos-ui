@@ -124,7 +124,7 @@ export default {
       this.value = !this.value
     },
     updateValue(value) {
-      let formattedValue = this.forceMinMax(value.trim())
+      let formattedValue = this.forceMinMax(value)
       // so that the user can type in "-" and it isn't removed
       if (formattedValue && this.$refs.numTextInput) {
         // so the actual text box displays the correct number
@@ -144,7 +144,7 @@ export default {
     },
     forceMinMax(value) {
       if (this.type !== "number") return value
-      value = value ? Number(value) : value
+      value = value ? Number(value.trim()) : value
       if (this.max && value > this.max) {
         value = Number(this.max)
       } else if (this.min && value && value < this.min) {
@@ -176,36 +176,30 @@ export default {
 @require '~variables'
 
 .tm-field
-  -webkit-appearance none
-
+  background var(--input-bg, #fff)
   border 1px solid var(--input-bc, #ccc)
   border-radius 0
-
-  vertical-align top
-
-  padding 0.1875rem 0.5rem
-
-  display block
-  width 100%
-  min-width 0
-
-  background var(--input-bg, #fff)
-
   color var(--txt, #333)
+  display block
   font-size 16px
   line-height 1.5rem
+  min-width 0
+  padding 0.1875rem 0.5rem
+  vertical-align top
+  width 100%
+  -webkit-appearance none
 
 .tm-field:disabled
-  color var(--dim, #666)
-  text-shadow none
-  box-shadow none
   background var(--app-fg, #eee)
   border var(--app-fg, #eee)
+  box-shadow none
+  color var(--dim, #666)
+  text-shadow none
 
 .tm-field:focus
-  outline none
-  box-shadow none
   border 1px solid var(--link, #00f)
+  box-shadow none
+  outline none
 
 input.tm-field
   height 2rem
@@ -216,167 +210,175 @@ textarea.tm-field
 
 .tm-toggle
   border 1px solid var(--input-bc, #ccc)
+  border-radius 1rem
   height 2rem
   padding 0 2px
-  border-radius 1rem
+
   *
     cursor pointer
+
   .tm-toggle-wrapper
+    margin-left calc((1.625rem / 2))
+    margin-right calc((1.625rem / 2))
     padding 0 1.25rem
-    transform: rotate(0deg);
-    margin-right calc(1.625rem / 2)
-    margin-left calc(1.625rem / 2)
+    transform rotate(0deg)
+
     &:before, &:after
       content ''
-      width 1.625rem
       height 1.625rem
       position absolute
       top 2px
-      z-index: 0
+      width 1.625rem
+      z-index 0
+
     &:before
       background var(--success, #4acf4a)
       border-radius 1em 0 0 1em
-      left calc(-1.625rem / 2)
+      left calc((-1.625rem / 2))
+
     &:after
       background var(--danger, #8c8fa6)
       border-radius 0 1em 1em 0
-      right calc(-1.625rem / 2)
-    .toggle-option-checked,
-    .toggle-option-unchecked
-      z-index: 1
+      right calc((-1.625rem / 2))
+
+    .toggle-option-checked, .toggle-option-unchecked
+      clip rect(0, auto, auto, 0)
+      height 1.625rem
+      overflow hidden
       position absolute
       top 2px
-      overflow hidden
-      height 1.625rem
-      clip: rect(0, auto, auto, 0);
       transition width 500ms ease
+      z-index 1
+
       > div
-        position fixed
         left 0
-        width 100%
-        top 2px
+        position fixed
         text-align center
+        top 2px
+        width 100%
+
     .toggle-option-checked
-      background: var(--success, #4acf4a)
+      background var(--success, #4acf4a)
       left 0
       width 100%
+
     .toggle-option-unchecked
-      background: var(--danger, #8c8fa6)
+      background var(--danger, #8c8fa6)
       right 0
       width 0%
+
     .toggle-handle
       &:after
-        transition right 500ms ease, left 500ms ease
-        position absolute
-        top 2px
-        right calc(-1.65rem/2)
-        left auto
-        width 1.625rem
-        height 1.625rem
         background var(--grey, #d4d5de)
         border-radius 1rem
-        z-index z(listItem)
-
         // display flex
         // align-items center
         // justify-content center
         content ''
+        height 1.625rem
+        left auto
+        position absolute
+        right calc((-1.65rem / 2))
+        top 2px
+        transition right 500ms ease, left 500ms ease
+        width 1.625rem
+        z-index z(listItem)
         // content 'drag_handle'
         // font-size x
         // font-family 'Material Icons'
         // transform  rotate(90DEG)
         // color var(--bc, hsl(233, 22%, 23%))
-    input[type="checkbox"]
+
+    input[type='checkbox']
       display none
+
   &.unchecked
     .toggle-option-checked
       width 0
+
     .toggle-option-unchecked
       width 100%
+
     .toggle-handle:after
-      right calc(100% - .7500rem)
+      right calc(100% - 0.75rem)
 
 .tm-select
   position relative
 
   select
     appearance none
-    border-radius 0
     background var(--input-bg, #fff)
-    width 100%
+    border-radius 0
     color var(--txt, #333)
     padding-right 2rem
+    width 100%
 
     &:invalid
       color dim
 
     option
-      color txt
       background var(--input-bg, #fff)
+      color txt
       font-family sans
+
       &:checked
-        color var(--bright, #000)
         background var(--hover-bg, #ccf)
+        color var(--bright, #000)
 
   .tm-field-select-addon
-    position absolute
-    top 0
-    right 0
-
-    display flex
     align-items center
-    justify-content center
-    box-sizing border-box
-    height 2rem
-    width 2rem
-    border-left 1px solid var(--input-bc, #ccc)
-
     background var(--input-bg, #fff)
-    text-align center
+    border-left 1px solid var(--input-bc, #ccc)
+    box-sizing border-box
     color var(--txt, #333)
+    display flex
+    height 2rem
+    justify-content center
     pointer-events none
+    position absolute
+    right 0
+    text-align center
+    top 0
+    width 2rem
 
-/*==============================================================================*/
-
+/* ============================================================================== */
 .tm-datetime
   position relative
 
 .tm-datetime:after
-  display flex
   align-items center
-  justify-content center
-  box-sizing border-box
-  width 2rem
-  height 2rem
-  position absolute
-  top 0
-  right 0
-  border 1px solid var(--input-bc, #ccc)
   background var(--app-bg, #fff)
-  font-family FontAwesome
-  content "\f073"
-  text-align center
+  border 1px solid var(--input-bc, #ccc)
+  box-sizing border-box
   color var(--bright)
+  content '\f073'
+  display flex
+  font-family FontAwesome
+  height 2rem
+  justify-content center
   pointer-events none
+  position absolute
+  right 0
+  text-align center
+  top 0
+  width 2rem
 
-/*==============================================================================*/
-
+/* ============================================================================== */
 .input-group-addon
   background var(--input-bg, #fff)
   border 1px solid var(--input-bc, #ccc)
   border-left none
-  padding 0 0.5rem
   color var(--txt, #333)
-  line-height 1.875rem
   font-size 0.75rem
+  line-height 1.875rem
+  padding 0 0.5rem
 
-@media screen and (min-width 360px)
+@media screen and (min-width: 360px)
   .input-group-addon
     font-size 1rem
 
-/*==============================================================================*/
+/* ============================================================================== */
 /* WebKit, Blink, Edge */
-
 .tm-field::-webkit-input-placeholder
   color var(--dim, #666)
 
@@ -398,50 +400,48 @@ textarea.tm-field
 .tm-field:placeholder-shown
   color var(--dim, #666)
 
-/*==============================================================================*/
+/* ============================================================================== */
 /* sizes */
-
 .tm-field.tm-field-size-sm
-  height 1.5rem
   font-size 0.75rem
+  height 1.5rem
   padding-left 0.5rem
   padding-right 0.5rem
 
 .tm-field.tm-field-size-lg
-  height 3rem
   font-size 1.125rem
+  height 3rem
   padding-left 0.75rem
   padding-right 0.75rem
 
-/*==============================================================================*/
+/* ============================================================================== */
 /* tendermint styles */
-
 .tm-field.tm-field-theme-tendermint
+  background hsl(210, 70%, 18%)
+  border-color hsl(210, 70%, 38%)
   color #fff
-  background hsl(210,70%,18%)
-  border-color hsl(210,70%,38%)
 
 .tm-field.tm-field-theme-tendermint:focus
-  border-color hsl(210,70%,43%)
+  border-color hsl(210, 70%, 43%)
 
 .tm-field.tm-field-theme-tendermint::-webkit-input-placeholder
-  color hsl(210,70%,70%)
+  color hsl(210, 70%, 70%)
 
 /* Mozilla Firefox 4 to 18 */
 .tm-field.tm-field-theme-tendermint:-moz-placeholder
-  color hsl(210,70%,70%)
+  color hsl(210, 70%, 70%)
   opacity 1
 
 /* Mozilla Firefox 19+ */
 .tm-field.tm-field-theme-tendermint::-moz-placeholder
-  color hsl(210,70%,70%)
+  color hsl(210, 70%, 70%)
   opacity 1
 
 /* Internet Explorer 10-11 */
 .tm-field.tm-field-theme-tendermint:-ms-input-placeholder
-  color hsl(210,70%,70%)
+  color hsl(210, 70%, 70%)
 
 /* Standard (https//drafts.csswg.org/selectors-4/#placeholder) */
 .tm-field.tm-field-theme-tendermint:placeholder-shown
-  color hsl(210,70%,70%)
+  color hsl(210, 70%, 70%)
 </style>

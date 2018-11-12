@@ -11,4 +11,10 @@ describe("TmField.vue", () => {
   it("has the expected html structure", () => {
     expect(htmlBeautify(wrapper.html())).toMatchSnapshot()
   })
+
+  it("trims number values", () => {
+    const wrapper = shallowMount(TmField, { propsData: { type: `number` } })
+    wrapper.vm.updateValue(`42 `)
+    expect(wrapper.emittedByOrder()).toEqual([{ args: [42], name: "input" }])
+  })
 })
