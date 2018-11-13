@@ -1,7 +1,9 @@
 <template lang="pug">
-tm-data-msg(icon="rotate_right" spin="true")
-  div(slot="title") {{ title }}
-  div(slot="subtitle") Please wait a moment.
+.tm-data-msg
+  img.tm-data-msg__icon(src="~assets/images/loader.svg")
+  .tm-data-msg__text
+    .tm-data-msg__title(slot="title") {{ title }}
+    .tm-data-msg__subtitle(slot="subtitle") Please wait a moment.
 </template>
 
 <script>
