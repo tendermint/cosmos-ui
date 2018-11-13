@@ -290,7 +290,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <span>To tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/3436">Block #3436&nbsp;</a>@ 2:03 am
             </div>
@@ -314,7 +313,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <span>From tb1d4u5zerywfjhxuc9nudvw</span>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/3438">Block #3438&nbsp;</a>@ 2:03 am
             </div>
@@ -338,7 +336,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 <span>To yourself!</span>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/466">Block #466&nbsp;</a>@ 2:03 am
             </div>
@@ -367,7 +364,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 </div>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
             </div>
@@ -395,11 +391,6 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                     cool validator
                   </router-link>
                 </div>
-              </div>
-            </div>
-            <div class="tm-li-tx__content__action">
-              <div>
-                <!---->
               </div>
             </div>
             <div class="tm-li-tx__content__block">
@@ -434,9 +425,62 @@ exports[`TmBlock.vue has the expected html structure 1`] = `
                 </div>
               </div>
             </div>
-            <!---->
             <div class="tm-li-tx__content__block">
               <a href="https://explorecosmos.network/blocks/566">Block #566&nbsp;</a>@ 2:03 am
+            </div>
+          </div>
+        </div>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="../../assets/cosmos-logo.png" style="border-color: #3cb371;">
+          </div>
+          <div class="tm-li-tx__content">
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Submitted text proposal initial deposit&nbsp;
+                    <b>100</b><span>&nbsp;stakes</span>
+                  </div>
+                </p>
+              </div>
+              <div class="tm-li-tx__content__information">
+                <div>
+                  Title:&nbsp;
+                  <i>Test Proposal</i>
+                </div>
+              </div>
+            </div>
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/56673">Block #56673&nbsp;</a>@ 2:03 am
+            </div>
+          </div>
+        </div>
+        <div class="tm-li-tx">
+          <div class="tm-li-tx__icon">
+            <img src="../../assets/cosmos-logo.png" style="border-color: #5effe9;">
+          </div>
+          <div class="tm-li-tx__content">
+            <div class="tm-li-tx__content__left">
+              <div class="tm-li-tx__content__caption">
+                <p class="tm-li-tx__content__caption__title">
+                  <div>
+                    Deposited&nbsp;
+                    <b>100</b><span>&nbsp;stakes</span>
+                  </div>
+                </p>
+              </div>
+              <div class="tm-li-tx__content__information">
+                <div>
+                  On&nbsp;
+                  <router-link to="/1">
+                    Proposal #1
+                  </router-link>
+                </div>
+              </div>
+            </div>
+            <div class="tm-li-tx__content__block">
+              <a href="https://explorecosmos.network/blocks/56673">Block #56673&nbsp;</a>@ 2:03 am
             </div>
           </div>
         </div>

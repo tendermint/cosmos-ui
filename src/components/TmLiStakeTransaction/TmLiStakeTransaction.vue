@@ -7,7 +7,7 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
       span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | To&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="redelegation")
     div(slot="caption")
       | Redelegated&nbsp;
@@ -16,9 +16,9 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
         span &nbsp;{{ bondingDenom }}s
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_src_addr") {{moniker(tx.validator_src_addr)}}
       |  to&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_dst_addr") {{moniker(tx.validator_dst_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_dst_addr") {{moniker(tx.validator_dst_addr)}}
   template(v-if="unbonding")
     div(slot="caption")
       | Unbonded&nbsp;
@@ -29,15 +29,13 @@ tm-li-transaction(:color="color" :time="transaction.time" :block="transaction.he
         span &nbsp;- {{timeDiff}}
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
-    div(slot="action")
-      tm-btn(v-if="state !== 'ended'" value="Claim" color="primary" :disabled="state === 'locked'" @click.native="$emit('end-unbonding')")
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
   template(v-if="endUnbonding")
     div(slot="caption")
       | Ended Unbonding&nbsp;
     div(slot="details")
       | From&nbsp;
-      router-link(:to="this.validatorURL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
+      router-link(:to="this.URL + '/' + tx.validator_addr") {{moniker(tx.validator_addr)}}
 </template>
 
 <script>
@@ -79,7 +77,7 @@ export default {
       if (this.state !== "locked") return ""
 
       return this.transaction.unbondingDelegation
-        ? moment(this.transaction.unbondingDelegation.min_time).toNow()
+        ? moment(this.transaction.unbondingDelegation.min_time).fromNow()
         : ""
     },
     // state needs to be calculated by a wrapping application
@@ -103,7 +101,9 @@ export default {
   },
   methods: {
     moniker(validatorAddr) {
-      let validator = this.validators.find(c => c.owner === validatorAddr)
+      let validator = this.validators.find(
+        c => c.operator_address === validatorAddr
+      )
       return (validator && validator.description.moniker) || validatorAddr
     },
     prettify(amount) {
@@ -119,7 +119,9 @@ export default {
       // (myShares / totalShares) * totalTokens where totalShares
       // and totalTokens are both represented as fractions
       let tokens
-      let validator = this.validators.find(val => val.owner === validatorAddr)
+      let validator = this.validators.find(
+        val => val.operator_address === validatorAddr
+      )
 
       let sharesN = new BigNumber(shares.split(`/`)[0])
       let sharesD = new BigNumber(shares.split(`/`)[1] || 1)
@@ -149,7 +151,7 @@ export default {
   props: {
     transaction: Object,
     validators: Array,
-    validatorURL: {
+    URL: {
       type: String,
       default: ""
     },

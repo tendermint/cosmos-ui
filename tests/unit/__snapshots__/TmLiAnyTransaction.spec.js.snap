@@ -43,7 +43,6 @@ exports[`TmLiAnyTransaction shows bank transactions 1`] = `
         </span>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
@@ -106,7 +105,6 @@ exports[`TmLiAnyTransaction shows stake transactions 1`] = `
         </div>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
@@ -153,7 +151,6 @@ exports[`TmLiAnyTransaction shows unknown transactions 1`] = `
         class="tm-li-tx__content__information"
       />
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >

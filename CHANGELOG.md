@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- TmField no longer trims text values. @NodeGuy
+
+## [0.4.1]
+
+- Add governance transactions @fedekunze
+- Removed decimal fix for tokens not serialized correctly by the SDK @faboweb
+- Correctly show end of unbonding transactions @faboweb
+
+## [0.4.0]
+
+- removed list item actions @faboweb
+
+## [0.3.0]
+
+- make staking transactions ready for new SDK version @faboweb
+
 ## [0.2.28]
 
 - fix transaction history components. Redelegations and Unbondings now show tokens instead of shares @fedekunze
