@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - TmField no longer trims text values. @NodeGuy
 
+### Added
+
+- TmDataLoading uses the correct SVG @jbibla
+
 ## [0.4.1]
 
 - Add governance transactions @fedekunze

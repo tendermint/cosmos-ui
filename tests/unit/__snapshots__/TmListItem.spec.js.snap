@@ -45,8 +45,7 @@ exports[`TmListItem should show a dd link 1`] = `
       <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
-      <i class="material-icons inactive">chevron_right</i>
-      <i class="material-icons active">my_location</i>
+      <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
     </div>
   </div>
 </a>
@@ -65,8 +64,7 @@ exports[`TmListItem should show a description 1`] = `
       <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
-      <i class="material-icons inactive">chevron_right</i>
-      <i class="material-icons active">my_location</i>
+      <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
     </div>
   </div>
 </a>
@@ -103,8 +101,7 @@ exports[`TmListItem should show a router-link 1`] = `
       <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
-      <i class="material-icons inactive">chevron_right</i>
-      <i class="material-icons active">my_location</i>
+      <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
     </div>
   </div>
 </router-link>
@@ -123,8 +120,7 @@ exports[`TmListItem should show a subtitle router link 1`] = `
       <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
-      <i class="material-icons inactive">chevron_right</i>
-      <i class="material-icons active">my_location</i>
+      <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
     </div>
   </div>
 </router-link>
@@ -143,8 +139,7 @@ exports[`TmListItem should show a thumb 1`] = `
       <div class="tm-li-dd"></div>
     </div>
     <div class="tm-li-icon">
-      <i class="material-icons inactive">chevron_right</i>
-      <i class="material-icons active">my_location</i>
+      <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
     </div>
   </div>
 </a>
