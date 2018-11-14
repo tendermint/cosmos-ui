@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - TmDataLoading uses the correct SVG @jbibla
+- added contribution information @faboweb 
 
 ## [0.4.1]
 
