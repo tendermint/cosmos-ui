@@ -41,7 +41,8 @@ exports[`TmBlocks.vue has the expected html structure 1`] = `
             </div>
           </div>
           <div class="tm-li-icon">
-            <i class="material-icons inactive">chevron_right</i><i class="material-icons active">my_location</i>
+            <i class="material-icons inactive">chevron_right</i>
+            <i class="material-icons active">my_location</i>
           </div>
         </div>
       </a>
