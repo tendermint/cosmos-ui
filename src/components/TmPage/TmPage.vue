@@ -47,6 +47,7 @@ export default {
   display flex
   flex-flow column nowrap
   position relative
+  width 100%
 
 .tm-page-main
   flex 1
