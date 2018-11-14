@@ -2,19 +2,13 @@
 
 exports[`TmDataLoading has the expected html structure 1`] = `
 <div class="tm-data-msg">
-  <div class="tm-data-msg__icon">
-    <i class="material-icons fa-spin">rotate_right</i>
-  </div>
+  <img src="~assets/images/loader.svg" class="tm-data-msg__icon">
   <div class="tm-data-msg__text">
-    <div class="tm-data-msg__title">
-      <div>
-        Data is loading…
-      </div>
+    <div slot="title" class="tm-data-msg__title">
+      Data is loading…
     </div>
-    <div class="tm-data-msg__subtitle">
-      <div>
-        Please wait a moment.
-      </div>
+    <div slot="subtitle" class="tm-data-msg__subtitle">
+      Please wait a moment.
     </div>
   </div>
 </div>

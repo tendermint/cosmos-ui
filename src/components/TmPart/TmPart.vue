@@ -23,7 +23,8 @@ export default {
 
 .tm-part
   position relative
-  max-width width-main-max
+  min-width 30rem
+  width 100%
 
 .tm-part-container, .tm-part-header, .tm-part-title, .tm-part-menu, .tm-part-main
   &:empty

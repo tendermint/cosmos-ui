@@ -101,7 +101,7 @@ export default {
       type: Array,
       default: () => [
         {
-          owner: "",
+          operator_address: "",
           moniker: ""
         }
       ]

@@ -46,7 +46,6 @@
         subtitle="List Item Subtitle" />
     </section>
     <section>
-      <header>TmLiTransaction</header>
       <header>TmLiBankTransaction</header>
       <tm-li-bank-transaction :transaction="txs[0]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
       <tm-li-bank-transaction :transaction="txs[1]" address="tb1da6xsetjg9jxgun9wdesexv05j" />
@@ -55,8 +54,10 @@
       <tm-li-stake-transaction :transaction="txs[3]" :validators="validators" :bondingDenom="bondingDenom"/>
       <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'locked' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="txs[4]" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom" v-on:end-unbonding="log('end unbonding')"/>
-      <tm-li-stake-transaction :transaction="Object.assign(JSON.parse(JSON.stringify(txs[4])), { state: 'ended' })" :validators="validators" unbonding_time="2592000000" :bondingDenom="bondingDenom"  v-on:end-unbonding="log('end unbonding')"/>
       <tm-li-stake-transaction :transaction="txs[5]" :validators="validators" :bondingDenom="bondingDenom"/>
+      <header>TmLiGovTransaction</header>
+      <tm-li-gov-transaction :transaction="txs[6]" :bondingDenom="bondingDenom"/>
+      <tm-li-gov-transaction :transaction="txs[7]" :bondingDenom="bondingDenom"/>
     </section>
     <section>
       <header>TmField</header>
@@ -84,6 +85,7 @@ import {
   TmListItem,
   TmLiBankTransaction,
   TmLiStakeTransaction,
+  TmLiGovTransaction,
   TmCookieConsent
 } from "../index.js"
 import txs from "../../assets/txs.js"
@@ -96,6 +98,7 @@ export default {
     TmListItem,
     TmLiBankTransaction,
     TmLiStakeTransaction,
+    TmLiGovTransaction,
     TmCookieConsent
   },
   data: () => ({
@@ -103,7 +106,8 @@ export default {
     txs,
     validators: [
       {
-        owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+        operator_address:
+          "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
         description: {
           moniker: "cool validator"
         },
@@ -111,7 +115,8 @@ export default {
         delegator_shares: "1000"
       },
       {
-        owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+        operator_address:
+          "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
         description: {
           moniker: "Kentucky val"
         },

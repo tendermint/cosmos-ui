@@ -161,6 +161,7 @@ export default {
   align-items center
   position relative
   min-height 3rem - 2*px
+  max-width 60rem
 
 // type: anchor & link
 .tm-li-thumb

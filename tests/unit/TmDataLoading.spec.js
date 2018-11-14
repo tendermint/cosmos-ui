@@ -12,25 +12,10 @@ describe("TmDataLoading", () => {
     expect(htmlBeautify(wrapper.html())).toMatchSnapshot()
   })
 
-  it("has an icon", () => {
-    expect(
-      wrapper
-        .find(".tm-data-msg__icon i.material-icons")
-        .text()
-        .trim()
-    ).toBe("rotate_right")
-  })
-
-  it("has a spinning icon", () => {
-    expect(
-      wrapper.find(".tm-data-msg__icon").contains("i.material-icons.fa-spin")
-    ).toBe(true)
-  })
-
   it("has a title", () => {
     expect(
       wrapper
-        .find(".tm-data-msg__title div")
+        .find(".tm-data-msg__title")
         .text()
         .trim()
     ).toBe("Data is loading…")
@@ -39,7 +24,7 @@ describe("TmDataLoading", () => {
   it("has a subtitle", () => {
     expect(
       wrapper
-        .find(".tm-data-msg__subtitle div")
+        .find(".tm-data-msg__subtitle")
         .text()
         .trim()
     ).toBe("Please wait a moment.")

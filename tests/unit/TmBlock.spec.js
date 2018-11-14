@@ -11,7 +11,8 @@ describe("TmBlock.vue", () => {
         currentUser: "tb1da6xsetjg9jxgun9wdesexv05j",
         validators: [
           {
-            owner: "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
+            operator_address:
+              "cosmosvaladdr15ky9du8a2wlstz6fpx3p4mqpjyrm5ctqzh8yqw",
             description: {
               moniker: "cool validator"
             },
@@ -19,7 +20,8 @@ describe("TmBlock.vue", () => {
             delegator_shares: "100000"
           },
           {
-            owner: "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
+            operator_address:
+              "cosmosvaladdr157mg9hnhchfrqvk3enrvmvj29yhmlwf759xrgw",
             description: {
               moniker: "Kentucky val"
             },

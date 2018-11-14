@@ -48,7 +48,6 @@ exports[`TmLiStakeTransaction delegations should show delegations 1`] = `
         </div>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
@@ -117,7 +116,6 @@ exports[`TmLiStakeTransaction redelegations should show redelegations and calcul
         </div>
       </div>
     </div>
-    <!---->
     <div
       class="tm-li-tx__content__block"
     >
@@ -179,13 +177,6 @@ exports[`TmLiStakeTransaction unbonding delegations should show unbondings and c
             cool validator
           </router-link>
         </div>
-      </div>
-    </div>
-    <div
-      class="tm-li-tx__content__action"
-    >
-      <div>
-        <!---->
       </div>
     </div>
     <div
