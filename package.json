@@ -16,6 +16,7 @@
     "@storybook/vue": "^5.2.1",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
+    "markdown-it": "^10.0.0",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10"
   },
