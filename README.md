@@ -1,67 +1,20 @@
-# @tendermint/ui
+# ui
 
-Vue components for front end projects. This project is in alpha.
+Vue components for front end projects.
 
-## Install
-
-```bash
-yarn add @tendermint/ui
+## Run
 ```
-
-## Use
-
-In another Vue component:
-
-```vue
-<template>
-  <tm-field value="Hello World" />
-</template>
-
-<script>
-import { TmField } from "@tendermint/ui"
-export default {
-  name: "Parent Component",
-  components: {
-    TmField
-  }
-}
-</script>
+npm install
 ```
 
 ## Development
 ```
-yarn install
+npm run storybook
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn run test:e2e
-```
-## Testing
-
-We use Prettier to lint all of our JS and Vue files. We use Jest to unit test our components.
-
-```bash
-yarn lint
-yarn test
-```
+## Contributing
+1. Run `npm install; npm run storybook` to start Storybook locally
+2. Open `http://localhost:9999`
+3. Create a Component in `src`
+4. The Component directory must includes `Component.vue` and `Component.stories.js`
+5. `config.js` will automatically import all files ending in `*.stories.js`

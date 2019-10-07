@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`TmCookieConsent.vue has the expected html structure 1`] = `<div class="tm-cookie-consent" value="button"></div>`;
