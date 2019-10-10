@@ -1,11 +1,20 @@
 <template>
   <div>
-    <div class="overlay" @click.self="close" ref="overlay" tabindex="0" @keydown.esc="close">
-      <div class="modal">
-        <button class="icon-cross" @click="close">
-          <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16m0-16L4 20" stroke="#A2A3AD" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <slot></slot>
+    <div class="wrapper" v-if="visible">
+      <transition name="overlay" appear>
+        <div class="overlay" @click.self="close" @keydown.esc="close" v-if="visible"></div>
+      </transition>
+      <div>
+      <div class="modal-wrapper">
+        <transition name="modal" appear>
+          <div class="modal" v-if="visible">
+            <button class="icon-cross" @click="close">
+              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16m0-16L4 20" stroke="#A2A3AD" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <slot></slot>
+          </div>
+        </transition>
+      </div>
       </div>
     </div>
   </div>
@@ -13,11 +22,7 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      loaded: null
-    };
-  },
+  props: ["visible"],
   methods: {
     close() {
       this.$emit("input", true);
@@ -27,30 +32,41 @@ export default {
 </script>
 
 <style scoped>
-.overlay {
+.wrapper {
   position: fixed;
   z-index: 5000;
-  background: rgba(0, 0, 0, 0.25);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: scroll;
+}
+
+.modal-wrapper {
   display: flex;
   align-items: flex-start;
-  padding-top: 4rem;
   justify-content: center;
-  overflow: scroll;
-  -webkit-overflow-scrolling: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: all;
+}
+
 .modal {
   width: 100%;
   max-width: 960px;
-  margin: 0 2rem 4rem;
   background: #fff;
   border-radius: 8px;
   position: relative;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  pointer-events: all;
   box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
 }
 .icon-cross {
@@ -83,8 +99,61 @@ export default {
   background-color: #eff0f5;
   transition: none;
 }
+
+.overlay-enter-active {
+  transition: opacity 2s;
+}
+
+.overlay-leave-active {
+  transition: opacity 0.75s;
+}
+
+.overlay-enter {
+  opacity: 0;
+}
+
+.overlay-enter-to {
+  opacity: 1;
+}
+
+.overlay-leave {
+  opacity: 1;
+}
+
+.overlay-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transition: opacity 0.25s, transform 0.75s;
+}
+
+.modal-leave-active {
+  transition: opacity 0.75s, transform 1s;
+}
+
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.modal-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
 @media screen and (max-width: 900px) {
-  .overlay {
+  .wrapper {
     padding: 0;
   }
   .icon-cross {
@@ -116,4 +185,3 @@ export default {
   }
 }
 </style>
-s
