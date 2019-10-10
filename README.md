@@ -3,16 +3,19 @@
 Vue components for front end projects.
 
 ## Run
+
 ```
 npm install
 ```
 
 ## Development
+
 ```
 npm run storybook
 ```
 
 ## Contributing
+
 1. Run `npm install; npm run storybook` to start Storybook locally
 2. Open `http://localhost:9999`
 3. Create a Component in `src`
