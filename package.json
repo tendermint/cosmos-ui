@@ -9,7 +9,8 @@
   "repository": "https://github.com/tendermint/ui",
   "scripts": {
     "storybook": "start-storybook -p 9999",
-    "now-build": "build-storybook -c .storybook -o .storybook-dist"
+    "now-build": "build-storybook -c .storybook -o .storybook-dist",
+    "postversion": "git push --tags"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
