@@ -6,6 +6,13 @@ defaults: &defaults
     - image: circleci/node:current
 
 jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
   deploy:
     <<: *defaults
     steps:
@@ -20,9 +27,17 @@ jobs:
 
 workflows:
   version: 2
-  deploy:
+  build-deploy:
     jobs:
-      - deploy:
+      - build:
           filters:
             tags:
               only: /^v*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v*/
+            branches:
+              ignore: /.*/
