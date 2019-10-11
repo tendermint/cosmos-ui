@@ -1,20 +1,18 @@
 <template>
   <div>
     <div class="wrapper" v-if="visible">
-      <transition name="overlay" appear>
-        <div class="overlay" @click.self="close" @keydown.esc="close" v-if="visible"></div>
+      <transition name="overlay" @after-leave="close" appear>
+        <div class="overlay" @click.self="show = false" @keydown.esc="close" v-if="visible && show"></div>
       </transition>
-      <div>
       <div class="modal-wrapper">
         <transition name="modal" appear>
-          <div class="modal" v-if="visible">
-            <button class="icon-cross" @click="close">
+          <div class="modal" v-if="visible && show">
+            <button class="icon-cross" @click="show = false">
               <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16m0-16L4 20" stroke="#A2A3AD" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
             <slot></slot>
           </div>
         </transition>
-      </div>
       </div>
     </div>
   </div>
@@ -23,8 +21,14 @@
 <script>
 export default {
   props: ["visible"],
+  data: function() {
+    return {
+      show: true
+    };
+  },
   methods: {
     close() {
+      this.show = true;
       this.$emit("input", true);
     }
   }
@@ -172,6 +176,7 @@ export default {
     width: 100%;
     margin: 0;
     border-radius: 0;
+    min-height: 100vh;
   }
   .container {
     display: block;
