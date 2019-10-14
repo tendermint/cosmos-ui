@@ -73,6 +73,7 @@ export default {
   pointer-events: all;
   box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
 }
+
 .icon-cross {
   position: absolute;
   right: -1.5rem;
@@ -93,12 +94,14 @@ export default {
   z-index: 1000;
   transition: box-shadow 0.3s, background 0.3s;
 }
+
 .icon-cross:hover,
 .icon-cross:focus {
   background-color: #fff;
   box-shadow: 0px 20px 48px rgba(22, 25, 49, 0.3);
   transition: box-shadow 0.1s, background 0.1s;
 }
+
 .icon-cross:active {
   background-color: #eff0f5;
   transition: none;
@@ -129,11 +132,13 @@ export default {
 }
 
 .modal-enter-active {
-  transition: opacity 0.25s, transform 0.75s;
+  transition: -webkit-transform .3s ease-in;
+  transition: transform .3s ease-in;
 }
 
 .modal-leave-active {
-  transition: opacity 0.75s, transform 1s;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
 }
 
 .modal-enter {
