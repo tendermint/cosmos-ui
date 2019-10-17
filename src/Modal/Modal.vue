@@ -2,9 +2,9 @@
   <div>
     <div class="wrapper" v-if="visible">
       <transition name="overlay" @after-leave="close" appear>
-        <div class="overlay" @click.self="show = false" @keydown.esc="close" v-if="visible && show"></div>
+        <div class="overlay" v-if="visible && show"></div>
       </transition>
-      <div class="modal-wrapper">
+      <div class="modal-wrapper" @click.self="show = false" @keydown.esc="close">
         <transition name="modal" appear>
           <div class="modal" v-if="visible && show">
             <button class="icon-cross" @click="show = false">
@@ -46,12 +46,6 @@ export default {
   overflow: scroll;
 }
 
-.modal-wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
 .overlay {
   background: rgba(0, 0, 0, 0.25);
   position: fixed;
@@ -62,17 +56,31 @@ export default {
   pointer-events: all;
 }
 
+.modal-wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .modal {
+  justify-self: center;
   width: 100%;
   max-width: 960px;
   background: #fff;
   border-radius: 8px;
   position: relative;
+  pointer-events: all;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  pointer-events: all;
   box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
 }
+
 .icon-cross {
   position: absolute;
   right: -1.5rem;
@@ -177,6 +185,12 @@ export default {
     margin: 0;
     border-radius: 0;
     min-height: 100vh;
+  }
+
+  .modal-wrapper {
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
   }
   .container {
     display: block;
