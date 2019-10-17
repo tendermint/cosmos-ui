@@ -2,13 +2,13 @@
   <div>
     <div class="wrapper" v-if="visible">
       <transition name="overlay" @after-leave="close" appear>
-        <div class="overlay" v-if="visible && show"></div>
+        <div class="overlay" v-if="visible && show" :style="{'--overlay-background': overlay}"></div>
       </transition>
       <div class="modal-wrapper" @click.self="show = false" @keydown.esc="close">
         <transition name="modal" appear>
           <div class="modal" v-if="visible && show">
-            <button class="icon-cross" @click="show = false">
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16m0-16L4 20" stroke="#A2A3AD" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <button :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]" @click="show = false">
+              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
             <slot></slot>
           </div>
@@ -20,7 +20,20 @@
 
 <script>
 export default {
-  props: ["visible"],
+  props: {
+    visible: {
+      type: Boolean,
+      default: true
+    },
+    overlay: {
+      type: String,
+      default: "rgba(0, 0, 0, 0.25)"
+    },
+    button: {
+      type: String,
+      default: "light"
+    }
+  },
   data: function() {
     return {
       show: true
@@ -47,7 +60,7 @@ export default {
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--overlay-background);
   position: fixed;
   top: 0;
   left: 0;
@@ -64,14 +77,12 @@ export default {
   height: 100%;
   position: relative;
   overflow-x: hidden;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
 }
 
 .modal {
   justify-self: center;
-  width: 100%;
-  max-width: 960px;
   background: #fff;
   border-radius: 8px;
   position: relative;
@@ -100,7 +111,25 @@ export default {
   cursor: pointer;
   z-index: 1000;
   transition: box-shadow 0.3s, background 0.3s;
+  stroke: #a2a3ad;
 }
+
+.icon-cross.icon-cross__dark {
+  background: #222;
+  box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.75);
+  border: none;
+  stroke: #555;
+}
+
+.icon-cross.icon-cross__dark:hover,
+.icon-cross.icon-cross__dark:focus {
+  background: #333;
+  box-shadow: none;
+  box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.75);
+  border: none;
+  stroke: #777;
+}
+
 .icon-cross:hover,
 .icon-cross:focus {
   background-color: #fff;
