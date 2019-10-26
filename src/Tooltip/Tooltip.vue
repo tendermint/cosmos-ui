@@ -1,9 +1,9 @@
 <template>
   <div style="display: inline-block; position: relative;" ref="container">
     <button class="term" tabindex="0" @click="select" ref="term">
-      <slot></slot>
+      <slot></slot>{{screenWidth}}
     </button>
-    <div class="tooltip" ref="tooltip" :style="[...getPosition]" tabindex="1" v-html="definition" @focus="setPosition($event)"></div>
+    <div class="tooltip" v-if="show" ref="tooltip" :style="{'--width': width, '--left': left, '--right': right}" tabindex="1" v-html="definition" @focus="setPosition($event)"></div>
   </div>
 </template>
 
@@ -25,8 +25,10 @@ button {
 }
 
 .tooltip {
-  min-width: 300px;
   position: absolute;
+  width: var(--width);
+  left: initial;
+  right: var(--right);
   background: white;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -47,6 +49,14 @@ button {
   opacity: 1;
   pointer-events: all;
 }
+
+@media screen and (max-width: 600px) {
+  .tooltip {
+    border-radius: 0;
+    width: 100vw;
+    left: var(--left);
+  }
+}
 </style>
 
 <script>
@@ -61,35 +71,39 @@ export default {
   },
   data: function() {
     return {
-      left: true
+      width: "300px",
+      left: "0px",
+      right: "0px",
+      screenWidth: null,
+      show: null
     };
   },
   mounted() {
-    window.addEventListener("resize", this.setPosition);
     this.setPosition();
+    window.addEventListener("resize", this.setPosition);
   },
   computed: {
     definition() {
       return new MarkdownIt().render(dict[this.value]);
-    },
-    getPosition() {
-      return {
-        left: this.left ? 0 : "initial",
-        right: !this.left ? 0 : "initial"
-      };
     }
   },
   methods: {
     select() {
-      this.$refs.tooltip.focus();
+      this.show = true;
+      this.$nextTick(() => this.$refs.tooltip.focus());
     },
     setPosition(e) {
-      const screenWidth = Math.max(
-        document.documentElement.clientWidth,
-        window.innerWidth || 0
-      );
-      const elementX = this.$refs.container.getBoundingClientRect().left;
-      this.left = !(elementX + 300 > screenWidth);
+      this.screenWidth = window.outerWidth;
+      if (this.$refs.container) {
+        const el = this.$refs.container.getBoundingClientRect();
+        if (this.screenWidth - el.left < parseInt(this.width)) {
+          this.right = -(this.screenWidth - el.width - el.left) + "px";
+          this.left = "initial";
+        } else {
+          this.right = "initial";
+          this.left = -el.left + "px";
+        }
+      }
     }
   }
 };
