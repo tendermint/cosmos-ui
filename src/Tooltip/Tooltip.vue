@@ -3,7 +3,9 @@
     <button class="term" tabindex="0" @click="select" ref="term">
       <slot></slot>
     </button>
-    <div class="tooltip" v-if="show" ref="tooltip" :style="{'--width': width, '--left': left, '--right': right}" tabindex="1" v-html="definition" @focus="setPosition($event)"></div>
+    <div class="tooltip" v-if="show" ref="tooltip" :style="{'--width': width, '--left': left, '--right': right}" tabindex="1" @focus="setPosition($event)">
+      <div class="tooltip__wrapper" v-html="definition"></div>
+    </div>
   </div>
 </template>
 
@@ -29,12 +31,9 @@ button {
   width: var(--width);
   left: initial;
   right: var(--right);
-  background: white;
   font-size: 0.75rem;
   line-height: 1.5;
-  padding: 0.75em 1em;
-  box-shadow: 0 0.25em 1.5em rgba(0, 0, 0, 0.15);
-  border-radius: 0.5em;
+  padding-right: 1rem;
   opacity: 0;
   pointer-events: none;
   outline: none;
@@ -42,6 +41,13 @@ button {
   transform: translateY(-1em);
   z-index: 1000000;
   box-sizing: border-box;
+}
+
+.tooltip__wrapper {
+  padding: 0.75em 1em;
+  background: white;
+  box-shadow: 0 0.25em 1.5em rgba(0, 0, 0, 0.15);
+  border-radius: 0.5em;
 }
 
 .tooltip:focus {
@@ -55,6 +61,7 @@ button {
     border-radius: 0;
     width: 100vw;
     left: var(--left);
+    padding: 0.75em 1em;
   }
 }
 </style>
