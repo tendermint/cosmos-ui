@@ -1,7 +1,7 @@
 <template>
   <div style="display: inline-block; position: relative;" ref="container">
     <button class="term" tabindex="0" @click="select" ref="term">
-      <slot></slot>{{screenWidth}}
+      <slot></slot>
     </button>
     <div class="tooltip" v-if="show" ref="tooltip" :style="{'--width': width, '--left': left, '--right': right}" tabindex="1" v-html="definition" @focus="setPosition($event)"></div>
   </div>
