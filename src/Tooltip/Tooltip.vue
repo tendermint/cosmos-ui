@@ -61,7 +61,7 @@ button {
     border-radius: 0;
     width: 100vw;
     left: var(--left);
-    padding: 0.75em 1em;
+    padding: 0 1em;
   }
 }
 </style>
