@@ -57,6 +57,7 @@ export default {
   right: 0;
   bottom: 0;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .overlay {
