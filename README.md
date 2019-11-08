@@ -1,5 +1,7 @@
 # ui
 
+[![npm version](https://img.shields.io/npm/v/@cosmos-ui/vue)](https://www.npmjs.com/package/@cosmos-ui/vue)
+
 Vue components for front end projects.
 
 ## Run
