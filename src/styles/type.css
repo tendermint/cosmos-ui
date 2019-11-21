@@ -1,0 +1,64 @@
+/* typography https://www.figma.com/file/7lITxBwOkiYCdeIzd9BTCq/Design-System-1.0?node-id=0%3A133 */
+
+.display-1 {
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 96px;
+}
+
+.display-2 {
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 80px;
+}
+
+.display-3 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 64px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 52px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+code {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+caption {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+}
