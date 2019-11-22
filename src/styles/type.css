@@ -42,6 +42,34 @@ h4 {
   line-height: 1.75rem;
 }
 
+.button-1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.button-2 {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.body-1 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.body-2 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.button-3 {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
 code {
   font-style: normal;
   font-weight: normal;
@@ -53,6 +81,11 @@ caption {
   font-style: normal;
   font-weight: normal;
   font-size: 0.8125rem;
+  line-height: 1.125rem;
+}
+
+.overline {
+  font-size: 0.75rem;
   line-height: 1rem;
 }
 
