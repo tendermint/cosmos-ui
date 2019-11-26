@@ -1,95 +1,95 @@
 /* typography https://www.figma.com/file/7lITxBwOkiYCdeIzd9BTCq/Design-System-1.0?node-id=0%3A133 */
 
-.display-1 {
+.ds__display-1 {
   font-weight: bold;
   font-size: 5rem;
   line-height: 6rem;
 }
 
-.display-2 {
+.ds__display-2 {
   font-weight: bold;
   font-size: 4rem;
   line-height: 5rem;
 }
 
-.display-3 {
+.ds__display-3 {
   font-weight: bold;
   font-size: 3rem;
   line-height: 4rem;
 }
 
-h1 {
+.ds__h1 {
   font-weight: bold;
   font-size: 2.5rem;
   line-height: 3.25rem;
 }
 
-h2 {
+.ds__h2 {
   font-weight: bold;
   font-size: 2rem;
   line-height: 2.5rem;
 }
 
-h3 {
+.ds__h3 {
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 2rem;
 }
 
-h4 {
+.ds__h4 {
   font-weight: bold;
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
-.button-1 {
+.ds__button-1 {
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.5rem;
 }
 
-.button-2 {
+.ds__button-2 {
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.25rem;
 }
 
-.body-1 {
+.ds__body-1 {
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-.body-2 {
+.ds__body-2 {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.button-3 {
+.ds__button-3 {
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1rem;
 }
 
-code {
+.ds__code {
   font-style: normal;
   font-weight: normal;
   font-size: 0.8125rem;
   line-height: 1.25rem;
 }
 
-caption {
+.ds__caption {
   font-style: normal;
   font-weight: normal;
   font-size: 0.8125rem;
   line-height: 1.125rem;
 }
 
-.overline {
+.ds__overline {
   font-size: 0.75rem;
   line-height: 1rem;
 }
 
-p {
+.ds__p {
   font-style: normal;
   font-weight: normal;
   font-size: 1.25rem;

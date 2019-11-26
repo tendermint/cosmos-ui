@@ -1,1 +1,1 @@
-<style src="../styles/normalize.css"></style>
+<style src="../styles/type.css"></style>

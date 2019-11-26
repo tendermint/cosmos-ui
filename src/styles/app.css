@@ -20,10 +20,6 @@
   --dark-bg: hsl(261, 40%, 8%);
   --dark-txt: hsl(0, 0%, 100%);
   --dark-dim: hsl(0, 0%, 75%);
-  /* deprecated */
-  --input-bc: hsla(233, 36%, 36%, 0.12);
-  --input-bc-hover: hsl(233, 100%, 70%);
-  --input-bg: hsl(233, 36%, 18%);
   /* don't change */
   --success: hsl(120, 58%, 55%);
   --success-bc: hsl(120, 58%, 41%);

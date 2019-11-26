@@ -8,7 +8,7 @@ export const normal = () => ({
   components: { GlobalStyles },
   template: `
     <div>
-      <p>this is an example of <sup>normalize.css</sup></p>
+      <h1 class="ds__display-1">this is an example with <code class="ds__code">ds prefix.</code></h1>
     </div>
   `
 });
