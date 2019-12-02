@@ -1,4 +1,4 @@
-# ui
+# `@cosmos-ui/vue`
 
 [![npm version](https://img.shields.io/npm/v/@cosmos-ui/vue)](https://www.npmjs.com/package/@cosmos-ui/vue)
 
