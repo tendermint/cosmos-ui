@@ -1,0 +1,25 @@
+:root {
+  --ds-background-color: rgba(22, 24, 48, 1);
+  --ds-color: black;
+  --ds-color-alt: white;
+  --ds-font-family: "Gotham A", "Gotham B", "Gotham";
+
+  --ds-h1-font-size: 3rem;
+
+  --ds-h2-font-size: 2rem;
+
+  --ds-h4-font-size: 1.125rem;
+  --ds-h4-font-weight: 600;
+
+  --ds-h5-font-size: .875rem;
+  --ds-h5-font-weight: rgba(0,0,0,.5);
+
+  --ds-h6-font-size: .75rem;
+  --ds-h6-text-transform: uppercase;
+  --ds-h6-letter-spacing: .2em;
+
+  --ds-p2-font-size: .875rem;
+
+  --ds-p3-font-size: .825rem;
+  --ds-p3-color: rgba(255,255,255,.8);
+}
