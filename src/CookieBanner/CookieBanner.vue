@@ -4,8 +4,19 @@
       <div class="wrapper" v-if="visible && show">
         <slot></slot>
         <span class="icon-cross" @click="show = false">
-          <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
+              stroke="#A2A3AD"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
           </svg>
         </span>
       </div>
@@ -37,7 +48,8 @@ export default {
 <style scoped>
 .banner-wrapper {
   box-sizing: border-box;
-  box-shadow: rgba(196, 196, 196, 0.25) 0rem 0.0625rem 0.25rem;
+  box-shadow: 0px 24px 40px rgba(22, 25, 49, 0.1),
+    0px 10px 16px rgba(22, 25, 49, 0.08), 0px 1px 0px rgba(22, 25, 49, 0.05);
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
@@ -46,13 +58,13 @@ export default {
   white-space: nowrap;
   width: 100%;
   max-width: 26.8125rem;
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   border-width: 0.0625rem;
   border-style: solid;
-  border-color: rgb(217, 217, 217);
+  border-color: transparent;
   border-image: initial;
   border-radius: 3.4375rem;
-  padding: 0.625rem 0.9375rem 0.75rem 1.4375rem;
+  padding: 0.75rem 1.4375rem 0.75rem 1.4375rem;
 }
 
 .wrapper {
@@ -64,25 +76,13 @@ export default {
 }
 
 .icon-cross {
-  position: absolute;
-  right: -1.4rem;
-  top: -1.4rem;
-  padding: 0.5rem;
-  background: #eff0f5;
   background-clip: padding-box;
-  border-radius: 1000px;
-  box-shadow: 0px 12px 48px rgba(22, 25, 49, 0.2);
-  border: 1px solid rgba(176, 180, 207, 0.2);
   outline: none;
-  width: 1.5rem;
-  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  transition: box-shadow 0.3s, background 0.3s;
-  stroke: #a2a3ad;
 }
 
 .fade-enter-active,

@@ -14,7 +14,7 @@ export const normal = () => ({
   template: `
     <div>
       <cookiebanner :visible="banner">
-        <div>By navigating this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener">Cookie Policy</a>.</div>
+        <div>By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
       </cookiebanner>
     </div>
   `
