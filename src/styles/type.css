@@ -1,0 +1,97 @@
+/* Typography from Design System 1.0 */
+
+.ds__display-1 {
+  font-weight: bold;
+  font-size: 5rem;
+  line-height: 6rem;
+}
+
+.ds__display-2 {
+  font-weight: bold;
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+.ds__display-3 {
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.ds__h1 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 3.25rem;
+}
+
+.ds__h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.ds__h3 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.ds__h4 {
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.ds__button-1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.ds__button-2 {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.ds__body-1 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.ds__body-2 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.ds__button-3 {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.ds__code {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.ds__caption {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+}
+
+.ds__overline {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.ds__p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
