@@ -16,6 +16,14 @@
               </svg>
             </button>
             <slot></slot>
+            <button
+              :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
+              @click="show = false"
+            >
+              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
           </div>
         </transition>
       </div>
