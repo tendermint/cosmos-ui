@@ -3,3 +3,4 @@ export * from "./Tooltip";
 export * from "./Modal";
 export * from "./Cards";
 export * from "./SocialCards";
+export * from "./CookieBanner";
