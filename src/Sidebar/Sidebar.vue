@@ -4,7 +4,7 @@
       <div class="overlay" ref="overlay" v-if="visible && visibleLocal" @click="close" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend"></div>
     </transition>
     <transition name="sidebar" @after-leave="$emit('visible', false)" appear>
-      <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="{'--translate-x': `-${this.touchMoveX}%`}">
+      <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="{'--translate-x': `-${this.touchMoveX}%`}" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
         <slot/>
       </div>
     </transition>
@@ -35,7 +35,7 @@
 }
 
 .overlay-enter-active {
-  transition: all 1s;
+  transition: all .5s ease-in;
 }
 
 .overlay-enter {
@@ -47,7 +47,7 @@
 }
 
 .overlay-leave-active {
-  transition: all 1s;
+  transition: all .5s;
 }
 
 .overlay-leave {
@@ -59,7 +59,7 @@
 }
 
 .sidebar-enter-active {
-  transition: all 1s;
+  transition: all .5s;
 }
 
 .sidebar-enter {
@@ -71,7 +71,7 @@
 }
 
 .sidebar-leave-active {
-  transition: all 1s;
+  transition: all .5s;
 }
 
 .sidebar-leave {
@@ -98,11 +98,14 @@ export default {
     const body = document.querySelector("body").style;
     const iOS =
       !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    const sidebar = this.$refs.sidebar;
     if (iOS) body.position = "fixed";
     body.overflowY = "hidden";
-    this.$refs.sidebar.addEventListener("transitionend", () => {
-      this.$refs.sidebar.style.transition = "";
-    });
+    if (sidebar) {
+      sidebar.addEventListener("transitionend", () => {
+        sidebar.style.transition = "";
+      });
+    }
   },
   destroyed() {
     document.querySelector("body").style.overflowY = "";
