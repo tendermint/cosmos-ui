@@ -95,13 +95,18 @@ export default {
     };
   },
   mounted() {
-    document.querySelector("body").style.overflowY = "hidden";
+    const body = document.querySelector("body").style;
+    const iOS =
+      !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    if (iOS) body.position = "fixed";
+    body.overflowY = "hidden";
     this.$refs.sidebar.addEventListener("transitionend", () => {
       this.$refs.sidebar.style.transition = "";
     });
   },
   destroyed() {
     document.querySelector("body").style.overflowY = "";
+    document.querySelector("body").style.position = "";
   },
   methods: {
     close(e) {
@@ -116,20 +121,21 @@ export default {
       this.touchStartX = e.changedTouches[0].clientX;
     },
     touchend(e) {
-      if (this.touchMoveX > 25) {
-        this.$refs.sidebar.style.transition = "";
-        this.visibleLocal = null;
-      } else if (this.touchMoveX == 0) {
-        this.$refs.sidebar.style.transition = "";
-      } else {
-        this.$refs.sidebar.style.transition = "transform .2s";
-        this.touchMoveX = 0;
+      if (this.$refs.sidebar) {
+        if (this.touchMoveX > 25) {
+          this.$refs.sidebar.style.transition = "";
+          this.visibleLocal = null;
+        } else if (this.touchMoveX == 0) {
+          this.$refs.sidebar.style.transition = "";
+        } else {
+          this.$refs.sidebar.style.transition = "transform .2s";
+          this.touchMoveX = 0;
+        }
       }
     },
     touchmove(e) {
       const move = e.changedTouches[0].clientX;
       const width = window.screen.width;
-      const sidebar = this.$refs.sidebar.getBoundingClientRect().width;
       const delta = ((this.touchStartX - move) * 100) / width;
       this.touchMoveX = delta;
     }
