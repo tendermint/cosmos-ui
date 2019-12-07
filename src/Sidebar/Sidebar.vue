@@ -4,7 +4,7 @@
       <div class="overlay" ref="overlay" v-if="visible && visibleLocal" @click="close" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend"></div>
     </transition>
     <transition name="sidebar" @after-leave="$emit('visible', false)" appear>
-      <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="{'--translate-x': `-${this.touchMoveX}%`}" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
+      <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="style" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
         <slot/>
       </div>
     </transition>
@@ -24,14 +24,11 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 300px;
-  max-width: 75vw;
   height: 100vh;
   background: white;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  transform: translateX(var(--translate-x));
+  transform: translateX(var(--translate-x-component-internal));
 }
 
 .overlay-enter-active {
@@ -63,7 +60,7 @@
 }
 
 .sidebar-enter {
-  transform: translateX(-100%);
+  transform: translateX(var(--sidebar-transform-component-internal));
 }
 
 .sidebar-enter-to {
@@ -79,13 +76,13 @@
 }
 
 .sidebar-leave-to {
-  transform: translateX(-100%);
+  transform: translateX(var(--sidebar-transform-component-internal));
 }
 </style>
 
 <script>
 export default {
-  props: ["visible"],
+  props: ["visible", "width", "max-width", "side"],
   data: function() {
     return {
       visibleLocal: true,
@@ -110,6 +107,21 @@ export default {
   destroyed() {
     document.querySelector("body").style.overflowY = "";
     document.querySelector("body").style.position = "";
+  },
+  computed: {
+    style() {
+      return {
+        left: this.side === "right" ? "initial" : "0",
+        right: this.side === "right" ? "0" : "initial",
+        width: this.width || "300px",
+        "max-width": this.maxWidth || "75vw",
+        "--sidebar-transform-component-internal":
+          this.side === "right" ? "100%" : "-100%",
+        "--translate-x-component-internal": `${
+          this.side === "right" ? "" : "-"
+        }${this.touchMoveX}%`
+      };
+    }
   },
   methods: {
     close(e) {
@@ -140,7 +152,11 @@ export default {
       const move = e.changedTouches[0].clientX;
       const width = window.screen.width;
       const delta = ((this.touchStartX - move) * 100) / width;
-      this.touchMoveX = delta;
+      if (this.side === "right") {
+        this.touchMoveX = delta < 0 ? -delta : 0;
+      } else {
+        this.touchMoveX = delta;
+      }
     }
   }
 };
