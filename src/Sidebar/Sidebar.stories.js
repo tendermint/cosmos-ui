@@ -62,7 +62,7 @@ export const right = () => ({
   template: `
     <div>
       <div>
-        <Sidebar :visible="visible" v-if="visible" @visible="visible = $event" side="right">
+        <Sidebar :visible="visible" v-if="visible" @visible="visible = $event" background-color="rgba(255,255,255,0)" box-shadow="0 0 50px 0 rgba(0,0,0,.25)" side="right">
           <p v-for="text in data.lorem">{{text}}</p>
         </Sidebar>
         <div>

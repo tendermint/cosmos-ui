@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="overlay" appear>
-      <div class="overlay" ref="overlay" v-if="visible && visibleLocal" @click="close" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend"></div>
+      <div class="overlay" ref="overlay" :style="{'background-color': backgroundColor || 'rgba(0, 0, 0, 0.35)'}" v-if="visible && visibleLocal" @click="close" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend"></div>
     </transition>
     <transition name="sidebar" @after-leave="$emit('visible', false)" appear>
       <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="style" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
@@ -13,7 +13,6 @@
 
 <style scoped>
 .overlay {
-  background: rgba(0, 0, 0, 0.35);
   position: fixed;
   top: 0;
   left: 0;
@@ -82,7 +81,14 @@
 
 <script>
 export default {
-  props: ["visible", "width", "max-width", "side"],
+  props: [
+    "visible",
+    "width",
+    "max-width",
+    "side",
+    "background-color",
+    "box-shadow"
+  ],
   data: function() {
     return {
       visibleLocal: true,
@@ -111,6 +117,7 @@ export default {
   computed: {
     style() {
       return {
+        "box-shadow": this.boxShadow || "none",
         left: this.side === "right" ? "initial" : "0",
         right: this.side === "right" ? "0" : "initial",
         width: this.width || "300px",
