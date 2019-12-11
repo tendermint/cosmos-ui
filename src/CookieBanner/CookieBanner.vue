@@ -3,7 +3,7 @@
     <div class="banner-wrapper" v-if="visible && show">
       <div class="wrapper" v-if="visible && show">
         <slot></slot>
-        <span class="icon-cross" @click="show = false">
+        <span class="icon-cross" @click="close">
           <svg
             width="14"
             height="14"
@@ -25,22 +25,49 @@
 </template>
 
 <script>
+import * as Cookie from 'tiny-cookie'
+
 export default {
   props: {
     visible: {
       type: Boolean,
       default: true
-    }
+    },
+    storageName: {
+      type: String,
+      default: 'cookie-consent-status'
+    },
+    cookieOptions: {
+      type: Object,
+      default: () => {},
+      required: false
+    },
   },
   data: function() {
     return {
-      show: true
+      show: true,
+      status: null
     };
   },
+  mounted () {
+    this.init()
+  },
   methods: {
+    init() {
+      this.checkCookieStatus();
+    },
+    checkCookieStatus() {
+      if (Cookie.get(this.storageName, false)) {
+        this.setCookieStatus();
+      }
+    },
+    setCookieStatus() {
+      Cookie.set(this.storageName, true, this.cookieOptions);
+    },
     close() {
-      this.show = true;
-    }
+      this.show = false;
+      this.setCookieStatus();
+    },
   }
 };
 </script>
