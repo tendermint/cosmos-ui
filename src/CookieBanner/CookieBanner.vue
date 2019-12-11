@@ -39,8 +39,7 @@ export default {
     },
     cookieOptions: {
       type: Object,
-      default: () => {},
-      required: false
+      default: { expires: '1M' }
     },
   },
   data: function() {
