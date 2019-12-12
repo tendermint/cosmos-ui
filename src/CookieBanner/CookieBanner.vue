@@ -31,7 +31,7 @@ export default {
   props: {
     storageName: {
       type: String,
-      default: `${window.location.host}-cookie-consent-status`
+      default: 'cookie-consent-accepted'
     },
     cookieOptions: {
       type: Object,
