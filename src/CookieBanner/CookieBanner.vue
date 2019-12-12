@@ -29,17 +29,13 @@ import * as Cookie from 'tiny-cookie'
 
 export default {
   props: {
-    show: {
-      type: Boolean,
-      default: true
-    },
     storageName: {
       type: String,
-      default: 'cookie-consent-status'
+      default: `${window.location.host}-cookie-consent-status`
     },
     cookieOptions: {
       type: Object,
-      default: { expires: '1M' }
+      default: () => ({ expires: '1M' })
     },
   },
   data: function() {
