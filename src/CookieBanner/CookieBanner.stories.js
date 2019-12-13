@@ -13,9 +13,7 @@ export const normal = () => ({
   },
   template: `
     <div>
-      <cookie-banner :visited="banner">
-        <div>By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
-      </cookie-banner>
+      <cookie-banner />
     </div>
   `
 });

@@ -3,7 +3,7 @@
     <transition name="fade" appear>
       <div class="banner-wrapper" v-if="show">
         <div class="wrapper">
-          <slot></slot>
+          <div>By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
           <span class="icon-cross" @click="close">
             <svg
               width="14"
