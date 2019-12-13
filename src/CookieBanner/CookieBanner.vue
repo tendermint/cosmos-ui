@@ -1,27 +1,29 @@
 <template>
-  <transition name="fade" appear>
-    <div class="banner-wrapper" v-if="show && visited">
-      <div class="wrapper" v-if="show && visited">
-        <slot></slot>
-        <span class="icon-cross" @click="close">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
-              stroke="#A2A3AD"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-        </span>
+  <div v-if="visited">
+    <transition name="fade" appear>
+      <div class="banner-wrapper" v-if="show">
+        <div class="wrapper">
+          <slot></slot>
+          <span class="icon-cross" @click="close">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
+                stroke="#A2A3AD"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
