@@ -3,7 +3,7 @@
     <transition name="fade" appear>
       <div class="banner-wrapper" v-if="show">
         <div class="wrapper">
-          <div>By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
+          <div class="message">By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
           <span class="icon-cross" @click="close">
             <svg
               width="14"
@@ -117,5 +117,18 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 435px) {
+  .banner-wrapper {
+    bottom: 0;
+    width: 100%;
+    white-space: normal;
+    border-radius: unset;
+  }
+
+  .message {
+    font-size: 0.95rem;
+  }
 }
 </style>
