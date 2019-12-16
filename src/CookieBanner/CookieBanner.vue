@@ -1,9 +1,9 @@
 <template>
   <transition name="fade" appear>
-    <div class="banner-wrapper" v-if="visible && show">
-      <div class="wrapper" v-if="visible && show">
+    <div class="banner-wrapper" v-if="show && visited">
+      <div class="wrapper" v-if="show && visited">
         <slot></slot>
-        <span class="icon-cross" @click="show = false">
+        <span class="icon-cross" @click="close">
           <svg
             width="14"
             height="14"
@@ -25,22 +25,44 @@
 </template>
 
 <script>
+import * as Cookie from 'tiny-cookie'
+
 export default {
   props: {
-    visible: {
-      type: Boolean,
-      default: true
-    }
+    storageName: {
+      type: String,
+      default: 'cookie-consent-accepted'
+    },
+    cookieOptions: {
+      type: Object,
+      default: () => ({ expires: '1M' })
+    },
   },
   data: function() {
     return {
-      show: true
+      show: true,
+      visited: true
     };
   },
+  mounted () {
+    this.init()
+  },
   methods: {
+    init() {
+      this.checkCookieStatus();
+    },
+    checkCookieStatus() {
+      if (Cookie.get(this.storageName, false)) {
+        this.visited = false
+      } else this.visited = true;
+    },
+    setCookieStatus() {
+      Cookie.set(this.storageName, true, this.cookieOptions);
+    },
     close() {
-      this.show = true;
-    }
+      this.show = false;
+      this.setCookieStatus();
+    },
   }
 };
 </script>
