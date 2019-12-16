@@ -99,6 +99,10 @@ export default {
   justify-content: space-between;
 }
 
+.message {
+  font-size: 0.85rem;
+}
+
 .icon-cross {
   background-clip: padding-box;
   outline: none;
@@ -128,7 +132,7 @@ export default {
   }
 
   .message {
-    font-size: 0.95rem;
+    font-size: 0.90rem;
   }
 }
 </style>
