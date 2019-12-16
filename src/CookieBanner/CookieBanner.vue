@@ -1,46 +1,70 @@
 <template>
-  <transition name="fade" appear>
-    <div class="banner-wrapper" v-if="visible && show">
-      <div class="wrapper" v-if="visible && show">
-        <slot></slot>
-        <span class="icon-cross" @click="show = false">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
-              stroke="#A2A3AD"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-        </span>
+  <div v-if="visited">
+    <transition name="fade" appear>
+      <div class="banner-wrapper" v-if="show">
+        <div class="wrapper">
+          <div class="message">By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
+          <span class="icon-cross" @click="close">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
+                stroke="#A2A3AD"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
+import * as Cookie from 'tiny-cookie'
+
 export default {
   props: {
-    visible: {
-      type: Boolean,
-      default: true
-    }
+    storageName: {
+      type: String,
+      default: 'cookie-consent-accepted'
+    },
+    cookieOptions: {
+      type: Object,
+      default: () => ({ expires: '1M' })
+    },
   },
   data: function() {
     return {
-      show: true
+      show: true,
+      visited: true
     };
   },
+  mounted () {
+    this.init()
+  },
   methods: {
+    init() {
+      this.checkCookieStatus();
+    },
+    checkCookieStatus() {
+      if (Cookie.get(this.storageName, false)) {
+        this.visited = false
+      } else this.visited = true;
+    },
+    setCookieStatus() {
+      Cookie.set(this.storageName, true, this.cookieOptions);
+    },
     close() {
-      this.show = true;
-    }
+      this.show = false;
+      this.setCookieStatus();
+    },
   }
 };
 </script>
@@ -93,5 +117,18 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 435px) {
+  .banner-wrapper {
+    bottom: 0;
+    width: 100%;
+    white-space: normal;
+    border-radius: unset;
+  }
+
+  .message {
+    font-size: 0.95rem;
+  }
 }
 </style>
