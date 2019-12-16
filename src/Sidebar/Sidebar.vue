@@ -1,10 +1,24 @@
 <template>
   <div>
     <transition name="overlay" appear>
-      <div class="overlay" ref="overlay" :style="{'background-color': backgroundColor || 'rgba(0, 0, 0, 0.35)'}" v-if="visible && visibleLocal" @click="close" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend"></div>
+      <div class="overlay"
+           ref="overlay"
+           :style="{'background-color': backgroundColor || 'rgba(0, 0, 0, 0.35)'}"
+           v-if="visible && visibleLocal"
+           @click="close"
+           @touchstart="touchstart"
+           @touchmove="touchmove"
+           @touchend="touchend">
+      </div>
     </transition>
     <transition name="sidebar" @after-leave="$emit('visible', false)" appear>
-      <div class="sidebar" ref="sidebar" v-if="visible && visibleLocal" :style="style" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
+      <div class="sidebar"
+           ref="sidebar"
+           v-if="visible && visibleLocal"
+           :style="style"
+           @touchstart="touchstart"
+           @touchmove="touchmove"
+           @touchend="touchend">
         <slot/>
       </div>
     </transition>
@@ -19,7 +33,6 @@
   height: 100vh;
   width: 100vw;
 }
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -29,51 +42,39 @@
   -webkit-overflow-scrolling: touch;
   transform: translateX(var(--translate-x-component-internal));
 }
-
 .overlay-enter-active {
-  transition: all .5s ease-in;
+  transition: all .25s ease-in;
 }
-
 .overlay-enter {
   opacity: 0;
 }
-
 .overlay-enter-to {
   opacity: 1;
 }
-
 .overlay-leave-active {
-  transition: all .5s;
+  transition: all .25s;
 }
-
 .overlay-leave {
   opacity: 1;
 }
-
 .overlay-leave-to {
   opacity: 0;
 }
-
 .sidebar-enter-active {
-  transition: all .5s;
+  transition: all .25s;
 }
-
 .sidebar-enter {
   transform: translateX(var(--sidebar-transform-component-internal));
 }
-
 .sidebar-enter-to {
   transform: translateX(0);
 }
-
 .sidebar-leave-active {
-  transition: all .5s;
+  transition: all .25s;
 }
-
 .sidebar-leave {
   transform: translateX(0);
 }
-
 .sidebar-leave-to {
   transform: translateX(var(--sidebar-transform-component-internal));
 }
@@ -97,22 +98,29 @@ export default {
       touchEndX: null
     };
   },
-  mounted() {
-    const body = document.querySelector("body").style;
-    const iOS =
-      !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-    const sidebar = this.$refs.sidebar;
-    if (iOS) body.position = "fixed";
-    body.overflowY = "hidden";
-    if (sidebar) {
-      sidebar.addEventListener("transitionend", () => {
-        sidebar.style.transition = "";
-      });
+  watch: {
+    visible(newValue, oldValue) {
+      if (newValue) {
+        const body = document.querySelector("body").style;
+        const iOS =
+          !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        const sidebar = this.$refs.sidebar;
+        if (iOS) body.position = "relative";
+        body.overflowY = "hidden";
+        // body.overflowX = "hidden";
+        if (sidebar) {
+          sidebar.addEventListener("transitionend", () => {
+            sidebar.style.transition = "";
+          });
+        }
+        this.touchMoveX = null;
+        this.touchStartX = null;
+        this.visibleLocal = true;
+      } else {
+        document.querySelector("body").style.overflowY = "";
+        document.querySelector("body").style.position = "";
+      }
     }
-  },
-  destroyed() {
-    document.querySelector("body").style.overflowY = "";
-    document.querySelector("body").style.position = "";
   },
   computed: {
     style() {
@@ -136,7 +144,8 @@ export default {
       const overlay = this.$refs["overlay"];
       if (overlay) {
         overlay.style["pointer-events"] = "none";
-        document.elementFromPoint(e.clientX, e.clientY).click();
+        const doc = document.elementFromPoint(e.clientX, e.clientY);
+        if (doc.click) doc.click();
       }
     },
     touchstart(e) {
