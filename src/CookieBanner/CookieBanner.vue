@@ -79,7 +79,6 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  white-space: nowrap;
   width: 100%;
   max-width: 26.8125rem;
   background: #ffffff;
@@ -97,6 +96,10 @@ export default {
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
+}
+
+.message {
+  font-size: 0.85rem;
 }
 
 .icon-cross {
@@ -128,7 +131,7 @@ export default {
   }
 
   .message {
-    font-size: 0.95rem;
+    font-size: 0.90rem;
   }
 }
 </style>
