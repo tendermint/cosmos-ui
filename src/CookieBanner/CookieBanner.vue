@@ -79,7 +79,6 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  white-space: nowrap;
   width: 100%;
   max-width: 26.8125rem;
   background: #ffffff;
