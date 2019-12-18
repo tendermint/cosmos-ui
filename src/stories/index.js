@@ -3,4 +3,7 @@ export * from "./Tooltip";
 export * from "./Modal";
 export * from "./Cards";
 export * from "./SocialCards";
+export * from "./Sidebar";
 export * from "./CookieBanner";
+export * from "./Footer";
+export * from "./Hero";
