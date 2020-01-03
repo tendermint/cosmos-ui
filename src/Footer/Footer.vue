@@ -3,7 +3,9 @@
     <slot/>
     <div class="grid">
       <div class="header">
-        <div class="header__title">{{value.h1}}</div>
+        <div class="header__title">
+          <slot name="logo">{{value.h1}}</slot>
+        </div>
         <div class="header__links">
           <a :href="url" v-for="url in value.links" :key="url" class="header__links__item" target="_blank" >
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
@@ -74,6 +76,7 @@ a {
 
 .menu__item__title {
   margin-bottom: 1rem;
+  font-weight: var(--ds-h6-font-weight, 600);
   font-size: var(--ds-h6-font-size, 0.75rem);
   text-transform: var(--ds-h6-text-transform, uppercase);
   letter-spacing: var(--ds-h6-letter-spacing, 0.2em);
@@ -84,11 +87,11 @@ a {
   padding-bottom: 0.5rem;
   display: block;
   font-size: var(--ds-p2-font-size, 0.875rem);
+  line-height: var(--ds-p2-line-height, 1.25);
 }
 
 .smallprint {
   font-size: var(--ds-p3-font-size, 0.825rem);
-  color: var(--ds-p3-color, rgba(255, 255, 255, 0.8));
 }
 
 @media screen and (max-width: 800px) {

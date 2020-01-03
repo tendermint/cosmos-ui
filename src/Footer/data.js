@@ -1,7 +1,6 @@
 export default {
   footer: {
     h1: "Cosmos",
-    logo: "",
     links: [
       "https://blog.cosmos.network/",
       "https://twitter.com/cosmos",
