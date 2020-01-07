@@ -1,33 +1,27 @@
 <template>
   <div>
-    <div class="wrapper" v-if="visible">
-      <transition name="overlay" @after-leave="close" appear>
-        <div class="overlay" v-if="visible && show" :style="{'--overlay-background': overlay}"></div>
-      </transition>
-      <div class="modal-wrapper" @click.self="show = false" @keydown.esc="close">
-        <transition name="modal" appear>
-          <div class="modal" v-if="visible && show">
-            <button
-              :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
-              @click="show = false"
-            >
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
-              </svg>
-            </button>
-            <slot></slot>
-            <button
-              :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
-              @click="show = false"
-            >
-              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
+    <transition name="fade" appear>
+      <div class="wrapper" v-if="visible">
+        <transition name="overlay" @after-leave="close" appear>
+          <div class="overlay" v-if="visible && show" :style="{'--overlay-background': overlay}"></div>
         </transition>
+        <div class="modal-wrapper" @click.self="show = false">
+          <transition name="modal" appear>
+            <div class="modal" v-if="visible && show">
+              <button
+                :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
+                @click="show = false"
+              >
+                <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </button>
+              <slot></slot>
+            </div>
+          </transition>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -155,6 +149,16 @@ export default {
   transition: none;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .overlay-enter-active {
   transition: opacity 2s;
 }
@@ -163,20 +167,14 @@ export default {
   transition: opacity 0.75s;
 }
 
-.overlay-enter {
-  opacity: 0;
-}
-
-.overlay-enter-to {
-  opacity: 1;
-}
-
-.overlay-leave {
-  opacity: 1;
-}
-
+.overlay-enter,
 .overlay-leave-to {
   opacity: 0;
+}
+
+.overlay-leave,
+.overlay-enter-to {
+  opacity: 1;
 }
 
 .modal-enter-active {

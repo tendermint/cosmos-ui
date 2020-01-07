@@ -14,7 +14,7 @@ export const normal = () => ({
     };
   },
   template: `
-    <div>
+    <div @keydown.esc="modal = false">
       <button @click="modal = !modal">Toggle modal</button>
       <modal :visible="modal" @input="modal = false">
         <div class="content" style="padding: 2rem">{{lorem}}</div>
