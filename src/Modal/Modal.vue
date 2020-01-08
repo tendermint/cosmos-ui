@@ -4,9 +4,9 @@
       <transition name="overlay" @after-leave="close" appear>
         <div class="overlay" v-if="visible && show" :style="{'--overlay-background': overlay}"></div>
       </transition>
-      <div class="modal-wrapper" @click.self="show = false" @keydown.esc="close">
+      <div class="modal-wrapper" @click.self="show = false">
         <transition name="modal" appear>
-          <div class="modal" v-if="visible && show">
+          <div class="modal" v-if="visible && show" tabindex="0" @keydown.esc="show = false" ref="modal">
             <button
               :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
               @click="show = false"
@@ -51,6 +51,15 @@ export default {
     return {
       show: true
     };
+  },
+  watch: {
+    visible(becomesVisible) {
+      if (becomesVisible) {
+        this.$nextTick(() => {
+          if (this.$refs.modal) this.$refs.modal.focus()
+        })
+      }
+    }
   },
   methods: {
     close() {
@@ -104,6 +113,7 @@ export default {
   margin-top: 4rem;
   margin-bottom: 4rem;
   box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
 .icon-cross {
