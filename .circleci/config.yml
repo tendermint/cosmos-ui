@@ -18,7 +18,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: run npm publish --access public
+          command: npm publish --access public
 
 workflows:
   version: 2
