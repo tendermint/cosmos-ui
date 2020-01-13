@@ -6,7 +6,7 @@ export default {
 
 export const normal = () => ({
   components: { Modal },
-  data: function() {
+  data: function () {
     return {
       modal: null,
       lorem:
@@ -17,7 +17,10 @@ export const normal = () => ({
     <div>
       <button @click="modal = !modal">Toggle modal</button>
       <modal :visible="modal" @input="modal = false">
-        <div class="content" style="padding: 2rem">{{lorem}}</div>
+        <div class="content" style="padding: 2rem">
+          <div>{{lorem}}</div>
+          <div><input type="text"></div>
+        </div>
       </modal>
     </div>
   `

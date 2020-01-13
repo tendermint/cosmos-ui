@@ -2,7 +2,7 @@
   "name": "@cosmos-ui/vue",
   "productName": "Tendermint UI",
   "description": "Tendermint UI contains components for front end projects.",
-  "version": "0.5.16",
+  "version": "0.5.21",
   "license": "Apache-2.0",
   "main": "src/index.js",
   "author": "Tendermint, Inc <hello@tendermint.com>",
@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "tiny-cookie": "^2.3.1"
   }
 }
