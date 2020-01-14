@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page-header {
   background: hsl(220, 33%, 98%);
 }
@@ -57,9 +57,9 @@ export default {
 }
 
 .page-header__project-title {
-  font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
+  font-family: var(--ds-font-family, "Helvetica");
   font-weight: 500;
-  font-size: 1.125rem;
+  font-size: var(--ds-h4-font-size);
   line-height: 1.25rem;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
