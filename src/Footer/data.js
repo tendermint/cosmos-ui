@@ -2,7 +2,7 @@ export default {
   footer: {
     h1: "Cosmos",
     links: [
-      "https://blog.cosmos.network/",
+      { url: "https://blog.cosmos.network/", icon: "medium" },
       "https://twitter.com/cosmos",
       "https://www.linkedin.com/company/tendermint/",
       "https://reddit.com/r/cosmosnetwork",
@@ -16,7 +16,7 @@ export default {
         children: [
           {
             h1: "About",
-            href: "https://cosmos.network/about",
+            href: "/about",
           },
           {
             h1: "Blog",
@@ -24,11 +24,11 @@ export default {
           },
           {
             h1: "Media",
-            href: "https://cosmos.network/media",
+            href: "/media",
           },
           {
             h1: "Press Kit",
-            href: "https://cosmos.network/presskit",
+            href: "/presskit",
           },
         ],
       },
@@ -37,7 +37,7 @@ export default {
         children: [
           {
             h1: "Cosmos SDK",
-            href: "https://cosmos.network/sdk"
+            href: "/sdk"
           },
           {
             h1: "Cosmos Hub",
@@ -62,15 +62,15 @@ export default {
           },
           {
             h1: "Ecosystem",
-            href: "https://cosmos.network/ecosystem"
+            href: "/ecosystem"
           },
           {
             h1: "Community",
-            href: "https://cosmos.network/community"
+            href: "/community"
           },
           {
             h1: "Design & Assets",
-            href: "https://cosmos.network/design"
+            href: "/design"
           },
         ]
       },
@@ -79,15 +79,15 @@ export default {
         children: [
           {
             h1: "Developers",
-            href: "https://cosmos.network/developers"
+            href: "/developers"
           },
           {
             h1: "Roadmap",
-            href: "https://cosmos.network/roadmap"
+            href: "/roadmap"
           },
           {
             h1: "FAQ",
-            href: "https://cosmos.network/resources/faq"
+            href: "/resources/faq"
           }
         ]
       }
