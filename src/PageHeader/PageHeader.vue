@@ -10,7 +10,7 @@
           <template v-if="projectTitle">{{ projectTitle }}</template>
           <slot v-else name="project-title"></slot>
         </div>
-        <div class="page-header__title h1">
+        <div class="page-header__title">
           <template v-if="title">{{ title }}</template>
           <slot v-else name="title"></slot>
         </div>
@@ -46,7 +46,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.page-header__title, .h1 {
+.page-header__title {
   font-size: 2.5rem;
   line-height: 1.16;
   font-weight: 300;
@@ -57,8 +57,6 @@ export default {
 }
 
 .page-header__project-title {
-  display: flex;
-  align-items: center;
   font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
   font-weight: 500;
   font-size: 1.125rem;
