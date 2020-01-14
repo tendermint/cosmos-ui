@@ -6,18 +6,13 @@ defaults: &defaults
     - image: circleci/node:current
 
 jobs:
-  build:
+  deploy:
     <<: *defaults
     steps:
       - checkout
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  deploy:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
@@ -27,17 +22,9 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  deploy:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /^v.*/
       - deploy:
-          requires:
-            - build
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only: /master/
