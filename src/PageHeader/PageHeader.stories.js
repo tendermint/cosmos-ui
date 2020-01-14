@@ -27,3 +27,16 @@ export const withProjectTitle = () => ({
     </div>
   `
 });
+
+export const withProjectSuptitle = () => ({
+  components: { PageHeader },
+  template: `
+    <div>
+      <page-header>
+        <div slot="suptitle">Coming soon &#x2026;</div>
+        <div slot="title">Title</div>
+        <div slot="subtitle">Subtitle</div>
+      </page-header>
+    </div>
+  `
+});
