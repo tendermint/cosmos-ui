@@ -1,6 +1,7 @@
 export * from "./GlobalStyles";
 export * from "./Tooltip";
 export * from "./Modal";
+export * from "./PageHeader";
 export * from "./Sidebar";
 export * from "./CookieBanner";
 export * from "./Footer";

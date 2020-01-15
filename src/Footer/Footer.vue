@@ -7,9 +7,9 @@
           <slot name="logo">{{value.h1}}</slot>
         </div>
         <div class="header__links">
-          <a :href="url" v-for="url in value.links" :key="url" class="header__links__item" target="_blank" >
+          <a :href="url(link)" v-for="link in value.links" :key="url(link)" class="header__links__item" target="_blank" >
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path :d="icon(url)"></path>
+              <path :d="icon(link)"></path>
             </svg>
           </a>
         </div>
@@ -17,7 +17,10 @@
       <div class="menu">
         <div class="menu__item" v-for="item in value.menu" :key="item.title">
           <div class="menu__item__title">{{item.h1}}</div>
-          <a :href="child.href" class="menu__item__item" v-for="child in item.children" target="_blank" :key="child.h1">{{child.h1}}</a>
+          <div v-for="child in item.children" :key="child.h1" class="menu__item__item">
+            <router-link v-if="hasRouter && !isExternal(child.href)" tag="a" :to="child.href">{{child.h1}}</router-link>
+            <a v-else :href="child.href" target="_blank">{{child.h1}}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -145,11 +148,28 @@ const iconUnknown =
 
 export default {
   props: ["value"],
+  computed: {
+    hasRouter() {
+      return this.$router
+    }
+  },
   methods: {
-    icon(url) {
+    isExternal(url) {
+      const match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);
+      if (typeof match[1] === "string" && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) return true;
+      if (typeof match[2] === "string" && match[2].length > 0 && match[2].replace(new RegExp(":("+{"http:":80,"https:":443}[location.protocol]+")?$"), "") !== location.host) return true;
+      return false;
+    },
+    url(link) {
+      return link.url || link
+    },
+    icon(link) {
       let iconPath;
+      let url = link.url || link
       iconList.forEach(icon => {
-        if (url.match(icon[0])) {
+        if (link.icon && link.icon.match(icon[0])) {
+          iconPath = icon[1]
+        } else if (url.match(icon[0])) {
           iconPath = icon[1];
         }
       });
