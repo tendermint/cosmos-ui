@@ -5,5 +5,6 @@ import PageHeader from "./PageHeader/PageHeader";
 import CookieBanner from "./CookieBanner/CookieBanner";
 import Sidebar from "./Sidebar/Sidebar"
 import Footer from "./Footer/Footer"
+import SolarSystem from "./SolarSystem/SolarSystem"
 
-export { GlobalStyles, Modal, Tooltip, CookieBanner, Sidebar, Footer, PageHeader };
+export { GlobalStyles, Modal, Tooltip, CookieBanner, Sidebar, Footer, PageHeader, SolarSystem };
