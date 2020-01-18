@@ -42,13 +42,6 @@
   </div>
 </template>
 
-<style >
-body {
-  margin: 0;
-  background: black;
-}
-</style>
-
 <style scoped>
 .star__container {
   animation: flicker 2s infinite alternate-reverse;
