@@ -15,7 +15,6 @@ export const normal = () => ({
   },
   template: `
     <div>
-      <div>asdasd</div>
       <Footer :value="data" style="padding: 2rem"/>
     </div>
   `
