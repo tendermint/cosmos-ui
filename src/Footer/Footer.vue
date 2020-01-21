@@ -6,10 +6,15 @@
         <div class="header__title">
           <slot name="logo">{{value.h1}}</slot>
         </div>
-        <div class="header__links">
-          <a :href="url(link)" v-for="link in value.links" :key="url(link)" class="header__links__item" target="_blank" >
-            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path :d="icon(link)"></path>
+        <div class="header__links" ref="links">
+          <transition name="fade">
+            <div class="header__links__popover" v-if="popover" :style="{'--pos-x': popoverX + 'px', '--pos-y': popoverY + 'px'}">
+              <div class="header__links__popover__content">{{popover.title || popover.url || popover}}</div>
+            </div>
+          </transition>
+          <a @mouseover="linkMouseover(link, $event, true)" @mouseleave="linkMouseover(link, $event, false)" :href="url(link)" v-for="link in value.links" :key="url(link)" class="header__links__item" target="_blank" >
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="header__links__item__image">
+              <path :d="icon(link)" style="pointer-events: none"></path>
             </svg>
           </a>
         </div>
@@ -40,6 +45,7 @@ a {
   color: var(--ds-color-alt, black);
   padding-top: 2rem;
   padding-bottom: 2rem;
+  overflow-x: hidden;
 }
 
 .grid {
@@ -64,11 +70,52 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  position: relative;
+}
+
+.header__links__popover {
+  position: absolute;
+  top: -3.5rem;
+  transform: translate(var(--pos-x), var(--pos-y));
+  pointer-events: none;
+  transition: all .25s;
+}
+
+.header__links__popover__content {
+  background: white;
+  color: #161931;
+  position: absolute;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  font-size: .8125rem;
+  padding: 7px 12px;
+  border-radius: .25rem;
+}
+
+.header__links__popover__content:after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  display: block;
+  background-image: url("data:image/svg+xml,  <svg fill='white' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24'><path d='M12 21l-12-18h24z'/></svg>");
+  background-repeat: no-repeat;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-13%) scaleX(2);
 }
 
 .header__links__item {
   fill: var(--ds-color-alt, black);
   margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.header__links__item__image {
+  position: block;
 }
 
 .menu {
@@ -95,6 +142,30 @@ a {
 
 .smallprint {
   font-size: var(--ds-p3-font-size, 0.825rem);
+}
+
+.fade-active-enter {
+  transition: all .25s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-active-leave {
+  transition: all .25s;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -148,12 +219,37 @@ const iconUnknown =
 
 export default {
   props: ["value"],
+  data: function() {
+    return {
+      popover: null,
+      popoverActive: null,
+      popoverTimer: null,
+      popoverX: null,
+      popoverY: null
+    }
+  },
   computed: {
     hasRouter() {
       return this.$router
     }
   },
   methods: {
+    linkMouseover(link, e, entering) {
+      const leaving = !entering
+      const parent = this.$refs.links.getBoundingClientRect()
+      const element = e.target.getBoundingClientRect()
+      if (entering) {
+        this.popoverX = element.x - parent.x + element.width / 2
+        this.popoverY = element.y - parent.y + element.height / 2
+        this.popover = link
+        clearTimeout(this.popoverTimer)
+      }
+      if (leaving) {
+        this.popoverTimer = setTimeout(() => {
+          this.popover = false
+        }, 500)
+      }
+    },
     isExternal(url) {
       const match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);
       if (typeof match[1] === "string" && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) return true;
