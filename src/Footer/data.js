@@ -3,10 +3,10 @@ export default {
     h1: "Cosmos",
     links: [
       { url: "https://blog.cosmos.network/", icon: "medium" },
-      "https://twitter.com/cosmos",
-      "https://www.linkedin.com/company/tendermint/",
-      "https://reddit.com/r/cosmosnetwork",
-      "https://t.me/cosmosproject",
+      { title: "Twitter", url: "https://twitter.com/cosmos" },
+      { title: "LinkedIn", url: "https://www.linkedin.com/company/tendermint/" },
+      { title: "Reddit", url: "https://reddit.com/r/cosmosnetwork" },
+      { title: "Telegram", url: "https://t.me/cosmosproject" },
       "https://www.slideshare.net/tendermint",
       "https://www.youtube.com/c/CosmosProject"
     ],
