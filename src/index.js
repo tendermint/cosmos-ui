@@ -1,7 +1,6 @@
-export * from "./GlobalStyles";
-export * from "./Modal";
-export * from "./Tooltip";
-export * from "./PageHeader";
-export * from "./CookieBanner";
-export * from "./Sidebar";
-export * from "./Footer";
+export { default as Modal } from "./Modal/Modal";
+export { default as Tooltip } from "./Tooltip/Tooltip";
+export { default as PageHeader } from "./PageHeader/PageHeader";
+export { default as CookieBanner } from "./CookieBanner/CookieBanner";
+export { default as Sidebar } from "./Sidebar/Sidebar";
+export { default as Footer } from "./Footer/Footer";
