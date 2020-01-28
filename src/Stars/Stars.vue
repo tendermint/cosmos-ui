@@ -31,10 +31,9 @@ export default {
   mounted() {
     const circlePath = new Path2D("M3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5Z")
     const starPath = new Path2D("M2.5 0C2.5 1.38071 1.38071 2.5 0 2.5C1.38071 2.5 2.5 3.61929 2.5 5C2.5 3.61929 3.61929 2.5 5 2.5C3.61929 2.5 2.5 1.38071 2.5 0Z")
-    let timestampSinceLastSecond = 0;
+    let timestampLast = 0;
     const renderStart = (timestamp) => {
-      let secondElapsed = timestamp - timestampSinceLastSecond > 10
-      if (secondElapsed) {
+      if (timestamp - timestampLast > 10) {
         for (let i=0; i < stars.length; i++) {
           const colorIsGray = isEqual(stars[i].color, [67, 78, 125])
           const xPosDelta = colorIsGray ? .2 : .1
@@ -44,7 +43,7 @@ export default {
             x: xPosNew
           }
         }
-        timestampSinceLastSecond = timestamp
+        timestampLast = timestamp
       }
       let c = this.context
       c.clearRect(0, 0, this.canvas.width, this.canvas.height)
