@@ -1,21 +1,21 @@
 import Footer from "./Footer.vue";
-import "../theme-cosmos.css"
-import data from "./data"
+import { default as data } from "./data"
 
 export default {
-  title: "Footer"
+  title: "Footer",
+  component: Footer
 };
 
 export const normal = () => ({
   components: { Footer },
   data: function () {
     return {
-      data: data.footer
+      data
     };
   },
   template: `
     <div>
-      <Footer :value="data" style="padding: 2rem"/>
+      <Footer v-bind="data" style="padding: 2rem"/>
     </div>
   `
 });

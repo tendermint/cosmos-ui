@@ -1,5 +1,4 @@
 import Cards from "./Cards.vue";
-import "../theme-cosmos.css"
 import data from "./data"
 
 export default {

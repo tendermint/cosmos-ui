@@ -2,7 +2,8 @@ import Sidebar from "./Sidebar.vue";
 import data from "./data"
 
 export default {
-  title: "Sidebar"
+  title: "Sidebar",
+  component: Sidebar
 };
 
 export const normal = () => ({
