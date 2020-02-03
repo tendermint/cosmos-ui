@@ -82,8 +82,8 @@ a {
 }
 
 .header__links__popover__content {
-  background: var(--ds-color-alt, white);
-  color: #161931;
+  background: var(--ds-color-alt, black);
+  color: var(--ds-color, white);
   position: absolute;
   white-space: nowrap;
   transform: translateX(-50%);
@@ -98,7 +98,8 @@ a {
   width: 8px;
   height: 8px;
   display: block;
-  background-image: url("data:image/svg+xml,  <svg fill='white' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24'><path d='M12 21l-12-18h24z'/></svg>");
+  background-color: var(--ds-color-alt, black);
+  mask-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24'><path d='M12 21l-12-18h24z'/></svg>");
   background-repeat: no-repeat;
   top: 100%;
   left: 50%;
