@@ -1,7 +1,8 @@
 import Modal from "./Modal.vue";
 
 export default {
-  title: "Modal"
+  title: "Modal",
+  component: Modal
 };
 
 export const normal = () => ({
@@ -15,7 +16,7 @@ export const normal = () => ({
   },
   template: `
     <div>
-      <button @click="modal = !modal">Toggle modal</button>
+      <button @click="modal = !modal">Open modal</button>
       <modal :visible="modal" @input="modal = false">
         <div class="content" style="padding: 2rem">
           <div>{{lorem}}</div>

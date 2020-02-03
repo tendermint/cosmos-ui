@@ -15,6 +15,7 @@
                 <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </button>
+            <!-- @slot Contents of the modal. -->
             <slot></slot>
             <button
               :class="['icon-cross', {'icon-cross__dark': button == 'dark'}]"
@@ -32,16 +33,32 @@
 </template>
 
 <script>
+/**
+ * The `Modal` component opens a modal window that displays `default` slot content.
+ * Clicking on the close button or the overlay sends an `input` event with the value
+ * `true`.
+ * 
+ * `<modal visible="!!(isVisible)" @input="isVisible = $event">`
+ */
 export default {
   props: {
+    /**
+     * Toggles visibility of the modal.
+     */
     visible: {
       type: Boolean,
       default: true
     },
+    /**
+     * Color of the overlay.
+     */
     overlay: {
       type: String,
       default: "rgba(0, 0, 0, 0.25)"
     },
+    /**
+     * Color of the close button: `light` | `dark`
+     */
     button: {
       type: String,
       default: "light"
@@ -64,6 +81,10 @@ export default {
   methods: {
     close() {
       this.show = true;
+      /**
+       * Sends `true` when closing the modal.
+       * @type {Event}
+       */
       this.$emit("input", true);
     }
   }
