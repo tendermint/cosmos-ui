@@ -2,7 +2,8 @@ import CookieBanner from "./CookieBanner.vue";
 import { remove } from 'tiny-cookie';
 
 export default {
-  title: "CookieBanner"
+  title: "CookieBanner",
+  component: CookieBanner
 };
 
 export const normal = () => ({

@@ -29,12 +29,28 @@
 <script>
 import * as Cookie from 'tiny-cookie'
 
+/**
+ * Displays a banner with a link to cookie policy.
+ * Closing the banner sets `cookie-consent-accepted`
+ * (or specified by `storageName` prop)
+ * cookie to `true`. When this cookie is set, the
+ * banner is not displayed.
+ */
 export default {
   props: {
+    /**
+     * Name of the cookie that indicates that a user
+     * has accepted use of cookies on the website.
+     */
     storageName: {
       type: String,
       default: 'cookie-consent-accepted'
     },
+    /**
+     * Object passed to `setCookieStatus` function
+     * of `tiny-cookie` to customize the properties
+     * of the cookie.
+     */
     cookieOptions: {
       type: Object,
       default: () => ({ expires: '1M' })
