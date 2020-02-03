@@ -11,7 +11,7 @@
            @touchend="touchend">
       </div>
     </transition>
-    <transition name="sidebar" @after-leave="$emit('visible', false)" appear>
+    <transition name="sidebar" @after-leave="emitVisible()" appear>
       <div class="sidebar"
            ref="sidebar"
            v-if="visible && visibleLocal"
@@ -19,6 +19,7 @@
            @touchstart="touchstart"
            @touchmove="touchmove"
            @touchend="touchend">
+        <!-- @slot Contents of the sidebar. -->
         <slot/>
       </div>
     </transition>
@@ -81,15 +82,55 @@
 </style>
 
 <script>
+/**
+ * `Sidebar` is a sheet that transitions on top of the main content and allows
+ * displaying auxiliary information, such as table of contents or global navigation.
+ */
 export default {
-  props: [
-    "visible",
-    "width",
-    "max-width",
-    "side",
-    "background-color",
-    "box-shadow"
-  ],
+  props: {
+    /**
+     * Toggles visibility of the component.
+     */
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Width of the sidebar.
+     */
+    width: {
+      type: String,
+      default: "300px"
+    },
+    /**
+     * Maximum width of the sidebar.
+     */
+    maxWidth: {
+      type: String,
+      default: "75vw"
+    },
+    /**
+     * `left` | `right`
+     */
+    side: {
+      type: String,
+      default: "left"
+    },
+    /**
+     * CSS `background-color` of the overlay.
+     */
+    backgroundColor: {
+      type: String,
+      default: 'rgba(0, 0, 0, 0.35)'
+    },
+    /**
+     * CSS `box-shadow` of the sidebar sheet.
+     */
+    boxShadow: {
+      type: String,
+      default: "none"
+    }
+  },
   data: function() {
     return {
       visibleLocal: true,
@@ -102,12 +143,15 @@ export default {
     visible(newValue, oldValue) {
       if (newValue) {
         const body = document.querySelector("body").style;
+        const html = document.querySelector("html").style;
         const iOS =
           !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
         const sidebar = this.$refs.sidebar;
-        if (iOS) body.position = "relative";
+        body.height = "100%"
+        body.overflow="hidden"
+        html.height = "100%"
+        html.overflow="hidden"
         body.overflowY = "hidden";
-        // body.overflowX = "hidden";
         if (sidebar) {
           sidebar.addEventListener("transitionend", () => {
             sidebar.style.transition = "";
@@ -139,6 +183,13 @@ export default {
     }
   },
   methods: {
+    emitVisible() {
+      /**
+       * Sends `false` when closing the sidebar.
+       * @type {Event}
+       */
+      this.$emit('visible', false)
+    },
     close(e) {
       this.visibleLocal = null;
       const overlay = this.$refs["overlay"];
@@ -176,4 +227,4 @@ export default {
     }
   }
 };
-</script>
+</script> 

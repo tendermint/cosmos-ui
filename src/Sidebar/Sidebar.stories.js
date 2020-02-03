@@ -21,7 +21,7 @@ export const normal = () => ({
           <p v-for="text in data.lorem">{{text}}</p>
         </Sidebar>
         <div>
-          <button @click="visible = !visible">Toggle</button> {{!!visible}}
+          <button @click="visible = !visible">Open sidebar</button>
           <p v-for="text in data.lorem">{{text}}</p>
         </div>
       </div>
