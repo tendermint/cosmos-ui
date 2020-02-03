@@ -1,7 +1,8 @@
 import PageHeader from "./PageHeader.vue";
 
 export default {
-  title: "PageHeader"
+  title: "PageHeader",
+  component: PageHeader
 };
 
 export const normal = () => ({

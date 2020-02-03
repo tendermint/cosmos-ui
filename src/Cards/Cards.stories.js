@@ -2,7 +2,8 @@ import Cards from "./Cards.vue";
 import data from "./data"
 
 export default {
-  title: "Cards"
+  title: "Cards",
+  component: Cards
 };
 
 export const normal = () => ({
