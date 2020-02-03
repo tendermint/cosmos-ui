@@ -4,6 +4,7 @@
     <div class="grid">
       <div class="header">
         <div class="header__title">
+          <!-- @slot Can be used to add `<img>` with logo to the top left corner of the component. If slot is empty, defaults to `h1` prop value. -->
           <slot name="logo">{{h1}}</slot>
         </div>
         <div class="header__links" ref="links">
