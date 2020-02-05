@@ -2,6 +2,7 @@ body {
   --ds-background-color: rgba(22, 24, 48, 1);
   --ds-color: black;
   --ds-color-alt: white;
+  --ds-color-primary: #5064FB;
   --ds-font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
 
   --ds-h1-font-size: 3rem;

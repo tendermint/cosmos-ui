@@ -27,7 +27,9 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^5.3.12",
+    "tiny-cookie": "^2.3.1",
     "vue": "^2.6.10",
-    "tiny-cookie": "^2.3.1"
+    "vue-feather-icons": "^5.0.0"
   }
 }
