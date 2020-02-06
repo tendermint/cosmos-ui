@@ -135,9 +135,23 @@ export default {
     return {
       visibleLocal: true,
       touchStartX: null,
-      touchMoveX: 0,
-      touchEndX: null
+      touchMoveX: null
     };
+  },
+  watch: {
+    visible(newValue, oldValue) {
+      if (newValue) {
+        const sidebar = this.$refs.sidebar;
+        if (sidebar) {
+          sidebar.addEventListener("transitionend", () => {
+            sidebar.style.transition = "";
+          });
+        }
+        this.touchMoveX = null;
+        this.touchStartX = null;
+        this.visibleLocal = true;
+      }
+    }
   },
   computed: {
     style() {
@@ -168,29 +182,19 @@ export default {
       this.$emit('visible', false)
     },
     close(e) {
+      this.$refs.sidebar.style.transition = "";
       this.visibleLocal = null;
-      const overlay = this.$refs["overlay"];
-      if (overlay) {
-        overlay.style["pointer-events"] = "none";
-        const doc = document.elementFromPoint(e.clientX, e.clientY);
-        if (doc.click) doc.click();
+      if (this.$refs["overlay"]) {
+        this.$refs["overlay"].style["pointer-events"] = "none";
+        if (e.clientX && e.clientY) {
+          const doc = document.elementFromPoint(e.clientX, e.clientY);
+          if (doc && doc.click) doc.click();
+        }
       }
     },
     touchstart(e) {
+      this.$refs.sidebar.style.transition = ""
       this.touchStartX = e.changedTouches[0].clientX;
-    },
-    touchend(e) {
-      if (this.$refs.sidebar) {
-        if (this.touchMoveX > 25) {
-          this.$refs.sidebar.style.transition = "";
-          this.visibleLocal = null;
-        } else if (this.touchMoveX == 0) {
-          this.$refs.sidebar.style.transition = "";
-        } else {
-          this.$refs.sidebar.style.transition = "transform .2s";
-          this.touchMoveX = 0;
-        }
-      }
     },
     touchmove(e) {
       const move = e.changedTouches[0].clientX;
@@ -201,7 +205,18 @@ export default {
       } else {
         this.touchMoveX = delta;
       }
-    }
+    },
+    touchend(e) {
+      if (this.$refs.sidebar) {
+        if (this.touchMoveX > 25) {
+          this.close(e)
+        } else {
+          this.$refs.sidebar.style.transition = "transform .2s";
+        }
+      }
+      this.touchMoveX = null;
+      this.touchStartX = null
+    },
   }
 };
 </script> 
