@@ -71,7 +71,7 @@
   transform: translateX(0);
 }
 .sidebar-leave-active {
-  transition: all .25s;
+  transition: all .5s;
 }
 .sidebar-leave {
   transform: translateX(0);
@@ -110,7 +110,7 @@ export default {
       default: "75vw"
     },
     /**
-     * `left` | `right`
+     * `left` | `right` | `bottom`
      */
     side: {
       type: String,
@@ -134,8 +134,11 @@ export default {
   data: function() {
     return {
       visibleLocal: true,
-      touchStartX: null,
-      touchMoveX: null
+      startX: null,
+      startY: null,
+      currentX: null,
+      currentY: null,
+      translateX: null,
     };
   },
   watch: {
@@ -147,25 +150,40 @@ export default {
             sidebar.style.transition = "";
           });
         }
-        this.touchMoveX = null;
-        this.touchStartX = null;
         this.visibleLocal = true;
       }
     }
   },
   computed: {
+    deltaX() {
+      return this.currentX - this.startX
+    },
     style() {
       return {
-        "box-shadow": this.boxShadow || "none",
-        "left": this.side === "right" ? "initial" : "0",
-        "right": this.side === "right" ? "0" : "initial",
-        "width": this.width || "300px",
-        "max-width": this.maxWidth || "75vw",
+        "box-shadow":
+          this.boxShadow || "none",
+        "top":
+          this.side === "right" && "0" ||
+          this.side === "left" && "0" ||
+          this.side === "bottom" && "200px",
+        "left":
+          this.side === "right" && "initial" ||
+          this.side === "left" && "0" ||
+          this.side === "bottom" && "0",
+        "right":
+          this.side === "right" && "0" ||
+          this.side === "left" && "initial" ||
+          this.side === "bottom" && "0",
+        "width": 
+          this.side === "bottom" && "100vw" ||
+          this.width || "300px",
+        "max-width":
+          this.side === "bottom" && "initial" ||
+          this.maxWidth || "75vw",
         "--sidebar-transform-component-internal":
-          this.side === "right" ? "100%" : "-100%",
-        "--translate-x-component-internal": `${
-          this.side === "right" ? "" : "-"
-        }${this.touchMoveX}%`
+          this.side === "right" && "100%" ||
+          this.side === "left" && "-100%",
+        "--translate-x-component-internal": `${this.translateX}px`
       };
     }
   },
@@ -182,7 +200,6 @@ export default {
       this.$emit('visible', false)
     },
     close(e) {
-      this.$refs.sidebar.style.transition = "";
       this.visibleLocal = null;
       if (this.$refs["overlay"]) {
         this.$refs["overlay"].style["pointer-events"] = "none";
@@ -194,28 +211,36 @@ export default {
     },
     touchstart(e) {
       this.$refs.sidebar.style.transition = ""
-      this.touchStartX = e.changedTouches[0].clientX;
+      this.startX = e.changedTouches[0].clientX;
+      this.startY = e.changedTouches[0].clientY;
     },
     touchmove(e) {
-      const move = e.changedTouches[0].clientX;
-      const width = window.screen.width;
-      const delta = ((this.touchStartX - move) * 100) / width;
-      if (this.side === "right") {
-        this.touchMoveX = delta < 0 ? -delta : 0;
-      } else {
-        this.touchMoveX = delta;
+      this.currentX = e.changedTouches[0].clientX;
+      this.currentY = e.changedTouches[0].clientY;
+
+      if (this.side === "left") {
+        this.translateX = this.deltaX > 0 ? 0 : this.deltaX
+      } else if (this.side === "right") {
+        this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
     },
     touchend(e) {
-      if (this.$refs.sidebar) {
-        if (this.touchMoveX > 25) {
-          this.close(e)
-        } else {
-          this.$refs.sidebar.style.transition = "transform .2s";
-        }
+      if (this.side === "left") {
+        this.translateX = this.deltaX > 0 ? 0 : this.deltaX
+      } else if (this.side === "right") {
+        this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
-      this.touchMoveX = null;
-      this.touchStartX = null
+      const overThreshold = Math.abs(this.deltaX * 100 / window.screen.width) > 25
+      if (overThreshold) {
+        this.close(e)
+      } else {
+        this.$refs.sidebar.style.transition = "transform .5s";
+      }
+      this.startX = null
+      this.startY = null
+      this.currentX = null;
+      this.currentY = null;
+      this.translateX = null;
     },
   }
 };

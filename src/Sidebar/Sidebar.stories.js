@@ -74,3 +74,26 @@ export const right = () => ({
     </div>
   `
 });
+
+export const bottom = () => ({
+  components: { Sidebar },
+  data: function () {
+    return {
+      visible: null,
+      data: data.sidebar,
+    }
+  },
+  template: `
+    <div>
+      <div>
+        <Sidebar side="bottom" :visible="visible" v-if="visible" @visible="visible = $event">
+          <p v-for="text in data.lorem">{{text}}</p>
+        </Sidebar>
+        <div>
+          <button @click="visible = !visible">Open sidebar</button>
+          <p v-for="text in data.lorem">{{text}}</p>
+        </div>
+      </div>
+    </div>
+  `
+});
