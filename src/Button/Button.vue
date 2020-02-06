@@ -1,13 +1,18 @@
 <template>
-  <div>
-    <div :style="{'--button-props-width': width}" :class="['button', `button__type__${type}`, `button__size__${size}`, `button__fixed__${!!(width)}`]">
-      {{label}}
-      <!-- <component class="button__icon" size="1000" v-if="icon" :is="iconComponent"/> -->
-    </div>
-  </div>
+  <button :style="{'--button-props-width': width}" :class="['button', `button__type__${type}`, `button__size__${size}`, `button__fixed__${!!(width)}`]">
+    {{label}}
+  </button>
 </template>
 
 <style scoped>
+button {
+  border: none;
+  font-family: initial;
+  font-size: initial;
+  margin: 0;
+  padding: 0;
+}
+
 .button {
   line-height: 1.25em;
   display: inline-flex;
@@ -76,24 +81,10 @@
   padding-left: 1.6875rem;
   padding-right: 1.6875rem;
 }
-
-/* .button__icon {
-  display: block;
-  height: 1.5em;
-  width: 1.5em;
-} */
 </style>
 
 <script>
 export default {
-  // computed: {
-  //   iconComponent() {
-  //     const titleCase = (string) => {
-  //         return string.charAt(0).toUpperCase() + string.slice(1);
-  //     }
-  //     return () => import(`vue-feather-icons/icons/${titleCase(this.icon)}Icon.js`)
-  //   }
-  // },
   props: {
     label: {
       type: String,
@@ -119,9 +110,6 @@ export default {
     width: {
       type: String,
     }
-    // icon: {
-    //   type: String
-    // },
   }
 }
 </script>
