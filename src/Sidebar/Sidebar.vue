@@ -12,7 +12,7 @@
       </div>
     </transition>
     <transition name="sidebar" @after-leave="emitVisible()" appear>
-      <div class="sidebar"
+      <div :class="['sidebar']"
            ref="sidebar"
            v-if="visible && visibleLocal"
            :style="style"
@@ -41,7 +41,7 @@
   background: white;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  transform: translateX(var(--translate-x-component-internal));
+  transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
 }
 .overlay-enter-active {
   transition: all .25s ease-in;
@@ -65,7 +65,7 @@
   transition: all .25s;
 }
 .sidebar-enter {
-  transform: translateX(var(--sidebar-transform-component-internal));
+  transform: translateX(var(--sidebar-transform-x-component-internal)) translateY(var(--sidebar-transform-y-component-internal));
 }
 .sidebar-enter-to {
   transform: translateX(0);
@@ -77,7 +77,7 @@
   transform: translateX(0);
 }
 .sidebar-leave-to {
-  transform: translateX(var(--sidebar-transform-component-internal));
+  transform: translateX(var(--sidebar-transform-x-component-internal)) translateY(var(--sidebar-transform-y-component-internal));
 }
 </style>
 
@@ -139,6 +139,7 @@ export default {
       currentX: null,
       currentY: null,
       translateX: null,
+      translateY: null,
     };
   },
   watch: {
@@ -155,8 +156,14 @@ export default {
     }
   },
   computed: {
+    fullscreenY() {
+      return this.translateY === -200
+    },
     deltaX() {
       return this.currentX - this.startX
+    },
+    deltaY() {
+      return this.currentY - this.startY
     },
     style() {
       return {
@@ -180,10 +187,16 @@ export default {
         "max-width":
           this.side === "bottom" && "initial" ||
           this.maxWidth || "75vw",
-        "--sidebar-transform-component-internal":
+        "--sidebar-transform-x-component-internal":
           this.side === "right" && "100%" ||
-          this.side === "left" && "-100%",
-        "--translate-x-component-internal": `${this.translateX}px`
+          this.side === "left" && "-100%" ||
+          this.side === "bottom" && "0",
+        "--sidebar-transform-y-component-internal":
+          this.side === "right" && "0" ||
+          this.side === "left" && "0" ||
+          this.side === "bottom" && "100%",
+        "--translate-x-component-internal": `${this.translateX || 0}px`,
+        "--translate-y-component-internal": `${this.translateY || 0}px`
       };
     }
   },
@@ -213,31 +226,47 @@ export default {
       this.$refs.sidebar.style.transition = ""
       this.startX = e.changedTouches[0].clientX;
       this.startY = e.changedTouches[0].clientY;
+      if (this.side === "bottom" && !this.fullscreenY) {
+        this.$refs.sidebar.style.overflowY = "hidden"
+      }
     },
     touchmove(e) {
+      if (this.fullscreenY) return
       this.currentX = e.changedTouches[0].clientX;
       this.currentY = e.changedTouches[0].clientY;
-
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
+      } else if (this.side === "bottom") {
+        this.translateY = this.deltaY < -200 ? -200 : this.deltaY
       }
     },
     touchend(e) {
+      const overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25
+      const overThresholdY = this.deltaY < -100
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
+      } else if (this.side === "bottom") {
+        this.$refs.sidebar.style.overflowY = ""
       }
-      const overThreshold = Math.abs(this.deltaX * 100 / window.screen.width) > 25
-      if (overThreshold) {
+      if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
         this.$refs.sidebar.style.transition = "transform .5s";
       }
-      this.startX = null
-      this.startY = null
+      if (this.side === "bottom") {
+        if (overThresholdY) {
+          this.translateY = -200
+          this.$refs.sidebar.style.overflowY = "scroll"
+        } else {
+          this.translateY = null;
+        }
+      }
+      this.startX = null;
+      this.startY = null;
       this.currentX = null;
       this.currentY = null;
       this.translateX = null;
