@@ -139,40 +139,13 @@ export default {
       touchEndX: null
     };
   },
-  watch: {
-    visible(newValue, oldValue) {
-      if (newValue) {
-        const body = document.querySelector("body").style;
-        const html = document.querySelector("html").style;
-        const iOS =
-          !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-        const sidebar = this.$refs.sidebar;
-        body.height = "100%"
-        body.overflow="hidden"
-        html.height = "100%"
-        html.overflow="hidden"
-        body.overflowY = "hidden";
-        if (sidebar) {
-          sidebar.addEventListener("transitionend", () => {
-            sidebar.style.transition = "";
-          });
-        }
-        this.touchMoveX = null;
-        this.touchStartX = null;
-        this.visibleLocal = true;
-      } else {
-        document.querySelector("body").style.overflowY = "";
-        document.querySelector("body").style.position = "";
-      }
-    }
-  },
   computed: {
     style() {
       return {
         "box-shadow": this.boxShadow || "none",
-        left: this.side === "right" ? "initial" : "0",
-        right: this.side === "right" ? "0" : "initial",
-        width: this.width || "300px",
+        "left": this.side === "right" ? "initial" : "0",
+        "right": this.side === "right" ? "0" : "initial",
+        "width": this.width || "300px",
         "max-width": this.maxWidth || "75vw",
         "--sidebar-transform-component-internal":
           this.side === "right" ? "100%" : "-100%",
@@ -182,8 +155,12 @@ export default {
       };
     }
   },
+  mounted() {
+    document.querySelector("body").style.overflow = "hidden"
+  },
   methods: {
     emitVisible() {
+      document.querySelector("body").style.overflow = ""
       /**
        * Sends `false` when closing the sidebar.
        * @type {Event}
