@@ -261,7 +261,7 @@ export default {
         if (overThresholdY) {
           this.translateY = -200
           this.$refs.sidebar.style.overflowY = "scroll"
-        } else {
+        } else if (!this.fullscreenY) {
           this.translateY = null;
         }
       }
