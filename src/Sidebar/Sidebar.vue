@@ -20,7 +20,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div :class="[`sidebar__side__${side}`]">
+        <div :class="[`sidebar__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
           <slot/>
         </div>
       </div>
@@ -45,7 +45,7 @@
   -webkit-overflow-scrolling: touch;
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
 }
-.sidebar__side__bottom {
+.sidebar__side__bottom.sidebar__fullscreen__false {
   padding-bottom: 200px;
 }
 .overlay-enter-active {
@@ -171,35 +171,27 @@ export default {
       return this.currentY - this.startY
     },
     style() {
+      const
+        side = this.side,
+        right = side === "right",
+        left = side === "left",
+        bottom = side === "bottom",
+        center = side === "center"
       return {
-        "box-shadow":
-          this.boxShadow || "none",
+        "box-shadow": this.boxShadow || "none",
         "top":
-          this.side === "right" && "0" ||
-          this.side === "left" && "0" ||
-          this.side === "bottom" && "200px",
+          right && "0" || left && "0" || bottom && "200px" || center && "50%",
         "left":
-          this.side === "right" && "initial" ||
-          this.side === "left" && "0" ||
-          this.side === "bottom" && "0",
-        "right":
-          this.side === "right" && "0" ||
-          this.side === "left" && "initial" ||
-          this.side === "bottom" && "0",
-        "width": 
-          this.side === "bottom" && "100vw" ||
-          this.width || "300px",
-        "max-width":
-          this.side === "bottom" && "initial" ||
-          this.maxWidth || "75vw",
+          right && "initial" || left && "0" || bottom && "0" || center && "50%",
+        "right": right && "0" || left && "initial" || bottom && "0",
+        "width": bottom && "100vw" || center && "inherit" || this.width,
+        "transform": center && "translate(-50%, -50%)",
+        "max-width": bottom && "initial" || this.maxWidth,
+        "height": center && "initial",
         "--sidebar-transform-x-component-internal":
-          this.side === "right" && "100%" ||
-          this.side === "left" && "-100%" ||
-          this.side === "bottom" && "0",
+          right && "100%" || left && "-100%" || bottom && "0",
         "--sidebar-transform-y-component-internal":
-          this.side === "right" && "0" ||
-          this.side === "left" && "0" ||
-          this.side === "bottom" && "100%",
+          right && "0" || left && "0" || bottom && "100%",
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
@@ -249,26 +241,27 @@ export default {
     },
     touchend(e) {
       const overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25
-      const overThresholdY = this.deltaY < -100
+      const overThresholdUp = this.deltaY < -100
+      const overThresholdDown = this.deltaY > 100
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       } else if (this.side === "bottom") {
         this.$refs.sidebar.style.overflowY = ""
+        if (overThresholdUp) {
+          this.translateY = -200
+          this.$refs.sidebar.style.overflowY = "scroll"
+        } if (overThresholdDown) {
+          this.close(e)
+        } else if (!this.fullscreenY) {
+          this.translateY = null;
+        }
       }
       if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
         this.$refs.sidebar.style.transition = "transform .5s";
-      }
-      if (this.side === "bottom") {
-        if (overThresholdY) {
-          this.translateY = -200
-          this.$refs.sidebar.style.overflowY = "scroll"
-        } else if (!this.fullscreenY) {
-          this.translateY = null;
-        }
       }
       this.startX = null;
       this.startY = null;
