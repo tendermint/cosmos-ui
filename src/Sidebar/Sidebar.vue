@@ -20,7 +20,9 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <slot/>
+        <div :class="[`sidebar__side__${side}`]">
+          <slot/>
+        </div>
       </div>
     </transition>
   </div>
@@ -42,6 +44,9 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
+}
+.sidebar__side__bottom {
+  padding-bottom: 200px;
 }
 .overlay-enter-active {
   transition: all .25s ease-in;
