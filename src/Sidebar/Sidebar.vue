@@ -20,7 +20,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div :class="[`sidebar__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
+        <div :class="[`sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
           <slot/>
         </div>
       </div>
@@ -45,7 +45,7 @@
   -webkit-overflow-scrolling: touch;
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
 }
-.sidebar__side__bottom.sidebar__fullscreen__false {
+.sidebar__content__side__bottom.sidebar__fullscreen__false {
   padding-bottom: 200px;
 }
 .overlay-enter-active {
@@ -70,19 +70,23 @@
   transition: all .25s;
 }
 .sidebar-enter {
-  transform: translateX(var(--sidebar-transform-x-component-internal)) translateY(var(--sidebar-transform-y-component-internal));
+  opacity: var(--sidebar-from-opacity);
+  transform: translateX(var(--sidebar-from-transform-x)) translateY(var(--sidebar-from-transform-y));
 }
 .sidebar-enter-to {
+  opacity: 1;
   transform: translateX(0);
 }
 .sidebar-leave-active {
-  transition: all .5s;
+  transition: all .25s;
 }
 .sidebar-leave {
+  opacity: 1;
   transform: translateX(0);
 }
 .sidebar-leave-to {
-  transform: translateX(var(--sidebar-transform-x-component-internal)) translateY(var(--sidebar-transform-y-component-internal));
+  opacity: var(--sidebar-from-opacity);
+  transform: translateX(var(--sidebar-from-transform-x)) translateY(var(--sidebar-from-transform-y));
 }
 </style>
 
@@ -188,9 +192,11 @@ export default {
         "transform": center && "translate(-50%, -50%)",
         "max-width": bottom && "initial" || this.maxWidth,
         "height": center && "initial",
-        "--sidebar-transform-x-component-internal":
+        "max-height": center && "50vh",
+        "--sidebar-from-opacity": center && "0",
+        "--sidebar-from-transform-x":
           right && "100%" || left && "-100%" || bottom && "0",
-        "--sidebar-transform-y-component-internal":
+        "--sidebar-from-transform-y":
           right && "0" || left && "0" || bottom && "100%",
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
