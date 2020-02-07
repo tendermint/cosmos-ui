@@ -7,9 +7,9 @@
       <div v-if="title" class="title">
         {{title}}
       </div>
-      <div :class="['body', `body__truncate__${!!(shouldTruncate)}`]" ref="body">
+      <div :class="['body', `body__expanded__${!!(isExpanded)}`]" ref="body">
         <slot/>
-        <div class="body__more" @click="expand" v-if="shouldTruncate">read more</div>
+        <div class="body__more" @click="expand" v-if="canExpand && !isExpanded">read more</div>
       </div>
     </div>
   </div>
@@ -58,7 +58,10 @@
   position: relative;
   transition: max-height cubic-bezier(0.785, 0.135, 0.15, 0.86) .5s;
 }
-.body__truncate__true {
+.body__expanded__false {
+  max-height: calc(var(--card-body-line-height) * 3);
+}
+.body__expanded__true {
   max-height: calc(var(--card-body-max-height));
 }
 .body__more {
@@ -99,25 +102,24 @@ export default {
   },
   data: function() {
     return {
-      bodyHeight: null,
-      lineHeight: null,
-      shouldTruncate: null,
       maxHeight: null,
-      bodyCollapsed: null
+      lineHeight: null,
+      isExpanded: null
     }
   },
   mounted() {
-    this.bodyHeight = this.$refs.body.getBoundingClientRect().height
+    this.maxHeight = this.$refs.body.scrollHeight
     this.lineHeight = parseInt(getComputedStyle(this.$refs.body)['line-height'])
-    this.shouldTruncate = this.bodyHeight >= 4 * this.lineHeight
-    this.maxHeight = this.lineHeight * 3
   },
   methods: {
     expand() {
-      this.maxHeight = this.bodyHeight
+      this.isExpanded = !this.isExpanded
     }
   },
   computed: {
+    canExpand() {
+      return this.maxHeight >= 4 * this.lineHeight
+    },
     cardStyle() {
       const keywords = {
         "small": "16px",
