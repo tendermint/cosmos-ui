@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="card" :style="cardStyle">
-      <img v-if="imgSrc" :class="['image', `image__side__${imgSide}`]" :src="imgSrc" alt="">
+      <div :class="['image', `image__side__${imgSide}`]">
+        <img class="image__img" v-if="imgSrc" :src="imgSrc" alt="">
+      </div>
       <div class="text">
         <div v-if="overline" class="overline">
           {{overline}}
@@ -9,7 +11,8 @@
         <div v-if="title" class="title">
           {{title}}
         </div>
-        <div :class="['body', `body__expanded__${!!(isExpanded)}`]" ref="body">
+        <div :class="['body', `body__canexpand__${!!(canExpand)}`, `body__expanded__${!!(isExpanded)}`]" ref="body" @transitionend="transitionend">
+          <!-- @slot Main content of the card -->
           <slot/>
           <transition name="fade">
             <div class="body__more" @click="expand" v-if="canExpand && !isExpanded">read more</div>
@@ -22,8 +25,8 @@
 
 <style scoped>
 .card {
-  display: grid;
-  grid-auto-flow: var(--card-grid-auto-flow);
+  display: flex;
+  flex-direction: var(--card-grid-auto-flow);
   font-family: var(--ds-font-family, sans-serif);
   border-radius: var(--card-border-radius, 8px);
   position: relative;
@@ -41,21 +44,29 @@
   box-shadow: var(--ds-elevation-2);
 }
 .image {
-  object-fit: cover;
-  display: block;
+  flex-shrink: 0;
 }
 .image__side__top {
   width: 100%;
   height: var(--card-image-height);
-  border-top-left-radius: var(--card-border-radius, 8px);
-  border-top-right-radius: var(--card-border-radius, 8px);
+  overflow: hidden;
+  position: relative;
 }
 .image__side__left {
   width: var(--card-image-height);
+}
+.image__side__right {
+  width: var(--card-image-height);
+  order: 2;
+}
+.image__img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .text {
   padding: calc(var(--card-size) - 4px) var(--card-size);
+  order: 1;
 }
 .title {
   font-size: var(--card-title-font-size, 1rem);
@@ -80,7 +91,7 @@
   position: relative;
   transition: max-height cubic-bezier(0.785, 0.135, 0.15, 0.86) .5s;
 }
-.body__expanded__false {
+.body__canexpand__true.body__expanded__false {
   max-height: calc(var(--card-body-line-height) * 3);
 }
 .body__expanded__true {
@@ -118,28 +129,43 @@
 <script>
 export default {
   props: {
+    /**
+     * Text at the top
+     */
     overline: {
       type: String,
       default: "Overline"
     },
+    /**
+     * Main title
+     */
     title: {
       type: String,
       default: "Title"
     },
+    /**
+     * Size of the card
+     */
     size: {
       type: String,
       default: "16px"
     },
+    /**
+     * Image URL
+     */
     imgSrc: {
       type: String,
       default: ""
     },
     /**
-     * `top` | `left` | `right`
+     * Position of the image: `top` | `left` | `right`
      */
     imgSide: {
       type: String,
-      default: "top"
+      default: "top",
+      validator: (value) => {
+        return ['top', 'left', 'right'].indexOf(value) !== -1
+      }
     },
     imgSize: {
       type: String,
@@ -160,6 +186,9 @@ export default {
   methods: {
     expand() {
       this.isExpanded = !this.isExpanded
+    },
+    transitionend(e) {
+      this.maxHeight = null
     }
   },
   computed: {
@@ -181,7 +210,7 @@ export default {
       return {
         "--card-size": size + 'px',
         "--card-border-radius": "8px",
-        "--card-grid-auto-flow": this.imgSide === "top" ? "row" : "column",
+        "--card-grid-auto-flow": this.imgSide === "top" ? "column" : "row",
         "--card-image-height": this.imgSize,
         "--card-title-font-size": size <= 18 ? "16px" : "20px",
         "--card-title-line-height": size <= 18 ? "24px" : "28px",
@@ -189,7 +218,7 @@ export default {
         "--card-body-font-size": size <= 18 ? "13px" : "14px",
         "--card-body-line-height": size <= 18 ? "18px" : "20px",
         "--card-body-line-height-actual": this.lineHeight + 'px',
-        "--card-body-max-height": this.maxHeight + 'px'
+        "--card-body-max-height": this.canExpand && this.maxHeight + 'px'
       }
     }
   }
