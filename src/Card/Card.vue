@@ -1,15 +1,20 @@
 <template>
   <div>
     <div class="card" :style="cardStyle">
-      <div v-if="overline" class="overline">
-        {{overline}}
-      </div>
-      <div v-if="title" class="title">
-        {{title}}
-      </div>
-      <div :class="['body', `body__expanded__${!!(isExpanded)}`]" ref="body">
-        <slot/>
-        <div class="body__more" @click="expand" v-if="canExpand && !isExpanded">read more</div>
+      <img v-if="imgSrc" :class="['image', `image__side__${imgSide}`]" :src="imgSrc" alt="">
+      <div class="text">
+        <div v-if="overline" class="overline">
+          {{overline}}
+        </div>
+        <div v-if="title" class="title">
+          {{title}}
+        </div>
+        <div :class="['body', `body__expanded__${!!(isExpanded)}`]" ref="body">
+          <slot/>
+          <transition name="fade">
+            <div class="body__more" @click="expand" v-if="canExpand && !isExpanded">read more</div>
+          </transition>
+        </div>        
       </div>
     </div>
   </div>
@@ -17,15 +22,15 @@
 
 <style scoped>
 .card {
-  display: block;
-  padding: calc(var(--card-size) - 4px) var(--card-size);
+  display: grid;
+  grid-auto-flow: var(--card-grid-auto-flow);
   font-family: var(--ds-font-family, sans-serif);
-  border-radius: 0.5rem;
+  border-radius: var(--card-border-radius, 8px);
   position: relative;
   background: white;
 }
 .card:before {
-  border-radius: 0.5rem;
+  border-radius: var(--card-border-radius, 8px);
   content: "";
   position: absolute;
   top: 0;
@@ -34,6 +39,23 @@
   bottom: 0;
   z-index: -1;
   box-shadow: var(--ds-elevation-2);
+}
+.image {
+  object-fit: cover;
+  display: block;
+}
+.image__side__top {
+  width: 100%;
+  height: var(--card-image-height);
+  border-top-left-radius: var(--card-border-radius, 8px);
+  border-top-right-radius: var(--card-border-radius, 8px);
+}
+.image__side__left {
+  width: var(--card-image-height);
+  height: 100%;
+}
+.text {
+  padding: calc(var(--card-size) - 4px) var(--card-size);
 }
 .title {
   font-size: var(--card-title-font-size, 1rem);
@@ -82,6 +104,15 @@
   transform: translateX(-100%);
   top: 0;
 }
+.fade-leave-active {
+  transition: all .5s;
+}
+.fade-leave {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
 
 <script>
@@ -99,6 +130,21 @@ export default {
       type: String,
       default: "16px"
     },
+    imgSrc: {
+      type: String,
+      default: ""
+    },
+    /**
+     * `top` | `left` | `right`
+     */
+    imgSide: {
+      type: String,
+      default: "top"
+    },
+    imgSize: {
+      type: String,
+      default: "120px"
+    }
   },
   data: function() {
     return {
@@ -118,7 +164,12 @@ export default {
   },
   computed: {
     canExpand() {
-      return this.maxHeight >= 4 * this.lineHeight
+      /**
+       * Prevent `read more` from showing up on component mount.
+       */
+      if (this.maxHeight && this.lineHeight) {
+        return this.maxHeight >= 4 * this.lineHeight
+      }
     },
     cardStyle() {
       const keywords = {
@@ -129,6 +180,9 @@ export default {
       const size = parseInt(keywords[this.size] || this.size)
       return {
         "--card-size": size + 'px',
+        "--card-border-radius": "8px",
+        "--card-grid-auto-flow": this.imgSide === "top" ? "row" : "column",
+        "--card-image-height": this.imgSize,
         "--card-title-font-size": size <= 18 ? "16px" : "20px",
         "--card-title-line-height": size <= 18 ? "24px" : "28px",
         "--card-title-margin-bottom": size <= 18 && "4px" || size <= 24 && "8px" || "12px",
