@@ -52,12 +52,24 @@
   overflow: hidden;
   position: relative;
 }
+.image__side__top img {
+  border-top-left-radius: var(--card-border-radius, 8px);
+  border-top-right-radius: var(--card-border-radius, 8px);
+}
 .image__side__left {
   width: var(--card-image-height);
+}
+.image__side__left img {
+  border-top-left-radius: var(--card-border-radius, 8px);
+  border-bottom-left-radius: var(--card-border-radius, 8px);
 }
 .image__side__right {
   width: var(--card-image-height);
   order: 2;
+}
+.image__side__right img {
+  border-top-right-radius: var(--card-border-radius, 8px);
+  border-bottom-right-radius: var(--card-border-radius, 8px);
 }
 .image__img {
   width: 100%;
