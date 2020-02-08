@@ -119,7 +119,7 @@
 }
 .body__more::before {
   content: "";
-  background-image: linear-gradient(to right, rgba(0,0,0,0), white 80%);
+  background-image: linear-gradient(to right, rgba(255,255,255,0), white 80%);
   width: 50px;
   height: 100%;
   position: absolute;
@@ -200,7 +200,9 @@ export default {
       this.isExpanded = !this.isExpanded
     },
     transitionend(e) {
-      this.maxHeight = null
+      if (this.isExpanded) {
+        this.maxHeight = null
+      }
     }
   },
   computed: {

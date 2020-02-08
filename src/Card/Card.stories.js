@@ -26,7 +26,7 @@ export const normal = () => ({
       default: text("Image position", "left")
     },
     imgSize: {
-      default: text("Image size", "120px")
+      default: text("Image size", "150px")
     }
   },
   template: `
