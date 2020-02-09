@@ -40,8 +40,6 @@
   position: fixed;
   height: 100vh;
   overflow-y: scroll;
-  max-width: var(--sidebar-max-width);
-  width: var(--sidebar-width);
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
   -webkit-overflow-scrolling: touch;
 }
@@ -49,11 +47,19 @@
   top: 0;
   left: 0;
   right: initial;
+  width: var(--sidebar-width, 300px);
+  max-width: var(--sidebar-width, 75%);
+  height: var(--sidebar-height, 100%);
+  max-height: var(--sidebar-max-height, 100%)
 }
 .sidebar.sidebar__side__right {
   top: 0;
   left: initial;
   right: 0;
+  width: var(--sidebar-width, 300px);
+  max-width: var(--sidebar-width, 75%);
+  height: var(--sidebar-height, 100%);
+  max-height: var(--sidebar-max-height, 100%)
 }
 .sidebar.sidebar__side__bottom {
   top: 200px;
@@ -61,6 +67,10 @@
   right: 0;
   width: 100vw;
   max-width: initial;
+  width: var(--sidebar-width, 100%);
+  max-width: var(--sidebar-width, 100%);
+  height: var(--sidebar-height, 100%);
+  max-height: var(--sidebar-max-height, 100%)
 }
 .sidebar.sidebar__side__center {
   top: 0;
@@ -81,15 +91,16 @@
 }
 .sidebar__content.sidebar__content__side__center {
   position: absolute;
-  width: var(--sidebar-width);
-  max-width: var(--sidebar-max-width);
+  width: var(--sidebar-width, 600px);
+  max-width: var(--sidebar-max-width, 90%);
   height: var(--sidebar-height);
-  max-height: var(--sidebar-max-height);
+  max-height: var(--sidebar-max-height, 50%);
   overflow: hidden;
   left: 50%;
   top: 50%;
   overflow-y: scroll;
   transform: translate(-50%, -50%);
+  border-radius: .5rem;
 }
 .sidebar__content__side__bottom.sidebar__fullscreen__false {
   padding-bottom: 200px;
@@ -173,28 +184,24 @@ export default {
      */
     width: {
       type: String,
-      default: "300px"
     },
     /**
      * Maximum width of the sidebar.
      */
     maxWidth: {
       type: String,
-      default: "75vw"
     },
     /**
      * Height of the sidebar.
      */
     height: {
       type: String,
-      default: "300px"
     },
     /**
      * Maximum height of the sidebar.
      */
     maxHeight: {
       type: String,
-      default: "100vh"
     },
     /**
      * `left` | `right` | `bottom`

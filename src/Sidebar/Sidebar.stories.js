@@ -25,18 +25,18 @@ export const normal = () => ({
         "left"
       )
     },
-    // width: {
-    //   default: text("Width", "300px")
-    // },
-    // maxWidth: {
-    //   default: text("Max width", "75vw")
-    // },
-    // height: {
-    //   default: text("Height", "300px")
-    // },
-    // maxHeight: {
-    //   default: text("Max height", "75vw")
-    // },
+    width: {
+      default: text("Width", "")
+    },
+    maxWidth: {
+      default: text("Max width", "")
+    },
+    height: {
+      default: text("Height", "")
+    },
+    maxHeight: {
+      default: text("Max height", "")
+    },
     backgroundColor: {
       default: text("Background color", "rgba(0, 0, 0, 0.35)")
     },
@@ -47,9 +47,9 @@ export const normal = () => ({
   template: `
     <div>
       <div>
-        <Sidebar v-bind="{side, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
+        <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
           <div>
-            <p>text</p>
+            <p v-for="text in data.lorem">{{text}}</p>
           </div>
         </Sidebar>
         <div>
