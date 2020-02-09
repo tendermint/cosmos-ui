@@ -11,8 +11,8 @@
            @touchend="touchend">
       </div>
     </transition>
-    <transition name="sidebar" @after-leave="emitVisible()" appear>
-      <div :class="['sidebar']"
+    <transition :name="`sidebar__${side}`" @after-leave="emitVisible()" appear>
+      <div :class="['sidebar', `sidebar__side__${side}`]"
            ref="sidebar"
            v-if="visible && visibleLocal"
            :style="style"
@@ -38,12 +38,30 @@
 }
 .sidebar {
   position: fixed;
-  top: 0;
   height: 100vh;
   background: white;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  max-width: var(--sidebar-max-width);
+  width: var(--sidebar-width);
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
+  -webkit-overflow-scrolling: touch;
+}
+.sidebar.sidebar__side__left {
+  top: 0;
+  left: 0;
+  right: initial;
+}
+.sidebar.sidebar__side__right {
+  top: 0;
+  left: initial;
+  right: 0;
+}
+.sidebar.sidebar__side__bottom {
+  top: 200px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  max-width: initial;
 }
 .sidebar__content__side__bottom.sidebar__fullscreen__false {
   padding-bottom: 200px;
@@ -66,27 +84,33 @@
 .overlay-leave-to {
   opacity: 0;
 }
-.sidebar-enter-active {
-  transition: all .25s;
+.sidebar__left-enter-active,
+.sidebar__right-enter-active,
+.sidebar__bottom-enter-active,
+.sidebar__center-enter-active,
+.sidebar__left-leave-active,
+.sidebar__right-leave-active,
+.sidebar__bottom-leave-active,
+.sidebar__center-leave-active {
+  transition: all .5s;
 }
-.sidebar-enter {
-  opacity: var(--sidebar-from-opacity);
-  transform: translateX(var(--sidebar-from-transform-x)) translateY(var(--sidebar-from-transform-y));
+.sidebar__left-enter, .sidebar__left-leave-to {
+  transform: translateX(-100%);
 }
-.sidebar-enter-to {
-  opacity: 1;
-  transform: translateX(0);
+.sidebar__right-enter, .sidebar__right-leave-to {
+  transform: translateX(100%)
 }
-.sidebar-leave-active {
-  transition: all .25s;
+.sidebar__left-enter-to,
+.sidebar__left-leave
+.sidebar__right-enter-to,
+.sidebar__right-leave {
+  transform: translateX(0)
 }
-.sidebar-leave {
-  opacity: 1;
-  transform: translateX(0);
+.sidebar__bottom-enter, .sidebar__bottom-leave-to {
+  transform: translateY(100%)
 }
-.sidebar-leave-to {
-  opacity: var(--sidebar-from-opacity);
-  transform: translateX(var(--sidebar-from-transform-x)) translateY(var(--sidebar-from-transform-y));
+.sidebar__bottom-enter-to, .sidebar__bottom-leave {
+  transform: translateY(0)
 }
 </style>
 
@@ -175,29 +199,9 @@ export default {
       return this.currentY - this.startY
     },
     style() {
-      const
-        side = this.side,
-        right = side === "right",
-        left = side === "left",
-        bottom = side === "bottom",
-        center = side === "center"
       return {
-        "box-shadow": this.boxShadow || "none",
-        "top":
-          right && "0" || left && "0" || bottom && "200px" || center && "50%",
-        "left":
-          right && "initial" || left && "0" || bottom && "0" || center && "50%",
-        "right": right && "0" || left && "initial" || bottom && "0",
-        "width": bottom && "100vw" || center && "inherit" || this.width,
-        "transform": center && "translate(-50%, -50%)",
-        "max-width": bottom && "initial" || this.maxWidth,
-        "height": center && "initial",
-        "max-height": center && "50vh",
-        "--sidebar-from-opacity": center && "0",
-        "--sidebar-from-transform-x":
-          right && "100%" || left && "-100%" || bottom && "0",
-        "--sidebar-from-transform-y":
-          right && "0" || left && "0" || bottom && "100%",
+        "--sidebar-max-width": this.maxWidth,
+        "--sidebar-width": this.width,
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
