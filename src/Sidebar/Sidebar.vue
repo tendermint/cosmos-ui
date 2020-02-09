@@ -20,7 +20,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div :class="[`sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
+        <div :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
           <slot/>
         </div>
       </div>
@@ -39,7 +39,6 @@
 .sidebar {
   position: fixed;
   height: 100vh;
-  background: white;
   overflow-y: scroll;
   max-width: var(--sidebar-max-width);
   width: var(--sidebar-width);
@@ -62,6 +61,35 @@
   right: 0;
   width: 100vw;
   max-width: initial;
+}
+.sidebar.sidebar__side__center {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+}
+.sidebar__content {
+  background: white;
+  position: absolute;
+  pointer-events: all;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+.sidebar__content.sidebar__content__side__center {
+  position: absolute;
+  width: var(--sidebar-width);
+  max-width: var(--sidebar-max-width);
+  height: var(--sidebar-height);
+  max-height: var(--sidebar-max-height);
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  overflow-y: scroll;
+  transform: translate(-50%, -50%);
 }
 .sidebar__content__side__bottom.sidebar__fullscreen__false {
   padding-bottom: 200px;
@@ -94,10 +122,12 @@
 .sidebar__center-leave-active {
   transition: all .5s;
 }
-.sidebar__left-enter, .sidebar__left-leave-to {
+.sidebar__left-enter,
+.sidebar__left-leave-to {
   transform: translateX(-100%);
 }
-.sidebar__right-enter, .sidebar__right-leave-to {
+.sidebar__right-enter,
+.sidebar__right-leave-to {
   transform: translateX(100%)
 }
 .sidebar__left-enter-to,
@@ -106,11 +136,21 @@
 .sidebar__right-leave {
   transform: translateX(0)
 }
-.sidebar__bottom-enter, .sidebar__bottom-leave-to {
+.sidebar__bottom-enter,
+.sidebar__bottom-leave-to {
   transform: translateY(100%)
 }
-.sidebar__bottom-enter-to, .sidebar__bottom-leave {
+.sidebar__bottom-enter-to,
+.sidebar__bottom-leave {
   transform: translateY(0)
+}
+.sidebar__center-enter, .sidebar__center-leave-to {
+  opacity: 0;
+  transform: scale(.95)
+}
+.sidebar__center-enter-to, .sidebar__center-leave {
+  opacity: 1;
+  transform: scale(1);
 }
 </style>
 
@@ -141,6 +181,20 @@ export default {
     maxWidth: {
       type: String,
       default: "75vw"
+    },
+    /**
+     * Height of the sidebar.
+     */
+    height: {
+      type: String,
+      default: "300px"
+    },
+    /**
+     * Maximum height of the sidebar.
+     */
+    maxHeight: {
+      type: String,
+      default: "100vh"
     },
     /**
      * `left` | `right` | `bottom`
@@ -202,6 +256,8 @@ export default {
       return {
         "--sidebar-max-width": this.maxWidth,
         "--sidebar-width": this.width,
+        "--sidebar-max-height": this.maxHeight,
+        "--sidebar-height": this.height,
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
@@ -271,7 +327,7 @@ export default {
       if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
-        this.$refs.sidebar.style.transition = "transform .5s";
+        this.$refs.sidebar.style.transition = "all .5s";
       }
       this.startX = null;
       this.startY = null;
