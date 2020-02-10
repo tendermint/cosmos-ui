@@ -20,7 +20,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
+        <div ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
           <slot/>
         </div>
       </div>
@@ -293,11 +293,13 @@ export default {
       }
     },
     touchstart(e) {
-      this.$refs.sidebar.style.transition = ""
+      const sidebar = this.$refs.sidebar
+      const content = this.$refs.content
+      if (sidebar) sidebar.style.transition = ""
       this.startX = e.changedTouches[0].clientX;
       this.startY = e.changedTouches[0].clientY;
-      if (this.side === "bottom" && !this.fullscreenY) {
-        this.$refs.sidebar.style.overflowY = "hidden"
+      if (this.side === "bottom" && !this.fullscreenY && content) {
+        content.style.overflowY = "hidden"
       }
     },
     touchmove(e) {
@@ -313,18 +315,20 @@ export default {
       }
     },
     touchend(e) {
-      const overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25
-      const overThresholdUp = this.deltaY < -100
-      const overThresholdDown = this.deltaY > 100
+      const
+        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
+        overThresholdUp = this.deltaY < -100,
+        overThresholdDown = this.deltaY > 100,
+        sidebar = this.$refs.sidebar
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       } else if (this.side === "bottom") {
-        this.$refs.sidebar.style.overflowY = ""
+        if (sidebar) sidebar.style.overflowY = ""
         if (overThresholdUp) {
           this.translateY = -200
-          this.$refs.sidebar.style.overflowY = "scroll"
+          if (sidebar) sidebar.style.overflowY = "scroll"
         } if (overThresholdDown) {
           this.close(e)
         } else if (!this.fullscreenY) {
@@ -334,7 +338,7 @@ export default {
       if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
-        this.$refs.sidebar.style.transition = "all .5s";
+        if (sidebar) sidebar.style.transition = "all .5s";
       }
       this.startX = null;
       this.startY = null;
