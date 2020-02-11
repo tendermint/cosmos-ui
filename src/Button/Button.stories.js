@@ -1,5 +1,6 @@
 import Button from "./Button.vue";
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import IconPlus from "./IconPlus.vue";
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: "Button",
@@ -8,7 +9,7 @@ export default {
 };
 
 export const normal = () => ({
-  components: { 'cosmos-button': Button },
+  components: { 'cosmos-button': Button, IconPlus },
   props: {
     label: {
       default: text("Label", "Button")
@@ -29,7 +30,7 @@ export const normal = () => ({
     },
     width: {
       default: text("Width", "")
-    }
+    },
   },
   methods: {
     click(e) {
@@ -39,7 +40,20 @@ export const normal = () => ({
   template: `
     <div>
       <h1>Button</h1>
-      <cosmos-button v-bind="{label, type, size, width}"/>
+      <div style="display: grid; justify-items: flex-start; justify-content: flex-start; grid-auto-flow: rows; grid-gap: 1rem;">
+        <cosmos-button v-bind="{label, type, size, width}"></cosmos-button>
+        <cosmos-button v-bind="{label, type, size, width}">
+          <template v-slot:iconLeft>
+            <icon-plus/>
+          </template>
+        </cosmos-button>
+        <cosmos-button v-bind="{label, type, size, width}">
+          <template v-slot:iconRight>
+            <icon-plus/>
+          </template>
+        </cosmos-button>
+      </div>
     </div>
+
   `
 });

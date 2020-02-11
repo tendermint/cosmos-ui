@@ -1,6 +1,14 @@
 <template>
-  <button :style="{'--button-props-width': width}" :class="['button', `button__type__${type}`, `button__size__${size}`, `button__fixed__${!!(width)}`]">
-    {{label}}
+  <button :style="{'--button-props-width': width}" :class="buttonClassList">
+    <div class="icon" v-if="$slots.iconLeft">
+      <slot name="iconLeft"/>
+    </div>
+    <div class="label">
+      {{label}}
+    </div>
+    <div class="icon" v-if="$slots.iconRight">
+      <slot name="iconRight"/>
+    </div>
   </button>
 </template>
 
@@ -18,13 +26,64 @@ button {
   display: inline-flex;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-family: var(--ds-font-family), sans-serif;
+  font-family: var(--ds-font-family, sans-serif);
   font-weight: 500;
   border-radius: 0.25rem;
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
+}
+
+.button__type__contained .icon {
+  fill: var(--ds-color-primary-alt, white);
+}
+
+.button__type__outlined .icon svg {
+  fill: var(--ds-color-primary, black);
+}
+
+.button__type__text .icon {
+  fill: var(--ds-color-primary, black);
+}
+
+.button__size__small.button__icon__left__false {
+  padding-left: 1rem;
+}
+
+.button__size__medium.button__icon__left__false {
+  padding-left: 1.25rem;
+}
+
+.button__size__large.button__icon__left__false {
+  padding-left: 27px;
+}
+
+.button__size__small.button__icon__right__false {
+  padding-right: 1rem;
+}
+
+.button__size__medium.button__icon__right__false {
+  padding-right: 1.25rem;
+}
+
+.button__size__large.button__icon__right__false {
+  padding-right: 27px;
+}
+
+.button__size__small .label {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.button__size__medium .label {
+  padding-top: .875rem;
+  padding-bottom: .875rem;
+}
+
+.button__size__large .label {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .button__fixed__true {
@@ -34,7 +93,7 @@ button {
 
 .button__type__contained {
   background-color: var(--ds-color-primary, black);
-  color: white;
+  color: var(--ds-color-primary-alt, white);
 }
 
 .button__type__outlined {
@@ -48,38 +107,35 @@ button {
 
 .button__size__small {
   font-size: 0.8125rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   line-height: 1rem;
+}
+
+.button__size__small .icon {
+  height: 1rem;
+  width: 1rem;
+  padding: .5rem;
+}
+
+.button__size__medium .icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: .75rem;
+}
+
+.button__size__large .icon {
+  height: 2rem;
+  width: 2rem;
+  padding: 1rem;
 }
 
 .button__size__medium {
   font-size: 1rem;
-  padding-top: 0.8125rem;
-  padding-bottom: 0.8125rem;
   line-height: 1.25rem;
 }
 
 .button__size__large {
   font-size: 1.25rem;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
   line-height: 1.5rem;
-}
-
-.button__size__small.button__type__contained, .button__size__small.button__type__outlined {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.button__size__medium.button__type__contained, .button__size__medium.button__type__outlined {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
-.button__size__large.button__type__contained, .button__size__large.button__type__outlined {
-  padding-left: 1.6875rem;
-  padding-right: 1.6875rem;
 }
 </style>
 
@@ -88,7 +144,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: "Button"
+      default: ""
     },
     /**
      * "contained" | "outlined" | "text"
@@ -109,6 +165,18 @@ export default {
      */
     width: {
       type: String,
+    }
+  },
+  computed: {
+    buttonClassList() {
+      return [
+        'button',
+        `button__type__${this.type}`,
+        `button__size__${this.size}`,
+        `button__fixed__${!!(this.width)}`,
+        `button__icon__left__${!!(this.$slots.iconLeft)}`,
+        `button__icon__right__${!!(this.$slots.iconRight)}`
+      ]
     }
   }
 }
