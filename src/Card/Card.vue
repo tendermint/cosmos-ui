@@ -197,6 +197,7 @@ export default {
   },
   methods: {
     expand() {
+      this.maxHeight = this.$refs.body.scrollHeight
       this.isExpanded = !this.isExpanded
     },
     transitionend(e) {
