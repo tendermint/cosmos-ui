@@ -20,7 +20,7 @@ export const normal = () => ({
       default: text("Size", "medium")
     },
     imgSrc: {
-      default: text("Image URL", "/public/pattern.png")
+      default: text("Image URL", "/pattern.png")
     },
     imgSide: {
       default: text("Image position", "left")
