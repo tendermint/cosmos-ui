@@ -38,7 +38,6 @@
 }
 .sidebar {
   position: fixed;
-  /* height: 100vh; */
   overflow-y: hidden;
   transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
   -webkit-overflow-scrolling: touch;
@@ -296,8 +295,8 @@ export default {
       const sidebar = this.$refs.sidebar
       const content = this.$refs.content
       if (sidebar) sidebar.style.transition = ""
-      this.startX = e.changedTouches[0].clientX;
-      this.startY = e.changedTouches[0].clientY;
+      this.currentX = this.startX = e.changedTouches[0].clientX;
+      this.currentY = this.startY = e.changedTouches[0].clientY;
       if (this.side === "bottom" && !this.fullscreenY && content) {
         content.style.overflowY = "hidden"
       }
