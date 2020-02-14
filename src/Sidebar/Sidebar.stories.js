@@ -48,10 +48,8 @@ export const normal = () => ({
     <div>
       <div>
         <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
-          <div>
-            <p v-for="text in data.lorem">{{text}}</p>
-            <div>End</div>
-          </div>
+          <p v-for="text in data.lorem">{{text}}</p>
+          <div>End</div>
         </Sidebar>
         <div>
           <button @click="visible = !visible">Open sidebar</button>

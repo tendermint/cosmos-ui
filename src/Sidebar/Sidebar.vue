@@ -61,15 +61,19 @@
   max-height: var(--sidebar-max-height, 100%)
 }
 .sidebar.sidebar__side__bottom {
-  top: 200px;
+  /* top: 200px; */
+  top: 0;
   left: 0;
   right: 0;
   width: 100vw;
+  /* padding-top: 200px; */
   max-width: initial;
+  overflow-y: scroll;
   width: var(--sidebar-width, 100%);
   max-width: var(--sidebar-width, 100%);
-  height: var(--sidebar-height, 100%);
-  max-height: var(--sidebar-max-height, 100%);
+  height: 100%;
+  /* height: var(--sidebar-height, 100%);
+  max-height: var(--sidebar-max-height, 100%); */
 }
 .sidebar.sidebar__side__center {
   top: 0;
@@ -88,9 +92,13 @@
   width: 100%;
   height: 100%;
 }
+
 .sidebar__content.sidebar__content__side__bottom {
-  padding-bottom: 600px;
+  margin-top: 200px;
+  overflow-y: hidden;
+  height: auto;
 }
+
 .sidebar__content.sidebar__content__side__center {
   position: absolute;
   width: var(--sidebar-width, 600px);
@@ -297,9 +305,9 @@ export default {
       if (sidebar) sidebar.style.transition = ""
       this.currentX = this.startX = e.changedTouches[0].clientX;
       this.currentY = this.startY = e.changedTouches[0].clientY;
-      if (this.side === "bottom" && !this.fullscreenY && content) {
-        content.style.overflowY = "hidden"
-      }
+      // if (this.side === "bottom" && !this.fullscreenY && content) {
+      //   content.style.overflowY = "hidden"
+      // }
     },
     touchmove(e) {
       if (this.fullscreenY) return
@@ -309,9 +317,10 @@ export default {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
-      } else if (this.side === "bottom") {
-        this.translateY = this.deltaY < -200 ? -200 : this.deltaY
       }
+      // else if (this.side === "bottom") {
+      //   this.translateY = this.deltaY < -200 ? -200 : this.deltaY
+      // }
     },
     touchend(e) {
       const
@@ -323,17 +332,18 @@ export default {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
-      } else if (this.side === "bottom") {
-        if (sidebar) sidebar.style.overflowY = ""
-        if (overThresholdUp) {
-          this.translateY = -200
-          if (sidebar) sidebar.style.overflowY = "scroll"
-        } if (overThresholdDown) {
-          this.close(e)
-        } else if (!this.fullscreenY) {
-          this.translateY = null;
-        }
       }
+      // else if (this.side === "bottom") {
+      //   if (sidebar) sidebar.style.overflowY = ""
+      //   if (overThresholdUp) {
+      //     // this.translateY = -200
+      //     if (sidebar) sidebar.style.overflowY = "scroll"
+      //   } if (overThresholdDown) {
+      //     this.close(e)
+      //   } else if (!this.fullscreenY) {
+      //     this.translateY = null;
+      //   }
+      // }
       if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
