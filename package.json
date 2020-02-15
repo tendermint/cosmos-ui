@@ -28,6 +28,8 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
+    "clipboard-copy": "^3.1.0",
+    "prismjs": "^1.19.0",
     "tiny-cookie": "^2.3.1",
     "vue": "^2.6.10"
   }
