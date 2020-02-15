@@ -21,7 +21,7 @@
             </span>
           </span>
         </span>
-        <span class="body" :class="[`body__hasfooter__${!!url}`, `body__expanded__${!!expanded}`]" :style="{'--max-height': maxHeight}" ref="body">
+        <span class="body" :class="[`body__hasfooter__${!!url}`, `body__is-expandable__${!!(isExpandable)}`, `body__expanded__${!!expanded}`]" :style="{'--max-height': maxHeight}" ref="body">
           <span class="body__wrapper">
             <span class="body__code" v-html="highlighted(value)"></span></span>
             <span class="expand" :class="[`expand__expanded__${!!expanded}`]">
@@ -75,11 +75,8 @@ span {
   opacity: 1;
 }
 .container {
-  /* margin-top: 1rem; */
-  /* margin-bottom: 1rem; */
   border-radius: 0.5rem;
   background: #2e3148;
-  /* min-height: 4rem; */
 }
 .body__container {
   position: relative;
@@ -89,16 +86,33 @@ span {
 }
 .body {
   color: rgba(255,255,255,0.8);
-  position: relative;
-  line-height: 1.75;
-  max-height: 700px;
-  overflow-y: hidden;
+  overflow-x: scroll;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  overflow-y: hidden;
+  position: relative;
+  line-height: 1.75;
+  scrollbar-color: rgba(255,255,255,.2) rgba(255,255,255,.1);
+  scrollbar-width: thin;
 }
-.body__expanded__true {
+
+.body::-webkit-scrollbar {
+  background: rgba(255,255,255,.1);
+  height: 6px;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.2);
+  border-radius: 6px;
+}
+
+.body__is-expandable__true {
+  max-height: 700px;
+}
+
+.body__is-expandable__true.body__expanded__true {
   max-height: var(--max-height);
 }
 .body__wrapper {
@@ -169,6 +183,7 @@ span {
   z-index: 100;
 }
 .icons__item {
+  margin-left: .5rem;
   cursor: pointer;
   border-radius: 0.25rem;
   position: relative;
@@ -195,11 +210,7 @@ span {
   opacity: 0;
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
-  /* 
-  line-height: 1;
-  white-space: pre;
   transition: all 0.25s 0.5s;
-   */
 }
 .icons__item__tooltip:before {
   content: "";
@@ -301,7 +312,7 @@ export default {
       maxHeight: null,
       copied: null,
       height: null,
-      scrollHeight: null
+      isExpandable: null
     };
   },
   computed: {
@@ -310,7 +321,7 @@ export default {
     }
   },
   mounted() {
-    this.scrollHeight = this.$refs.body.scrollHeight;
+    this.isExpandable = this.$refs.body.scrollHeight > 1000;
     this.height = this.$refs.body.scrollHeight - 700;
     this.expanded = this.$refs.body.scrollHeight - 700 < 300;
     this.maxHeight = this.$refs.body.scrollHeight + "px";
