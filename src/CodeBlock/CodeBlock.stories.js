@@ -21,7 +21,7 @@ export const normal = () => ({
       <p>Multiline snippet with syntax highlighting:</p>
       <code-block :value="data.medium" language="go"/>
       <p>Multiline snippet with syntax highlighting and expand button:</p>
-      <code-block :value="data.long" language="go" :url="url"/>
+      <code-block :value="data.long" :url="url" language="go"/>
     </div>
   `
 });

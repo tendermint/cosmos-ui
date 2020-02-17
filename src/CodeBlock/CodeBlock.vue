@@ -1,6 +1,6 @@
 <template>
-  <span ref="container">
-    <span class="container">
+  <span>
+    <span class="container" ref="container">
       <span class="body__container">
         <span class="body__block">
           <span class="icons">
@@ -27,6 +27,8 @@
             <span class="body__wrapper">
               <span class="body__code" v-html="highlighted(value)"></span>
             </span>
+          </span>
+        </span>
             <span class="expand" :class="[`expand__expanded__${!!expanded}`]">
               <span class="expand__item expand__item__expand" @click="expand(true)" v-if="!expanded">
                 <span>Expand</span>
@@ -42,8 +44,6 @@
                 </svg>
               </span>
             </span>
-          </span>
-        </span>
       </span>
       <span class="footer" v-if="url">
         <span class="footer__filename">
@@ -146,6 +146,7 @@ span {
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   font-family: var(--ds-font-family, sans-serif);
+  box-sizing: border-box;
 }
 .expand__expanded__false {
   background: linear-gradient(to top, #2e3148, rgba(46,49,72,0));
@@ -383,11 +384,9 @@ export default {
       }, 2000);
     },
     highlighted(value) {
-      if (!this.url && this.language === "go")
-        return Prism.highlight(value, Prism.languages["go"]);
-      if (this.url && this.url.replace(/\#.*$/, "").match(/\.go$/))
-        return Prism.highlight(value, Prism.languages["go"]);
-      return value;
+      return this.language
+        ? Prism.highlight(value, Prism.languages[this.language])
+        : value
     },
     expand(bool, scroll) {
       const container = this.$refs.container;
