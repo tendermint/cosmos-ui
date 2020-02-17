@@ -47,16 +47,32 @@ button {
   fill: var(--ds-color-primary, black);
 }
 
+.button__type__text:hover {
+  background: rgba(140, 145, 177, .08);
+}
+
 .button__size__small.button__icon__left__false {
   padding-left: 1rem;
+}
+
+.button__type__text.button__size__small.button__icon__left__false {
+  margin-left: -1rem;
 }
 
 .button__size__medium.button__icon__left__false {
   padding-left: 1.25rem;
 }
 
+.button__type__text.button__size__medium.button__icon__left__false {
+  margin-left: -1.25rem;
+}
+
 .button__size__large.button__icon__left__false {
   padding-left: 27px;
+}
+
+.button__type__text.button__size__large.button__icon__left__false {
+  margin-left: -27px;
 }
 
 .button__size__small.button__icon__right__false {
