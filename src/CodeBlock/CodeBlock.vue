@@ -168,6 +168,7 @@ span {
   cursor: pointer;
   border-radius: 1000px;
   box-shadow: 0px 16px 32px rgba(22,25,49,0.08), 0px 8px 12px rgba(22,25,49,0.06), 0px 1px 0px rgba(22,25,49,0.05);
+  box-sizing: border-box;
 }
 .expand__item__expand {
   grid-area: 1/2/1/3;

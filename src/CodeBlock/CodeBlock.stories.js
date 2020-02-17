@@ -11,7 +11,7 @@ export const normal = () => ({
   data: function () {
     return {
       data,
-      url: "https://github.com/cosmos/sdk-tutorials/blob/c6754a1e313eb1ed973c5c91dcc606f2fd288811/go.mod#L1-L18",
+      url: "https://github.com/cosmos/sdk-tutorials/blob/c6754a1e313eb1ed973c5c91dcc606f2fd288811/deeply/nested/hidden/directory/go.mod#L1-L18",
     }
   },
   template: `
