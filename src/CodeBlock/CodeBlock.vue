@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span class="container" ref="container">
+    <span class="container" ref="container" :class="[`codeblock__hasfooter__${!!url}`, `codeblock__is-expandable__${!!(isExpandable)}`, `codeblock__expanded__${!!expanded}`]">
       <span class="body__container">
         <span class="body__block">
           <span class="icons">
@@ -23,27 +23,27 @@
               </span>
             </span>
           </span>
-          <span class="body" :class="[`body__hasfooter__${!!url}`, `body__is-expandable__${!!(isExpandable)}`, `body__expanded__${!!expanded}`]" :style="{'--max-height': maxHeight}" ref="body">
+          <span class="body" :style="{'--max-height': maxHeight}" ref="body">
             <span class="body__wrapper">
               <span class="body__code" v-html="highlighted(value)"></span>
             </span>
           </span>
         </span>
-            <span class="expand" :class="[`expand__expanded__${!!expanded}`]">
-              <span class="expand__item expand__item__expand" @click="expand(true)" v-if="!expanded">
-                <span>Expand</span>
-                <svg class="expand__item__icon" width="100%" height="100%" viewBox="0 0 16 16" fill="none" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.25 0.99998C7.25 0.585766 7.58578 0.24998 8 0.24998C8.41421 0.24998 8.75 0.585766 8.75 0.99998L7.25 0.99998ZM8 14.8333L8.53033 15.3636L8 15.894L7.46967 15.3636L8 14.8333ZM2.46967 10.3636C2.17678 10.0708 2.17678 9.59588 2.46967 9.30298C2.76256 9.01009 3.23744 9.01009 3.53033 9.30298L2.46967 10.3636ZM12.4697 9.30298C12.7626 9.01009 13.2374 9.01009 13.5303 9.30298C13.8232 9.59587 13.8232 10.0707 13.5303 10.3636L12.4697 9.30298ZM8.75 0.99998L8.75 14.8333L7.25 14.8333L7.25 0.99998L8.75 0.99998ZM7.46967 15.3636L2.46967 10.3636L3.53033 9.30298L8.53033 14.303L7.46967 15.3636ZM13.5303 10.3636L8.53033 15.3636L7.46967 14.303L12.4697 9.30298L13.5303 10.3636Z" fill="black"></path>
-                </svg>
-              </span>
-              <span class="expand__item expand__item__collapse" @click="expand(false, true)" v-if="height &gt; 300 &amp;&amp; expanded">
-                <svg width="100%" height="100%" viewBox="0 0 12 24" fill="none" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.53033 10.7803L6 11.3107L5.46967 10.7803L0.96967 6.28033C0.676777 5.98744 0.676777 5.51256 0.96967 5.21967C1.26256 4.92678 1.73744 4.92678 2.03033 5.21967L5.25 8.43934L5.25 1.5C5.25 1.08579 5.58578 0.75 6 0.75C6.41421 0.75 6.75 1.08579 6.75 1.5L6.75 8.43934L9.96967 5.21967C10.2626 4.92678 10.7374 4.92678 11.0303 5.21967C11.3232 5.51256 11.3232 5.98744 11.0303 6.28033L6.53033 10.7803ZM6.53033 13.2197L6 12.6893L5.46967 13.2197L0.96967 17.7197C0.676777 18.0126 0.676777 18.4874 0.96967 18.7803C1.26256 19.0732 1.73744 19.0732 2.03033 18.7803L5.25 15.5607L5.25 22.5C5.25 22.9142 5.58578 23.25 6 23.25C6.41421 23.25 6.75 22.9142 6.75 22.5L6.75 15.5607L9.96967 18.7803C10.2626 19.0732 10.7374 19.0732 11.0303 18.7803C11.3232 18.4874 11.3232 18.0126 11.0303 17.7197L6.53033 13.2197Z" fill="#2E3148"></path>
-                </svg>
-              </span>
-            </span>
+        <span class="expand">
+          <span class="expand__item expand__item__expand" @click="expand(true)" v-if="!expanded">
+            <span>Expand</span>
+            <svg class="expand__item__icon" width="100%" height="100%" viewBox="0 0 16 16" fill="none" 
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.25 0.99998C7.25 0.585766 7.58578 0.24998 8 0.24998C8.41421 0.24998 8.75 0.585766 8.75 0.99998L7.25 0.99998ZM8 14.8333L8.53033 15.3636L8 15.894L7.46967 15.3636L8 14.8333ZM2.46967 10.3636C2.17678 10.0708 2.17678 9.59588 2.46967 9.30298C2.76256 9.01009 3.23744 9.01009 3.53033 9.30298L2.46967 10.3636ZM12.4697 9.30298C12.7626 9.01009 13.2374 9.01009 13.5303 9.30298C13.8232 9.59587 13.8232 10.0707 13.5303 10.3636L12.4697 9.30298ZM8.75 0.99998L8.75 14.8333L7.25 14.8333L7.25 0.99998L8.75 0.99998ZM7.46967 15.3636L2.46967 10.3636L3.53033 9.30298L8.53033 14.303L7.46967 15.3636ZM13.5303 10.3636L8.53033 15.3636L7.46967 14.303L12.4697 9.30298L13.5303 10.3636Z" fill="black"></path>
+            </svg>
+          </span>
+          <span class="expand__item expand__item__collapse" @click="expand(false, true)" v-if="height &gt; 300 &amp;&amp; expanded">
+            <svg width="100%" height="100%" viewBox="0 0 12 24" fill="none" 
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.53033 10.7803L6 11.3107L5.46967 10.7803L0.96967 6.28033C0.676777 5.98744 0.676777 5.51256 0.96967 5.21967C1.26256 4.92678 1.73744 4.92678 2.03033 5.21967L5.25 8.43934L5.25 1.5C5.25 1.08579 5.58578 0.75 6 0.75C6.41421 0.75 6.75 1.08579 6.75 1.5L6.75 8.43934L9.96967 5.21967C10.2626 4.92678 10.7374 4.92678 11.0303 5.21967C11.3232 5.51256 11.3232 5.98744 11.0303 6.28033L6.53033 10.7803ZM6.53033 13.2197L6 12.6893L5.46967 13.2197L0.96967 17.7197C0.676777 18.0126 0.676777 18.4874 0.96967 18.7803C1.26256 19.0732 1.73744 19.0732 2.03033 18.7803L5.25 15.5607L5.25 22.5C5.25 22.9142 5.58578 23.25 6 23.25C6.41421 23.25 6.75 22.9142 6.75 22.5L6.75 15.5607L9.96967 18.7803C10.2626 19.0732 10.7374 19.0732 11.0303 18.7803C11.3232 18.4874 11.3232 18.0126 11.0303 17.7197L6.53033 13.2197Z" fill="#2E3148"></path>
+            </svg>
+          </span>
+        </span>
       </span>
       <span class="footer" v-if="url">
         <span class="footer__filename">
@@ -118,11 +118,11 @@ span {
   border-radius: 6px;
 }
 
-.body__is-expandable__true {
+.codeblock__is-expandable__true .body {
   max-height: 700px;
 }
 
-.body__is-expandable__true.body__expanded__true {
+.codeblock__is-expandable__true.codeblock__expanded__true .body {
   max-height: var(--max-height);
 }
 .body__wrapper {
@@ -148,7 +148,7 @@ span {
   font-family: var(--ds-font-family, sans-serif);
   box-sizing: border-box;
 }
-.expand__expanded__false {
+.codeblock__expanded__false .expand {
   background: linear-gradient(to top, #2e3148, rgba(46,49,72,0));
 }
 .expand__item {
@@ -176,6 +176,7 @@ span {
 .expand__item__collapse {
   grid-area: 1/3/1/4;
   justify-self: flex-end;
+  height: 2rem;
   max-width: 3rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
