@@ -329,11 +329,6 @@ export default {
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
-      if (this.side === "bottom") {
-        if (overThresholdDown) {
-          this.close(e)
-        }
-      }
       if (overThresholdX && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
