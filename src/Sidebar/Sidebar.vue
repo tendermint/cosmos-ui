@@ -50,7 +50,8 @@
   width: var(--sidebar-width, 300px);
   max-width: var(--sidebar-width, 75%);
   height: var(--sidebar-height, 100%);
-  max-height: var(--sidebar-max-height, 100%)
+  max-height: var(--sidebar-max-height, 100%);
+  box-shadow: var(--sidebar-box-shadow);
 }
 .sidebar.sidebar__side__right {
   top: 0;
@@ -59,7 +60,8 @@
   width: var(--sidebar-width, 300px);
   max-width: var(--sidebar-width, 75%);
   height: var(--sidebar-height, 100%);
-  max-height: var(--sidebar-max-height, 100%)
+  max-height: var(--sidebar-max-height, 100%);
+  box-shadow: var(--sidebar-box-shadow);
 }
 .sidebar.sidebar__side__bottom {
   /* top: 200px; */
@@ -98,6 +100,7 @@
   margin-top: 200px;
   overflow-y: hidden;
   height: auto;
+  box-shadow: var(--sidebar-box-shadow);
 }
 
 .sidebar__content.sidebar__content__side__center {
@@ -112,6 +115,7 @@
   overflow-y: scroll;
   transform: translate(-50%, -50%);
   border-radius: .5rem;
+  box-shadow: var(--sidebar-box-shadow);
 }
 .overlay-enter-active {
   transition: all .25s ease-in;
@@ -273,6 +277,7 @@ export default {
         "--sidebar-width": this.width,
         "--sidebar-max-height": this.maxHeight,
         "--sidebar-height": this.height,
+        "--sidebar-box-shadow": this.boxShadow,
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
