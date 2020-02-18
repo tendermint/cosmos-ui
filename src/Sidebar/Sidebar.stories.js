@@ -41,7 +41,7 @@ export const normal = () => ({
       default: text("Background color", "rgba(0, 0, 0, 0.35)")
     },
     boxShadow: {
-      default: text("Box shadow", "0 0 10px 0 red")
+      default: text("Box shadow", "none")
     }
   },
   template: `
