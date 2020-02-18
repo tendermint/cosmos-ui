@@ -16,6 +16,7 @@
            ref="sidebar"
            v-if="visible && visibleLocal"
            :style="style"
+           @click.self="side === 'bottom' && close($event)"
            @touchstart="touchstart"
            @touchmove="touchmove"
            @touchend="touchend">
@@ -290,6 +291,7 @@ export default {
       this.$emit('visible', false)
     },
     close(e) {
+      console.log('close')
       this.visibleLocal = null;
       if (this.$refs["overlay"]) {
         this.$refs["overlay"].style["pointer-events"] = "none";
