@@ -21,7 +21,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
+        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
           <slot/>
         </div>
       </div>
@@ -247,6 +247,7 @@ export default {
       translateX: null,
       translateY: null,
       fullscreen: null,
+      isScrolling: null,
     };
   },
   watch: {
@@ -300,6 +301,9 @@ export default {
     }
   },
   methods: {
+    detectScrolling(e) {
+      this.isScrolling = true
+    },
     emitVisible() {
       document.querySelector("body").style.overflow = ""
       /**
@@ -329,9 +333,10 @@ export default {
       if (this.fullscreenY) return
       this.currentX = e.changedTouches[0].clientX;
       this.currentY = e.changedTouches[0].clientY;
-      if (this.side === "left") {
+      if (this.side === "left" && !this.isScrolling) {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
-      } else if (this.side === "right") {
+      }
+      if (this.side === "right" && !this.isScrolling) {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
     },
@@ -346,7 +351,7 @@ export default {
       } else if (this.side === "right") {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
-      if (overThresholdX && (this.side === "left" || this.side === "right")) {
+      if (overThresholdX && !this.isScrolling && (this.side === "left" || this.side === "right")) {
         this.close(e)
       } else {
         if (sidebar) sidebar.style.transition = "all .5s";
@@ -356,6 +361,7 @@ export default {
       this.currentX = null;
       this.currentY = null;
       this.translateX = null;
+      this.isScrolling = null;
     },
   }
 };
