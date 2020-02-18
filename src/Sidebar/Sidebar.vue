@@ -114,7 +114,7 @@
   top: 50%;
   overflow-y: scroll;
   transform: translate(-50%, -50%);
-  border-radius: .5rem;
+  border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
 }
 .overlay-enter-active {
@@ -246,6 +246,7 @@ export default {
       currentY: null,
       translateX: null,
       translateY: null,
+      fullscreen: null,
     };
   },
   watch: {
@@ -272,12 +273,19 @@ export default {
       return this.currentY - this.startY
     },
     style() {
+      const
+        width = this.fullscreen ? "100%" : this.width,
+        maxWidth = this.fullscreen ? "100%" : this.maxWidth,
+        height = this.fullscreen ? "100%" : this.height,
+        maxHeight = this.fullscreen ? "100%" : this.maxHeight,
+        borderRadius = this.fullscreen ? "none" : ".5rem"
       return {
-        "--sidebar-max-width": this.maxWidth,
-        "--sidebar-width": this.width,
-        "--sidebar-max-height": this.maxHeight,
-        "--sidebar-height": this.height,
+        "--sidebar-max-width": maxWidth,
+        "--sidebar-width": width,
+        "--sidebar-max-height": maxHeight,
+        "--sidebar-height": height,
         "--sidebar-box-shadow": this.boxShadow,
+        "--sidebar-border-radius": borderRadius,
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
@@ -285,6 +293,11 @@ export default {
   },
   mounted() {
     document.querySelector("body").style.overflow = "hidden"
+    if (this.side === "center") {
+      if (window.innerWidth < parseInt(this.width || "600px")) {
+        this.fullscreen = true
+      }
+    }
   },
   methods: {
     emitVisible() {
@@ -296,7 +309,6 @@ export default {
       this.$emit('visible', false)
     },
     close(e) {
-      console.log('close')
       this.visibleLocal = null;
       if (this.$refs["overlay"]) {
         this.$refs["overlay"].style["pointer-events"] = "none";
