@@ -21,7 +21,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenY)}`]">
+        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreen)}`]">
           <slot/>
         </div>
       </div>
@@ -64,19 +64,15 @@
   box-shadow: var(--sidebar-box-shadow);
 }
 .sidebar.sidebar__side__bottom {
-  /* top: 200px; */
   top: 0;
   left: 0;
   right: 0;
   width: 100vw;
-  /* padding-top: 200px; */
   max-width: initial;
   overflow-y: scroll;
   width: var(--sidebar-width, 100%);
   max-width: var(--sidebar-width, 100%);
   height: 100%;
-  /* height: var(--sidebar-height, 100%);
-  max-height: var(--sidebar-max-height, 100%); */
 }
 .sidebar.sidebar__side__center {
   top: 0;
@@ -87,6 +83,8 @@
   max-width: 100%;
   overflow-y: scroll;
   pointer-events: all;
+  display: flex;
+  align-items: center;
 }
 .sidebar__content {
   background: white;
@@ -110,19 +108,18 @@
   width: var(--sidebar-width, 600px);
   max-width: var(--sidebar-max-width, 90%);
   height: initial;
-  /*
-  height: var(--sidebar-height);
-  max-height: var(--sidebar-max-height, 50%);
-  overflow-y: scroll;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  */
-  top: 20px;
+  top: var(--sidebar-top);
   transform: translateX(-50%);
   left: 50%;
   border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
 }
+
+.sidebar__content.sidebar__content__side__center.sidebar__fullscreen__true {
+  top: 0;
+  bottom: 0;
+}
+
 .overlay-enter-active {
   transition: all .25s ease-in;
 }
@@ -252,8 +249,9 @@ export default {
       currentY: null,
       translateX: null,
       translateY: null,
-      fullscreen: null,
       isScrolling: null,
+      sheetTop: null,
+      fullscreen: null,
     };
   },
   watch: {
@@ -270,9 +268,6 @@ export default {
     }
   },
   computed: {
-    fullscreenY() {
-      return this.translateY === -200
-    },
     deltaX() {
       return this.currentX - this.startX
     },
@@ -293,6 +288,7 @@ export default {
         "--sidebar-height": height,
         "--sidebar-box-shadow": this.boxShadow,
         "--sidebar-border-radius": borderRadius,
+        "--sidebar-top": this.sheetTop,
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
@@ -301,12 +297,27 @@ export default {
   mounted() {
     document.querySelector("body").style.overflow = "hidden"
     if (this.side === "center") {
-      if (window.innerWidth < parseInt(this.width || "600px")) {
+      console.log("window.innerWidth", window.innerWidth)
+      console.log("this.$refs.content.getBoundingClientRect().width", this.$refs.content.getBoundingClientRect().width)
+      if (window.innerWidth >= this.$refs.content.getBoundingClientRect().width) {
         this.fullscreen = true
+        console.log("this.fullscreen", this.fullscreen)
       }
     }
+    this.sheetTopSet()
   },
   methods: {
+    sheetTopSet() {
+      const
+        sheetHeight = this.$refs.content.getBoundingClientRect().height,
+        windowHeight = window.innerHeight
+      if (this.side === "center") {
+        this.sheetTop = sheetHeight > windowHeight ? 0 : (windowHeight - sheetHeight) / 2
+      }
+      if (this.side === "bottom") {
+        this.sheetTop = sheetHeight > windowHeight ? 0 : windowHeight - sheetHeight
+      }
+    },
     sidebarClick(e) {
       console.log("sidebarClick", this.side)
       if (this.side === "center") this.visibleLocal = null;
@@ -341,7 +352,6 @@ export default {
       this.currentY = this.startY = e.changedTouches[0].clientY;
     },
     touchmove(e) {
-      if (this.fullscreenY) return
       this.currentX = e.changedTouches[0].clientX;
       this.currentY = e.changedTouches[0].clientY;
       if (this.side === "left" && !this.isScrolling) {

@@ -41,15 +41,19 @@ export const normal = () => ({
     },
     boxShadow: {
       default: text("Box shadow", "none")
+    },
+    sidebarContent: {
+      default: text("Sheet content", data.sidebar.lorem.join(""))
     }
   },
   template: `
     <div>
       <div>
         <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
-          <p v-for="text in data.lorem">{{text}}</p>
+          <div>{{sidebarContent}}</div>
         </Sidebar>
         <div>
+          <p v-for="text in data.lorem.slice(1,4)">{{text}}</p>
           <button @click="visible = !visible">Open sidebar</button>
           <p v-for="text in data.lorem">{{text}}</p>
         </div>
