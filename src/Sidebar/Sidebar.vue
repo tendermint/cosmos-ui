@@ -16,7 +16,7 @@
            ref="sidebar"
            v-if="visible && visibleLocal"
            :style="style"
-           @click.self="side === 'bottom' && close($event)"
+           @click.self="sidebarClick"
            @touchstart="touchstart"
            @touchmove="touchmove"
            @touchend="touchend">
@@ -85,7 +85,8 @@
   bottom: 0;
   width: 100%;
   max-width: 100%;
-  pointer-events: none;
+  overflow-y: scroll;
+  pointer-events: all;
 }
 .sidebar__content {
   background: white;
@@ -104,16 +105,21 @@
 }
 
 .sidebar__content.sidebar__content__side__center {
+  pointer-events: all;
   position: absolute;
   width: var(--sidebar-width, 600px);
   max-width: var(--sidebar-max-width, 90%);
+  height: initial;
+  /*
   height: var(--sidebar-height);
   max-height: var(--sidebar-max-height, 50%);
-  overflow: hidden;
-  left: 50%;
-  top: 50%;
   overflow-y: scroll;
+  top: 50%;
   transform: translate(-50%, -50%);
+  */
+  top: 20px;
+  transform: translateX(-50%);
+  left: 50%;
   border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
 }
@@ -301,6 +307,11 @@ export default {
     }
   },
   methods: {
+    sidebarClick(e) {
+      console.log("sidebarClick", this.side)
+      if (this.side === "center") this.visibleLocal = null;
+      if (this.side === 'bottom') close(e)
+    },
     detectScrolling(e) {
       this.isScrolling = true
     },

@@ -13,7 +13,6 @@ export const normal = () => ({
   data: function () {
     return {
       visible: null,
-      visible2: null,
       data: data.sidebar,
     }
   },
@@ -49,7 +48,6 @@ export const normal = () => ({
       <div>
         <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
           <p v-for="text in data.lorem">{{text}}</p>
-          <div>End</div>
         </Sidebar>
         <div>
           <button @click="visible = !visible">Open sidebar</button>
