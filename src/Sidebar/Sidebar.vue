@@ -96,7 +96,7 @@
 }
 
 .sidebar__content.sidebar__content__side__bottom {
-  margin-top: 200px;
+  margin-top: var(--sidebar-top);
   overflow-y: hidden;
   height: auto;
   box-shadow: var(--sidebar-box-shadow);
@@ -107,7 +107,8 @@
   position: absolute;
   width: var(--sidebar-width, 600px);
   max-width: var(--sidebar-max-width, 90%);
-  height: initial;
+  height: var(--sidebar-height, auto);
+  max-height: var(--sidebar-max-height, none);
   top: var(--sidebar-top);
   transform: translateX(-50%);
   left: 50%;
@@ -288,40 +289,48 @@ export default {
         "--sidebar-height": height,
         "--sidebar-box-shadow": this.boxShadow,
         "--sidebar-border-radius": borderRadius,
-        "--sidebar-top": this.sheetTop,
+        "--sidebar-top": this.sheetTop + 'px',
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
       };
     }
   },
   mounted() {
+    this.$nextTick(() => {
+      this.sheetTopSet()
+    })
+    window.addEventListener("resize", this.onresize)
     document.querySelector("body").style.overflow = "hidden"
     if (this.side === "center") {
       console.log("window.innerWidth", window.innerWidth)
       console.log("this.$refs.content.getBoundingClientRect().width", this.$refs.content.getBoundingClientRect().width)
-      if (window.innerWidth >= this.$refs.content.getBoundingClientRect().width) {
+      if (window.innerWidth < this.$refs.content.getBoundingClientRect().width) {
         this.fullscreen = true
         console.log("this.fullscreen", this.fullscreen)
       }
     }
-    this.sheetTopSet()
   },
   methods: {
+    onresize() {
+      this.sheetTopSet()
+    },
     sheetTopSet() {
-      const
-        sheetHeight = this.$refs.content.getBoundingClientRect().height,
-        windowHeight = window.innerHeight
-      if (this.side === "center") {
-        this.sheetTop = sheetHeight > windowHeight ? 0 : (windowHeight - sheetHeight) / 2
+      if (this.side === "center" && this.$refs.content) {
+        const
+          content = this.$refs.content.getBoundingClientRect().height,
+          height = window.innerHeight
+        this.sheetTop = content > height ? 0 : (height - content) / 2
       }
-      if (this.side === "bottom") {
-        this.sheetTop = sheetHeight > windowHeight ? 0 : windowHeight - sheetHeight
+      if (this.side === "bottom" && this.$refs.content) {
+        const
+          content = this.$refs.content.getBoundingClientRect().height,
+          height = window.innerHeight
+        this.sheetTop = content > height ? 0 : height - content
       }
     },
     sidebarClick(e) {
-      console.log("sidebarClick", this.side)
       if (this.side === "center") this.visibleLocal = null;
-      if (this.side === 'bottom') close(e)
+      if (this.side === 'bottom') this.visibleLocal = null
     },
     detectScrolling(e) {
       this.isScrolling = true
