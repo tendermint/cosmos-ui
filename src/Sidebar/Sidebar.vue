@@ -83,8 +83,8 @@
   max-width: 100%;
   overflow-y: scroll;
   pointer-events: all;
-  display: flex;
-  align-items: center;
+  height: 100vh;
+  transform: translateX(0);
 }
 .sidebar__content {
   background: white;
@@ -110,10 +110,13 @@
   height: var(--sidebar-height, auto);
   max-height: var(--sidebar-max-height, none);
   top: var(--sidebar-top);
+  /* top: 50%; */
   transform: translateX(-50%);
+  /* transform: translateX(-50%) translateY(-50%); */
   left: 50%;
   border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
+  /* box-sizing: border-box; */
 }
 
 .sidebar__content.sidebar__content__side__center.sidebar__fullscreen__true {
@@ -296,30 +299,22 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this.sheetTopSet()
-    })
-    window.addEventListener("resize", this.onresize)
+    this.sheetCenterPosition()
+    window.addEventListener("resize", this.sheetCenterPosition)
     document.querySelector("body").style.overflow = "hidden"
     if (this.side === "center") {
-      console.log("window.innerWidth", window.innerWidth)
-      console.log("this.$refs.content.getBoundingClientRect().width", this.$refs.content.getBoundingClientRect().width)
       if (window.innerWidth < this.$refs.content.getBoundingClientRect().width) {
         this.fullscreen = true
-        console.log("this.fullscreen", this.fullscreen)
       }
     }
   },
   methods: {
-    onresize() {
-      this.sheetTopSet()
-    },
-    sheetTopSet() {
-      if (this.side === "center" && this.$refs.content) {
+    sheetCenterPosition() {
+      if (this.side === "center") {
         const
           content = this.$refs.content.getBoundingClientRect().height,
           height = window.innerHeight
-        this.sheetTop = content > height ? 0 : (height - content) / 2
+        this.sheetTop = content > height - 40 ? 20 : (height - content) / 2
       }
       if (this.side === "bottom" && this.$refs.content) {
         const
