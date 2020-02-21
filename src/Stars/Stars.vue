@@ -17,6 +17,17 @@
 import { isEqual } from "lodash"
 
 export default {
+  props: {
+    vertical: {
+      type: Number
+    },
+    horizontal: {
+      type: Number
+    },
+    flickering: {
+      type: Number
+    }
+  },
   data: function() {
     return {
       canvas: {
@@ -35,8 +46,9 @@ export default {
       if (timestamp - timestampLast > 10) {
         for (let i=0; i < stars.length; i++) {
           const
-            xPosNew = stars[i].x > this.canvas.width ? 0 : stars[i].x + .25,
-            yPosNew = stars[i].y
+            opacity = Math.sin(timestamp * stars[i].random / (this.flickering || 600)),
+            xPosNew = stars[i].x > this.canvas.width ? 0 : stars[i].x + (this.horizontal || .25),
+            yPosNew = stars[i].y +  Math.sin(opacity / (this.vertical || 20)) * (stars[i].random > .5 ? 1 : -1)
           stars[i] = {
             ...stars[i],
             x: xPosNew,
@@ -47,7 +59,7 @@ export default {
       }
       c.clearRect(0, 0, this.canvas.width, this.canvas.height)
       for (let i = 0; i < stars.length; i++) {
-        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / 600)].join(",")})`
+        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / (this.flickering || 600))].join(",")})`
         c.translate(stars[i].x , stars[i].y)
         c.fill(circlePath)
         c.translate(-stars[i].x , -stars[i].y)
