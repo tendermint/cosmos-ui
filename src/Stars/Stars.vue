@@ -36,7 +36,7 @@ export default {
         for (let i=0; i < stars.length; i++) {
           const
             xPosNew = stars[i].x > this.canvas.width ? 0 : stars[i].x + .25,
-            yPosNew = stars[i].y + Math.sin(stars[i].x / 10) / 10
+            yPosNew = stars[i].y
           stars[i] = {
             ...stars[i],
             x: xPosNew,
@@ -47,7 +47,7 @@ export default {
       }
       c.clearRect(0, 0, this.canvas.width, this.canvas.height)
       for (let i = 0; i < stars.length; i++) {
-        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / 400)].join(",")})`
+        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / 600)].join(",")})`
         c.translate(stars[i].x , stars[i].y)
         c.fill(circlePath)
         c.translate(-stars[i].x , -stars[i].y)
