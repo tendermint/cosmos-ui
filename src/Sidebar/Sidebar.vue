@@ -106,7 +106,7 @@
   pointer-events: all;
   position: absolute;
   width: var(--sidebar-width, 600px);
-  max-width: var(--sidebar-max-width, 90%);
+  max-width: var(--sidebar-max-width, 100%);
   height: var(--sidebar-height, auto);
   max-height: var(--sidebar-max-height, none);
   top: var(--sidebar-top);
