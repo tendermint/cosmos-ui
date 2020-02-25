@@ -121,7 +121,6 @@
 
 .sidebar__content.sidebar__content__side__center.sidebar__fullscreen__true {
   top: 0;
-  bottom: 0;
 }
 
 .overlay-enter-active {
@@ -299,11 +298,11 @@ export default {
     }
   },
   mounted() {
+    document.querySelector("body").style.overflow = "hidden"
     this.sheetCenterPosition()
     window.addEventListener("resize", this.sheetCenterPosition)
-    document.querySelector("body").style.overflow = "hidden"
     if (this.side === "center") {
-      if (window.innerWidth < this.$refs.content.getBoundingClientRect().width) {
+      if (window.innerWidth <= this.$refs.content.getBoundingClientRect().width) {
         this.fullscreen = true
       }
     }
