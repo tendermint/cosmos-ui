@@ -297,18 +297,18 @@ export default {
     }
   },
   mounted() {
-    this.sheetCenterPosition()
+    this.onResize()
     document.querySelector("body").style.overflow = "hidden"
-    window.addEventListener("resize", this.sheetCenterPosition)
-    if (this.side === "center") {
-      if (window.innerWidth <= this.$refs.content.getBoundingClientRect().width) {
-        this.fullscreen = true
-      }
-    }
+    window.addEventListener("resize", this.onResize)
   },
   methods: {
+    onResize() {
+      this.sheetCenterPosition()
+      if (this.side === "center" && this.$refs.content) {
+        this.fullscreen = window.innerWidth <= this.$refs.content.offsetWidth
+      }
+    },
     sheetCenterPosition() {
-      console.log()
       this.sheetCenterPosition
       if (this.side === "center" && this.$refs.content) {
         const
