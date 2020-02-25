@@ -84,7 +84,6 @@
   overflow-y: scroll;
   pointer-events: all;
   height: 100vh;
-  transform: translateX(0);
 }
 .sidebar__content {
   background: white;
@@ -298,8 +297,8 @@ export default {
     }
   },
   mounted() {
-    document.querySelector("body").style.overflow = "hidden"
     this.sheetCenterPosition()
+    document.querySelector("body").style.overflow = "hidden"
     window.addEventListener("resize", this.sheetCenterPosition)
     if (this.side === "center") {
       if (window.innerWidth <= this.$refs.content.getBoundingClientRect().width) {
@@ -309,9 +308,11 @@ export default {
   },
   methods: {
     sheetCenterPosition() {
-      if (this.side === "center") {
+      console.log()
+      this.sheetCenterPosition
+      if (this.side === "center" && this.$refs.content) {
         const
-          content = this.$refs.content.getBoundingClientRect().height,
+          content = this.$refs.content.offsetHeight,
           height = window.innerHeight
         this.sheetTop = content > height - 40 ? 20 : (height - content) / 2
       }
