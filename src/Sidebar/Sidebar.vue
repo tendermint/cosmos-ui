@@ -67,13 +67,14 @@
   top: 0;
   left: 0;
   right: 0;
-  width: 100vw;
   max-width: initial;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   width: var(--sidebar-width, 100%);
   max-width: var(--sidebar-width, 100%);
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .sidebar.sidebar__side__center {
   top: 0;
