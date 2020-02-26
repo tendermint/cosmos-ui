@@ -36,6 +36,9 @@ export const normal = () => ({
     maxHeight: {
       default: text("Max height", "")
     },
+    marginTop: {
+      default: text("Margin top", "")
+    },
     backgroundColor: {
       default: text("Background color", "rgba(0, 0, 0, 0.35)")
     },
@@ -49,7 +52,7 @@ export const normal = () => ({
   template: `
     <div>
       <div>
-        <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
+        <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, marginTop, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
           <div>{{sidebarContent}}</div>
         </Sidebar>
         <div>

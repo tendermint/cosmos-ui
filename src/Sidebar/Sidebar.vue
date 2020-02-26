@@ -248,6 +248,12 @@ export default {
     boxShadow: {
       type: String,
       default: "none"
+    },
+    /**
+     * Vertical height of overlay
+     */
+    marginTop: {
+      type: Number
     }
   },
   data: function() {
@@ -319,9 +325,11 @@ export default {
       }
       if (this.side === "bottom" && this.$refs.content) {
         const
-          content = this.$refs.content.getBoundingClientRect().height,
+          content = this.$refs.content.offsetHeight,
           height = window.innerHeight
-        this.sheetTop = content > height ? 0 : height - content
+        this.sheetTop = content > height - (this.marginTop || 100)
+          ? (this.marginTop || 100)
+          : height - content
       }
     },
     sidebarClick(e) {
