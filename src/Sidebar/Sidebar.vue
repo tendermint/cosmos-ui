@@ -70,6 +70,7 @@
   width: 100vw;
   max-width: initial;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: var(--sidebar-width, 100%);
   max-width: var(--sidebar-width, 100%);
   height: 100%;
@@ -82,6 +83,7 @@
   width: 100%;
   max-width: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   pointer-events: all;
   height: 100vh;
 }
@@ -90,6 +92,7 @@
   position: absolute;
   pointer-events: all;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
   height: 100%;
 }
@@ -105,22 +108,26 @@
   pointer-events: all;
   position: absolute;
   width: var(--sidebar-width, 600px);
-  max-width: var(--sidebar-max-width, 100%);
+  max-width: var(--sidebar-max-width, 90%);
   height: var(--sidebar-height, auto);
   max-height: var(--sidebar-max-height, none);
   top: var(--sidebar-top);
-  /* top: 50%; */
   transform: translateX(-50%);
-  /* transform: translateX(-50%) translateY(-50%); */
   left: 50%;
   border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
   margin-bottom: 20px;
+  border-radius: .5rem;
 }
 
 .sidebar__content.sidebar__content__side__center.sidebar__fullscreen__true {
   top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   margin-bottom: initial;
+  border-radius: 0;
 }
 
 .overlay-enter-active {
@@ -278,19 +285,12 @@ export default {
       return this.currentY - this.startY
     },
     style() {
-      const
-        width = this.fullscreen ? "100%" : this.width,
-        maxWidth = this.fullscreen ? "100%" : this.maxWidth,
-        height = this.fullscreen ? "100%" : this.height,
-        maxHeight = this.fullscreen ? "100%" : this.maxHeight,
-        borderRadius = this.fullscreen ? "none" : ".5rem"
       return {
-        "--sidebar-max-width": maxWidth,
-        "--sidebar-width": width,
-        "--sidebar-max-height": maxHeight,
-        "--sidebar-height": height,
+        "--sidebar-max-width": this.maxWidth,
+        "--sidebar-width": this.width,
+        "--sidebar-max-height": this.maxHeight,
+        "--sidebar-height": this.height,
         "--sidebar-box-shadow": this.boxShadow,
-        "--sidebar-border-radius": borderRadius,
         "--sidebar-top": this.sheetTop + 'px',
         "--translate-x-component-internal": `${this.translateX || 0}px`,
         "--translate-y-component-internal": `${this.translateY || 0}px`
@@ -306,7 +306,7 @@ export default {
     onResize() {
       this.sheetCenterPosition()
       if (this.side === "center" && this.$refs.content) {
-        this.fullscreen = window.innerWidth <= this.$refs.content.offsetWidth
+        this.fullscreen = window.innerWidth <= parseInt(this.width)
       }
     },
     sheetCenterPosition() {
