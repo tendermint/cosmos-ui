@@ -40,7 +40,7 @@
 .sidebar {
   position: fixed;
   overflow-y: hidden;
-  transform: translateX(var(--translate-x-component-internal)) translateY(var(--translate-y-component-internal));
+  transform: translateX(var(--sidebar-translate-x)) translateY(var(--sidebar-translate-y));
   -webkit-overflow-scrolling: touch;
 }
 .sidebar.sidebar__side__left {
@@ -292,8 +292,8 @@ export default {
         "--sidebar-height": this.height,
         "--sidebar-box-shadow": this.boxShadow,
         "--sidebar-top": this.sheetTop + 'px',
-        "--translate-x-component-internal": `${this.translateX || 0}px`,
-        "--translate-y-component-internal": `${this.translateY || 0}px`
+        "--sidebar-translate-x": `${this.translateX || 0}px`,
+        "--sidebar-translate-y": `${this.translateY || 0}px`
       };
     }
   },
