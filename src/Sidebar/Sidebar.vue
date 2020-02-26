@@ -115,11 +115,12 @@
   left: 50%;
   border-radius: var(--sidebar-border-radius);
   box-shadow: var(--sidebar-box-shadow);
-  /* box-sizing: border-box; */
+  margin-bottom: 20px;
 }
 
 .sidebar__content.sidebar__content__side__center.sidebar__fullscreen__true {
   top: 0;
+  margin-bottom: initial;
 }
 
 .overlay-enter-active {
