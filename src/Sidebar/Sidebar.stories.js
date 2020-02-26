@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar.vue";
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import data from "./data"
 
 export default {
@@ -45,14 +45,17 @@ export const normal = () => ({
     boxShadow: {
       default: text("Box shadow", "none")
     },
+    fullscreen: {
+      default: boolean("Fullscreen", false)
+    },
     sidebarContent: {
       default: text("Sheet content", data.sidebar.lorem.join(""))
-    }
+    },
   },
   template: `
     <div>
       <div>
-        <Sidebar v-bind="{side, width, maxWidth, height, maxHeight, marginTop, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
+        <Sidebar v-bind="{side, width, maxWidth, fullscreen, height, maxHeight, marginTop, backgroundColor, boxShadow}" :visible="visible" v-if="visible" @visible="visible = $event">
           <div>{{sidebarContent}}</div>
         </Sidebar>
         <div>

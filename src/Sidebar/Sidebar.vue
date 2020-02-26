@@ -21,7 +21,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreen)}`]">
+        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
           <slot/>
         </div>
       </div>
@@ -254,6 +254,13 @@ export default {
      */
     marginTop: {
       type: Number
+    },
+    /**
+     * Go fullscreen when viewport is narrower than width
+     */
+    fullscreen: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
@@ -267,7 +274,7 @@ export default {
       translateY: null,
       isScrolling: null,
       sheetTop: null,
-      fullscreen: null,
+      fullscreenComputed: null,
     };
   },
   watch: {
@@ -312,7 +319,7 @@ export default {
     onResize() {
       this.sheetCenterPosition()
       if (this.side === "center" && this.$refs.content) {
-        this.fullscreen = window.innerWidth <= parseInt(this.width)
+        this.fullscreenComputed = (window.innerWidth <= parseInt(this.width) && this.fullscreen)
       }
     },
     sheetCenterPosition() {
