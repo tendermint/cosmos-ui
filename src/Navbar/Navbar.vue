@@ -4,15 +4,15 @@
       <div class="navbar">
         <div class="logo"></div>
         <div class="menu">
-          <div @mouseover="mouseover($event, true)" class="menu__item">Item 1</div>
-          <div @mouseover="mouseover($event, true)" class="menu__item">Item 2</div>
-          <div @mouseover="mouseover($event, true)" class="menu__item">Item 3</div>
-          <div @mouseover="mouseover($event, true)" class="menu__item">Item 4</div>
+          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 1</div>
+          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 2</div>
+          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 3</div>
+          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 4</div>
         </div>
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div ref="dropdown" class="dropdown" @mouseleave="dropdownLeave" v-if="!!dropdownVisible">{{left}}</div>
+        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdownVisible">{{dropdownLeft}}</div>
       </transition>
     </div>
   </div>
@@ -75,34 +75,36 @@
 export default {
   data: function() {
     return {
-      left: null,
+      dropdownLeft: null,
       dropdownVisible: null,
-      timer: null,
+      dropdownTimer: null,
       dropdownWidth: 500
     }
   },
   computed: {
     style() {
       return {
-        "--dropdown-left": this.left + "px",
+        "--dropdown-left": this.dropdownLeft + "px",
         "--dropdown-width": this.dropdownWidth + "px"
       }
     }
   },
   methods: {
-    mouseover(e) {
-      if (e.toElement && (!!e.toElement.classList.contains("menu__item") || !!e.toElement.classList.contains("dropdown"))) {
-        this.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdownWidth/2
+    mouseover(e, entering, target) {
+      const leaving = !entering
+      if (entering) {
+        if (target === 'menu') {
+          this.dropdownLeft = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdownWidth/2
+        }
         this.dropdownVisible = true
-      } else {
-        this.dropdownVisible = false
+        clearTimeout(this.timer)
+      }
+      if (leaving) {
+        this.timer = setTimeout(() => {
+          this.dropdownVisible = false
+        }, 500)
       }
     },
-    dropdownLeave(e) {
-      if (e.toElement && !e.toElement.classList.contains("menu__item")) {
-        this.dropdownVisible = false
-      }
-    }
   }
 }
 </script>
