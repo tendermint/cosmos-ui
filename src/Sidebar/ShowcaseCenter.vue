@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sidebar v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
+    <sidebar @visible="visible = $event" v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
       <div class="container">
         <div class="contents">
           <div class="contents__icon">
