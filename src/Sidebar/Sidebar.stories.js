@@ -1,4 +1,5 @@
 import Sidebar from "./Sidebar.vue";
+import ShowcaseCenter from "./ShowcaseCenter.vue"
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import data from "./data"
 
@@ -67,3 +68,10 @@ export const normal = () => ({
     </div>
   `
 });
+
+export const center = () => ({
+  components: { ShowcaseCenter },
+  template: `
+    <showcase-center/>
+  `
+})
