@@ -100,7 +100,7 @@
   box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)
 }
 .button__danger:hover {
-  background: 0 0 0 0 rgb(224, 36, 36, .2), rgba(224, 36, 36, .85);
+  background: rgba(224, 36, 36, .85);
 }
 
 @media screen and (max-width: 700px) {
