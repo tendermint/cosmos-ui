@@ -15,8 +15,8 @@
         </div>
         <div class="footer">
           <div class="button__list">
-            <div class="button button__regular" tabindex="0" @click="visible = false" @keydown.enter="visible = false">Cancel</div>
-            <div class="button button__danger" tabindex="0" @click="visible = false" @keydown.enter="visible = false">Deactivate</div>
+            <btn background="regular" size="s" @click.native="visible = false" @keydown.enter="visible = false">Cancel</btn>
+            <btn background="danger" size="s" @click.native="visible = false" @keydown.enter="visible = false">Deactivate</btn>
           </div>
         </div>
       </div>
@@ -72,36 +72,6 @@
   gap: 1rem;
   font-size: .875rem;
 }
-.button {
-  padding: .75rem 1rem;
-  border-radius: .35rem;
-  cursor: pointer;
-  user-select: none;
-  transition: all .25s;
-  text-align: center;
-  outline: none;
-}
-.button__regular {
-  background: white;
-  color: rgba(0,0,0,.875);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.05);
-}
-.button__regular:focus {
-  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
-}
-.button__regular:hover {
-  color: rgba(0,0,0,.5)
-}
-.button__danger {
-  color: white;
-  background: rgb(224, 36, 36);
-}
-.button__danger:focus {
-  box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)
-}
-.button__danger:hover {
-  background: rgba(224, 36, 36, .85);
-}
 
 @media screen and (max-width: 700px) {
   .contents {
@@ -123,9 +93,10 @@
 
 <script>
 import Sidebar from "./Sidebar.vue"
+import Button from "../Button/Button.vue"
 
 export default {
-  components: { Sidebar },
+  components: { Sidebar, btn: Button },
   data: function() {
     return {
       visible: true,
@@ -136,7 +107,7 @@ export default {
       if (!newVal) {
         setTimeout(() => {
           this.visible = true
-        }, 750)
+        }, 500)
       }
     },
   },

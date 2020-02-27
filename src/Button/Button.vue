@@ -1,198 +1,90 @@
 <template>
-  <button :style="{'--button-props-width': width}" :class="buttonClassList">
-    <div class="icon" v-if="$slots.iconLeft">
-      <slot name="iconLeft"/>
-    </div>
-    <div class="label">
-      {{label}}
-    </div>
-    <div class="icon" v-if="$slots.iconRight">
-      <slot name="iconRight"/>
-    </div>
+  <button :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
+    <slot/>
   </button>
 </template>
 
 <style scoped>
 button {
   border: none;
-  font-family: initial;
+  font-family: var(--ds-font-family, sans-serif);
   font-size: initial;
   margin: 0;
   padding: 0;
-}
-
-.button {
-  line-height: 1.25em;
-  display: inline-flex;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  font-family: var(--ds-font-family, sans-serif);
-  font-weight: 500;
-  border-radius: 0.25rem;
-  align-items: center;
-  box-sizing: border-box;
+  background: rgb(80, 100, 251);
+  color: white;
+  padding: .85em 1.15em;
+  border-radius: .35em;
   cursor: pointer;
   user-select: none;
+  outline: none;
+  transition: all .25s;
+  text-align: center;
 }
-
-.button__type__contained .icon {
-  fill: var(--ds-color-primary-alt, white);
+.button__size__xs {
+  font-size: .75rem;
 }
-
-.button__type__outlined .icon svg {
-  fill: var(--ds-color-primary, black);
+.button__size__s {
+  font-size: .875rem;
 }
-
-.button__type__text .icon {
-  fill: var(--ds-color-primary, black);
-}
-
-.button__type__text:hover {
-  background: rgba(140, 145, 177, .08);
-}
-
-.button__size__small.button__icon__left__false {
-  padding-left: 1rem;
-}
-
-.button__type__text.button__size__small.button__icon__left__false {
-  margin-left: -1rem;
-}
-
-.button__size__medium.button__icon__left__false {
-  padding-left: 1.25rem;
-}
-
-.button__type__text.button__size__medium.button__icon__left__false {
-  margin-left: -1.25rem;
-}
-
-.button__size__large.button__icon__left__false {
-  padding-left: 27px;
-}
-
-.button__type__text.button__size__large.button__icon__left__false {
-  margin-left: -27px;
-}
-
-.button__size__small.button__icon__right__false {
-  padding-right: 1rem;
-}
-
-.button__size__medium.button__icon__right__false {
-  padding-right: 1.25rem;
-}
-
-.button__size__large.button__icon__right__false {
-  padding-right: 27px;
-}
-
-.button__size__small .label {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-}
-
-.button__size__medium .label {
-  padding-top: .875rem;
-  padding-bottom: .875rem;
-}
-
-.button__size__large .label {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.button__fixed__true {
-  width: var(--button-props-width);
-  justify-content: center;
-}
-
-.button__type__contained {
-  background-color: var(--ds-color-primary, black);
-  color: var(--ds-color-primary-alt, white);
-}
-
-.button__type__outlined {
-  box-shadow: inset 0 0 0 2px var(--ds-color-primary, black);
-  color: var(--ds-color-primary, black);
-}
-
-.button__type__text {
-  color: var(--ds-color-primary, black);
-}
-
-.button__size__small {
-  font-size: 0.8125rem;
-  line-height: 1rem;
-}
-
-.button__size__small .icon {
-  height: 1rem;
-  width: 1rem;
-  padding: .5rem;
-}
-
-.button__size__medium .icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: .75rem;
-}
-
-.button__size__large .icon {
-  height: 2rem;
-  width: 2rem;
-  padding: 1rem;
-}
-
-.button__size__medium {
+.button__size__m {
   font-size: 1rem;
-  line-height: 1.25rem;
 }
-
-.button__size__large {
+.button__size__l {
   font-size: 1.25rem;
-  line-height: 1.5rem;
+}
+.button__size__xl {
+  font-size: 1.5rem;
+}
+.button__style__regular {
+  background: white;
+  color: rgba(0,0,0,.875);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.05);
+}
+.button__style__regular:focus {
+  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
+}
+.button__style__regular:hover {
+  color: rgba(0,0,0,.5)
+}
+.button__style__danger {
+  color: white;
+  background: rgb(224, 36, 36);
+}
+.button__style__danger:focus {
+  box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)
+}
+.button__style__danger:hover {
+  background: rgba(224, 36, 36, .85);
 }
 </style>
 
 <script>
 export default {
   props: {
-    label: {
-      type: String,
-      default: ""
-    },
-    /**
-     * "contained" | "outlined" | "text"
-     */
-    type: {
-      type: String,
-      default: "contained"
-    },
-    /**
-     * "small" | "medium" | "large"
-     */
     size: {
+      /**
+       * `xs` | `s` | `m` | `l` | `xl`
+       */
       type: String,
-      default: "medium"
+      default: "m"
     },
     /**
-     * CSS width value for fixed-sized (or 100%) buttons
+     * CSS color of `regular` | `danger`
      */
-    width: {
+    background: {
       type: String,
-    }
+      default: "rgb(80, 100, 251)"
+    },
   },
   computed: {
-    buttonClassList() {
-      return [
-        'button',
-        `button__type__${this.type}`,
-        `button__size__${this.size}`,
-        `button__fixed__${!!(this.width)}`,
-        `button__icon__left__${!!(this.$slots.iconLeft)}`,
-        `button__icon__right__${!!(this.$slots.iconRight)}`
-      ]
+    buttonStyle() {
+      const
+        styles = ['regular', 'danger'],
+        exists = styles.indexOf(this.background)
+      if (exists >= 0) {
+        return styles[exists]
+      }
     }
   }
 }
