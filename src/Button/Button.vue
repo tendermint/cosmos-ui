@@ -11,8 +11,6 @@ button {
   font-size: initial;
   margin: 0;
   padding: 0;
-  background: rgb(80, 100, 251);
-  color: white;
   padding: .85em 1.15em;
   border-radius: .35em;
   cursor: pointer;
@@ -35,6 +33,13 @@ button {
 }
 .button__size__xl {
   font-size: 1.5rem;
+}
+.button__style__standard {
+  color: white;
+  background: rgb(80, 100, 251);
+}
+.button__style__standard:focus {
+  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
 }
 .button__style__regular {
   background: white;
@@ -84,6 +89,8 @@ export default {
         exists = styles.indexOf(this.background)
       if (exists >= 0) {
         return styles[exists]
+      } else {
+        return "standard"
       }
     }
   }
