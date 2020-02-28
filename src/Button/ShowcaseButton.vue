@@ -26,7 +26,8 @@
 
 <style scoped>
 .row {
-  display: inline-grid;
+  display: grid;
+  justify-content: flex-start;
   grid-auto-flow: column;
   align-items: flex-end;
   gap: 1.5rem;
