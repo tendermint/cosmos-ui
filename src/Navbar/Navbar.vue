@@ -12,7 +12,7 @@
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdownVisible">{{dropdownLeft}}</div>
+        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">{{dropdown.left}}</div>
       </transition>
     </div>
   </div>
@@ -75,17 +75,19 @@
 export default {
   data: function() {
     return {
-      dropdownLeft: null,
-      dropdownVisible: null,
-      dropdownTimer: null,
-      dropdownWidth: 500
+      dropdown: {
+        left: null,
+        visible: null,
+        timer: null,
+        width: 500
+      },
     }
   },
   computed: {
     style() {
       return {
-        "--dropdown-left": this.dropdownLeft + "px",
-        "--dropdown-width": this.dropdownWidth + "px"
+        "--dropdown-left": this.dropdown.left + "px",
+        "--dropdown-width": this.dropdown.width + "px"
       }
     }
   },
@@ -94,15 +96,15 @@ export default {
       const leaving = !entering
       if (entering) {
         if (target === 'menu') {
-          this.dropdownLeft = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdownWidth/2
+          this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
         }
-        this.dropdownVisible = true
-        clearTimeout(this.timer)
+        this.dropdown.visible = true
+        clearTimeout(this.dropdown.timer)
       }
       if (leaving) {
-        this.timer = setTimeout(() => {
-          this.dropdownVisible = false
-        }, 500)
+        this.dropdown.timer = setTimeout(() => {
+          this.dropdown.visible = false
+        }, 250)
       }
     },
   }
