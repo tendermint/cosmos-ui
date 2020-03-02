@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="['container']" :style="style">
+    <div :class="['container']" ref="container" :style="style">
       <div class="navbar">
         <div class="logo"></div>
         <div class="menu">
@@ -8,7 +8,7 @@
                tabindex="0"
                v-for="item in items"
                :key="item"
-               @focus="focus($event, item)"
+               @focus="itemSelect($event, 'menu', item)"
                @mouseover="itemSelect($event, 'menu', item)"
                @mouseleave="itemDeselect($event, 'menu')">
             {{item}}
@@ -28,6 +28,7 @@
 <style scoped>
 .container {
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 .navbar {
   background: red;
@@ -66,6 +67,7 @@
   position: absolute;
   transform: translateX(var(--dropdown-left));
   transition: transform .35s ease-in-out;
+  box-sizing: border-box;
 }
 .dropdown-enter-active, .dropdown-leave-active {
   transition: opacity .35s;
@@ -92,7 +94,7 @@ export default {
         left: null,
         visible: null,
         timer: null,
-        width: 500
+        width: 700
       },
       itemSelected: null,
     }
@@ -106,18 +108,31 @@ export default {
     }
   },
   methods: {
-    focus(e, item) {
-      this.itemSelected = item
-      this.$emit("selected", item)
-      this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
-      this.dropdown.visible = true
-      clearTimeout(this.dropdown.timer)
-    },
     itemSelect(e, target, item) {
+      console.log(this.$refs.container.offsetLeft)
       this.itemSelected = item
       if (item) this.$emit("selected", item)
       if (target === 'menu') {
-        this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
+        let
+          left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2,
+          width = this.dropdown.width
+        const
+          containerWidth = this.$refs.container.offsetWidth,
+          overflow = this.dropdown.width > containerWidth,
+          overflowRight = (left + this.dropdown.width) > containerWidth,
+          overflowLeft = left < 0
+        if (overflow) {
+          width = this.$refs.container.offsetWidth
+          left = 0
+        }
+        if (!overflow && overflowRight) {
+          left -= Math.abs(containerWidth - left - this.dropdown.width)
+        }
+        if (!overflow && overflowLeft) {
+          left = 0
+        }
+        this.dropdown.left = left
+        this.dropdown.width = width
       }
       this.dropdown.visible = true
       clearTimeout(this.dropdown.timer)
