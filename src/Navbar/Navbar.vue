@@ -9,15 +9,15 @@
                v-for="item in items"
                :key="item"
                @focus="focus($event, item)"
-               @mouseover="mouseover($event, true, 'menu', item)"
-               @mouseleave="mouseover($event, false, 'menu')">
+               @mouseover="itemSelect($event, 'menu', item)"
+               @mouseleave="itemDeselect($event, 'menu')">
             {{item}}
           </div>
         </div>
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">
+        <div @mouseover="itemSelect($event, 'dropdown', itemSelected)" @mouseleave="itemDeselect($event, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">
           <slot name="dropdown"/>
         </div>
       </transition>
@@ -93,7 +93,8 @@ export default {
         visible: null,
         timer: null,
         width: 500
-      }
+      },
+      itemSelected: null,
     }
   },
   computed: {
@@ -106,27 +107,26 @@ export default {
   },
   methods: {
     focus(e, item) {
-      console.log(e, item)
+      this.itemSelected = item
+      this.$emit("selected", item)
       this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
       this.dropdown.visible = true
       clearTimeout(this.dropdown.timer)
     },
-    mouseover(e, entering, target, item) {
-      const leaving = !entering
-      if (entering) {
-        if (item) this.$emit("selected", item)
-        if (target === 'menu') {
-          this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
-        }
-        this.dropdown.visible = true
-        clearTimeout(this.dropdown.timer)
+    itemSelect(e, target, item) {
+      this.itemSelected = item
+      if (item) this.$emit("selected", item)
+      if (target === 'menu') {
+        this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
       }
-      if (leaving) {
-        this.dropdown.timer = setTimeout(() => {
-          this.dropdown.visible = false
-          this.$emit("selected", null)
-        }, 250)
-      }
+      this.dropdown.visible = true
+      clearTimeout(this.dropdown.timer)
+    },
+    itemDeselect(e, target) {
+      this.dropdown.timer = setTimeout(() => {
+        this.dropdown.visible = false
+        this.$emit("selected", null)
+      }, 250)
     },
   }
 }
