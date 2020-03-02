@@ -1,4 +1,5 @@
 import Navbar from "./Navbar.vue";
+import ShowcaseNavbar from "./ShowcaseNavbar.vue"
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
@@ -12,6 +13,15 @@ export const normal = () => ({
   template: `
     <div>
       <navbar/>
+    </div>
+  `
+});
+
+export const showcase = () => ({
+  components: { ShowcaseNavbar },
+  template: `
+    <div>
+      <showcase-navbar/>
     </div>
   `
 });

@@ -4,15 +4,22 @@
       <div class="navbar">
         <div class="logo"></div>
         <div class="menu">
-          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 1</div>
-          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 2</div>
-          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 3</div>
-          <div @mouseover="mouseover($event, true, 'menu')" @mouseleave="mouseover($event, false, 'menu')" class="menu__item">Item 4</div>
+          <div class="menu__item"
+               tabindex="0"
+               v-for="item in items"
+               :key="item"
+               @focus="focus($event, item)"
+               @mouseover="mouseover($event, true, 'menu', item)"
+               @mouseleave="mouseover($event, false, 'menu')">
+            {{item}}
+          </div>
         </div>
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">{{dropdown.left}}</div>
+        <div @mouseover="mouseover($event, true, 'dropdown')" @mouseleave="mouseover($event, false, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">
+          <slot name="dropdown"/>
+        </div>
       </transition>
     </div>
   </div>
@@ -73,6 +80,12 @@
 
 <script>
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => []
+    }
+  },
   data: function() {
     return {
       dropdown: {
@@ -80,7 +93,7 @@ export default {
         visible: null,
         timer: null,
         width: 500
-      },
+      }
     }
   },
   computed: {
@@ -92,9 +105,16 @@ export default {
     }
   },
   methods: {
-    mouseover(e, entering, target) {
+    focus(e, item) {
+      console.log(e, item)
+      this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
+      this.dropdown.visible = true
+      clearTimeout(this.dropdown.timer)
+    },
+    mouseover(e, entering, target, item) {
       const leaving = !entering
       if (entering) {
+        if (item) this.$emit("selected", item)
         if (target === 'menu') {
           this.dropdown.left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2
         }
@@ -104,6 +124,7 @@ export default {
       if (leaving) {
         this.dropdown.timer = setTimeout(() => {
           this.dropdown.visible = false
+          this.$emit("selected", null)
         }, 250)
       }
     },
