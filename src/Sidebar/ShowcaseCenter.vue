@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sidebar @visible="visible = $event" v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
+    <sidebar @visible="sidebarShow" v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
       <div class="container">
         <div class="contents">
           <div class="contents__icon">
@@ -99,16 +99,14 @@ export default {
   components: { Sidebar, btn: Button },
   data: function() {
     return {
-      visible: true,
+      visible: true
     }
   },
-  watch: {
-    visible(newVal) {
-      if (!newVal) {
-        setTimeout(() => {
-          this.visible = true
-        }, 500)
-      }
+  methods: {
+    sidebarShow() {
+      setTimeout(() => {
+        this.visible = true
+      }, 500)
     },
   },
 }
