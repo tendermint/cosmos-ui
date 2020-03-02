@@ -384,9 +384,7 @@ export default {
     },
     touchend(e) {
       const
-        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
-        overThresholdUp = this.deltaY < -100,
-        overThresholdDown = this.deltaY > 100,
+        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25
         sidebar = this.$refs.sidebar
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
