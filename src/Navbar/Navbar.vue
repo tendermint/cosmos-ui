@@ -9,6 +9,7 @@
                v-for="item in items"
                :key="item"
                @focus="itemSelect($event, 'menu', item)"
+               @blur="itemDeselect($event, 'menu')"
                @mouseover="itemSelect($event, 'menu', item)"
                @mouseleave="itemDeselect($event, 'menu')">
             {{item}}
@@ -17,7 +18,13 @@
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div @mouseover="itemSelect($event, 'dropdown', itemSelected)" @mouseleave="itemDeselect($event, 'dropdown')" class="dropdown" v-if="!!dropdown.visible">
+        <div tabindex="0"
+             @focus="itemSelect($event, 'dropdown', itemSelected)"
+             @blur="itemDeselect($event, 'dropdown')"
+             @mouseover="itemSelect($event, 'dropdown', itemSelected)"
+             @mouseleave="itemDeselect($event, 'dropdown')"
+             class="dropdown"
+             v-if="!!dropdown.visible">
           <slot name="dropdown"/>
         </div>
       </transition>
