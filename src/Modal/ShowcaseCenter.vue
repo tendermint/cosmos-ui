@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sidebar @visible="sidebarShow" v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
+    <modal @visible="sidebarShow" v-bind="{visible, side: 'center', boxShadow: '0 10px 25px 0 rgba(0,0,0,.15)'}">
       <div class="container">
         <div class="contents">
           <div class="contents__icon">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-    </sidebar>
+    </modal>
   </div>
 </template>
 
@@ -92,11 +92,11 @@
 </style>
 
 <script>
-import Sidebar from "./Sidebar.vue"
+import Modal from "./Modal.vue"
 import Button from "../Button/Button.vue"
 
 export default {
-  components: { Sidebar, btn: Button },
+  components: { Modal, btn: Button },
   data: function() {
     return {
       visible: true
