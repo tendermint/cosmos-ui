@@ -24,7 +24,7 @@
         <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
           <slot/>
         </div>
-        <div class="close" v-if="side === 'center'" @click="close">
+        <div class="close" v-if="side === 'center' && buttonClose" @click="close">
           <svg class="close__icon" width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
           </svg>
@@ -281,6 +281,13 @@ export default {
      * Go fullscreen when viewport is narrower than width
      */
     fullscreen: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Add default close button for centered modal
+     */
+    buttonClose: {
       type: Boolean,
       default: false
     }
