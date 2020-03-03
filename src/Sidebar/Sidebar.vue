@@ -24,6 +24,11 @@
         <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
           <slot/>
         </div>
+        <div class="close" v-if="side === 'center'" @click="close">
+          <svg class="close__icon" width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
       </div>
     </transition>
   </div>
@@ -44,6 +49,21 @@
   z-index: 100000;
   transform: translateX(var(--sidebar-translate-x)) translateY(var(--sidebar-translate-y));
   -webkit-overflow-scrolling: touch;
+}
+.close {
+  border-radius: 50%;
+  stroke: rgba(255,255,255,.75);
+  box-sizing: border-box;
+  padding: 8px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+.close__icon {
+  display: block;
 }
 .sidebar.sidebar__side__left {
   top: 0;
@@ -99,7 +119,6 @@
   width: 100%;
   height: 100%;
 }
-
 .sidebar__content.sidebar__content__side__bottom {
   margin-top: var(--sidebar-top);
   overflow-y: hidden;
