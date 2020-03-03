@@ -40,6 +40,7 @@
 .sidebar {
   position: fixed;
   overflow-y: hidden;
+  z-index: 100000;
   transform: translateX(var(--sidebar-translate-x)) translateY(var(--sidebar-translate-y));
   -webkit-overflow-scrolling: touch;
 }
