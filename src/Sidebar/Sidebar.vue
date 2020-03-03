@@ -34,6 +34,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100000;
   height: 100vh;
   width: 100vw;
 }
@@ -133,7 +134,7 @@
 }
 
 .overlay-enter-active {
-  transition: all .25s ease-in;
+  transition: all .25s ease-out;
 }
 .overlay-enter {
   opacity: 0;
