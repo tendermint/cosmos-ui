@@ -276,7 +276,7 @@ export default {
      * Vertical height of overlay
      */
     marginTop: {
-      type: Number
+      type: String
     },
     /**
      * Go fullscreen when viewport is narrower than width
@@ -364,8 +364,8 @@ export default {
         const
           content = this.$refs.content.offsetHeight,
           height = window.innerHeight
-        this.sheetTop = content > height - (this.marginTop || 100)
-          ? (this.marginTop || 100)
+        this.sheetTop = content > height - (parseInt(this.marginTop) || 100)
+          ? (parseInt(this.marginTop) || 100)
           : height - content
       }
     },
@@ -413,7 +413,7 @@ export default {
     },
     touchend(e) {
       const
-        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25
+        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
         sidebar = this.$refs.sidebar
       if (this.side === "left") {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
