@@ -353,7 +353,6 @@ export default {
       }
     },
     sheetCenterPosition() {
-      this.sheetCenterPosition
       if (this.side === "center" && this.$refs.content) {
         const
           content = this.$refs.content.offsetHeight,
@@ -386,8 +385,8 @@ export default {
     },
     close(e) {
       this.visibleLocal = null;
-      if (this.$refs["overlay"]) {
-        this.$refs["overlay"].style["pointer-events"] = "none";
+      if (this.$refs.overlay) {
+        this.$refs.overlay.style["pointer-events"] = "none";
         if (e.clientX && e.clientY) {
           const doc = document.elementFromPoint(e.clientX, e.clientY);
           if (doc && doc.click) doc.click();
@@ -395,9 +394,9 @@ export default {
       }
     },
     touchstart(e) {
-      const sidebar = this.$refs.sidebar
-      const content = this.$refs.content
-      if (sidebar) sidebar.style.transition = ""
+      if (this.$refs.sidebar) {
+        this.$refs.sidebar.style.transition = ""
+      }
       this.currentX = this.startX = e.changedTouches[0].clientX;
       this.currentY = this.startY = e.changedTouches[0].clientY;
     },
@@ -413,17 +412,19 @@ export default {
     },
     touchend(e) {
       const
-        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
-        sidebar = this.$refs.sidebar
-      if (this.side === "left") {
+        overThreshold = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
+        left = this.side === "left",
+        right = this.side === "right"
+      if (left) {
         this.translateX = this.deltaX > 0 ? 0 : this.deltaX
-      } else if (this.side === "right") {
+      }
+      if (right) {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
-      if (overThresholdX && !this.isScrolling && (this.side === "left" || this.side === "right")) {
+      if (overThreshold && !this.isScrolling && (left || right)) {
         this.close(e)
-      } else {
-        if (sidebar) sidebar.style.transition = "all .5s";
+      } else if (this.$refs.sidebar) {
+        this.$refs.sidebar.style.transition = "all .5s";
       }
       this.startX = null;
       this.startY = null;
