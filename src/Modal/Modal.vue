@@ -307,19 +307,6 @@ export default {
       fullscreenComputed: null,
     };
   },
-  watch: {
-    visible(newValue, oldValue) {
-      if (newValue) {
-        const sidebar = this.$refs.sidebar;
-        if (sidebar) {
-          sidebar.addEventListener("transitionend", () => {
-            sidebar.style.transition = "";
-          });
-        }
-        this.visibleLocal = true;
-      }
-    }
-  },
   computed: {
     deltaX() {
       return this.currentX - this.startX
@@ -378,18 +365,14 @@ export default {
     },
     close(e) {
       this.visibleLocal = null;
-      if (this.$refs.overlay) {
-        this.$refs.overlay.style["pointer-events"] = "none";
-        if (e.clientX && e.clientY) {
-          const doc = document.elementFromPoint(e.clientX, e.clientY);
-          if (doc && doc.click) doc.click();
-        }
+      this.$refs.overlay.style["pointer-events"] = "none";
+      if (e.clientX && e.clientY) {
+        const doc = document.elementFromPoint(e.clientX, e.clientY);
+        if (doc && doc.click) doc.click();
       }
     },
     touchstart(e) {
-      if (this.$refs.sidebar) {
-        this.$refs.sidebar.style.transition = ""
-      }
+      this.$refs.sidebar.style.transition = ""
       this.currentX = this.startX = e.changedTouches[0].clientX;
       this.currentY = this.startY = e.changedTouches[0].clientY;
     },
