@@ -15,7 +15,7 @@
         </div>
         <div class="footer">
           <div class="button__list">
-            <btn background="regular" size="s" @click.native="visible = false" @keydown.enter="visible = false">Cancel</btn>
+            <btn class="button__cancel" background="regular" size="s" @click.native="visible = false" @keydown.enter="visible = false">Cancel</btn>
             <btn background="danger" size="s" @click.native="visible = false" @keydown.enter="visible = false">Deactivate</btn>
           </div>
         </div>

@@ -9,18 +9,23 @@
   "repository": "https://github.com/tendermint/ui",
   "scripts": {
     "storybook": "start-storybook -p 9999 -s ./public",
+    "storybook:quiet": "start-storybook -p 9999 --ci --quiet -s ./public",
     "build-storybook": "build-storybook -c .storybook -o dist && cp -R public/* dist/",
-    "postversion": "git push --tags"
+    "postversion": "git push --tags",
+    "cypress:run": "cypress run",
+    "test": "start-server-and-test storybook:quiet http://localhost:9999 cypress:run"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@storybook/addon-docs": "^5.3.9",
     "@storybook/addon-knobs": "^5.3.12",
-    "@storybook/vue": "^5.3.12",
+    "@storybook/vue": "^5.3.14",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
     "css-loader": "^3.4.2",
+    "cypress": "^4.1.0",
     "markdown-it": "^10.0.0",
+    "start-server-and-test": "^1.10.8",
     "storybook-addon-vue-info": "^1.4.1",
     "style-loader": "^1.1.3",
     "vue-loader": "^15.8.3",

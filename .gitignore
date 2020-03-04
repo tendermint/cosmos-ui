@@ -5,3 +5,7 @@ npm-debug.log
 .DS_Store
 .netlify
 .vscode
+cypress/videos
+cypress/screenshots
+cypress/plugins
+cypress/support
