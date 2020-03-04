@@ -1,9 +1,9 @@
 import Hero from "./Hero.vue";
-import "../theme-cosmos.css"
 import data from "./data"
 
 export default {
-  title: "Hero"
+  title: "Hero",
+  component: Hero
 };
 
 export const normal = () => ({

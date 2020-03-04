@@ -1,7 +1,8 @@
 import Tooltip from "./Tooltip.vue";
 
 export default {
-  title: "Tooltip"
+  title: "Tooltip",
+  component: Tooltip
 };
 
 export const normal = () => ({

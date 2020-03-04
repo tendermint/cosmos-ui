@@ -1,9 +1,6 @@
-import GlobalStyles from "./GlobalStyles/GlobalStyles";
-import Modal from "./Modal/Modal";
-import Tooltip from "./Tooltip/Tooltip";
-import PageHeader from "./PageHeader/PageHeader";
-import CookieBanner from "./CookieBanner/CookieBanner";
-import Sidebar from "./Sidebar/Sidebar"
-import Footer from "./Footer/Footer"
-
-export { GlobalStyles, Modal, Tooltip, CookieBanner, Sidebar, Footer, PageHeader };
+export { default as Modal } from "./Modal/Modal";
+export { default as Tooltip } from "./Tooltip/Tooltip";
+export { default as PageHeader } from "./PageHeader/PageHeader";
+export { default as CookieBanner } from "./CookieBanner/CookieBanner";
+export { default as Footer } from "./Footer/Footer";
+export { default as CodeBlock } from "./CodeBlock/CodeBlock";
