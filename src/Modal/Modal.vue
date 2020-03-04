@@ -21,7 +21,7 @@
            @touchmove="touchmove"
            @touchend="touchend">
         <!-- @slot Contents of the sidebar. -->
-        <div @scroll="detectScrolling" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
+        <div @scroll="setScrolling(true)" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
           <slot/>
         </div>
         <div class="close" v-if="side === 'center' && buttonClose" @click="close">
@@ -121,7 +121,7 @@
   height: 100%;
 }
 .sidebar__content.sidebar__content__side__bottom {
-  margin-top: var(--sidebar-top);
+  margin-top: var(--sidebar-margin-top);
   overflow-y: hidden;
   height: auto;
   box-shadow: var(--sidebar-box-shadow);
@@ -134,7 +134,7 @@
   max-width: var(--sidebar-max-width, 90%);
   height: var(--sidebar-height, auto);
   max-height: var(--sidebar-max-height, none);
-  top: var(--sidebar-top);
+  top: var(--sidebar-margin-top);
   transform: translateX(-50%);
   left: 50%;
   border-radius: var(--sidebar-border-radius);
@@ -263,7 +263,7 @@ export default {
      */
     backgroundColor: {
       type: String,
-      default: 'rgba(0, 0, 0, 0.35)'
+      default: "rgba(0, 0, 0, 0.35)"
     },
     /**
      * CSS `box-shadow` of the sidebar sheet.
@@ -303,7 +303,7 @@ export default {
       translateX: null,
       translateY: null,
       isScrolling: null,
-      sheetTop: null,
+      marginTopComputed: null,
       fullscreenComputed: null,
     };
   },
@@ -334,46 +334,39 @@ export default {
         "--sidebar-max-height": this.maxHeight,
         "--sidebar-height": this.height,
         "--sidebar-box-shadow": this.boxShadow,
-        "--sidebar-top": this.sheetTop + 'px',
+        "--sidebar-margin-top": this.marginTopComputed + "px",
         "--sidebar-translate-x": `${this.translateX || 0}px`,
         "--sidebar-translate-y": `${this.translateY || 0}px`
       };
     }
   },
   mounted() {
-    this.onResize()
+    this.adjustVertically()
+    window.addEventListener("resize", this.adjustVertically)
     document.querySelector("body").style.overflow = "hidden"
-    window.addEventListener("resize", this.onResize)
   },
   methods: {
-    onResize() {
-      this.sheetCenterPosition()
-      if (this.side === "center" && this.$refs.content) {
+    adjustVertically() {
+      const
+        content = this.$refs.content.offsetHeight,
+        height = window.innerHeight,
+        marginTop = parseInt(this.marginTop) || 100
+      if (this.side === "center") {
+        this.marginTopComputed = content > height - 40 ? 20 : (height - content) / 2
         this.fullscreenComputed = (window.innerWidth <= parseInt(this.width) && this.fullscreen)
       }
-    },
-    sheetCenterPosition() {
-      if (this.side === "center" && this.$refs.content) {
-        const
-          content = this.$refs.content.offsetHeight,
-          height = window.innerHeight
-        this.sheetTop = content > height - 40 ? 20 : (height - content) / 2
-      }
-      if (this.side === "bottom" && this.$refs.content) {
-        const
-          content = this.$refs.content.offsetHeight,
-          height = window.innerHeight
-        this.sheetTop = content > height - (parseInt(this.marginTop) || 100)
-          ? (parseInt(this.marginTop) || 100)
+      if (this.side === "bottom") {
+        this.marginTopComputed = content > height - marginTop
+          ? marginTop
           : height - content
       }
     },
     sidebarClick(e) {
       if (this.side === "center") this.visibleLocal = null;
-      if (this.side === 'bottom') this.visibleLocal = null
+      if (this.side === "bottom") this.visibleLocal = null
     },
-    detectScrolling(e) {
-      this.isScrolling = true
+    setScrolling(bool) {
+      this.isScrolling = bool
     },
     emitVisible() {
       document.querySelector("body").style.overflow = ""
@@ -381,7 +374,7 @@ export default {
        * Sends `false` when closing the sidebar.
        * @type {Event}
        */
-      this.$emit('visible', false)
+      this.$emit("visible", false)
     },
     close(e) {
       this.visibleLocal = null;
@@ -412,7 +405,7 @@ export default {
     },
     touchend(e) {
       const
-        overThreshold = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
+        overThresholdX = Math.abs(this.deltaX * 100 / window.screen.width) > 25,
         left = this.side === "left",
         right = this.side === "right"
       if (left) {
@@ -421,7 +414,7 @@ export default {
       if (right) {
         this.translateX = this.deltaX < 0 ? 0 : this.deltaX
       }
-      if (overThreshold && !this.isScrolling && (left || right)) {
+      if (overThresholdX && !this.isScrolling && (left || right)) {
         this.close(e)
       } else if (this.$refs.sidebar) {
         this.$refs.sidebar.style.transition = "all .5s";
