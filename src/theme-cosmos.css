@@ -1,8 +1,9 @@
-:root {
+body {
   --ds-background-color: rgba(22, 24, 48, 1);
   --ds-color: black;
   --ds-color-alt: white;
-  --ds-font-family: "Gotham A", "Gotham B", "Gotham";
+  --ds-color-primary: #5064FB;
+  --ds-font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
 
   --ds-h1-font-size: 3rem;
 
@@ -22,4 +23,11 @@
 
   --ds-p3-font-size: .825rem;
   --ds-p3-color: rgba(255,255,255,.8);
+
+  --ds-elevation-1: 0px 2px 4px rgba(22, 25, 49, 0.05), 0px 0px 1px rgba(22, 25, 49, 0.2), 0px 0.5px 0px rgba(22, 25, 49, 0.05);
+  --ds-elevation-2: 0px 10px 20px rgba(22, 25, 49, 0.05), 0px 2px 6px rgba(22, 25, 49, 0.05), 0px 1px 0px rgba(22, 25, 49, 0.05);
+  --ds-elevation-3: 0px 12px 24px rgba(22, 25, 49, 0.07), 0px 4px 8px rgba(22, 25, 49, 0.05), 0px 1px 0px rgba(22, 25, 49, 0.05);
+  --ds-elevation-4: 0px 16px 32px rgba(22, 25, 49, 0.08), 0px 8px 12px rgba(22, 25, 49, 0.06), 0px 1px 0px rgba(22, 25, 49, 0.05);
+  --ds-elevation-5: 0px 24px 40px rgba(22, 25, 49, 0.1), 0px 10px 16px rgba(22, 25, 49, 0.08), 0px 1px 0px rgba(22, 25, 49, 0.05);
+  --ds-elevation-6: 0px 28px 48px rgba(22, 25, 49, 0.11), 0px 16px 20px rgba(22, 25, 49, 0.1), 0px 1px 0px rgba(22, 25, 49, 0.05);
 }
