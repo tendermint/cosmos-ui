@@ -29,7 +29,7 @@
             </span>
           </span>
         </span>
-        <span class="expand">
+        <span class="expand" v-if="isExpandable">
           <span class="expand__item expand__item__expand" @click="expand(true)" v-if="!expanded">
             <span>Expand</span>
             <svg class="expand__item__icon" width="100%" height="100%" viewBox="0 0 16 16" fill="none" 
