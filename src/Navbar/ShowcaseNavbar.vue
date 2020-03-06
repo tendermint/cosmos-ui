@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar v-bind="{items}" @selected="selected = $event">
+    <navbar v-bind="{items}" @selected="selected = $event" :selected="selected">
       <template v-slot:dropdown>
         <div v-if="selected === items[0]">Item 1 Content</div>
         <div v-if="selected === items[1]">Item 2 Content</div>

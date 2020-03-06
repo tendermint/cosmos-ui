@@ -8,23 +8,25 @@
                tabindex="0"
                v-for="item in items"
                :key="item"
-               @focus="itemSelect($event, 'menu', item)"
-               @blur="itemDeselect($event, 'menu')"
-               @mouseover="itemSelect($event, 'menu', item)"
-               @mouseleave="itemDeselect($event, 'menu')">
+               @focus="itemActivate($event, item)"
+               @blur="itemDeselect({delay: 250})"
+               @touchstart="itemClick($event, item)"
+               @mouseover="itemActivate($event, item)"
+               @mouseleave="itemDeselect({delay: 250})">
             {{item}}
           </div>
         </div>
         <div class="cta"></div>
       </div>
       <transition name="dropdown">
-        <div tabindex="0"
-             @focus="itemSelect($event, 'dropdown', itemSelected)"
-             @blur="itemDeselect($event, 'dropdown')"
-             @mouseover="itemSelect($event, 'dropdown', itemSelected)"
-             @mouseleave="itemDeselect($event, 'dropdown')"
-             class="dropdown"
-             v-if="!!dropdown.visible">
+        <div class="dropdown"
+             :tabindex="dropdown.tabindex"
+             @click="dropdownClick($event)"
+             @blur="dropdownBlur()"
+             @focus="itemSelect(selected)"
+             @mouseover="itemSelect(selected)"
+             @mouseleave="itemDeselect({delay: 250})"
+             v-if="!!dropdown.visible && selected">
           <slot name="dropdown"/>
         </div>
       </transition>
@@ -93,6 +95,10 @@ export default {
     items: {
       type: Array,
       default: () => []
+    },
+    selected: {
+      type: String,
+      default: null
     }
   },
   data: function() {
@@ -101,9 +107,9 @@ export default {
         left: null,
         visible: null,
         timer: null,
-        width: 700
+        width: 700,
+        tabindex: null
       },
-      itemSelected: null,
     }
   },
   computed: {
@@ -115,40 +121,60 @@ export default {
     }
   },
   methods: {
-    itemSelect(e, target, item) {
-      console.log(this.$refs.container.offsetLeft)
-      this.itemSelected = item
-      if (item) this.$emit("selected", item)
-      if (target === 'menu') {
-        let
-          left = e.target.offsetLeft + e.target.offsetWidth/2 - this.dropdown.width/2,
-          width = this.dropdown.width
-        const
-          containerWidth = this.$refs.container.offsetWidth,
-          overflow = this.dropdown.width > containerWidth,
-          overflowRight = (left + this.dropdown.width) > containerWidth,
-          overflowLeft = left < 0
-        if (overflow) {
-          width = this.$refs.container.offsetWidth
-          left = 0
-        }
-        if (!overflow && overflowRight) {
-          left -= Math.abs(containerWidth - left - this.dropdown.width)
-        }
-        if (!overflow && overflowLeft) {
-          left = 0
-        }
-        this.dropdown.left = left
-        this.dropdown.width = width
+    dropdownClick(e) {
+      this.dropdown.tabindex = 0
+      this.$nextTick(() => {
+        e.target.focus()
+      })
+    },
+    dropdownBlur() {
+      this.$nextTick(() => {
+        this.dropdown.tabindex = null
+      })
+    },
+    itemClick(e, item) {
+      if (this.selected === item) {
+        this.itemDeselect()
+      } else {
+        this.itemActivate(e, item)
       }
+    },
+    itemActivate(e, item) {
+      this.itemSelect(item)
+      this.itemPosition(e)
+    },
+    itemPosition(e) {
+      let
+        width = this.dropdown.width,
+        left = e.target.offsetLeft + e.target.offsetWidth/2 - width/2
+      const
+        containerWidth = this.$refs.container.offsetWidth,
+        overflow = this.dropdown.width > containerWidth,
+        overflowRight = (left + this.dropdown.width) > containerWidth,
+        overflowLeft = left < 0
+      if (overflow) {
+        width = this.$refs.container.offsetWidth
+        left = 0
+      }
+      if (!overflow && overflowRight) {
+        left -= Math.abs(containerWidth - left - this.dropdown.width)
+      }
+      if (!overflow && overflowLeft) {
+        left = 0
+      }
+      this.dropdown.left = left
+      this.dropdown.width = width
+    },
+    itemSelect(item) {
+      if (item) this.$emit("selected", item)
       this.dropdown.visible = true
       clearTimeout(this.dropdown.timer)
     },
-    itemDeselect(e, target) {
+    itemDeselect({delay}={delay: 0}) {
       this.dropdown.timer = setTimeout(() => {
         this.dropdown.visible = false
         this.$emit("selected", null)
-      }, 250)
+      }, delay)
     },
   }
 }
