@@ -385,10 +385,13 @@ export default {
         this.copied = false;
       }, 2000);
     },
-    highlighted(value) {
-      return this.language
-        ? Prism.highlight(value, Prism.languages[this.language])
-        : value
+    highlighted(source) {
+      const supportedSyntax = Prism.languages[this.language]
+      if (supportedSyntax) {
+        return Prism.highlight(source, supportedSyntax)
+      } else {
+        return source
+      }
     },
     expand(bool, scroll) {
       const container = this.$refs.container;

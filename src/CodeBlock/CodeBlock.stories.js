@@ -20,8 +20,8 @@ export const normal = () => ({
       <code-block :value="data.short"/>
       <p>Multiline snippet with syntax highlighting:</p>
       <code-block :value="data.medium" language="go"/>
-      <p>Multiline snippet with syntax highlighting and expand button:</p>
-      <code-block :value="data.long" :url="url" language="go"/>
+      <p>Multiline snippet with an expand button:</p>
+      <code-block :value="data.long" :url="url" language="xyz"/>
     </div>
   `
 });
