@@ -107,6 +107,7 @@ span {
   scrollbar-color: rgba(255,255,255,.2) rgba(255,255,255,.1);
   scrollbar-width: thin;
   font-size: 0.8125rem;
+  line-height: 1.25rem;
 }
 
 .body::-webkit-scrollbar {
@@ -130,6 +131,7 @@ span {
   font-family: 'Menlo', 'Monaco', 'Fira Code', monospace;
   font-size: 0.8125rem;
   display: inline-block;
+  line-height: 1.25rem;
 }
 .body.body__hasfooter__true {
   border-bottom-left-radius: 0;
