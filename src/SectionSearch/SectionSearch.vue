@@ -6,10 +6,20 @@
           <icon-search :stroke="query ? '#66A1FF' : '#aaa'" :fill="query ? '#66A1FF' : '#aaa'"></icon-search>
         </div>
         <div class="search-box__input">
-          <input class="search-box__input__input" type="text" autocomplete="off" placeholder="Search" id="search-box-input" ref="search" :value="query" @input="$emit('query', $event.target.value)" />
+          <input
+            class="search-box__input__input"
+            type="text"
+            autocomplete="off"
+            placeholder="Search"
+            id="search-box-input"
+            ref="search"
+            :value="query"
+            @keydown.38.prevent="selectResult(-1)"
+            @keydown.40.prevent="selectResult(+1)"
+            @input="$emit('query', $event.target.value)" />
         </div>
         <div class="search-box__clear">
-          <icon-circle-cross class="search-box__clear__icon" v-if="query &amp;&amp; query.length &gt; 0" @click.native="$emit('query', '')" @keydown.enter="$emit('query', '')" tabindex="0"></icon-circle-cross>
+          <icon-circle-cross class="search-box__clear__icon" v-if="query && query.length > 0" @click.native="$emit('query', '')" @keydown.enter="$emit('query', '')" tabindex="0"></icon-circle-cross>
         </div>
         <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="0">Cancel</a>
       </div>
@@ -44,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="results__noresults__container" v-if="query &amp;&amp; (searchResults &amp;&amp; searchResults.length &lt;= 0)">
+        <div class="results__noresults__container" v-if="query && (searchResults && searchResults.length <= 0)">
           <div class="results__noresults">
             <div class="results__noresults__icon">
               <icon-search></icon-search>
@@ -56,8 +66,15 @@
             </div>
           </div>
         </div>
-        <div v-if="query &amp;&amp; searchResults &amp;&amp; searchResults.length &gt; 0">
-          <div class="results__item" @keydown.40="focusNext" @keydown.38="focusPrev" ref="result" v-for="result in searchResults" v-if="searchResults" @keydown.enter="itemClick(resultLink(result), result.item)" @click="itemClick(resultLink(result), result.item)">
+        <div v-if="query && searchResults && searchResults.length > 0">
+          <div
+            :class="[`results__item`, `results__item__selected__${!!isSearchResultSelected(index)}`]"
+            ref="result"
+            :key="result.title"
+            v-for="(result, index) in searchResults"
+            v-if="searchResults" 
+            @keydown.enter="itemClick(resultLink(result), result.item)"
+            @click="itemClick(resultLink(result), result.item)">
             <div class="results__item__title" v-html="resultTitle(result)"></div>
             <div class="results__item__desc" v-if="resultSynopsis(result)" v-html="resultSynopsis(result)"></div>
             <div class="results__item__h2" v-if="resultHeader(result)">{{resultHeader(result).title}}</div>
@@ -157,7 +174,7 @@ strong {
 }
 .search-box__button {
   text-transform: uppercase;
-  color: var(--accent-color);
+  color: var(--ds-color-primary, black);
   font-weight: 500;
   cursor: pointer;
   height: 100%;
@@ -200,18 +217,17 @@ strong {
 }
 .results__noresults__a {
   cursor: pointer;
-  color: var(--accent-color);
+  color: var(--ds-color-primary, black);
 }
 .results__item {
   padding: 1rem 2rem;
   cursor: pointer;
 }
-.results__item:focus {
-  outline: none;
+.results__item__selected__true {
   background-color: #fff;
 }
 .results__item__title {
-  color: var(--accent-color);
+  color: var(--ds-color-primary, black);
 }
 .results__item__h2 {
   margin-top: 0.25rem;
@@ -256,6 +272,7 @@ import Fuse from "fuse.js";
 import IconSearch from "./IconSearch.vue"
 import IconCircleCross from "./IconCircleCross.vue"
 import MarkdownIt from "markdown-it"
+import hotkeys from "hotkeys-js";
 
 export default {
   props: ["visible", "query", "site"],
@@ -264,7 +281,8 @@ export default {
     return {
       searchResults: null,
       searchQuery: null,
-      fuse: null
+      fuse: null,
+      searchResultSelectedIndex: null
     };
   },
   watch: {
@@ -284,16 +302,13 @@ export default {
     }
   },
   mounted() {
-    this.$refs.search.addEventListener("keydown", e => {
-      if (e.keyCode == 27) {
-        this.$emit("visible", false);
-        return;
-      }
-      if (e.keyCode == 40) {
-        this.$refs.result[0].focus();
-        e.preventDefault();
-        return;
-      }
+    hotkeys("down", (e) => {
+      this.selectResult(+1)
+      e.preventDefault();
+    });
+    hotkeys("up", (e) => {
+      this.selectResult(-1)
+      e.preventDefault();
     });
     this.fuse = new Fuse(
       this.site.pages
@@ -324,6 +339,9 @@ export default {
     this.search();
   },
   methods: {
+    isSearchResultSelected(index) {
+      return this.searchResultSelectedIndex === index
+    },
     md: string => {
       const md = new MarkdownIt({ html: true, linkify: true });
       return `<div>${md.renderInline(string)}</div>`;
@@ -353,7 +371,6 @@ export default {
       if (headers && headers.length) return headers[0];
     },
     search(e) {
-      console.log("e")
       if (!this.query) return;
       const fuse = this.fuse.search(this.query).map(result => {
         return {
@@ -376,9 +393,6 @@ export default {
     },
     itemClick(url, item) {
       this.$emit("visible", false);
-      if (item.path != this.$page.path) {
-        this.$router.push(url);
-      }
     },
     itemPath(sourceItem) {
       let path = sourceItem.path
@@ -406,16 +420,16 @@ export default {
         .slice(0, -1)
         .pop();
     },
-    focusNext(e) {
-      const next = e.target.nextSibling;
-      if (next && next.focus) next.focus();
-      e.preventDefault();
+    selectResult(delta) {
+      const
+        index = this.searchResultSelectedIndex,
+        isValidIndex = Number.isInteger(index) && index >= 0
+      if (isValidIndex) {
+        this.searchResultSelectedIndex = index + delta
+      } else {
+        this.searchResultSelectedIndex = 0
+      }
     },
-    focusPrev(e) {
-      const prev = e.target.previousSibling;
-      if (prev && prev.focus) prev.focus();
-      e.preventDefault();
-    }
   }
 };
 </script>

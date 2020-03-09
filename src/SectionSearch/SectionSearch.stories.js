@@ -15,7 +15,7 @@ export const normal = () => ({
     }
   },
   template: `
-    <div style="width: 600px">
+    <div style="width: 100%; max-width: 600px">
       <section-search :query="query" @query="query = $event" :site="site"/>
     </div>
   `
