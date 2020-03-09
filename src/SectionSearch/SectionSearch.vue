@@ -9,9 +9,9 @@
           <input class="search-box__input__input" type="text" autocomplete="off" placeholder="Search" id="search-box-input" ref="search" :value="query" @input="$emit('query', $event.target.value)" />
         </div>
         <div class="search-box__clear">
-          <icon-circle-cross class="search-box__clear__icon" v-if="query &amp;&amp; query.length &gt; 0" @click.native="$emit('query', '')" @keydown.enter="$emit('query', '')" tabindex="1"></icon-circle-cross>
+          <icon-circle-cross class="search-box__clear__icon" v-if="query &amp;&amp; query.length &gt; 0" @click.native="$emit('query', '')" @keydown.enter="$emit('query', '')" tabindex="0"></icon-circle-cross>
         </div>
-        <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="1">Cancel</a>
+        <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="0">Cancel</a>
       </div>
       <div class="results">
         <div class="shortcuts" v-if="!query">
@@ -52,13 +52,12 @@
             <div class="results__noresults__h1">No results for <strong>“{{query}}”</strong>
             </div>
             <div class="results__noresults__p">
-              <span>Try queries such as <span class="results__noresults__a" @click="query = 'auth'" @keydown.enter="query = 'auth'" tabindex="0">auth</span>,              <span class="results__noresults__a" @click="query = 'slashing'" @keydown.enter="query = 'slashing'" tabindex="0">slashing</span>, or <span class="results__noresults__a" @click="query = 'staking'" @keydown.enter="query = 'staking'" tabindex="0">staking</span>.
-              </span>
+              <span>Try queries such as <span class="results__noresults__a" @click="query = 'auth'" @keydown.enter="query = 'auth'">auth</span>, <span class="results__noresults__a" @click="query = 'slashing'" @keydown.enter="query = 'slashing'">slashing</span>, or <span class="results__noresults__a" @click="query = 'staking'" @keydown.enter="query = 'staking'">staking</span>.</span>
             </div>
           </div>
         </div>
         <div v-if="query &amp;&amp; searchResults &amp;&amp; searchResults.length &gt; 0">
-          <div class="results__item" @keydown.40="focusNext" @keydown.38="focusPrev" tabindex="0" ref="result" v-for="result in searchResults" v-if="searchResults" @keydown.enter="itemClick(resultLink(result), result.item)" @click="itemClick(resultLink(result), result.item)">
+          <div class="results__item" @keydown.40="focusNext" @keydown.38="focusPrev" ref="result" v-for="result in searchResults" v-if="searchResults" @keydown.enter="itemClick(resultLink(result), result.item)" @click="itemClick(resultLink(result), result.item)">
             <div class="results__item__title" v-html="resultTitle(result)"></div>
             <div class="results__item__desc" v-if="resultSynopsis(result)" v-html="resultSynopsis(result)"></div>
             <div class="results__item__h2" v-if="resultHeader(result)">{{resultHeader(result).title}}</div>
