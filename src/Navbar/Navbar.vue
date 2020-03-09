@@ -26,7 +26,7 @@
              @focus="itemSelect(selected)"
              @mouseover="itemSelect(selected)"
              @mouseleave="itemDeselect({delay: 250})"
-             v-if="!!dropdown.visible && selected">
+             v-show="!!dropdown.visible && selected">
           <slot name="dropdown"/>
         </div>
       </transition>
