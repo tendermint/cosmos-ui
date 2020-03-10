@@ -6,8 +6,8 @@
           <div class="message">By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
           <span class="icon-cross" @click="close">
             <svg
-              width="14"
-              height="14"
+              width="16"
+              height="16"
               viewBox="0 0 14 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -95,15 +95,14 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  width: 100%;
   max-width: 26.8125rem;
   background: #ffffff;
   border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
   border-image: initial;
-  border-radius: 3.4375rem;
-  padding: 0.75rem 1.4375rem 0.75rem 1.4375rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.4375rem 0.625rem 1.4375rem;
 }
 
 .wrapper {
@@ -115,7 +114,9 @@ export default {
 }
 
 .message {
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.01em;
 }
 
 .icon-cross {
@@ -126,6 +127,8 @@ export default {
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
+  margin-left: 1rem;
+  padding: 0.5rem;
 }
 
 .fade-enter-active,
@@ -141,13 +144,13 @@ export default {
 @media screen and (max-width: 435px) {
   .banner-wrapper {
     bottom: 0;
-    width: 100%;
     white-space: normal;
     border-radius: unset;
   }
 
   .message {
     font-size: 0.90rem;
+    line-height: 1.125rem;
   }
 }
 </style>
