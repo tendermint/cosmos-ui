@@ -99,13 +99,15 @@ span {
   overflow-x: scroll;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 1rem;
+  padding-top: 1.375rem;
   padding-bottom: 1rem;
   overflow-y: hidden;
   position: relative;
   line-height: 1.75;
   scrollbar-color: rgba(255,255,255,.2) rgba(255,255,255,.1);
   scrollbar-width: thin;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
 }
 
 .body::-webkit-scrollbar {
@@ -127,8 +129,9 @@ span {
 }
 .body__wrapper {
   font-family: 'Menlo', 'Monaco', 'Fira Code', monospace;
-  font-size: 0.785rem;
+  font-size: 0.8125rem;
   display: inline-block;
+  line-height: 1.25rem;
 }
 .body.body__hasfooter__true {
   border-bottom-left-radius: 0;
@@ -149,7 +152,7 @@ span {
   box-sizing: border-box;
 }
 .codeblock__expanded__false .expand {
-  background: linear-gradient(to top, #2e3148, rgba(46,49,72,0));
+  background: linear-gradient(180deg, rgba(22, 25, 49, 0) 0%, #161931 100%);
 }
 .expand__item {
   text-transform: uppercase;
@@ -385,10 +388,13 @@ export default {
         this.copied = false;
       }, 2000);
     },
-    highlighted(value) {
-      return this.language
-        ? Prism.highlight(value, Prism.languages[this.language])
-        : value
+    highlighted(source) {
+      const supportedSyntax = Prism.languages[this.language]
+      if (supportedSyntax) {
+        return Prism.highlight(source, supportedSyntax)
+      } else {
+        return source
+      }
     },
     expand(bool, scroll) {
       const container = this.$refs.container;
