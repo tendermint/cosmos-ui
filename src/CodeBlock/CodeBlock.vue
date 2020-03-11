@@ -325,6 +325,7 @@ span {
 import Prism from "prismjs";
 import "prismjs/components/prism-go.js";
 import copy from "clipboard-copy";
+import { Base64 } from 'js-base64';
 
 export default {
   props: {
@@ -364,7 +365,7 @@ export default {
   },
   computed: {
     source() {
-      if (this.base64) return atob(this.base64)
+      if (this.base64) return Base64.decode(this.base64)
       return this.value
     },
     out() {
@@ -372,10 +373,12 @@ export default {
     }
   },
   mounted() {
-    this.isExpandable = this.$refs.body.scrollHeight > 1000;
-    this.height = this.$refs.body.scrollHeight - 700;
-    this.expanded = this.$refs.body.scrollHeight - 700 < 300;
-    this.maxHeight = this.$refs.body.scrollHeight + "px";
+    if (this.$refs.body) {
+      this.isExpandable = this.$refs.body.scrollHeight > 1000;
+      this.height = this.$refs.body.scrollHeight - 700;
+      this.expanded = this.$refs.body.scrollHeight - 700 < 300;
+      this.maxHeight = this.$refs.body.scrollHeight + "px";
+    }
   },
   methods: {
     filename(url) {
@@ -414,8 +417,7 @@ export default {
       const container = this.$refs.container;
       this.expanded = bool;
       if (!bool && container && scroll) container.scrollIntoView();
-    },
-    atob
+    }
   }
 };
 </script>
