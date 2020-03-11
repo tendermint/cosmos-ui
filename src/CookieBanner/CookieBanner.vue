@@ -131,6 +131,17 @@ export default {
   padding: 0.5rem;
 }
 
+.icon-cross:hover {
+  background-color: #EFF0F5;
+  border-radius: 1rem;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.icon-cross:hover path {
+  stroke: #686A79;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -143,9 +154,9 @@ export default {
 
 @media screen and (max-width: 435px) {
   .banner-wrapper {
-    bottom: 0;
+    bottom: 0.5rem;
     white-space: normal;
-    border-radius: unset;
+    border-radius: 0.5rem;
   }
 
   .message {
