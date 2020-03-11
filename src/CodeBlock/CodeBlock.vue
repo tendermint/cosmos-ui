@@ -154,6 +154,10 @@ span {
 .codeblock__expanded__false .expand {
   background: linear-gradient(180deg, rgba(22, 25, 49, 0) 0%, #161931 100%);
 }
+.codeblock__hasfooter__false.codeblock__expanded__false .expand {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
 .expand__item {
   text-transform: uppercase;
   background-color: #dadce6;
