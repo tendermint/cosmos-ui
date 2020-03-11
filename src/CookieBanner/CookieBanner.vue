@@ -127,7 +127,7 @@ export default {
   width: 3.5rem;
 }
 
-.icon-cross:hover {
+/* .icon-cross:hover {
   background-color: #EFF0F5;
   border-radius: 1rem;
   transition-property: background-color;
@@ -136,7 +136,7 @@ export default {
 
 .icon-cross:hover path {
   stroke: #686A79;
-}
+} */
 
 .fade-enter-active,
 .fade-leave-active {
