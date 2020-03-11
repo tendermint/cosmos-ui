@@ -15,7 +15,7 @@
             </span>
             <span class="icons__item">
               <svg class="icons__item__icon" width="24" height="24" viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg" @click="copy(value)">
+                xmlns="http://www.w3.org/2000/svg" @click="copy(source)">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11 0.25C10.0335 0.25 9.25 1.0335 9.25 2V4.5H10.75V2C10.75 1.86193 10.8619 1.75 11 1.75H21C21.1381 1.75 21.25 1.86193 21.25 2V16C21.25 16.1381 21.1381 16.25 21 16.25H16.5V17.75H21C21.9665 17.75 22.75 16.9665 22.75 16V2C22.75 1.0335 21.9665 0.25 21 0.25H11ZM3 6.25C2.0335 6.25 1.25 7.0335 1.25 8V22C1.25 22.9665 2.0335 23.75 3 23.75H13C13.9665 23.75 14.75 22.9665 14.75 22V8C14.75 7.0335 13.9665 6.25 13 6.25H3ZM2.75 8C2.75 7.86193 2.86193 7.75 3 7.75H13C13.1381 7.75 13.25 7.86193 13.25 8V22C13.25 22.1381 13.1381 22.25 13 22.25H3C2.86193 22.25 2.75 22.1381 2.75 22V8Z"></path>
               </svg>
               <span class="icons__item__tooltip">
@@ -25,7 +25,7 @@
           </span>
           <span class="body" :style="{'--max-height': maxHeight}" ref="body">
             <span class="body__wrapper">
-              <span class="body__code" v-html="highlighted(value)"></span>
+              <span class="body__code" v-html="highlighted(source)"></span>
             </span>
           </span>
         </span>
@@ -331,6 +331,12 @@ export default {
       type: String,
     },
     /**
+     * Code rendered in the body of the block in base64
+     */
+    base64: {
+      type: String
+    },
+    /**
      * URL for "View source" link and filename in the code-block's footer
      */
     url: {
@@ -353,6 +359,10 @@ export default {
     };
   },
   computed: {
+    source() {
+      if (this.base64) return atob(this.base64)
+      return this.value
+    },
     out() {
       return this.$slots.default;
     }
@@ -400,7 +410,8 @@ export default {
       const container = this.$refs.container;
       this.expanded = bool;
       if (!bool && container && scroll) container.scrollIntoView();
-    }
+    },
+    atob
   }
 };
 </script>
