@@ -91,26 +91,25 @@ export default {
   box-shadow: 0px 24px 40px rgba(22, 25, 49, 0.1),
     0px 10px 16px rgba(22, 25, 49, 0.08), 0px 1px 0px rgba(22, 25, 49, 0.05);
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  max-width: 26.8125rem;
   background: #ffffff;
   border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
   border-image: initial;
   border-radius: 0.5rem;
-  padding: 0.625rem 1.4375rem 0.625rem 1.4375rem;
+  padding: 1.875rem 1.25rem;
+  width: 100%;
+  max-width: 27rem;
 }
 
 .wrapper {
   display: flex;
-  -webkit-box-align: center;
+  justify-content: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
 }
 
 .message {
@@ -120,15 +119,12 @@ export default {
 }
 
 .icon-cross {
-  background-clip: padding-box;
-  outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  margin-left: 1rem;
-  padding: 0.5rem;
+  width: 3.5rem;
 }
 
 .icon-cross:hover {
@@ -154,9 +150,10 @@ export default {
 
 @media screen and (max-width: 435px) {
   .banner-wrapper {
-    bottom: 0.5rem;
-    white-space: normal;
     border-radius: 0.5rem;
+    bottom: 1rem;
+    white-space: normal;
+    width: 90%;
   }
 
   .message {
