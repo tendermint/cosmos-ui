@@ -127,17 +127,6 @@ export default {
   width: 3.5rem;
 }
 
-/* .icon-cross:hover {
-  background-color: #EFF0F5;
-  border-radius: 1rem;
-  transition-property: background-color;
-  transition-duration: 0.2s;
-}
-
-.icon-cross:hover path {
-  stroke: #686A79;
-} */
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
