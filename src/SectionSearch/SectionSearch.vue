@@ -24,48 +24,8 @@
         <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="0">Cancel</a>
       </div>
       <div class="results">
-        <div class="shortcuts" v-if="!query">
-          <div class="shortcuts__h1">Keyboard shortcuts</div>
-          <div class="shortcuts__table">
-            <div class="shortcuts__table__row">
-              <div class="shortcuts__table__row__keys">
-                <div class="shortcuts__table__row__keys__item">/</div>
-              </div>
-              <div class="shortcuts__table__row__desc">Open search window</div>
-            </div>
-            <div class="shortcuts__table__row">
-              <div class="shortcuts__table__row__keys">
-                <div class="shortcuts__table__row__keys__item" style="font-size: .65rem;">esc</div>
-              </div>
-              <div class="shortcuts__table__row__desc">Close search window</div>
-            </div>
-            <div class="shortcuts__table__row">
-              <div class="shortcuts__table__row__keys">
-                <div class="shortcuts__table__row__keys__item">↵</div>
-              </div>
-              <div class="shortcuts__table__row__desc">Open highlighted search result</div>
-            </div>
-            <div class="shortcuts__table__row">
-              <div class="shortcuts__table__row__keys">
-                <div class="shortcuts__table__row__keys__item" style="font-size: .65rem;">▼</div>
-                <div class="shortcuts__table__row__keys__item" style="font-size: .65rem;">▲</div>
-              </div>
-              <div class="shortcuts__table__row__desc">Navigate between search results</div>
-            </div>
-          </div>
-        </div>
-        <div class="results__noresults__container" v-if="query && (searchResults && searchResults.length <= 0)">
-          <div class="results__noresults">
-            <div class="results__noresults__icon">
-              <icon-search></icon-search>
-            </div>
-            <div class="results__noresults__h1">No results for <strong>“{{query}}”</strong>
-            </div>
-            <div class="results__noresults__p">
-              <span>Try queries such as <span class="results__noresults__a" @click="query = 'auth'" @keydown.enter="query = 'auth'">auth</span>, <span class="results__noresults__a" @click="query = 'slashing'" @keydown.enter="query = 'slashing'">slashing</span>, or <span class="results__noresults__a" @click="query = 'staking'" @keydown.enter="query = 'staking'">staking</span>.</span>
-            </div>
-          </div>
-        </div>
+        <section-shortcuts v-if="!query"/>
+        <section-results-empty v-if="query && (searchResults && searchResults.length <= 0)" @query="$emit('query', $event)" :query="query"/>
         <div v-if="query && searchResults && searchResults.length > 0">
           <div
             :class="[`results__item`, `results__item__selected__${!!isSearchResultSelected(index)}`]"
@@ -86,48 +46,6 @@
 </template>
 
 <style scoped>
-.shortcuts {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.shortcuts__h1 {
-  text-align: center;
-  color: rgba(22,25,49,0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-}
-.shortcuts__table__row {
-  display: grid;
-  grid-template-columns: 3fr 7fr;
-  gap: 1.5rem;
-  align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-.shortcuts__table__row__keys {
-  display: flex;
-  justify-content: flex-end;
-}
-.shortcuts__table__row__keys__item {
-  color: #46509f;
-  background-color: rgba(176,180,207,0.2);
-  border: 1px solid rgba(176,180,207,0.09);
-  border-radius: 0.25rem;
-  font-size: 0.8125rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px;
-}
-.shortcuts__table__row__desc {
-  color: rgba(22,25,49,0.65);
-}
 strong {
   font-weight: 500;
 }
@@ -187,38 +105,6 @@ strong {
   flex-direction: column;
   flex-grow: 1;
 }
-.results__noresults__container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  margin-top: 4rem;
-}
-.results__noresults {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.results__noresults__icon {
-  max-width: 80px;
-  margin-bottom: 2rem;
-  fill: #ccc;
-}
-.results__noresults__h1 {
-  color: rgba(22,25,49,0.65);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-.results__noresults__p {
-  color: rgba(22,25,49,0.65);
-}
-.results__noresults__a {
-  cursor: pointer;
-  color: var(--ds-color-primary, black);
-}
 .results__item {
   padding: 1rem 2rem;
   cursor: pointer;
@@ -273,10 +159,17 @@ import IconSearch from "./IconSearch.vue"
 import IconCircleCross from "./IconCircleCross.vue"
 import MarkdownIt from "markdown-it"
 import hotkeys from "hotkeys-js";
+import SectionShortcuts from "./SectionShortcuts.vue"
+import SectionResultsEmpty from "./SectionResultsEmpty.vue"
 
 export default {
   props: ["visible", "query", "site"],
-  components: { IconSearch, IconCircleCross },
+  components: {
+    IconSearch,
+    IconCircleCross,
+    SectionShortcuts,
+    SectionResultsEmpty
+  },
   data: function() {
     return {
       searchResults: null,
