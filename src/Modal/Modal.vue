@@ -71,7 +71,7 @@
   left: 0;
   right: initial;
   width: var(--sidebar-width, 300px);
-  max-width: var(--sidebar-width, 75%);
+  max-width: var(--sidebar-max-width, 75%);
   height: var(--sidebar-height, 100%);
   max-height: var(--sidebar-max-height, 100%);
   box-shadow: var(--sidebar-box-shadow);
@@ -81,7 +81,7 @@
   left: initial;
   right: 0;
   width: var(--sidebar-width, 300px);
-  max-width: var(--sidebar-width, 75%);
+  max-width: var(--sidebar-max-width, 75%);
   height: var(--sidebar-height, 100%);
   max-height: var(--sidebar-max-height, 100%);
   box-shadow: var(--sidebar-box-shadow);
