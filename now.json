@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "name": "cosmos-ui",
-  "alias": "cosmos-ui.now.sh",
   "builds": [
     {
       "src": "package.json",
