@@ -1,28 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="search-box">
-        <div class="search-box__icon">
-          <icon-search :stroke="query ? '#66A1FF' : '#aaa'" :fill="query ? '#66A1FF' : '#aaa'"></icon-search>
-        </div>
-        <div class="search-box__input">
-          <input
-            class="search-box__input__input"
-            type="text"
-            autocomplete="off"
-            placeholder="Search"
-            id="search-box-input"
-            ref="search"
-            :value="query"
-            @keydown.38.prevent="selectResult(-1)"
-            @keydown.40.prevent="selectResult(+1)"
-            @input="$emit('query', $event.target.value)" />
-        </div>
-        <div class="search-box__clear">
-          <icon-circle-cross class="search-box__clear__icon" v-if="query && query.length > 0" @click.native="$emit('query', '')" @keydown.enter="$emit('query', '')" tabindex="0"></icon-circle-cross>
-        </div>
-        <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="0">Cancel</a>
-      </div>
+      <section-input :value="query" @input="$emit('query', $event)"/>
       <div class="results">
         <section-shortcuts v-if="!query"/>
         <section-results-empty v-if="query && (searchResults && searchResults.length <= 0)" @query="$emit('query', $event)" :query="query"/>
@@ -56,48 +35,6 @@ strong {
   flex-direction: column;
   background-color: #f8f9fc;
   font-family: var(--ds-font-family);
-}
-.search-box {
-  width: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  box-shadow: inset 0 -1px 0 0 rgba(176,180,207,0.2);
-  padding-left: 2rem;
-  padding-right: 2rem;
-  grid-template-columns: 1.5rem 1fr 1.25rem;
-  gap: 1rem;
-  box-sizing: border-box;
-}
-.search-box__input__input {
-  border: none;
-  background: none;
-  outline: none;
-  font-size: 1.25rem;
-  width: 100%;
-  padding: 1.5rem 0.5rem;
-}
-.search-box__input__input::-webkit-input-placeholder {
-  color: rgba(14,33,37,0.26);
-}
-.search-box__clear__icon {
-  cursor: pointer;
-  fill: rgba(0,0,0,0.15);
-  margin-top: 0.25rem;
-}
-.search-box__clear__icon:hover,
-.search-box__clear__icon:focus {
-  fill: rgba(0,0,0,0.25);
-  outline: none;
-}
-.search-box__button {
-  text-transform: uppercase;
-  color: var(--ds-color-primary, black);
-  font-weight: 500;
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  align-items: center;
 }
 .results {
   padding-bottom: 3rem;
@@ -161,12 +98,14 @@ import MarkdownIt from "markdown-it"
 import hotkeys from "hotkeys-js";
 import SectionShortcuts from "./SectionShortcuts.vue"
 import SectionResultsEmpty from "./SectionResultsEmpty.vue"
+import SectionInput from "./SectionInput.vue"
 
 export default {
   props: ["visible", "query", "site"],
   components: {
     IconSearch,
     IconCircleCross,
+    SectionInput,
     SectionShortcuts,
     SectionResultsEmpty
   },
