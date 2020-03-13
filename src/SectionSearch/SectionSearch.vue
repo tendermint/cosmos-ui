@@ -3,7 +3,7 @@
     <div class="container">
       <section-input
         :value="query"
-        @input="$emit('query', $event)"
+        @input="querySet($event)"
         @keypress="inputKeypress"
         @cancel="$emit('cancel', false)"
       />
@@ -17,7 +17,7 @@
         <section-shortcuts v-else-if="!query && !searchInFlight"/>
         <section-results-empty
           v-else-if="query && !resultsAvailable && !searchInFlight"
-          @query="$emit('query', $event)"
+          @query="querySet($event)"
           :query="query"
         />
       </div>
@@ -46,7 +46,6 @@ strong {
 </style>
 
 <script>
-import { debounce } from "lodash";
 import Fuse from "fuse.js";
 import MarkdownIt from "markdown-it"
 import hotkeys from "hotkeys-js";
@@ -56,7 +55,18 @@ import SectionInput from "./SectionInput.vue"
 import SectionResultsList from "./SectionResultsList.vue"
 
 export default {
-  props: ["visible", "query", "site"],
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    query: {
+      type: String
+    },
+    site: {
+      type: Object
+    }
+  },
   components: {
     SectionInput,
     SectionShortcuts,
@@ -72,8 +82,8 @@ export default {
     };
   },
   watch: {
-    query: function(e) {
-      return this.debouncedSearch();
+    query() {
+      this.search(this.query)
     },
     visible(becomesVisible) {
       const search = this.$refs.search;
@@ -83,10 +93,6 @@ export default {
     }
   },
   computed: {
-    debouncedSearch() {
-      this.searchInFlight = true
-      return debounce(this.search, 300);
-    },
     resultsAvailable() {
       return this.results && this.results.length > 0
     }
@@ -129,6 +135,9 @@ export default {
     this.search();
   },
   methods: {
+    querySet(string) {
+      this.$emit("query", string)
+    },
     inputKeypress(e) {
       if (e.key) {
         if (e.key === "ArrowUp") this.selectResult(-1)
@@ -153,17 +162,17 @@ export default {
       const md = new MarkdownIt({ html: true, linkify: true });
       return `<div>${md.renderInline(string)}</div>`;
     },
-    search(e) {
+    search(query) {
       this.searchInFlight = false
-      if (!this.query) return;
-      const fuse = this.fuse.search(this.query).map(result => {
+      if (!query) return;
+      const fuseResults = this.fuse.search(query).map(result => {
         return {
           title: result.item && result.item.title && this.md(result.item.title),
           desc: result.item && result.item.description && this.md(result.item.description),
           id: result.item && result.item.key
         };
       });
-      this.results = fuse;
+      this.results = fuseResults;
     },
   }
 };
