@@ -46,10 +46,8 @@ strong {
 </style>
 
 <script>
-import { find, last, debounce } from "lodash";
+import { debounce } from "lodash";
 import Fuse from "fuse.js";
-import IconSearch from "./IconSearch.vue"
-import IconCircleCross from "./IconCircleCross.vue"
 import MarkdownIt from "markdown-it"
 import hotkeys from "hotkeys-js";
 import SectionShortcuts from "./SectionShortcuts.vue"
@@ -60,8 +58,6 @@ import SectionResultsList from "./SectionResultsList.vue"
 export default {
   props: ["visible", "query", "site"],
   components: {
-    IconSearch,
-    IconCircleCross,
     SectionInput,
     SectionShortcuts,
     SectionResultsEmpty,
