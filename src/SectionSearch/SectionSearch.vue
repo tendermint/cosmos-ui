@@ -14,9 +14,9 @@
           :selected="selectedIndex"
           :value="results"
         />
-        <section-shortcuts v-else-if="!query"/>
+        <section-shortcuts v-else-if="!query && !searchInFlight"/>
         <section-results-empty
-          v-else-if="query && !resultsAvailable"
+          v-else-if="query && !resultsAvailable && !searchInFlight"
           @query="$emit('query', $event)"
           :query="query"
         />
@@ -71,7 +71,8 @@ export default {
     return {
       results: null,
       fuse: null,
-      selectedIndex: null
+      selectedIndex: null,
+      searchInFlight: null
     };
   },
   watch: {
@@ -87,6 +88,7 @@ export default {
   },
   computed: {
     debouncedSearch() {
+      this.searchInFlight = true
       return debounce(this.search, 300);
     },
     resultsAvailable() {
@@ -156,6 +158,7 @@ export default {
       return `<div>${md.renderInline(string)}</div>`;
     },
     search(e) {
+      this.searchInFlight = false
       if (!this.query) return;
       const fuse = this.fuse.search(this.query).map(result => {
         return {
