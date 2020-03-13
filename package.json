@@ -9,7 +9,7 @@
   "repository": "https://github.com/tendermint/ui",
   "scripts": {
     "storybook": "start-storybook -p 9999 -s ./public",
-    "build-storybook": "build-storybook -c .storybook -o dist && cp -R public/* dist/",
+    "now-build": "build-storybook -c .storybook -o .storybook-dist",
     "postversion": "git push --tags"
   },
   "devDependencies": {
