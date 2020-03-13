@@ -294,8 +294,8 @@ export default {
     }
   },
   watch: {
-    visible(newVal, oldVal) {
-      if (newVal) {
+    visible(becomesVisible) {
+      if (becomesVisible) {
         this.visibleLocal = true
       }
     }
