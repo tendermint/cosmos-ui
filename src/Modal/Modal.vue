@@ -335,7 +335,7 @@ export default {
   methods: {
     adjustVertically() {
       const
-        content = this.$refs.content.offsetHeight,
+        content = this.$refs.content && this.$refs.content.offsetHeight,
         height = window.innerHeight,
         marginTop = parseInt(this.marginTop) || 100
       if (this.side === "center") {

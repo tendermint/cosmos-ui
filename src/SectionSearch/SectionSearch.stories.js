@@ -2,6 +2,7 @@ import SectionSearch from "./SectionSearch.vue";
 import SectionResultsEmpty from "./SectionResultsEmpty.vue";
 import SectionShortcuts from "./SectionShortcuts.vue";
 import SectionInput from "./SectionInput.vue";
+import ModalSearchShowcase from "./ModalSearchShowcase.vue"
 import { default as site } from "./pages.js"
 
 export default {
@@ -37,3 +38,14 @@ export const normal = () => ({
     </div>
   `
 });
+
+export const modalSearch = () => ({
+  components: {
+    ModalSearchShowcase
+  },
+  template: `
+    <div>
+      <modal-search-showcase/>
+    </div>
+  `
+})
