@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <section-input :value="query" @input="$emit('query', $event)"/>
+      <section-input :value="query" @input="$emit('query', $event)" @keypress="inputKeypress"/>
       <div class="results">
         <section-shortcuts v-if="!query"/>
         <section-results-empty v-if="query && (searchResults && searchResults.length <= 0)" @query="$emit('query', $event)" :query="query"/>
@@ -135,6 +135,7 @@ export default {
   },
   mounted() {
     hotkeys("down", (e) => {
+      console.log("down key")
       this.selectResult(+1)
       e.preventDefault();
     });
@@ -171,6 +172,12 @@ export default {
     this.search();
   },
   methods: {
+    inputKeypress(e) {
+      if (e.key) {
+        if (e.key === "ArrowUp") this.selectResult(-1)
+        if (e.key === "ArrowDown") this.selectResult(+1)
+      }
+    },
     isSearchResultSelected(index) {
       return this.searchResultSelectedIndex === index
     },

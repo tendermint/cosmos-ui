@@ -12,8 +12,8 @@
           placeholder="Search"
           ref="search"
           :value="value"
-          @keydown.38.prevent="selectResult(-1)"
-          @keydown.40.prevent="selectResult(+1)"
+          @keydown.38.prevent="$emit('keypress', $event)"
+          @keydown.40.prevent="$emit('keypress', $event)"
           @input="$emit('input', $event.target.value)" />
       </div>
       <div class="search-box__clear">
@@ -72,10 +72,12 @@
 
 <script>
 import IconSearch from "./IconSearch.vue"
+import IconCircleCross from "./IconCircleCross.vue"
 
 export default {
   components: {
-    IconSearch
+    IconSearch,
+    IconCircleCross
   },
   props: {
     value: {
