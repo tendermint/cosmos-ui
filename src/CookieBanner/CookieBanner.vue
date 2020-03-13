@@ -4,22 +4,24 @@
       <div class="banner-wrapper" v-if="show">
         <div class="wrapper">
           <div class="message">By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
-          <span class="icon-cross" @click="close">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
-                stroke="#A2A3AD"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-            </svg>
-          </span>
+            <div class="box">
+              <span class="icon-cross" @click="close">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.66669 1.66669L12.3334 12.3334M12.3334 1.66669L1.66664 12.3334"
+                  stroke="#A2A3AD"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
     </transition>
@@ -101,30 +103,51 @@ export default {
   border-color: transparent;
   border-image: initial;
   border-radius: 0.5rem;
-  padding: 1.875rem 1.25rem;
-  width: 100%;
-  max-width: 27rem;
 }
 
 .wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .message {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   letter-spacing: 0.01em;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0.8125rem;
+  position: relative;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  flex: 0 0 3.5rem;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
 }
 
 .icon-cross {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
-  z-index: 1000;
-  width: 3.5rem;
+}
+
+.icon-cross:hover {
+  height: 2rem;
+  width: 2rem;
+  background-color: #EFF0F5;
+  border-radius: 1rem;
+  transition: background-color 0.2s;
+}
+
+.icon-cross:hover path {
+  stroke: #686A79;
+  transition: stroke 0.2s;
 }
 
 .fade-enter-active,
