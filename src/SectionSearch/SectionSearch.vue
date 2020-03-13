@@ -1,24 +1,20 @@
 <template>
   <div>
     <div class="container">
-      <section-input :value="query" @input="$emit('query', $event)" @keypress="inputKeypress"/>
+      <section-input
+        :value="query"
+        @input="$emit('query', $event)"
+        @keypress="inputKeypress"
+        @cancel="$emit('visible', false)"
+      />
       <div class="results">
         <section-shortcuts v-if="!query"/>
-        <section-results-empty v-if="query && (searchResults && searchResults.length <= 0)" @query="$emit('query', $event)" :query="query"/>
-        <div v-if="query && searchResults && searchResults.length > 0">
-          <div
-            :class="[`results__item`, `results__item__selected__${!!isSearchResultSelected(index)}`]"
-            ref="result"
-            :key="result.title"
-            v-for="(result, index) in searchResults"
-            v-if="searchResults" 
-            @keydown.enter="itemClick(resultLink(result), result.item)"
-            @click="itemClick(resultLink(result), result.item)">
-            <div class="results__item__title" v-html="resultTitle(result)"></div>
-            <div class="results__item__desc" v-if="resultSynopsis(result)" v-html="resultSynopsis(result)"></div>
-            <div class="results__item__h2" v-if="resultHeader(result)">{{resultHeader(result).title}}</div>
-          </div>
-        </div>
+        <section-results-empty
+          v-if="query && (searchResults && searchResults.length <= 0)"
+          @query="$emit('query', $event)"
+          :query="query"
+        />
+        <section-results-list @activate="$emit('select', $event)" :selected="selectedIndex" :value="searchResults" v-if="query && searchResults && searchResults.length > 0"/>
       </div>
     </div>
   </div>
@@ -42,51 +38,6 @@ strong {
   flex-direction: column;
   flex-grow: 1;
 }
-.results__item {
-  padding: 1rem 2rem;
-  cursor: pointer;
-}
-.results__item__selected__true {
-  background-color: #fff;
-}
-.results__item__title {
-  color: var(--ds-color-primary, black);
-}
-.results__item__h2 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-.results__item__h2__item {
-  display: inline-block;
-}
-.results__item__h2__item:after {
-  content: '>';
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-.results__item__h2__item:last-child:after {
-  content: '';
-}
-.results__item__desc {
-  opacity: 0.5;
-  white-space: nowrap;
-  overflow: hidden;
-  position: relative;
-  font-size: 0.875rem;
-}
-.results__item__desc:after {
-  content: '';
-  background: linear-gradient(to right, rgba(248,249,252,0.5) 0%, #f8f9fc);
-  height: 1em;
-  width: 2em;
-  padding-bottom: 0.25rem;
-  text-align: right;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 </style>
 
 <script>
@@ -99,6 +50,7 @@ import hotkeys from "hotkeys-js";
 import SectionShortcuts from "./SectionShortcuts.vue"
 import SectionResultsEmpty from "./SectionResultsEmpty.vue"
 import SectionInput from "./SectionInput.vue"
+import SectionResultsList from "./SectionResultsList.vue"
 
 export default {
   props: ["visible", "query", "site"],
@@ -107,14 +59,15 @@ export default {
     IconCircleCross,
     SectionInput,
     SectionShortcuts,
-    SectionResultsEmpty
+    SectionResultsEmpty,
+    SectionResultsList
   },
   data: function() {
     return {
       searchResults: null,
       searchQuery: null,
       fuse: null,
-      searchResultSelectedIndex: null
+      selectedIndex: null
     };
   },
   watch: {
@@ -135,12 +88,11 @@ export default {
   },
   mounted() {
     hotkeys("down", (e) => {
-      console.log("down key")
-      this.selectResult(+1)
+      this.inputKeypress(e)
       e.preventDefault();
     });
     hotkeys("up", (e) => {
-      this.selectResult(-1)
+      this.inputKeypress(e)
       e.preventDefault();
     });
     this.fuse = new Fuse(
@@ -176,98 +128,36 @@ export default {
       if (e.key) {
         if (e.key === "ArrowUp") this.selectResult(-1)
         if (e.key === "ArrowDown") this.selectResult(+1)
+        if (e.key === "Enter") {
+          this.$emit("select", {...(this.searchResults[this.selectedIndex])})
+        }
       }
     },
-    isSearchResultSelected(index) {
-      return this.searchResultSelectedIndex === index
+    selectResult(delta) {
+      const
+        index = this.selectedIndex,
+        indexNew = index + delta,
+        isValidIndex = Number.isInteger(index) && index >= 0
+      if (isValidIndex) {
+        this.selectedIndex = indexNew >= 0 ? indexNew : 0
+      } else {
+        this.selectedIndex = 0
+      }
     },
     md: string => {
       const md = new MarkdownIt({ html: true, linkify: true });
       return `<div>${md.renderInline(string)}</div>`;
     },
-    resultTitle(result) {
-      const path = this.itemPath(result.item) ? this.itemPath(result.item) + " /" : ""
-      return this.md(`${path} ${result.item.title}`)
-    },
-    resultSynopsis(result) {
-      if (!result.item.frontmatter.description) return false;
-      return this.md(
-        result.item.frontmatter.description
-          .split("")
-          .slice(0, 75)
-          .join("") + "..."
-      );
-    },
-    resultLink(result) {
-      const header = this.resultHeader(result);
-      return result.item.path + (header ? `#${header.slug}` : "");
-    },
-    resultHeader(result) {
-      if (!result.item.headers) return false;
-      const headers = result.item.headers.filter(h =>
-        h.title.match(new RegExp(this.query, "gi"))
-      );
-      if (headers && headers.length) return headers[0];
-    },
     search(e) {
       if (!this.query) return;
       const fuse = this.fuse.search(this.query).map(result => {
         return {
-          ...result,
-          item: find(this.site.pages, { key: result.item.key })
+          title: result.item && result.item.title && this.md(result.item.title),
+          desc: result.item && result.item.description && this.md(result.item.description),
+          id: result.item && result.item.key
         };
       });
       this.searchResults = fuse;
-    },
-    itemByKey(key) {
-      return find(this.site.pages, { key });
-    },
-    itemSynopsis(item) {
-      return (
-        this.itemByKey(item.ref) &&
-        this.itemByKey(item.ref).frontmatter &&
-        this.itemByKey(item.ref).frontmatter.description &&
-        this.md(this.itemByKey(item.ref).frontmatter.description)
-      );
-    },
-    itemClick(url, item) {
-      this.$emit("visible", false);
-    },
-    itemPath(sourceItem) {
-      let path = sourceItem.path
-        .split("/")
-        .filter(item => item !== "")
-        .map((currentValue, index, array) => {
-          let path = array.slice(0, index + 1).join("/");
-          return "/" + path;
-        })
-        .map(item => {
-          return /\.html$/.test(item) ? item : `${item}/`;
-        });
-      path = path.map(item => {
-        const found = find(this.site.pages, page => {
-          return page.regularPath === item;
-        });
-        const noIndex = {
-          title: last(item.split("/").filter(e => e !== "")),
-          path: ""
-        };
-        return found ? found : noIndex;
-      });
-      return path
-        .map(p => p.title)
-        .slice(0, -1)
-        .pop();
-    },
-    selectResult(delta) {
-      const
-        index = this.searchResultSelectedIndex,
-        isValidIndex = Number.isInteger(index) && index >= 0
-      if (isValidIndex) {
-        this.searchResultSelectedIndex = index + delta
-      } else {
-        this.searchResultSelectedIndex = 0
-      }
     },
   }
 };

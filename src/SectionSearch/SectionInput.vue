@@ -14,12 +14,13 @@
           :value="value"
           @keydown.38.prevent="$emit('keypress', $event)"
           @keydown.40.prevent="$emit('keypress', $event)"
+          @keydown.13.prevent="$emit('keypress', $event)"
           @input="$emit('input', $event.target.value)" />
       </div>
       <div class="search-box__clear">
         <icon-circle-cross class="search-box__clear__icon" v-if="value && value.length > 0" @click.native="$emit('input', '')" @keydown.enter="$emit('input', '')" tabindex="0"></icon-circle-cross>
       </div>
-      <a class="search-box__button" @click="$emit('visible', false)" @keydown.enter="$emit('visible', false)" tabindex="0">Cancel</a>
+      <a class="search-box__button" @click="$emit('cancel', true)" @keydown.enter="$emit('cancel', true)" tabindex="0">Cancel</a>
     </div>
   </div>
 </template>
