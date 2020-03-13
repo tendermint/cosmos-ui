@@ -5,16 +5,21 @@
         :value="query"
         @input="$emit('query', $event)"
         @keypress="inputKeypress"
-        @cancel="$emit('visible', false)"
+        @cancel="$emit('cancel', false)"
       />
       <div class="results">
-        <section-shortcuts v-if="!query"/>
+        <section-results-list
+          v-if="query && resultsAvailable"
+          @activate="$emit('select', $event)"
+          :selected="selectedIndex"
+          :value="results"
+        />
+        <section-shortcuts v-else-if="!query"/>
         <section-results-empty
-          v-if="query && (searchResults && searchResults.length <= 0)"
+          v-else-if="query && !resultsAvailable"
           @query="$emit('query', $event)"
           :query="query"
         />
-        <section-results-list @activate="$emit('select', $event)" :selected="selectedIndex" :value="searchResults" v-if="query && searchResults && searchResults.length > 0"/>
       </div>
     </div>
   </div>
@@ -64,8 +69,7 @@ export default {
   },
   data: function() {
     return {
-      searchResults: null,
-      searchQuery: null,
+      results: null,
       fuse: null,
       selectedIndex: null
     };
@@ -84,6 +88,9 @@ export default {
   computed: {
     debouncedSearch() {
       return debounce(this.search, 300);
+    },
+    resultsAvailable() {
+      return this.results && this.results.length > 0
     }
   },
   mounted() {
@@ -129,7 +136,7 @@ export default {
         if (e.key === "ArrowUp") this.selectResult(-1)
         if (e.key === "ArrowDown") this.selectResult(+1)
         if (e.key === "Enter") {
-          this.$emit("select", {...(this.searchResults[this.selectedIndex])})
+          this.$emit("select", {...(this.results[this.selectedIndex])})
         }
       }
     },
@@ -157,7 +164,7 @@ export default {
           id: result.item && result.item.key
         };
       });
-      this.searchResults = fuse;
+      this.results = fuse;
     },
   }
 };

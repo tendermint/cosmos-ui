@@ -27,7 +27,7 @@ export const normal = () => ({
   },
   template: `
     <div style="width: 100%; max-width: 600px">
-      <section-search @select="log($event)" :query="query" @query="query = $event" :site="site"/>
+      <section-search @select="log($event)" @cancel="log('cancel')" :query="query" @query="query = $event" :site="site"/>
       <p>Input component:</p>
       <section-input :value="query" @input="query = $event" style="background: #f8f9fc"/>
       <p>Shortcuts section:</p>

@@ -10,17 +10,6 @@
       <div class="results__item__title" v-if="item.title" v-html="item.title"></div>
       <div class="results__item__desc" v-if="item.desc" v-html="item.desc"></div>
     </div>
-    <!-- <div
-      :class="[`results__item`, `results__item__selected__${!!isSearchResultSelected(index)}`]"
-      ref="result"
-      :key="result.title"
-      v-for="(result, index) in value"
-      @keydown.enter="itemClick(resultLink(result), result.item)"
-      @click="itemClick(resultLink(result), result.item)">
-      <div class="results__item__title" v-html="resultTitle(result)"></div>
-      <div class="results__item__desc" v-if="resultSynopsis(result)" v-html="resultSynopsis(result)"></div>
-      <div class="results__item__h2" v-if="resultHeader(result)">{{resultHeader(result).title}}</div>
-    </div> -->
   </div>
 </template>
 
