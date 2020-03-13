@@ -1,8 +1,8 @@
 <template>
   <div>
     <button @click="visible = !visible">Open sidebar</button>
-    <modal-sheet v-bind="{visible, ...modalProps}" v-if="visible" @visible="visible = $event">
-      <section-search :query="query" @query="query = $event" :site="site"/>
+    <modal-sheet v-bind="{...modalProps}" :visible="visible" @visible="visible = $event">
+      <section-search @cancel="visible = false" :query="query" @query="query = $event" :site="site"/>
     </modal-sheet>
   </div>
 </template>
@@ -19,17 +19,17 @@ export default {
   },
   data: function() {
     return {
-      visible: false,
+      visible: null,
       query: null,
       modalProps: {
         backgroundColor: 'transparent',
         boxShadow: '0 0 50px rgba(0,0,0,.1)',
-        side: "left",
+        side: "right",
         maxWidth: "400px",
         width: "100%"
       },
       site
     }
-  }
+  },
 }
 </script>

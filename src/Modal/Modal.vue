@@ -293,6 +293,13 @@ export default {
       default: false
     }
   },
+  watch: {
+    visible(newVal, oldVal) {
+      if (newVal) {
+        this.visibleLocal = true
+      }
+    }
+  },
   data: function() {
     return {
       visibleLocal: true,
