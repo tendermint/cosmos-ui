@@ -2,7 +2,7 @@
   <div>
     <button @click="visible = !visible">Open sidebar</button>
     <modal-sheet v-bind="{...modalProps}" :visible="visible" @visible="visible = $event">
-      <section-search @cancel="visible = false" :query="query" @query="query = $event" :site="site"/>
+      <section-search v-bind="{algolia, query, site}" @cancel="visible = false" @query="query = $event"/>
     </modal-sheet>
   </div>
 </template>
@@ -13,6 +13,11 @@ import SectionSearch from "./SectionSearch.vue"
 import { default as site } from "./site.js"
 
 export default {
+  props: {
+    algolia: {
+      type: Object
+    }
+  },
   components: {
     SectionSearch,
     "modal-sheet": Modal

@@ -10,6 +10,12 @@ export default {
   component: SectionSearch
 };
 
+const algolia = {
+  id: "BH4D9OD16A",
+  key: "ac317234e6a42074175369b2f42e9754",
+  index: "cosmos-sdk"
+}
+
 export const normal = () => ({
   components: {
     SectionSearch,
@@ -20,7 +26,8 @@ export const normal = () => ({
   data: function () {
     return {
       site,
-      query: null
+      query: null,
+      algolia
     }
   },
   methods: {
@@ -28,7 +35,7 @@ export const normal = () => ({
   },
   template: `
     <div style="width: 100%; max-width: 600px">
-      <section-search @select="log($event)" @cancel="log('cancel')" :query="query" @query="query = $event" :site="site"/>
+      <section-search v-bind="{algolia, query, site}" @select="log($event)" @cancel="log('cancel')" @query="query = $event"/>
       <p>Input component:</p>
       <section-input :value="query" @input="query = $event" style="background: #f8f9fc"/>
       <p>Shortcuts section:</p>
@@ -43,9 +50,14 @@ export const modalSearch = () => ({
   components: {
     ModalSearchShowcase
   },
+  data: function () {
+    return {
+      algolia
+    }
+  },
   template: `
     <div>
-      <modal-search-showcase/>
+      <modal-search-showcase v-bind="{algolia}"/>
     </div>
   `
 })
