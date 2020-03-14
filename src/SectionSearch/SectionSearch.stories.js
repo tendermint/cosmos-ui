@@ -10,7 +10,7 @@ export default {
   component: SectionSearch
 };
 
-const algolia = {
+const algoliaConfig = {
   id: "BH4D9OD16A",
   key: "ac317234e6a42074175369b2f42e9754",
   index: "cosmos-sdk"
@@ -27,7 +27,7 @@ export const normal = () => ({
     return {
       site,
       query: null,
-      algolia
+      algoliaConfig
     }
   },
   methods: {
@@ -35,7 +35,7 @@ export const normal = () => ({
   },
   template: `
     <div style="width: 100%; max-width: 600px">
-      <section-search v-bind="{algolia, query, site}" @select="log($event)" @cancel="log('cancel')" @query="query = $event"/>
+      <section-search v-bind="{algoliaConfig, query, site}" @select="log($event)" @cancel="log('cancel')" @query="query = $event"/>
       <p>Input component:</p>
       <section-input :value="query" @input="query = $event" style="background: #f8f9fc"/>
       <p>Shortcuts section:</p>
@@ -57,7 +57,7 @@ export const modalSearch = () => ({
   },
   template: `
     <div>
-      <modal-search-showcase v-bind="{algolia}"/>
+      <modal-search-showcase v-bind="{algoliaConfig}"/>
     </div>
   `
 })
