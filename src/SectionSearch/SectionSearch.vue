@@ -53,6 +53,7 @@ import SectionShortcuts from "./SectionShortcuts.vue"
 import SectionResultsEmpty from "./SectionResultsEmpty.vue"
 import SectionInput from "./SectionInput.vue"
 import SectionResultsList from "./SectionResultsList.vue"
+import algoliasearch from 'algoliasearch';
 
 export default {
   props: {

@@ -28,6 +28,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
+    "algoliasearch": "^4.1.0",
     "clipboard-copy": "^3.1.0",
     "fuse.js": "^3.4.6",
     "hotkeys-js": "^3.7.3",
