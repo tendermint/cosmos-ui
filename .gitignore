@@ -3,5 +3,5 @@ dist/
 npm-debug.log
 .storybook-dist
 .DS_Store
-.netlify
 .vscode
+.now

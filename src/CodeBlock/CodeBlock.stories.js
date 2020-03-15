@@ -12,6 +12,7 @@ export const normal = () => ({
     return {
       data,
       url: "https://github.com/cosmos/sdk-tutorials/blob/c6754a1e313eb1ed973c5c91dcc606f2fd288811/deeply/nested/hidden/directory/go.mod#L1-L18",
+      base64: "Ly8gVXBkYXRlIHRoZSB2YWxpZGF0b3Igc2V0CmZ1bmMgKGFwcCAqUGVyc2lzdGVudEtWU3RvcmVBcHBsaWNhdGlvbikgRW5kQmxvY2socmVxIHR5cGVzLlJlcXVlc3RFbmRCbG9jaykgdHlwZXMuUmVzcG9uc2VFbmRCbG9jayB7CglyZXR1cm4gdHlwZXMuUmVzcG9uc2VFbmRCbG9ja3tWYWxpZGF0b3JVcGRhdGVzOiBhcHAuVmFsVXBkYXRlc30KfQo="
     }
   },
   template: `
@@ -20,8 +21,10 @@ export const normal = () => ({
       <code-block :value="data.short"/>
       <p>Multiline snippet with syntax highlighting:</p>
       <code-block :value="data.medium" language="go"/>
-      <p>Multiline snippet with syntax highlighting and expand button:</p>
-      <code-block :value="data.long" :url="url" language="go"/>
+      <p>Multiline snippet with an expand button:</p>
+      <code-block :value="data.long" :url="url" language="xyz"/>
+      <p>Base64:</p>
+      <code-block :base64="base64" language="go"/>
     </div>
   `
 });
