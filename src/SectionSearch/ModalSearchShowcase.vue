@@ -2,7 +2,7 @@
   <div>
     <button @click="visible = !visible">Open sidebar</button>
     <modal-sheet v-bind="{...modalProps}" :visible="visible" @visible="visible = $event">
-      <section-search v-bind="{algolia, query, site}" @cancel="visible = false" @query="query = $event"/>
+      <section-search v-bind="{algoliaConfig, query, site}" @cancel="visible = false" @query="query = $event"/>
     </modal-sheet>
   </div>
 </template>
@@ -14,7 +14,7 @@ import { default as site } from "./site.js"
 
 export default {
   props: {
-    algolia: {
+    algoliaConfig: {
       type: Object
     }
   },

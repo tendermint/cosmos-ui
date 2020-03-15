@@ -55,6 +55,69 @@ import SectionInput from "./SectionInput.vue"
 import SectionResultsList from "./SectionResultsList.vue"
 import algoliasearch from 'algoliasearch';
 
+const algoliaInit = (config) => {
+  if (config && config.id && config.key && config.index) {
+    const algoliaClient = algoliasearch(config.id, config.key)
+    const algolia = algoliaClient.initIndex(config.index)
+    return algolia
+  } else {
+    return false
+  }
+}
+
+const fuseInit = (site) => {
+  return new Fuse(
+    site.pages
+      .map(doc => {
+        return {
+          key: doc.key,
+          title: doc.title,
+          headers: doc.headers && doc.headers.map(h => h.title).join(" "),
+          description: doc.frontmatter.description,
+          path: doc.path
+        };
+      })
+      .filter(doc => {
+        return !(
+          Object.keys(site.locales || {}).indexOf(
+            doc.path.split("/")[1]
+          ) > -1
+        );
+      }),
+    {
+      keys: ["title", "headers", "description", "path"],
+      shouldSort: true,
+      includeScore: true,
+      includeMatches: true
+    }
+  );
+}
+
+const fuseFormat = (results) => {
+  return results.map(result => {
+    return {
+      title: result.item && result.item.title && md(result.item.title),
+      desc: result.item && result.item.description && md(result.item.description),
+      id: result.item && result.item.key
+    };
+  });
+}
+
+const algoliaFormat = (results) => {
+  return results.map(result => {
+    return {
+      title: Object.values(result.hierarchy).filter(e => e).slice(-1)[0],
+      desc: result.content,
+      id: result.url
+    }
+  })
+}
+
+const md = string => {
+  const md = new MarkdownIt({ html: true, linkify: true });
+  return `<div>${md.renderInline(string)}</div>`;
+}
+
 export default {
   props: {
     visible: {
@@ -65,6 +128,9 @@ export default {
       type: String
     },
     site: {
+      type: Object
+    },
+    algoliaConfig: {
       type: Object
     }
   },
@@ -78,6 +144,7 @@ export default {
     return {
       results: null,
       fuse: null,
+      algolia: null,
       selectedIndex: null,
       searchInFlight: null
     };
@@ -107,33 +174,8 @@ export default {
       this.inputKeypress(e)
       e.preventDefault();
     });
-    this.fuse = new Fuse(
-      this.site.pages
-        .map(doc => {
-          return {
-            key: doc.key,
-            title: doc.title,
-            headers: doc.headers && doc.headers.map(h => h.title).join(" "),
-            description: doc.frontmatter.description,
-            path: doc.path
-          };
-        })
-        .filter(doc => {
-          return !(
-            Object.keys(this.site.locales || {}).indexOf(
-              doc.path.split("/")[1]
-            ) > -1
-          );
-        }),
-      {
-        keys: ["title", "headers", "description", "path"],
-        shouldSort: true,
-        includeScore: true,
-        includeMatches: true
-      }
-    );
-    if (this.$refs.search) this.$refs.search.focus();
-    this.search();
+    this.algolia = algoliaInit(this.algoliaConfig)
+    this.fuse = fuseInit(this.site)
   },
   methods: {
     querySet(string) {
@@ -159,21 +201,14 @@ export default {
         this.selectedIndex = 0
       }
     },
-    md: string => {
-      const md = new MarkdownIt({ html: true, linkify: true });
-      return `<div>${md.renderInline(string)}</div>`;
-    },
-    search(query) {
+    async search(query) {
       this.searchInFlight = false
       if (!query) return;
-      const fuseResults = this.fuse.search(query).map(result => {
-        return {
-          title: result.item && result.item.title && this.md(result.item.title),
-          desc: result.item && result.item.description && this.md(result.item.description),
-          id: result.item && result.item.key
-        };
-      });
-      this.results = fuseResults;
+      if (this.algolia) {
+        this.results = algoliaFormat((await this.algolia.search(query)).hits)
+      } else {
+        this.results = fuseFormat(this.fuse.search(query))
+      }
     },
   }
 };
