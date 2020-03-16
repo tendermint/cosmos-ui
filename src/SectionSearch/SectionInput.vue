@@ -84,6 +84,9 @@ export default {
     value: {
       type: String
     }
+  },
+  mounted() {
+    if (this.$refs.search) this.$refs.search.focus()
   }
 }
 </script>

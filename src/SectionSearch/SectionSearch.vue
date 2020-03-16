@@ -108,7 +108,7 @@ const algoliaFormat = (results) => {
     return {
       title: Object.values(result.hierarchy).filter(e => e).slice(-1)[0],
       desc: result.content,
-      id: result.url
+      url: result.url
     }
   })
 }
@@ -176,6 +176,7 @@ export default {
     });
     this.algolia = algoliaInit(this.algoliaConfig)
     this.fuse = fuseInit(this.site)
+    this.search(this.query)
   },
   methods: {
     querySet(string) {
