@@ -14,7 +14,7 @@
           :selected="selectedIndex"
           :value="results"
         />
-        <section-shortcuts v-else-if="!query && !searchInFlight"/>
+        <section-shortcuts v-else-if="!query && searchInFlight"/>
         <section-results-empty
           v-else-if="query && !resultsAvailable && !searchInFlight"
           @query="querySet($event)"
@@ -203,10 +203,11 @@ export default {
       }
     },
     async search(query) {
-      this.searchInFlight = false
+      this.searchInFlight = true
       if (!query) return;
       if (this.algolia) {
         this.results = algoliaFormat((await this.algolia.search(query)).hits)
+        this.searchInFlight = false
       } else {
         this.results = fuseFormat(this.fuse.search(query))
       }
