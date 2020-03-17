@@ -25,7 +25,11 @@
   flex-grow: 1;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-family: var(--ds-font-family, sans-serif);
+  overflow-x: hidden;
+  word-break: break-all;
 }
 .results__noresults {
   display: flex;
@@ -42,6 +46,7 @@
   color: rgba(22,25,49,0.65);
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 .results__noresults__p {
   color: rgba(22,25,49,0.65);

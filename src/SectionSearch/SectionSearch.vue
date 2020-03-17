@@ -14,7 +14,7 @@
           :selected="selectedIndex"
           :value="results"
         />
-        <section-shortcuts v-else-if="!query && searchInFlight"/>
+        <section-shortcuts v-else-if="!query"/>
         <section-results-empty
           v-else-if="query && !resultsAvailable && !searchInFlight"
           @query="querySet($event)"
@@ -120,10 +120,6 @@ const md = string => {
 
 export default {
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
     query: {
       type: String
     },
@@ -152,12 +148,6 @@ export default {
   watch: {
     query() {
       this.search(this.query)
-    },
-    visible(becomesVisible) {
-      const search = this.$refs.search;
-      if (becomesVisible && search) {
-        search.select();
-      }
     }
   },
   computed: {
