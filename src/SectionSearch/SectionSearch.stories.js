@@ -52,7 +52,7 @@ export const modalSearch = () => ({
   },
   data: function () {
     return {
-      algolia
+      algoliaConfig
     }
   },
   template: `
