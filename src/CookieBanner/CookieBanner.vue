@@ -4,8 +4,8 @@
       <div class="banner-wrapper" v-if="show">
         <div class="wrapper">
           <div class="message">By using this website, you agree to our <a href="https://www.cookiesandyou.com" target="_blank" rel="noopener" style="color: #505FFF;">Cookie Policy</a>.</div>
-            <div class="box">
-              <span class="icon-cross" @click="close">
+            <div class="box" @click="close">
+              <span class="icon-cross">
               <svg
                 width="16"
                 height="16"
@@ -128,16 +128,16 @@ export default {
   flex-direction: column;
   padding: 0;
   position: relative;
+  cursor: pointer;
 }
 
 .icon-cross {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
-.icon-cross:hover {
+.box:hover .icon-cross {
   height: 2rem;
   width: 2rem;
   background-color: #EFF0F5;
@@ -145,7 +145,7 @@ export default {
   transition: background-color 0.2s;
 }
 
-.icon-cross:hover path {
+.box:hover path {
   stroke: #686A79;
   transition: stroke 0.2s;
 }
