@@ -3,30 +3,65 @@
     <div class="container">
       <div class="wrapper">
         <div class="icon">
-          <div>
-            <icon-letter-heart class="icon__icon"/>
-          </div>
+          <icon-letter-heart class="icon__icon" v-if="state === 'default'"/>
+          <icon-paper-plane class="icon__icon icon__icon__active" v-if="state === 'success'"/>
+          <icon-error class="icon__icon icon__icon__error" v-if="state === 'error'"/>
         </div>
-        <div class="h1">
+        <div class="h1" v-if="state === 'success'">
+          Thanks! Now check your inbox.
+        </div>
+        <div class="h1" v-else-if="state === 'error'">
+          Uh oh! Something went wrong.
+        </div>
+        <div class="h1" v-else>
           Stay tuned for GoZ updates
         </div>
-        <div class="p">
+        <div class="p" v-if="state === 'success'">
+          You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
+        </div>
+        <div class="p" v-else-if="state === 'error'">
+          Try refreshing the page and submitting your email address again.
+        </div>
+        <div class="p" v-else>
           More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
         </div>
-        <div class="form__wrapper">
-          <div class="form">
-            <div class="form__input">
-              <input class="form__input__input" type="text" placeholder="Your email">
-            </div>
-            <text-button class="form__button" size="m">
-              <div class="form__button__content">
-                Get updates
-                <icon-arrow-right class="form__button__icon"/>
+        <div class="form__wrapper" v-if="state === 'default'">
+          <form :action="url" method="POST" target="_blank" rel="noreferrer noopener">
+            <div class="form">
+              <div class="form__input">
+                <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
               </div>
-            </text-button>
+              <text-button type="submit" @click.native="submit" :disabled="!emailValid" class="form__button" size="m">
+                <div class="form__button__content">
+                  Get updates
+                  <icon-arrow-right class="form__button__icon"/>
+                </div>
+              </text-button>
+            </div>
+            <div class="form__p">
+              You can unsubscribe at any time.
+            </div>
+            <input type="hidden" name="submitType" value="optinCustomView"/>
+            <input type="hidden" name="lD" value="16352f88325b24db"/>
+            <input type="hidden" name="emailReportId" value=""/>
+            <input type="hidden" name="zx" value="129a50c11"/>
+            <input type="hidden" name="oldListIds" value=""/>
+            <input type="hidden" name="mode" value="OptinCreateView"/>
+            <input type="hidden" name="zcld" value="16352f88325b24db"/>
+            <input type="hidden" name="zc_Url" value="zcs1.maillist-manage.com"/>
+            <input type="hidden" name="new_optin_response_in" value="1"/>
+            <input type="hidden" name="duplicate_optin_response_in" value="1"/>
+            <input type="hidden" name="zc_formIx" value="4ef47fbb86ab66681d4cb3275283cf70ab16e7ccaa8dd327"/>
+            <input type="hidden" name="scriptless" value="yes"/>
+            <input type="hidden" name="zcvers" value="2.0"/>
+          </form>
+        </div>
+        <div class="box" v-else-if="state === 'success'">
+          <div class="box__h1">
+            Don’t see the confirmation email yet?
           </div>
-          <div class="form__p">
-            You can unsubscribe at any time.
+          <div class="box__p">
+            It might be in your spam folder. If so, make sure to mark it as “not spam”.
           </div>
         </div>
       </div>
@@ -56,6 +91,15 @@
   stroke: white;
   opacity: .32;
   width: 4rem;
+  height: 4rem;
+}
+.icon__icon.icon__icon__active {
+  stroke: #66A1FF;
+  opacity: 1;
+}
+.icon__icon.icon__icon__error {
+  stroke: #DD285E;
+  opacity: 1;
 }
 .h1 {
   text-align: center;
@@ -120,18 +164,57 @@
   margin-top: 1.5rem;
   font-size: .8125rem;
 }
+.box {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.box__h1 {
+  font-weight: 500;
+}
+.box__p {
+  color: rgba(255,255,255,.8);
+}
 </style>
 
 <script>
 import IconLetterHeart from "./IconLetterHeart"
 import IconArrowRight from "./IconArrowRight"
+import IconPaperPlane from "./IconPaperPlane"
+import IconError from "./IconError"
 import Button from "../Button/Button"
 
 export default {
   components: {
     IconLetterHeart,
     IconArrowRight,
+    IconPaperPlane,
+    IconError,
     "text-button": Button
-  }
+  },
+  data: function() {
+    return {
+      email: null,
+      state: "default",
+      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc"
+    }
+  },
+  computed: {
+    emailValid() {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(this.email))
+    }
+  },
+  methods: {
+    submit() {
+      this.state = 'success'
+    }
+  },
 }
 </script>

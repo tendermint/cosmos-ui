@@ -1,5 +1,5 @@
 <template>
-  <button :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
+  <button v-bind="{type, disabled}" :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
     <slot/>
   </button>
 </template>
@@ -22,6 +22,9 @@ button {
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: 0.02em;
+}
+button:disabled {
+  opacity: .5;
 }
 .button__size__xs {
   font-size: .75rem;
@@ -85,6 +88,20 @@ export default {
       type: String,
       default: "rgb(80, 100, 251)"
     },
+    /**
+     * Disabled
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Type
+     */
+    type: {
+      type: String,
+      default: "submit"
+    }
   },
   computed: {
     buttonStyle() {
