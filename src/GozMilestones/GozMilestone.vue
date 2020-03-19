@@ -39,9 +39,11 @@
   padding-bottom: 1.5rem;
   grid-column-start: 2;
   margin-left: 1.5rem;
+  margin-right: 1.5rem;
   display: grid;
   grid-auto-flow: column;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -62,7 +64,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 .indicator {
-  margin-right: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -111,7 +112,7 @@ export default {
       default: "Subtitle"
     },
     progress: {
-      type: String,
+      type: [String, Number],
       default: "0"
     }
   },
