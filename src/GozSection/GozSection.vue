@@ -79,7 +79,6 @@ a {
 }
 ul {
   list-style-type: disc;
-  padding: 0;
 }
 ul li {
   margin-bottom: 1.25rem;
