@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <goz-milestone v-for="item in milestoneList" v-bind="item"/>
+      <goz-milestone v-for="item in milestoneList" v-bind="item" :key="item.title"/>
     </div>
   </div>
 </template>
@@ -24,12 +24,16 @@ export default {
       milestoneList: [],
       sources: [
         ["cosmos/cosmos-sdk", 24],
+        ["cosmos/cosmos-sdk", 21],
+        ["cosmos/relayer", 2],
+        ["cosmos/ics", 5],
       ],
     }
   },
   async mounted() {
     this.sources.forEach(async source => {
-      this.milestoneList.push(await this.getMilestone.apply(null, source))
+      const milestone = await this.getMilestone.apply(null, source)
+      this.milestoneList.push(milestone)
     })
   },
   methods: {
@@ -41,11 +45,7 @@ export default {
         open = parseInt(m.open_issues),
         closed = parseInt(m.closed_issues),
         progress = Math.floor((100 * closed) / (open + closed)).toFixed(0)
-      return {
-        title,
-        repo,
-        progress
-      }
+      return { title, repo, progress }
     }
   }
 }
