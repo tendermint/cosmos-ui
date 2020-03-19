@@ -2,9 +2,17 @@
   <div class="section-content">
     <div class="container">
       <div class="content">
-        <img src="/planet.svg">
-        <div class="title">Coming to a cosmos near you</div>
-        <div class="subtitle">The Cosmos Game of Zones will officially start before summer 2020. A more exact start date will be announced when the IBC demo for GoZ nears readiness. Keep an eye on the milestones on GitHub to track progress:</div>
+        <div class="icon" v-if="this.$slots['icon']">
+          <div class="icon__icon">
+            <slot name="icon"/>
+          </div>
+        </div>
+        <div class="title" v-if="this.$slots['title']">
+          <slot name="title"/>
+        </div>
+        <div class="subtitle" v-if="this.$slots['subtitle']">
+          <slot name="subtitle"/>
+        </div>
       </div>
     </div>
   </div>
@@ -18,6 +26,7 @@
   align-self: center;
   color: white;
   background: #161931;
+  font-family: var(--ds-font-family, sans-serif);
 }
 .container {
   display: flex;
@@ -26,6 +35,17 @@
   max-width: 44rem;
   width: 100%;
   align-self: center;
+}
+.icon {
+  stroke: #BA3FD9;
+  width: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.icon__icon {
+  max-width: 4rem;
+  max-height: 4rem;
 }
 .content {
   align-self: center;
@@ -38,7 +58,7 @@
   line-height: 3.25rem;
   text-align: center;
   letter-spacing: -0.04em;
-  margin: 1.25rem 0 1.25rem 0;
+  margin: 2rem 0 2rem 0;
 }
 .subtitle {
   font-size: 1.25rem;
