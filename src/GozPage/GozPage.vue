@@ -33,7 +33,7 @@
         <template v-slot:title>
           Preparing for Game of Zones
         </template>
-        <template v-slot:subtitle>
+        <template v-slot:notes>
           <ul>
             <li>Expect to register with a Cosmos address and a chain-id for your team.</li>
             <li>You will need to be able to run a blockchain with your team.</li>
