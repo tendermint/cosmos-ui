@@ -31,10 +31,10 @@ export default {
       },
       milestoneList: [],
       sources: [
-        ["cosmos/cosmos-sdk", 24, "Cosmos SDK – GoZ Milestone", 16],
-        ["cosmos/cosmos-sdk", 21, "Cosmos SDK – IBC 1.0 Milestone", 77],
-        ["cosmos/relayer", 2, "Relayer – GoZ Milestone", 11],
-        ["cosmos/ics", 5, "IBC 1.0 – Spec Milestone", 54],
+        ["cosmos/cosmos-sdk", 24, "Cosmos SDK – GoZ Milestone"],
+        ["cosmos/cosmos-sdk", 21, "Cosmos SDK – IBC 1.0 Milestone"],
+        ["cosmos/relayer", 2, "Relayer – GoZ Milestone"],
+        ["cosmos/ics", 5, "IBC 1.0 – Spec Milestone"],
       ],
     }
   },
@@ -59,7 +59,7 @@ export default {
         return {
           title: defaultTitle,
           repo,
-          progress: defaultProgress
+          progress: null
         }
       }
     }

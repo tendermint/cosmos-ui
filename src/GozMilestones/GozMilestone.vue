@@ -7,7 +7,7 @@
           <div class="h1">{{title}}</div>
           <div class="h2">{{repo}}</div>
         </div>
-        <div class="indicator">
+        <div class="indicator" v-if="progress">
           <div class="progress" :style="{'--progress-bar-width': `${progress}%`}">
             <div class="progress__bar"></div>
           </div>
