@@ -85,6 +85,7 @@ ul li {
 }
 ul ul {
   list-style-type: none;
+  padding: 0;
 }
 ul ul li {
   margin: 1.25rem auto 1.25rem auto;
