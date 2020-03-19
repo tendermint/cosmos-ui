@@ -41,19 +41,25 @@
             <div class="form__p">
               You can unsubscribe at any time.
             </div>
-            <input type="hidden" name="submitType" value="optinCustomView"/>
-            <input type="hidden" name="lD" value="16352f88325b24db"/>
-            <input type="hidden" name="emailReportId" value=""/>
-            <input type="hidden" name="zx" value="129a50c11"/>
-            <input type="hidden" name="oldListIds" value=""/>
-            <input type="hidden" name="mode" value="OptinCreateView"/>
-            <input type="hidden" name="zcld" value="16352f88325b24db"/>
-            <input type="hidden" name="zc_Url" value="zcs1.maillist-manage.com"/>
-            <input type="hidden" name="new_optin_response_in" value="1"/>
-            <input type="hidden" name="duplicate_optin_response_in" value="1"/>
-            <input type="hidden" name="zc_formIx" value="4ef47fbb86ab66681d4cb3275283cf70ab16e7ccaa8dd327"/>
+            <input type="hidden" id="fieldBorder" value="">
+            <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" onload="">
+            <input type="hidden" name="viewFrom" id="viewFrom" value="URL_ACTION">
+            <input type="hidden" id="submitType" name="submitType" value="optinCustomView">
+            <input type="hidden" id="lD" name="lD" value="16352f8832928bf9">
+            <input type="hidden" name="emailReportId" id="emailReportId" value="">
+            <input type="hidden" name="zx" id="cmpZuid" value="129a50c11">
+            <input type="hidden" name="zcvers" value="3.0">
+            <input type="hidden" name="oldListIds" id="allCheckedListIds" value="">
+            <input type="hidden" id="mode" name="mode" value="OptinCreateView">
+            <input type="hidden" id="zcld" name="zcld" value="16352f8832928bf9">
+            <input type="hidden" id="zctd" name="zctd" value="">
+            <input type="hidden" id="document_domain" value="">
+            <input type="hidden" id="zc_Url" value="foud.maillist-manage.com">
+            <input type="hidden" id="new_optin_response_in" value="0">
+            <input type="hidden" id="duplicate_optin_response_in" value="0">
+            <input type="hidden" id="zc_formIx" name="zc_formIx" value="4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575">
+            <input type="hidden" id="secretid" value="6LdNeDUUAAAAAG5l7cJfv1AA5OKLslkrOa_xXxLs">
             <input type="hidden" name="scriptless" value="yes"/>
-            <input type="hidden" name="zcvers" value="2.0"/>
           </form>
         </div>
         <div class="box" v-show="state === 'success'">
