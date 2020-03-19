@@ -1,73 +1,75 @@
 <template>
   <div>
-    <div class="container">
-      <div class="wrapper">
-        <div class="icon">
-          <icon-letter-heart class="icon__icon" v-if="state === 'default'"/>
-          <icon-paper-plane class="icon__icon icon__icon__active" v-if="state === 'success'"/>
-          <icon-error class="icon__icon icon__icon__error" v-if="state === 'error'"/>
-        </div>
-        <div class="h1" v-if="state === 'success'">
-          Thanks! Now check your inbox.
-        </div>
-        <div class="h1" v-else-if="state === 'error'">
-          Uh oh! Something went wrong.
-        </div>
-        <div class="h1" v-else>
-          Stay tuned for GoZ updates
-        </div>
-        <div class="p" v-if="state === 'success'">
-          You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
-        </div>
-        <div class="p" v-else-if="state === 'error'">
-          Try refreshing the page and submitting your email address again.
-        </div>
-        <div class="p" v-else>
-          More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
-        </div>
-        <div class="form__wrapper" v-show="state === 'default'">
-          <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit="submit">
-            <div class="form">
-              <div class="form__input">
-                <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
-              </div>
-              <text-button type="submit" :disabled="!emailValid" class="form__button" size="m">
-                <div class="form__button__content">
-                  Get updates
-                  <icon-arrow-right class="form__button__icon"/>
-                </div>
-              </text-button>
-            </div>
-            <div class="form__p">
-              You can unsubscribe at any time.
-            </div>
-            <input type="hidden" id="fieldBorder" value="">
-            <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" onload="">
-            <input type="hidden" name="viewFrom" id="viewFrom" value="URL_ACTION">
-            <input type="hidden" id="submitType" name="submitType" value="optinCustomView">
-            <input type="hidden" id="lD" name="lD" value="16352f8832928bf9">
-            <input type="hidden" name="emailReportId" id="emailReportId" value="">
-            <input type="hidden" name="zx" id="cmpZuid" value="129a50c11">
-            <input type="hidden" name="zcvers" value="3.0">
-            <input type="hidden" name="oldListIds" id="allCheckedListIds" value="">
-            <input type="hidden" id="mode" name="mode" value="OptinCreateView">
-            <input type="hidden" id="zcld" name="zcld" value="16352f8832928bf9">
-            <input type="hidden" id="zctd" name="zctd" value="">
-            <input type="hidden" id="document_domain" value="">
-            <input type="hidden" id="zc_Url" value="foud.maillist-manage.com">
-            <input type="hidden" id="new_optin_response_in" value="0">
-            <input type="hidden" id="duplicate_optin_response_in" value="0">
-            <input type="hidden" id="zc_formIx" name="zc_formIx" value="4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575">
-            <input type="hidden" id="secretid" value="6LdNeDUUAAAAAG5l7cJfv1AA5OKLslkrOa_xXxLs">
-            <input type="hidden" name="scriptless" value="yes"/>
-          </form>
-        </div>
-        <div class="box" v-show="state === 'success'">
-          <div class="box__h1">
-            Don’t see the confirmation email yet?
+    <div class="wrapper">
+      <div class="container">
+        <div class="section">
+          <div class="icon">
+            <icon-letter-heart class="icon__icon" v-if="state === 'default'"/>
+            <icon-paper-plane class="icon__icon icon__icon__active" v-if="state === 'success'"/>
+            <icon-error class="icon__icon icon__icon__error" v-if="state === 'error'"/>
           </div>
-          <div class="box__p">
-            It might be in your spam folder. If so, make sure to mark it as “not spam”.
+          <div class="h1" v-if="state === 'success'">
+            Thanks! Now check your inbox.
+          </div>
+          <div class="h1" v-else-if="state === 'error'">
+            Uh oh! Something went wrong.
+          </div>
+          <div class="h1" v-else>
+            Stay tuned for GoZ updates
+          </div>
+          <div class="p" v-if="state === 'success'">
+            You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
+          </div>
+          <div class="p" v-else-if="state === 'error'">
+            Try refreshing the page and submitting your email address again.
+          </div>
+          <div class="p" v-else>
+            More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
+          </div>
+          <div class="form__wrapper" v-show="state === 'default'">
+            <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit="submit">
+              <div class="form">
+                <div class="form__input">
+                  <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
+                </div>
+                <text-button type="submit" :disabled="!emailValid" class="form__button" size="m">
+                  <div class="form__button__content">
+                    Get updates
+                    <icon-arrow-right class="form__button__icon"/>
+                  </div>
+                </text-button>
+              </div>
+              <div class="form__p">
+                You can unsubscribe at any time.
+              </div>
+              <input type="hidden" id="fieldBorder" value="">
+              <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" onload="">
+              <input type="hidden" name="viewFrom" id="viewFrom" value="URL_ACTION">
+              <input type="hidden" id="submitType" name="submitType" value="optinCustomView">
+              <input type="hidden" id="lD" name="lD" value="16352f8832928bf9">
+              <input type="hidden" name="emailReportId" id="emailReportId" value="">
+              <input type="hidden" name="zx" id="cmpZuid" value="129a50c11">
+              <input type="hidden" name="zcvers" value="3.0">
+              <input type="hidden" name="oldListIds" id="allCheckedListIds" value="">
+              <input type="hidden" id="mode" name="mode" value="OptinCreateView">
+              <input type="hidden" id="zcld" name="zcld" value="16352f8832928bf9">
+              <input type="hidden" id="zctd" name="zctd" value="">
+              <input type="hidden" id="document_domain" value="">
+              <input type="hidden" id="zc_Url" value="foud.maillist-manage.com">
+              <input type="hidden" id="new_optin_response_in" value="0">
+              <input type="hidden" id="duplicate_optin_response_in" value="0">
+              <input type="hidden" id="zc_formIx" name="zc_formIx" value="4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575">
+              <input type="hidden" id="secretid" value="6LdNeDUUAAAAAG5l7cJfv1AA5OKLslkrOa_xXxLs">
+              <input type="hidden" name="scriptless" value="yes"/>
+            </form>
+          </div>
+          <div class="box" v-show="state === 'success'">
+            <div class="box__h1">
+              Don’t see the confirmation email yet?
+            </div>
+            <div class="box__p">
+              It might be in your spam folder. If so, make sure to mark it as “not spam”.
+            </div>
           </div>
         </div>
       </div>
@@ -76,6 +78,10 @@
 </template>
 
 <style scoped>
+.wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .container {
   background-color: #2E3148;
   color: white;
@@ -83,8 +89,11 @@
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
   border-radius: .75rem;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.wrapper {
+.section {
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;

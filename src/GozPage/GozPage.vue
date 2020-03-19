@@ -1,0 +1,75 @@
+<template>
+  <div>
+    <div class="container">
+      <goz-section>
+        <template v-slot:icon>
+          <icon-planet/>
+        </template>
+        <template v-slot:title>
+          Coming to a cosmos near you
+        </template>
+        <template v-slot:subtitle>
+          <p>The Cosmos Game of Zones will officially start before summer 2020. A more exact start date will be announced when the IBC demo for GoZ nears readiness.</p>
+          <p>Keep an eye on the milestones on GitHub to track progress:</p>
+        </template>
+      </goz-section>
+      <goz-milestones/>
+      <goz-newsletter-signup style="margin-top: 4rem; margin-bottom: 7rem"/>
+      <goz-section>
+        <template v-slot:icon>
+          <icon-cup/>
+        </template>
+        <template v-slot:title>
+          One competition, many winners
+        </template>
+        <template v-slot:subtitle>
+          <p>The Interchain Foundation is providing <strong>100,000 ATOM</strong> for the prize pool. Unlike last year's Game of Stakes, there won't be just one winner, and there won't be just one prize. There will be multiple prizes attached to multiple challenges.</p>
+        </template>
+      </goz-section>
+      <goz-section>
+        <template v-slot:icon>
+          <icon-calendar/>
+        </template>
+        <template v-slot:title>
+          Preparing for Game of Zones
+        </template>
+        <template v-slot:subtitle>
+          <ul>
+            <li>Expect to register with a Cosmos address and a chain-id for your team.</li>
+            <li>You will need to be able to run a blockchain with your team. Familiarize yourself with the IBC branches of the Cosmos SDK on GitHub. Note: these branches will evolve over time.</li>
+            <li>Practice sending IBC transactions between testnets with the Relayer. Follow the step-by-step instructions to run the end-to-end handshake & token transfer demo.</li>
+          </ul>
+        </template>
+      </goz-section>
+      <goz-card style="padding: 6rem 0;"/>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  background: #151831;
+}
+</style>
+
+<script>
+import GozCard from "../GozCard/GozCard"
+import GozMilestones from "../GozMilestones/GozMilestones"
+import GozNewsletterSignup from "../GozNewsletterSignup/GozNewsletterSignup"
+import GozSection from "../GozSection/GozSection"
+import IconPlanet from "../GozSection/IconPlanet"
+import IconCalendar from "../GozSection/IconCalendar"
+import IconCup from "../GozSection/IconCup"
+
+export default {
+  components: {
+    GozCard,
+    GozMilestones,
+    GozNewsletterSignup,
+    GozSection,
+    IconPlanet,
+    IconCalendar,
+    IconCup
+  }
+}
+</script>
