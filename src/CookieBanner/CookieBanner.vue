@@ -97,18 +97,16 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  background: #ffffff;
+  background: var(--white-100);
   border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
   border-image: initial;
   border-radius: 0.5rem;
 }
-
 .wrapper {
   display: flex;
 }
-
 .message {
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -118,7 +116,6 @@ export default {
   padding: 0.8125rem 0 0.8125rem 0.8125rem;
   position: relative;
 }
-
 .box {
   display: flex;
   justify-content: center;
@@ -130,36 +127,30 @@ export default {
   position: relative;
   cursor: pointer;
 }
-
 .icon-cross {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .box:hover .icon-cross {
   height: 2rem;
   width: 2rem;
-  background-color: #EFF0F5;
+  background-color: var(--grey-95);
   border-radius: 1rem;
   transition: background-color 0.2s;
 }
-
 .box:hover path {
-  stroke: #686A79;
+  stroke: var(--grey-44);
   transition: stroke 0.2s;
 }
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
-
 @media screen and (max-width: 435px) {
   .banner-wrapper {
     border-radius: 0.5rem;
@@ -167,7 +158,6 @@ export default {
     white-space: normal;
     width: 90%;
   }
-
   .message {
     font-size: 0.90rem;
     line-height: 1.125rem;
