@@ -4,12 +4,12 @@
       <component :is="`icon-${logo}`" class="icon"/>
       <div class="details">
         <div class="title">
-          <div class="h1">{{h1}}</div>
-          <div class="h2">{{h2}}</div>
+          <div class="h1">{{title}}</div>
+          <div class="h2">{{repo}}</div>
         </div>
         <div class="indicator">
           <div class="progress"></div>
-          <div class="h3">{{value}}% complete</div>
+          <div class="h3">{{progress}}% complete</div>
         </div>
       </div>
     </div>
@@ -71,15 +71,15 @@ export default {
       type: String,
       default: "sdk"
     },
-    h1: {
+    title: {
       type: String,
       default: "Title"
     },
-    h2: {
+    repo: {
       type: String,
       default: "Subtitle"
     },
-    value: {
+    progress: {
       type: String,
       default: "0"
     }
