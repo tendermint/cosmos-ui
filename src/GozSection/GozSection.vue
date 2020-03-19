@@ -13,12 +13,19 @@
         <div class="subtitle" v-if="this.$slots['subtitle']">
           <slot name="subtitle"/>
         </div>
+        <div class="notes" v-if="this.$slots['notes']">
+          <slot name="notes"/>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+a {
+  color: #66A1FF;
+  text-decoration: none;
+}
 .section-content {
   display: flex;
   flex-direction: column;
@@ -65,26 +72,27 @@
   line-height: 1.75rem;
   color: rgba(255,255,255,0.8);
 }
-/* .section-content .container .content .notes {
+.notes {
   font-size: 1.25rem;
   line-height: 1.75rem;
   color: rgba(255,255,255,0.8);
 }
-.section-content .container .content .notes ul {
+ul {
   list-style-type: disc;
+  padding: 0;
 }
-.section-content .container .content .notes ul li {
+ul li {
   margin-bottom: 1.25rem;
 }
-.section-content .container .content .notes ul ul {
+ul ul {
   list-style-type: none;
 }
-.section-content .container .content .notes ul ul li {
+ul ul li {
   margin: 1.25rem auto 1.25rem auto;
 }
-.section-content .container .content .notes ul li.note {
+ul li.note {
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: 0.01em;
-} */
+}
 </style>

@@ -36,12 +36,12 @@
         <template v-slot:subtitle>
           <ul>
             <li>Expect to register with a Cosmos address and a chain-id for your team.</li>
-            <li>
-              <div>You will need to be able to run a blockchain with your team.</div>
-              <div>Familiarize yourself with the IBC branches of the Cosmos SDK on GitHub.</div>
-              <div>Note: these branches will evolve over time.</div>
-            </li>
-            <li>Practice sending IBC transactions between testnets with the Relayer. Follow the step-by-step instructions to run the end-to-end handshake & token transfer demo.</li>
+            <li>You will need to be able to run a blockchain with your team.</li>
+            <ul>
+              <li>Familiarize yourself with the <a href="https://github.com/cosmos/cosmos-sdk/branches/all?utf8=%E2%9C%93&query=ibc" target="_blank" rel="noreferrer noopener">IBC branches</a> of the Cosmos SDK on GitHub.</li>
+              <li class="note"><b>Note:</b>these branches will evolve over time.</li>
+            </ul>
+            <li>Practice sending IBC transactions between testnets with the Relayer. Follow the <a href="https://cosmos.network" target="_blank" rel="noreferrer noopener">step-by-step instructions</a> to run the end-to-end handshake & token transfer demo.</li>
           </ul>
         </template>
       </goz-section>
