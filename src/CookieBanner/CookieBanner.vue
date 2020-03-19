@@ -143,13 +143,17 @@ export default {
   stroke: var(--grey-44);
   transition: stroke 0.2s;
 }
-.fade-enter-active,
+
+.fade-enter-active {
+  transition: opacity 0.2s ease-out, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s cubic-bezier(0.32, 0, 0.67, 0), transform 0.3s cubic-bezier(0.32, 0, 0.67, 0);
 }
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  transform: translate(-50%, 100%);
 }
 @media screen and (max-width: 435px) {
   .banner-wrapper {
