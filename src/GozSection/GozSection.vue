@@ -23,7 +23,7 @@
 
 <style scoped>
 a {
-  color: #66A1FF;
+  color: var(--primary-light);
   text-decoration: none;
 }
 .section-content {
@@ -31,8 +31,8 @@ a {
   flex-direction: column;
   padding: 3rem;
   align-self: center;
-  color: white;
-  background: #161931;
+  color: var(--white-100);
+  background: var(--grey-14);
   font-family: var(--ds-font-family, sans-serif);
 }
 .container {
@@ -44,7 +44,7 @@ a {
   align-self: center;
 }
 .icon {
-  stroke: #BA3FD9;
+  stroke: var(--secondary);
   width: 100%;
   display: flex;
   width: 100%;
@@ -63,6 +63,7 @@ a {
   font-weight: 500;
   font-size: 2.5rem;
   line-height: 3.25rem;
+  color: var(--white-100);
   text-align: center;
   letter-spacing: -0.04em;
   margin: 2rem 0 2rem 0;
@@ -70,12 +71,12 @@ a {
 .subtitle {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--white-80);
 }
 .notes {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--white-80);
 }
 ul {
   list-style-type: disc;

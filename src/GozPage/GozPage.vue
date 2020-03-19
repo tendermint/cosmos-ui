@@ -52,10 +52,7 @@
 
 <style scoped>
 .container {
-  background: #151831;
-}
-li {
-  margin-bottom: 1.5rem;
+  background: var(--grey-14);
 }
 </style>
 

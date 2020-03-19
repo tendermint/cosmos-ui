@@ -20,7 +20,7 @@
 
 <style scoped>
 .row {
-  color: white;
+  color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   display: grid;
   grid-auto-flow: column;
@@ -30,7 +30,7 @@
   grid-column-start: 1;
   width: 4rem;
   height: 4rem;
-  fill: white;
+  fill: var(--white-100);
   opacity: .32;
   padding: 1.5rem 3rem;
 }
@@ -45,7 +45,7 @@
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--white-10);
 }
 .h1 {
   font-weight: 500;
@@ -55,13 +55,13 @@
 }
 .h2 {
   line-height: 24px;
-  color: rgba(255, 255, 255, 0.51);
+  color: var(--white-51);
 }
 .h3 {
   font-size: .875rem;
   line-height: 20px;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--white-80);
 }
 .indicator {
   display: flex;
@@ -72,14 +72,14 @@
   position: relative;
   height: .25rem;
   width: 7rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-20);
   margin-bottom: .75rem;
   border-radius: .5rem;
 }
 .progress__bar {
   height: 100%;
   width: var(--progress-bar-width, 0);
-  background: #5BC75B;
+  background: var(--success);
   border-radius: inherit;
 }
 @media screen and (max-width: 500px) {

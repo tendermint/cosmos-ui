@@ -23,13 +23,11 @@
   padding-right: 1rem;
 }
 .container {
-  background-color: #2E3148;
-  color: white;
+  background-color: var(--grey-23);
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
   border-radius: .75rem;
-  font-family: var(--ds-font-family, sans-serif);
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
@@ -40,14 +38,14 @@
   line-height: 3.25rem;
   text-align: center;
   letter-spacing: -0.04em;
-  color: #FFFFFF;
+  color: var(--white-100);
   margin-bottom: 2rem;
 }
 .p {
   font-size: 1.25rem;
   line-height: 1.75rem;
   text-align: center;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--white-80);
 }
 .footer {
   margin-top: 3rem;
@@ -62,11 +60,12 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  color: var(--white-100);
 }
 .button__icon {
   width: 2rem;
   height: 2rem;
-  fill: white;
+  fill: var(--white-100);
 }
 </style>
 

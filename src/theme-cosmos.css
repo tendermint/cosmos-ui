@@ -1,8 +1,5 @@
 body {
   --ds-background-color: rgba(22, 24, 48, 1);
-  --ds-color: black;
-  --ds-color-alt: white;
-  --ds-color-primary: #5064FB;
   --ds-font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
 
   --ds-d1-font-size: 5rem;
@@ -60,7 +57,6 @@ body {
   --ds-p2-font-size: 0.875rem;
 
   --ds-p3-font-size: 0.825rem;
-  --ds-p3-color: rgba(255,255,255,.8);
 
   --ds-caption-book-font-size: 0.8125rem;
   --ds-caption-book-line-height: 1.125rem;

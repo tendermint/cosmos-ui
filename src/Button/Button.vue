@@ -43,26 +43,27 @@ button:disabled {
   font-size: 1.5rem;
 }
 .button__style__standard {
-  color: white;
-  background: rgb(80, 100, 251);
+  color: var(--white-100);
+  background: var(--primary);
 }
 .button__style__standard:focus {
   box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
 }
 .button__style__regular {
-  background: white;
-  color: rgba(0,0,0,.875);
+  background: var(--white-100);
+  color: var(--grey-14);
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.05);
 }
 .button__style__regular:focus {
   box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
 }
 .button__style__regular:hover {
-  color: rgba(0,0,0,.5)
+  color: var(--grey-14);
+  opacity: 0.5
 }
 .button__style__danger {
-  color: white;
-  background: rgb(224, 36, 36);
+  color: var(--white-100);
+  background: var(--danger);
 }
 .button__style__danger:focus {
   box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)

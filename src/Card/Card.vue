@@ -30,7 +30,7 @@
   font-family: var(--ds-font-family, sans-serif);
   border-radius: var(--card-border-radius, 8px);
   position: relative;
-  background: white;
+  background: var(--white-100);
 }
 .card:before {
   border-radius: var(--card-border-radius, 8px);
@@ -84,18 +84,18 @@
   font-size: var(--card-title-font-size, 1rem);
   font-weight: 500;
   line-height: var(--card-title-line-height, 1.5em);
-  color: #161931;
+  color: var(--grey-14);
   margin-bottom: var(--card-title-margin-bottom, .25em);
 }
 .overline {
   font-size: .75rem;
   text-transform: uppercase;
-  color: #67697a;
+  color: var(--grey-trans-44);
   letter-spacing: 0.2em;
   margin-bottom: .3em;
 }
 .body {
-  color: rgba(22, 25, 49, 0.65);
+  color: var(--grey-trans-44);
   font-size: var(--card-body-font-size, 14px);
   line-height: var(--card-body-line-height, 1.5em);
   letter-spacing: 0.01em;
@@ -114,7 +114,7 @@
   bottom: 0;
   right: 0;
   background: white;
-  color: var(--ds-color-primary, blue);
+  color: var(--primary, blue);
   cursor: pointer;
 }
 .body__more::before {

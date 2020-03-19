@@ -83,8 +83,8 @@
   padding-right: 1rem;
 }
 .container {
-  background-color: #2E3148;
-  color: white;
+  background-color: var(--grey-23);
+  color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
@@ -103,21 +103,21 @@
   justify-content: center;
 }
 .icon__icon {
-  stroke: white;
+  stroke: var(--white-100);
   opacity: .32;
   width: 4rem;
   height: 4rem;
 }
 .icon__icon.icon__icon__active {
-  stroke: #66A1FF;
+  stroke: var(--primary-light);
   opacity: 1;
 }
 .icon__icon.icon__icon__error {
-  stroke: #DD285E;
+  stroke: var(--danger);
   opacity: 1;
 }
 .h1 {
-  color: white;
+  color: var(--white-100);
   text-align: center;
   font-size: 2rem;
   font-weight: 500;
@@ -129,7 +129,7 @@
 .p {
   text-align: center;
   line-height: 1.25;
-  color: rgba(255,255,255,.8);
+  color: var(--white-80);
 }
 .form {
   margin-top: 3rem;
@@ -143,7 +143,7 @@
 }
 .form__input__input {
   background: none;
-  border: 1px solid rgba(255,255,255,.32);
+  border: 1px solid var(--white-32);
   padding: .75rem 1rem;
   font-size: 1rem;
   font-family: var(--ds-font-family, sans-serif);
@@ -151,11 +151,11 @@
   border-radius: .25rem;
   width: 100%;
   box-sizing: border-box;
-  color: white;
+  color: var(--white-100);
 }
 .form__input__input:focus {
   outline: none;
-  border: 1px solid #66A1FF;
+  border: 1px solid var(--primary-light);
 }
 .form__button__content {
   display: grid;
@@ -167,21 +167,21 @@
   box-sizing: border-box;
 }
 .form__button__icon {
-  fill: white;
+  fill: var(--white-100);
   width: 1.5rem;
   height: 1.5rem;
 }
 .form__input__input::placeholder {
-  color: rgba(255,255,255,.51);
+  color: var(--white-51);
 }
 .form__p {
   text-align: center;
-  color: rgba(255,255,255,.51);
+  color: var(--white-51);
   margin-top: 1.5rem;
   font-size: .8125rem;
 }
 .box {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-20);
   box-sizing: border-box;
   border-radius: 8px;
   padding: 1.5rem;
@@ -195,7 +195,7 @@
   font-weight: 500;
 }
 .box__p {
-  color: rgba(255,255,255,.8);
+  color: var(--white-80);
 }
 </style>
 
