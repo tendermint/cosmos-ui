@@ -115,7 +115,7 @@ export default {
   letter-spacing: 0.01em;
   align-items: stretch;
   justify-content: center;
-  padding: 0.8125rem;
+  padding: 0.8125rem 0 0.8125rem 0.8125rem;
   position: relative;
 }
 
