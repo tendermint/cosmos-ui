@@ -3,7 +3,7 @@ body {
   --ds-color: black;
   --ds-color-alt: white;
   --ds-color-primary: #5064FB;
-  --ds-font-family: "Gotham SSm A", "Gotham SSm B", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ds-font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
 
   --ds-d1-font-size: 5rem;
   --ds-d1-font-weight: bold;
