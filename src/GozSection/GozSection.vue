@@ -66,7 +66,7 @@ a {
   color: var(--white-100);
   text-align: center;
   letter-spacing: -0.04em;
-  margin: 2rem 0 2rem 0;
+  margin: 2rem 0;
 }
 .subtitle {
   font-size: 1.25rem;
@@ -95,5 +95,17 @@ ul li.note {
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: 0.01em;
+}
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .notes {
+    font-size: 1rem;
+  }
 }
 </style>

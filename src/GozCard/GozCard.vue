@@ -67,6 +67,23 @@
   height: 2rem;
   fill: var(--white-100);
 }
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+  .h1 {
+    font-size: 1.5rem;
+  }
+  .p {
+    font-size: 1.05rem;
+  }
+  .button__size__l {
+    font-size: 1.05rem;
+  }
+  .footer {
+    margin-top: 2rem;
+  }
+}
 </style>
 
 <script>

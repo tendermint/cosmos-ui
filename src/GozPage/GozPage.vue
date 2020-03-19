@@ -39,7 +39,7 @@
             <li>You will need to be able to run a blockchain with your team.</li>
             <ul>
               <li>Familiarize yourself with the <a href="https://github.com/cosmos/cosmos-sdk/branches/all?utf8=%E2%9C%93&query=ibc" target="_blank" rel="noreferrer noopener">IBC branches</a> of the Cosmos SDK on GitHub.</li>
-              <li class="note"><b>Note:</b>these branches will evolve over time.</li>
+              <li class="note"><b>Note:</b> these branches will evolve over time.</li>
             </ul>
             <li>Practice sending IBC transactions between testnets with the Relayer. Follow the <a href="https://cosmos.network" target="_blank" rel="noreferrer noopener">step-by-step instructions</a> to run the end-to-end handshake & token transfer demo.</li>
           </ul>

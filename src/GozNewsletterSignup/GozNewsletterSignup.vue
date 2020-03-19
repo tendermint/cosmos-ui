@@ -197,6 +197,24 @@
 .box__p {
   color: var(--white-80);
 }
+@media screen and (max-width: 600px) {
+  .h1 {
+    font-size: 1.5rem;
+  }
+  .form {
+    margin-top: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .component__button {
+    margin-top: 1rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .h1 {
+    font-size: 1rem;
+  }
+}
 </style>
 
 <script>
