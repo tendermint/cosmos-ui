@@ -18,6 +18,10 @@ button {
   outline: none;
   transition: all .25s;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 .button__size__xs {
   font-size: .75rem;
