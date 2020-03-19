@@ -1,11 +1,11 @@
 <template>
-  <button v-bind="{type, disabled}" :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
+  <component class="component__button" :is="tag" v-bind="{target, type, disabled, href}" :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
     <slot/>
-  </button>
+  </component>
 </template>
 
 <style scoped>
-button {
+.component__button {
   border: none;
   font-family: var(--ds-font-family, sans-serif);
   font-size: initial;
@@ -22,6 +22,7 @@ button {
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: 0.02em;
+  text-decoration: none;
 }
 button:disabled {
   opacity: .5;
@@ -101,6 +102,27 @@ export default {
     type: {
       type: String,
       default: "submit"
+    },
+    /**
+     * Tag
+     */
+    tag: {
+      type: String,
+      default: "button"
+    },
+    /**
+     * href
+     */
+    href: {
+      type: String,
+      default: null
+    },
+    /**
+     * target
+     */
+    target: {
+      type: String,
+      default: null
     }
   },
   computed: {
