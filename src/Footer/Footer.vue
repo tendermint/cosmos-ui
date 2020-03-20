@@ -57,6 +57,7 @@ a {
 
 .header {
   display: grid;
+  gap: 1rem;
   grid-auto-flow: row;
   align-content: space-between;
   justify-content: space-between;
