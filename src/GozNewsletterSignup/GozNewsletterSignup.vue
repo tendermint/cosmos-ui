@@ -32,10 +32,13 @@
                 <div class="form__input">
                   <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
                 </div>
-                <text-button type="submit" :disabled="emailInvalid || requestInFlight" size="m">
-                  <div class="form__button__content">
+                <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
+                  <div :class="['form__button__content', `form__button__content__in-flight__${!!requestInFlight}`]">
                     Get updates
                     <icon-arrow-right class="form__button__icon"/>
+                  </div>
+                  <div class="form__button__spinner" v-if="requestInFlight">
+                    <icon-spinner/>
                   </div>
                 </text-button>
               </div>
@@ -138,6 +141,11 @@
   outline: none;
   border: 1px solid var(--primary-light);
 }
+.form__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 .form__button__content {
   display: grid;
   white-space: nowrap;
@@ -146,6 +154,23 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+}
+.form__button__content.form__button__content__in-flight__true {
+  opacity: 0
+}
+.form__button__spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
 }
 .form__button__icon {
   fill: var(--white-100);
@@ -201,6 +226,7 @@ import IconLetterHeart from "./IconLetterHeart"
 import IconArrowRight from "./IconArrowRight"
 import IconPaperPlane from "./IconPaperPlane"
 import IconError from "./IconError"
+import IconSpinner from "./IconSpinner"
 import Button from "../Button/Button"
 
 export default {
@@ -209,6 +235,7 @@ export default {
     IconArrowRight,
     IconPaperPlane,
     IconError,
+    IconSpinner,
     "text-button": Button
   },
   data: function() {
