@@ -45,7 +45,7 @@ button {
 
 .tooltip__wrapper {
   padding: 0.75em 1em;
-  background: white;
+  background: var(--white-100);
   box-shadow: 0 0.25em 1.5em rgba(0, 0, 0, 0.15);
   border-radius: 0.5em;
 }
