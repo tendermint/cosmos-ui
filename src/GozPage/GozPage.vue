@@ -2,6 +2,13 @@
   <div>
     <div class="container">
       <goz-section>
+        <template v-slot:subtitle>
+          <p>In preparation for the launch of the forthcoming <a href="https://cosmos.network/ibc">Inter-Blockchain Communication (IBC)</a> module, we are announcing Cosmos's second ever adversarial testnet challenge: Game of Zones.</p>
+          <p>This competition will create an invaluable educational opportunity and environment for the Cosmos community to learn the nuances of the IBC protocol, including exception handling and potential failure modes.</p>
+          <p>More information on this competition will be coming soon, so stay tuned for updates.</p>
+        </template>
+      </goz-section>
+      <goz-section>
         <template v-slot:icon>
           <icon-planet/>
         </template>
