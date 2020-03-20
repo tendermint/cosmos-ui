@@ -1,17 +1,19 @@
 <template>
   <div>
-    <div class="row">
-      <component :is="`icon-${logo}`" class="icon"/>
-      <div class="details">
-        <div class="title">
-          <div class="h1">{{title}}</div>
-          <div class="h2">{{repo}}</div>
-        </div>
-        <div class="indicator" v-if="progress">
-          <div class="progress" :style="{'--progress-bar-width': `${progress}%`}">
-            <div class="progress__bar"></div>
+    <div class="container">
+      <div class="row">
+        <component :is="`icon-${logo}`" class="icon"/>
+        <div class="details">
+          <div class="title">
+            <div class="h1">{{title}}</div>
+            <div class="h2">{{repo}}</div>
           </div>
-          <div class="h3">{{progress}}% complete</div>
+          <div class="indicator" v-if="progress">
+            <div class="progress" :style="{'--progress-bar-width': `${progress}%`}">
+              <div class="progress__bar"></div>
+            </div>
+            <div class="h3">{{progress}}% complete</div>
+          </div>
         </div>
       </div>
     </div>
@@ -19,6 +21,11 @@
 </template>
 
 <style scoped>
+.container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  overflow-wrap: anywhere;
+}
 .row {
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
@@ -38,8 +45,6 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   grid-column-start: 2;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
   display: grid;
   grid-auto-flow: column;
   align-items: center;

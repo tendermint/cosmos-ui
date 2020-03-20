@@ -29,7 +29,7 @@ a {
 .section-content {
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  padding: 2rem;
   align-self: center;
   color: var(--white-100);
   background: var(--grey-14);
@@ -62,7 +62,7 @@ a {
 .title {
   font-weight: 500;
   font-size: 2.5rem;
-  line-height: 3.25rem;
+  line-height: 1.3;
   color: var(--white-100);
   text-align: center;
   letter-spacing: -0.04em;
@@ -70,7 +70,7 @@ a {
 }
 .subtitle {
   font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 1.4;
   color: var(--white-80);
 }
 .notes {
@@ -80,6 +80,7 @@ a {
 }
 ul {
   list-style-type: disc;
+  padding-left: 1rem;
 }
 ul li {
   margin-bottom: 1.25rem;
