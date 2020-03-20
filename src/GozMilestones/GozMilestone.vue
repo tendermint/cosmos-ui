@@ -57,6 +57,7 @@
   font-size: 1.25rem;
   line-height: 28px;
   letter-spacing: -0.01em;
+  color: var(--white-100);
 }
 .h2 {
   line-height: 24px;
