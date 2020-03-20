@@ -208,6 +208,7 @@
   line-height: 1.25rem;
   text-align: center;
   letter-spacing: 0.01em;
+  margin-bottom: .5rem;
 }
 .box__h1 {
   font-weight: 500;
