@@ -27,12 +27,12 @@
             More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
           </div>
           <div class="form__wrapper" v-show="state === 'default'">
-            <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit="submit">
+            <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit.prevent="submit">
               <div class="form">
                 <div class="form__input">
                   <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
                 </div>
-                <text-button type="submit" :disabled="!emailValid" class="form__button" size="m">
+                <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
                   <div class="form__button__content">
                     Get updates
                     <icon-arrow-right class="form__button__icon"/>
@@ -42,25 +42,6 @@
               <div class="form__p">
                 You can unsubscribe at any time.
               </div>
-              <input type="hidden" id="fieldBorder" value="">
-              <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" onload="">
-              <input type="hidden" name="viewFrom" id="viewFrom" value="URL_ACTION">
-              <input type="hidden" id="submitType" name="submitType" value="optinCustomView">
-              <input type="hidden" id="lD" name="lD" value="16352f8832928bf9">
-              <input type="hidden" name="emailReportId" id="emailReportId" value="">
-              <input type="hidden" name="zx" id="cmpZuid" value="129a50c11">
-              <input type="hidden" name="zcvers" value="3.0">
-              <input type="hidden" name="oldListIds" id="allCheckedListIds" value="">
-              <input type="hidden" id="mode" name="mode" value="OptinCreateView">
-              <input type="hidden" id="zcld" name="zcld" value="16352f8832928bf9">
-              <input type="hidden" id="zctd" name="zctd" value="">
-              <input type="hidden" id="document_domain" value="">
-              <input type="hidden" id="zc_Url" value="foud.maillist-manage.com">
-              <input type="hidden" id="new_optin_response_in" value="0">
-              <input type="hidden" id="duplicate_optin_response_in" value="0">
-              <input type="hidden" id="zc_formIx" name="zc_formIx" value="4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575">
-              <input type="hidden" id="secretid" value="6LdNeDUUAAAAAG5l7cJfv1AA5OKLslkrOa_xXxLs">
-              <input type="hidden" name="scriptless" value="yes"/>
             </form>
           </div>
           <div class="box" v-show="state === 'success'">
@@ -218,6 +199,7 @@
 </style>
 
 <script>
+import querystring from "querystring"
 import IconLetterHeart from "./IconLetterHeart"
 import IconArrowRight from "./IconArrowRight"
 import IconPaperPlane from "./IconPaperPlane"
@@ -236,18 +218,49 @@ export default {
     return {
       email: null,
       state: "default",
-      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc"
+      requestInFlight: null,
+      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
+      formData: {
+        "zc_trackCode": "ZCFORMVIEW",
+        "viewFrom": "URL_ACTION",
+        "submitType": "optinCustomView",
+        "lD": "123",
+        "emailReportId": "",
+        "zx": "129a50c11",
+        "zcvers": "3.0",
+        "oldListIds": "",
+        "mode": "OptinCreateView",
+        "zcld": "123",
+        "zctd": "",
+        "zc_formIx": "123",
+        "scriptless": "yes"
+      }
     }
   },
   computed: {
-    emailValid() {
+    emailInvalid() {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(this.email))
+      return !re.test(String(this.email))
     }
   },
   methods: {
-    submit() {
-      this.state = 'success'
+    async submit() {
+      this.requestInFlight = true
+      const options = {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: querystring.stringify({
+          "CONTACT_EMAIL": this.email,
+          ...this.formData
+        })
+      }
+      fetch(this.url, options).then(_ => {
+        this.state = "success"
+        this.requestInFlight = false
+      })
     }
   },
 }

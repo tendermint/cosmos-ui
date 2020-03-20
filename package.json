@@ -32,6 +32,7 @@
     "clipboard-copy": "^3.1.0",
     "js-base64": "^2.5.2",
     "prismjs": "^1.19.0",
+    "querystring": "^0.2.0",
     "tiny-cookie": "^2.3.1",
     "vue": "^2.6.10"
   }
