@@ -21,7 +21,7 @@
         </template>
       </goz-section>
       <goz-milestones/>
-      <goz-newsletter-signup class="goz-newsletter-signup"/>
+      <goz-newsletter-signup class="card"/>
       <goz-section>
         <template v-slot:icon>
           <icon-cup/>
@@ -52,7 +52,7 @@
           </ul>
         </template>
       </goz-section>
-      <goz-card style="padding: 3rem 0 6rem;"/>
+      <goz-card class="card"/>
     </div>
   </div>
 </template>
@@ -61,13 +61,13 @@
 .container {
   background: var(--grey-14);
 }
-.goz-newsletter-signup {
-  margin-top: 4rem;
-  margin-bottom: 7rem;
+.card {
+  padding-top: 4rem;
+  padding-bottom: 7rem;
 }
 @media screen and (max-width: 500px) {
-  .goz-newsletter-signup {
-    margin-bottom: 2rem;
+  .card {
+    padding-bottom: 2rem;
   }
 }
 </style>
