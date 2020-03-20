@@ -1,11 +1,11 @@
 <template>
-  <button :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
+  <component class="component__button" :is="tag" v-bind="{target, type, disabled, href}" :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
     <slot/>
-  </button>
+  </component>
 </template>
 
 <style scoped>
-button {
+.component__button {
   border: none;
   font-family: var(--ds-font-family, sans-serif);
   font-size: initial;
@@ -18,6 +18,14 @@ button {
   outline: none;
   transition: all .25s;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+button:disabled {
+  opacity: .5;
 }
 .button__size__xs {
   font-size: .75rem;
@@ -35,26 +43,27 @@ button {
   font-size: 1.5rem;
 }
 .button__style__standard {
-  color: white;
-  background: rgb(80, 100, 251);
+  color: var(--white-100);
+  background: var(--primary);
 }
 .button__style__standard:focus {
   box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
 }
 .button__style__regular {
-  background: white;
-  color: rgba(0,0,0,.875);
+  background: var(--white-100);
+  color: var(--grey-14);
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.05);
 }
 .button__style__regular:focus {
   box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
 }
 .button__style__regular:hover {
-  color: rgba(0,0,0,.5)
+  color: var(--grey-14);
+  opacity: 0.5
 }
 .button__style__danger {
-  color: white;
-  background: rgb(224, 36, 36);
+  color: var(--white-100);
+  background: var(--danger);
 }
 .button__style__danger:focus {
   box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)
@@ -81,6 +90,41 @@ export default {
       type: String,
       default: "rgb(80, 100, 251)"
     },
+    /**
+     * Disabled
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Type
+     */
+    type: {
+      type: String,
+      default: "submit"
+    },
+    /**
+     * Tag
+     */
+    tag: {
+      type: String,
+      default: "button"
+    },
+    /**
+     * href
+     */
+    href: {
+      type: String,
+      default: null
+    },
+    /**
+     * target
+     */
+    target: {
+      type: String,
+      default: null
+    }
   },
   computed: {
     buttonStyle() {
