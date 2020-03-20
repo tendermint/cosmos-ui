@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="container">
         <div class="h1">Join the discussion</div>
-        <div class="p">Get involved in the Game of Zones Riot chat room.</div>
+        <div class="p">Get involved in the Game of Zones chat room.</div>
         <div class="footer">
           <text-button tag="a" href="https://discord.gg/cr7N47p" target="_blank" size="l">
             <div class="button">
