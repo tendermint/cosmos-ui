@@ -88,7 +88,7 @@
 
 <script>
 import Button from "../Button/Button"
-import IconArrowRight from "./IconArrowRight"
+import IconArrowRight from "./../Icons/IconArrowRight"
 
 export default {
   components: {

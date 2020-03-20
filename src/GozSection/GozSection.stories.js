@@ -1,6 +1,6 @@
-import GozSection from "./GozSection.vue";
-import IconPlanet from "./IconPlanet.vue";
-import IconCalendar from "./IconCalendar.vue";
+import GozSection from "./GozSection";
+import IconPlanet from "./../Icons/IconPlanet";
+import IconCalendar from "./../Icons/IconCalendar";
 
 export default {
   title: "GozSection",

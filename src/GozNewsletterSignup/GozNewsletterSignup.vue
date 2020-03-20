@@ -247,11 +247,11 @@
 
 <script>
 import querystring from "querystring"
-import IconLetterHeart from "./IconLetterHeart"
-import IconArrowRight from "./IconArrowRight"
-import IconPaperPlane from "./IconPaperPlane"
-import IconError from "./IconError"
-import IconSpinner from "./IconSpinner"
+import IconLetterHeart from "./../Icons/IconLetterHeart"
+import IconArrowRight from "./../Icons/IconArrowRight"
+import IconPaperPlane from "./../Icons/IconPaperPlane"
+import IconError from "./../Icons/IconError"
+import IconSpinner from "./../Icons/IconSpinner"
 import Button from "../Button/Button"
 
 export default {

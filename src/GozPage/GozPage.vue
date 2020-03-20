@@ -77,9 +77,9 @@ import GozCard from "../GozCard/GozCard"
 import GozMilestones from "../GozMilestones/GozMilestones"
 import GozNewsletterSignup from "../GozNewsletterSignup/GozNewsletterSignup"
 import GozSection from "../GozSection/GozSection"
-import IconPlanet from "../GozSection/IconPlanet"
-import IconCalendar from "../GozSection/IconCalendar"
-import IconCup from "../GozSection/IconCup"
+import IconPlanet from "../Icons/IconPlanet"
+import IconCalendar from "../Icons/IconCalendar"
+import IconCup from "../Icons/IconCup"
 
 export default {
   components: {

@@ -97,8 +97,8 @@
 </style>
 
 <script>
-import IconSdk from "./IconSdk"
-import IconIbc from "./IconIbc"
+import IconSdk from "./../Icons/IconSdk"
+import IconIbc from "./../Icons/IconIbc"
 
 export default {
   components: {

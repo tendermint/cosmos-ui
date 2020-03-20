@@ -8,3 +8,15 @@ export { default as GozNewsletterSignup } from "./GozNewsletterSignup/GozNewslet
 export { default as GozCard } from "./GozCard/GozCard";
 export { default as GozSection } from "./GozSection/GozSection";
 export { default as GozMilestones } from "./GozMilestones/GozMilestones";
+
+export { default as IconArrowRight } from "./Icons/IconArrowRight";
+export { default as IconCalendar } from "./Icons/IconCalendar";
+export { default as IconCup } from "./Icons/IconCup";
+export { default as IconError } from "./Icons/IconError";
+export { default as IconIbc } from "./Icons/IconIbc";
+export { default as IconLetterHeart } from "./Icons/IconLetterHeart";
+export { default as IconPaperPlane } from "./Icons/IconPaperPlane";
+export { default as IconPlanet } from "./Icons/IconPlanet";
+export { default as IconPlus } from "./Icons/IconPlus";
+export { default as IconSdk } from "./Icons/IconSdk";
+export { default as IconSpinner } from "./Icons/IconSpinner";
