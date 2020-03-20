@@ -39,7 +39,7 @@
   height: 4rem;
   fill: var(--white-100);
   opacity: .32;
-  padding: 1.5rem 3rem;
+  margin: 1.5rem 3rem;
 }
 .details {
   padding-top: 1.5rem;
