@@ -32,7 +32,7 @@
                 <div class="form__input">
                   <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
                 </div>
-                <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
+                <text-button type="submit" :disabled="emailInvalid || requestInFlight" size="m">
                   <div class="form__button__content">
                     Get updates
                     <icon-arrow-right class="form__button__icon"/>
@@ -184,11 +184,8 @@
   }
   .form {
     margin-top: 2rem;
-    display: flex;
-    flex-flow: column nowrap;
-  }
-  .form__button {
-    margin-top: 1rem;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
   }
 }
 @media screen and (max-width: 320px) {
