@@ -21,7 +21,7 @@
         </template>
       </goz-section>
       <goz-milestones/>
-      <goz-newsletter-signup style="margin-top: 4rem; margin-bottom: 7rem"/>
+      <goz-newsletter-signup class="goz-newsletter-signup"/>
       <goz-section>
         <template v-slot:icon>
           <icon-cup/>
@@ -60,6 +60,15 @@
 <style scoped>
 .container {
   background: var(--grey-14);
+}
+.goz-newsletter-signup {
+  margin-top: 4rem;
+  margin-bottom: 7rem;
+}
+@media screen and (max-width: 500px) {
+  .goz-newsletter-signup {
+    margin-bottom: 2rem;
+  }
 }
 </style>
 
