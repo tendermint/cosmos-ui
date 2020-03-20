@@ -57,8 +57,10 @@
   font-size: 1.25rem;
   line-height: 28px;
   letter-spacing: -0.01em;
+  color: var(--white-100);
 }
 .h2 {
+  font-size: 1rem;
   line-height: 24px;
   color: var(--white-51);
 }
@@ -95,8 +97,8 @@
 </style>
 
 <script>
-import IconSdk from "./IconSdk"
-import IconIbc from "./IconIbc"
+import IconSdk from "./../Icons/IconSdk"
+import IconIbc from "./../Icons/IconIbc"
 
 export default {
   components: {

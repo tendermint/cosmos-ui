@@ -42,7 +42,7 @@ a {
 
 .component__footer__container {
   font-family: var(--ds-font-family, "Helvetica");
-  background-color: var(--ds-background-color, white);
+  background-color: var(--grey-14, white);
   color: var(--white-100, white);
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -236,7 +236,7 @@ const iconUnknown =
  * 
  * `--ds-font-family`
  * 
- * `--ds-background-color`
+ * `--grey-14`
  * 
  * `--white-100` — main text color.
  * 
