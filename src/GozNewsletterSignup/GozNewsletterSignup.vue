@@ -187,6 +187,9 @@
     display: flex;
     flex-flow: column nowrap;
   }
+  .form__button {
+    margin-top: 1rem;
+  }
 }
 @media screen and (max-width: 320px) {
   .h1 {
