@@ -60,6 +60,7 @@
   color: var(--white-100);
 }
 .h2 {
+  font-size: 1rem;
   line-height: 24px;
   color: var(--white-51);
 }
