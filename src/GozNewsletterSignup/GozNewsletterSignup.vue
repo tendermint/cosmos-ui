@@ -3,58 +3,70 @@
     <div class="wrapper">
       <div class="container">
         <div class="section">
-          <div class="icon">
-            <icon-letter-heart class="icon__icon" v-if="state === 'default'"/>
-            <icon-paper-plane class="icon__icon icon__icon__active" v-if="state === 'success'"/>
-            <icon-error class="icon__icon icon__icon__error" v-if="state === 'error'"/>
-          </div>
-          <div class="h1" v-if="state === 'success'">
-            Thanks! Now check your inbox.
-          </div>
-          <div class="h1" v-else-if="state === 'error'">
-            Uh oh! Something went wrong.
-          </div>
-          <div class="h1" v-else>
-            Stay tuned for GoZ updates
-          </div>
-          <div class="p" v-if="state === 'success'">
-            You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
-          </div>
-          <div class="p" v-else-if="state === 'error'">
-            Try refreshing the page and submitting your email address again.
-          </div>
-          <div class="p" v-else>
-            More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
-          </div>
-          <div class="form__wrapper" v-show="state === 'default'">
-            <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit.prevent="submit">
-              <div class="form">
-                <div class="form__input">
-                  <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
+          <transition name="fade" mode="out-in">
+            <div v-if="state === 'success'" key="success">
+              <div class="icon">
+                <icon-paper-plane class="icon__icon icon__icon__active"/>
+              </div>
+              <div class="h1">
+                Thanks! Now check your inbox.
+              </div>
+              <div class="p">
+                You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
+              </div>
+              <div class="box">
+                <div class="box__h1">
+                  Don’t see the confirmation email yet?
                 </div>
-                <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
-                  <div :class="['form__button__content', `form__button__content__in-flight__${!!requestInFlight}`]">
-                    Get updates
-                    <icon-arrow-right class="form__button__icon"/>
-                  </div>
-                  <div class="form__button__spinner" v-if="requestInFlight">
-                    <icon-spinner/>
-                  </div>
-                </text-button>
+                <div class="box__p">
+                  It might be in your spam folder. If so, make sure to mark it as “not spam”.
+                </div>
               </div>
-              <div class="form__p">
-                You can unsubscribe at any time.
+            </div>
+            <div v-else-if="state === 'error'" key="error">
+              <div class="icon">
+                <icon-error class="icon__icon icon__icon__error" v-if="state === 'error'"/>
               </div>
-            </form>
-          </div>
-          <div class="box" v-show="state === 'success'">
-            <div class="box__h1">
-              Don’t see the confirmation email yet?
+              <div class="h1">
+                Uh oh! Something went wrong.
+              </div>
+              <div class="p">
+                Try refreshing the page and submitting your email address again.
+              </div>
             </div>
-            <div class="box__p">
-              It might be in your spam folder. If so, make sure to mark it as “not spam”.
+            <div v-else key="default">
+              <div class="icon">
+                <icon-letter-heart class="icon__icon"/>
+              </div>
+              <div class="h1">
+                Stay tuned for GoZ updates
+              </div>
+              <div class="p">
+                More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
+              </div>
+              <div class="form__wrapper">
+                <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit.prevent="submit">
+                  <div class="form">
+                    <div class="form__input">
+                      <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
+                    </div>
+                    <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
+                      <div :class="['form__button__content', `form__button__content__in-flight__${!!requestInFlight}`]">
+                        Get updates
+                        <icon-arrow-right class="form__button__icon"/>
+                      </div>
+                      <div class="form__button__spinner" v-if="requestInFlight">
+                        <icon-spinner/>
+                      </div>
+                    </text-button>
+                  </div>
+                  <div class="form__p">
+                    You can unsubscribe at any time.
+                  </div>
+                </form>
+              </div>
             </div>
-          </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -202,6 +214,18 @@
 }
 .box__p {
   color: var(--white-80);
+}
+.fade-enter-active {
+  transition: all .2s;
+}
+.fade-leave-active {
+  transition: all .4s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.fade-leave, .fade-enter-to {
+  opacity: 1;
 }
 @media screen and (max-width: 600px) {
   .h1 {
