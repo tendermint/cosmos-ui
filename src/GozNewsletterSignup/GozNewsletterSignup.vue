@@ -217,16 +217,26 @@
   color: var(--white-80);
 }
 .fade-enter-active {
-  transition: all .2s;
+  transition: all .4s ease-out;
 }
 .fade-leave-active {
-  transition: all .4s;
+  transition: all .2s ease-out;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter {
   opacity: 0;
+  transform: scale(1.5);
 }
-.fade-leave, .fade-enter-to {
+.fade-enter-to {
   opacity: 1;
+  transform: scale(1);
+}
+.fade-leave {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(.85);
 }
 @media screen and (max-width: 600px) {
   .h1 {
