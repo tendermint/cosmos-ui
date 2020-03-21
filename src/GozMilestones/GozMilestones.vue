@@ -1,26 +1,30 @@
 <template>
   <div>
-    <div class="container">
-      <goz-milestone v-for="item in milestoneList" v-bind="item" :key="item.title"/>
-    </div>
+    <goz-row v-for="item in milestoneList" :url="item.url" :progress="item.progress" :key="item.title">
+      <template v-slot:icon>
+        <component :is="`icon-${item.logo}`"/>
+      </template>
+      <template v-slot:h1>
+        {{item.title}}
+      </template>
+      <template v-slot:h2>
+        {{item.repo}}
+      </template>
+    </goz-row>
   </div>
 </template>
 
-<style scoped>
-.container {
-  max-width: 47rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-
 <script>
-import GozMilestone from "./GozMilestone"
+import GozRow from "../GozRow/GozRow"
+import IconIbc from "../Icons/IconIbc"
+import IconSdk from "../Icons/IconSdk"
 import axios from "axios"
 
 export default {
   components: {
-    GozMilestone
+    GozRow,
+    IconIbc,
+    IconSdk
   },
   data: function() {
     return {
@@ -31,10 +35,10 @@ export default {
       },
       milestoneList: [],
       sources: [
-        ["cosmos/cosmos-sdk", 24, "Cosmos SDK – GoZ Milestone"],
-        ["cosmos/cosmos-sdk", 21, "Cosmos SDK – IBC 1.0 Milestone"],
-        ["cosmos/relayer", 2, "Relayer – GoZ Milestone"],
-        ["cosmos/ics", 5, "IBC 1.0 – Spec Milestone"],
+        ["cosmos/cosmos-sdk", 24, "sdk", "Cosmos SDK – GoZ Milestone"],
+        ["cosmos/cosmos-sdk", 21, "sdk", "Cosmos SDK – IBC 1.0 Milestone"],
+        ["cosmos/relayer", 2, "ibc", "Relayer – GoZ Milestone"],
+        ["cosmos/ics", 5, "ibc", "IBC 1.0 – Spec Milestone"],
       ],
     }
   },
@@ -45,21 +49,24 @@ export default {
     })
   },
   methods: {
-    async getMilestone(repo, id, defaultTitle, defaultProgress) {
+    async getMilestone(repo, id, logo, defaultTitle, defaultProgress) {
+      const url = `https://github.com/${repo}/milestone/${id}`
       try {
         const
-          url = `https://api.github.com/repos/${repo}/milestones/${id}`,
-          m = (await axios.get(url)).data,
+          api = `https://api.github.com/repos/${repo}/milestones/${id}`,
+          m = (await axios.get(api)).data,
           title = m.title,
           open = parseInt(m.open_issues),
           closed = parseInt(m.closed_issues),
           progress = Math.floor((100 * closed) / (open + closed)).toFixed(0)
-        return { title, repo, progress }
+        return { title, repo, progress, logo, url }
       } catch {
         return {
-          title: defaultTitle,
           repo,
-          progress: null
+          logo,
+          url,
+          title: defaultTitle,
+          progress: null,
         }
       }
     }
