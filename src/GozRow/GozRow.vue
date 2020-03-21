@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="row">
+      <component :is="url ? 'a' : 'div'" class="row" :href="url" target="_blank" rel="noreferrer noopener">
         <div class="icon__wrapper" v-if="$slots.icon">
           <div class="icon">
             <slot name="icon"/>
@@ -9,11 +9,11 @@
         </div>
         <div class="details">
           <div class="title">
-            <a :href="url" target="_blank" rel="noreferrer noopener" class="h1">
+            <div class="h1">
               <slot name="h1">
                 Title
               </slot>
-            </a>
+            </div>
             <div class="h2" v-if="$slots.h2">
               <slot name="h2"/>
             </div>
@@ -28,12 +28,12 @@
               </div>
               <div class="h3">{{progress}}% complete</div>
             </div>
-            <a class="aside__icon__wrapper" v-else-if="url" :href="url" target="_blank" rel="noreferrer noopener">
+            <div class="aside__icon__wrapper" v-else-if="url">
               <icon-chevron class="aside__icon"/>
-            </a>
+            </div>
           </div>
         </div>
-      </div>
+      </component>
     </div>
   </div>
 </template>
@@ -48,6 +48,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: min-content 1fr;
+  text-decoration: none;
 }
 .icon__wrapper {
   display: flex;
@@ -130,7 +131,7 @@
 .aside__icon__wrapper {
   padding: 1rem .75rem;
 }
-.aside__icon__wrapper:hover .aside__icon {
+.row:hover .aside__icon {
   transform: translateX(.25rem);
   stroke: rgba(255,255,255,.75);
 }
