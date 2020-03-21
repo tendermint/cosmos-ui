@@ -20,7 +20,7 @@
           <p>Keep an eye on the milestones on GitHub to track progress:</p>
         </template>
       </goz-section>
-      <goz-milestones/>
+      <goz-milestones class="card__narrow"/>
       <goz-newsletter-signup class="card"/>
       <goz-section>
         <template v-slot:icon>
@@ -52,6 +52,20 @@
           </ul>
         </template>
       </goz-section>
+      <goz-row class="card__narrow" url="https://github.com/cosmos/relayer">
+        <template v-slot:icon>
+          <icon-ibc/>
+        </template>
+        <template v-slot:h1>
+          Demoing the Relayer
+        </template>
+        <template v-slot:h2>
+          cosmos/relayer
+        </template>
+        <template v-slot:body>
+          An example of a server side IBC relayer to be used for Game of Zones and beyond.
+        </template>
+      </goz-row>
       <goz-card class="card"/>
     </div>
   </div>
@@ -65,6 +79,11 @@
   padding-top: 4rem;
   padding-bottom: 7rem;
 }
+.card__narrow {
+  max-width: 47rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media screen and (max-width: 500px) {
   .card {
     padding-bottom: 2rem;
@@ -77,9 +96,11 @@ import GozCard from "../GozCard/GozCard"
 import GozMilestones from "../GozMilestones/GozMilestones"
 import GozNewsletterSignup from "../GozNewsletterSignup/GozNewsletterSignup"
 import GozSection from "../GozSection/GozSection"
+import GozRow from "../GozRow/GozRow"
 import IconPlanet from "../Icons/IconPlanet"
 import IconCalendar from "../Icons/IconCalendar"
 import IconCup from "../Icons/IconCup"
+import IconIbc from "../Icons/IconIbc"
 
 export default {
   components: {
@@ -87,9 +108,11 @@ export default {
     GozMilestones,
     GozNewsletterSignup,
     GozSection,
+    GozRow,
     IconPlanet,
     IconCalendar,
-    IconCup
+    IconCup,
+    IconIbc
   }
 }
 </script>

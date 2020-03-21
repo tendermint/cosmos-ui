@@ -88,6 +88,7 @@
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: hidden;
 }
 .section {
   max-width: 44rem;

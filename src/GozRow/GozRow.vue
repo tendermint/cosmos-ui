@@ -10,12 +10,14 @@
         <div class="details">
           <div class="title">
             <a :href="url" target="_blank" rel="noreferrer noopener" class="h1">
-              <slot name="h1"/>
+              <slot name="h1">
+                Title
+              </slot>
             </a>
-            <div class="h2">
+            <div class="h2" v-if="$slots.h2">
               <slot name="h2"/>
             </div>
-            <div class="body">
+            <div class="body" v-if="$slots.body">
               <slot name="body"/>
             </div>
           </div>
@@ -78,7 +80,7 @@
 .h1 {
   font-weight: 500;
   font-size: 1.25rem;
-  line-height: 1;
+  line-height: var(--ds-h5-line-height);
   letter-spacing: -0.01em;
   color: var(--white-100);
   display: block;
@@ -89,16 +91,22 @@
   line-height: var(--ds-body2-line-height, 1.25rem);
   line-height: 24px;
   color: var(--white-51);
-  margin-bottom: .75rem;
+  font-weight: 400;
 }
 .body {
+  margin-top: .75rem;
   line-height: var(--ds-body1-line-height, 1.5rem);
+  color: rgba(255,255,255,.8);
+  font-size: var(--ds-body1-font-size, 1rem);
 }
 .h3 {
   font-size: .875rem;
   line-height: 20px;
   letter-spacing: 0.01em;
   color: var(--white-80);
+  text-align: right;
+  text-transform: none;
+  font-weight: 400;
 }
 .indicator {
   display: flex;
@@ -136,6 +144,10 @@
 @media screen and (max-width: 600px) {
   .icon {
     display: none;
+  }
+  .details {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 </style>
