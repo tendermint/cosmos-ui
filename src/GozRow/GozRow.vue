@@ -28,7 +28,7 @@
               </div>
               <div class="h3">{{progress}}% complete</div>
             </div>
-            <div class="aside__icon__wrapper" v-else-if="url">
+            <div class="aside__icon__wrapper">
               <icon-chevron class="aside__icon"/>
             </div>
           </div>
@@ -43,13 +43,17 @@
   overflow-wrap: anywhere;
 }
 .row {
-  background-color: var(--grey-23);
+  background-color: var(--grey-23, rgb(46, 49, 72));
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: min-content 1fr;
   text-decoration: none;
+  border-radius: .5rem;
+}
+.row:hover {
+  background-color: #2E3148;
 }
 .icon__wrapper {
   display: flex;
@@ -75,7 +79,6 @@
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
-  border-bottom: 1px solid var(--white-10);
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
@@ -112,7 +115,7 @@
 }
 .indicator {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
 }
 .progress {
@@ -131,6 +134,7 @@
 }
 .aside__icon__wrapper {
   padding: 1rem .75rem;
+  margin-left: .5rem;
 }
 .row:hover .aside__icon {
   transform: translateX(.25rem);

@@ -1,18 +1,26 @@
 <template>
   <div>
-    <goz-row v-for="item in milestoneList" :url="item.url" :progress="item.progress" :key="item.title">
-      <template v-slot:icon>
-        <component :is="`icon-${item.logo}`"/>
-      </template>
-      <template v-slot:h1>
-        {{item.title}}
-      </template>
-      <template v-slot:h2>
-        {{item.repo}}
-      </template>
-    </goz-row>
+    <div class="row" v-for="item in milestoneList" :key="item.url">
+      <goz-row :url="item.url" :progress="item.progress">
+        <template v-slot:icon>
+          <component :is="`icon-${item.logo}`"/>
+        </template>
+        <template v-slot:h1>
+          {{item.title}}
+        </template>
+        <template v-slot:h2>
+          {{item.repo}}
+        </template>
+      </goz-row>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.row {
+  margin-bottom: 1rem;
+}
+</style>
 
 <script>
 import GozRow from "../GozRow/GozRow"
