@@ -43,6 +43,7 @@
   overflow-wrap: anywhere;
 }
 .row {
+  background-color: var(--grey-23);
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   display: grid;
