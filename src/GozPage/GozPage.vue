@@ -80,7 +80,7 @@
   padding-bottom: 7rem;
 }
 .card__narrow {
-  max-width: 47rem;
+  max-width: 49rem;
   margin-left: auto;
   margin-right: auto;
 }

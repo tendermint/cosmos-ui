@@ -20,6 +20,9 @@
 .row {
   margin-bottom: 1rem;
 }
+.row:last-child {
+  margin-bottom: initial;
+}
 </style>
 
 <script>
