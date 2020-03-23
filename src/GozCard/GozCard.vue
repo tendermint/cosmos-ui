@@ -23,11 +23,14 @@
   padding-right: 1rem;
 }
 .container {
-  background-color: var(--grey-23);
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
-  border-radius: .75rem;
+  background: linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url("https://cosmos.network/img/section-gameofzones.bc705fc3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0.75rem;
   max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
@@ -60,12 +63,15 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  color: var(--white-100);
+  color: var(--primary);
 }
 .button__icon {
   width: 2rem;
   height: 2rem;
-  fill: var(--white-100);
+  fill: var(--primary);
+}
+.button__style__standard {
+  background: var(--white-100);
 }
 @media screen and (max-width: 600px) {
   .container {
