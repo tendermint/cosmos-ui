@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container">
+      <div class="container" v-bind:style="{'background': `linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
         <div class="section">
           <transition name="fade" mode="out-in">
             <div v-if="state === 'success'" key="success">
@@ -83,10 +83,6 @@
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
-  background: linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url("https://cosmos.network/img/section-gameofzones.bc705fc3.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   border-radius: .75rem;
   max-width: 75rem;
   margin-left: auto;
@@ -280,6 +276,12 @@ export default {
     IconError,
     IconSpinner,
     "text-button": Button
+  },
+  props: {
+    imgSrc: {
+      type: String,
+      default: "/goz.jpg"
+    }
   },
   data: function() {
     return {
