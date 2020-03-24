@@ -97,7 +97,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;
-  background: var(--white-100);
+  background: var(--white-100, white);
   border-width: 0.0625rem;
   border-style: solid;
   border-color: transparent;
@@ -135,12 +135,12 @@ export default {
 .box:hover .icon-cross {
   height: 2rem;
   width: 2rem;
-  background-color: var(--grey-95);
+  background-color: var(--grey-95, #eff0f5);
   border-radius: 1rem;
   transition: background-color 0.2s;
 }
 .box:hover path {
-  stroke: var(--grey-44);
+  stroke: var(--grey-44, #686a79);
   transition: stroke 0.2s;
 }
 
