@@ -8,7 +8,7 @@ export default {
 export const normal = () => ({
   components: { GozMilestones },
   template: `
-    <div style="background: #151831">
+    <div style="background: #151831; padding: 1rem 0">
       <GozMilestones/>
     </div>
   `

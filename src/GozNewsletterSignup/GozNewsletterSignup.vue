@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container">
+      <div class="container" v-bind:style="{'background': `linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
         <div class="section">
           <transition name="fade" mode="out-in">
             <div v-if="state === 'success'" key="success">
@@ -79,7 +79,6 @@
   padding-right: 1rem;
 }
 .container {
-  background-color: var(--grey-23);
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
@@ -167,6 +166,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  color: var(--primary);
+}
+.button__style__standard {
+  background: var(--white-100);
 }
 .form__button__content.form__button__content__in-flight__true {
   opacity: 0
@@ -186,7 +189,7 @@
   }
 }
 .form__button__icon {
-  fill: var(--white-100);
+  fill: var(--primary);
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -273,6 +276,12 @@ export default {
     IconError,
     IconSpinner,
     "text-button": Button
+  },
+  props: {
+    imgSrc: {
+      type: String,
+      default: "/goz.jpg"
+    }
   },
   data: function() {
     return {

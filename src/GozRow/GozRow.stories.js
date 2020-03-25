@@ -12,7 +12,7 @@ export const normal = () => ({
     IconIbc
   },
   template: `
-    <div style="background: #151831">
+    <div style="background: #151831; padding: 1rem 0;">
       <GozRow logo="ibc" url="https://google.com">
         <template v-slot:icon>
           <icon-ibc/>

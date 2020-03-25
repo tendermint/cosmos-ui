@@ -21,7 +21,7 @@
         </template>
       </goz-section>
       <goz-milestones class="card__narrow"/>
-      <goz-newsletter-signup class="card"/>
+      <goz-newsletter-signup class="card" v-bind="{ imgSrc }" />
       <goz-section>
         <template v-slot:icon>
           <icon-cup/>
@@ -66,7 +66,7 @@
           An example of a server side IBC relayer to be used for Game of Zones and beyond.
         </template>
       </goz-row>
-      <goz-card class="card"/>
+      <goz-card class="card" v-bind="{ imgSrc }" />
     </div>
   </div>
 </template>
@@ -80,7 +80,7 @@
   padding-bottom: 7rem;
 }
 .card__narrow {
-  max-width: 47rem;
+  max-width: 49rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -113,6 +113,12 @@ export default {
     IconCalendar,
     IconCup,
     IconIbc
+  },
+  props: {
+    imgSrc: {
+      type: String,
+      default: "/goz.jpg"
+    }
   }
 }
 </script>
