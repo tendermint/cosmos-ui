@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div :class="['container', `progress__${!!progress}`]">
       <component :is="url ? 'a' : 'div'" class="row" :href="url" target="_blank" rel="noreferrer noopener">
         <div class="icon__wrapper" v-if="$slots.icon">
           <div class="icon">
@@ -22,13 +22,13 @@
             </div>
           </div>
           <div class="indicator">
-            <div v-if="progress">
+            <div class="progress__wrapper" v-if="progress">
               <div class="progress" :style="{'--progress-bar-width': `${progress}%`}">
                 <div class="progress__bar"></div>
               </div>
-              <div class="h3">{{progress}}% complete</div>
+              <div class="h3">{{progress}}% <span class="h3__label">complete</span></div>
             </div>
-            <div class="aside__icon__wrapper" v-else-if="url">
+            <div class="aside__icon__wrapper">
               <icon-chevron class="aside__icon"/>
             </div>
           </div>
@@ -41,14 +41,38 @@
 <style scoped>
 .container {
   overflow-wrap: anywhere;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .row {
+  background-color: var(--grey-23, rgb(46, 49, 72));
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: min-content 1fr;
   text-decoration: none;
+  border-radius: .5rem;
+  transition: all .25s;
+}
+.row:hover, .row:focus {
+  background-color: #373a52;
+  box-shadow: var(--ds-elevation-4);
+}
+.row:hover .icon, .row:focus .icon {
+  opacity: .8;
+}
+.row:hover .h2, .row:focus .h2 {
+  color: white;
+}
+.row:hover .aside__icon, .row:focus .aside__icon {
+  stroke: rgba(255,255,255,.8);
+}
+.row:active {
+  opacity: .8;
+}
+.row:active .aside__icon {
+  opacity: inherit;
 }
 .icon__wrapper {
   display: flex;
@@ -64,6 +88,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity .25s;
 }
 .details {
   padding-top: 1.5rem;
@@ -74,7 +99,6 @@
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
-  border-bottom: 1px solid var(--white-10);
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
@@ -93,6 +117,7 @@
   line-height: 24px;
   color: var(--white-51);
   font-weight: 400;
+  transition: color .25s;
 }
 .body {
   margin-top: .75rem;
@@ -110,6 +135,11 @@
   font-weight: 400;
 }
 .indicator {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.progress__wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -130,10 +160,7 @@
 }
 .aside__icon__wrapper {
   padding: 1rem .75rem;
-}
-.row:hover .aside__icon {
-  transform: translateX(.25rem);
-  stroke: rgba(255,255,255,.75);
+  margin-left: .5rem;
 }
 .aside__icon {
   height: 1rem;
@@ -146,9 +173,26 @@
   .icon {
     display: none;
   }
+  .h1 {
+    font-size: var(--ds-body2-font-size, .875rem);
+  }
+  .h2 {
+    font-size: var(--ds-caption-book-font-size, 0.8125rem);
+  }
   .details {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .progress__true .aside__icon__wrapper {
+    display: none;
+  }
+  .progress {
+    width: 3rem;
+  }
+  .h3__label {
+    display: none;
   }
 }
 </style>

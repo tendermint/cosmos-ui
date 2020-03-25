@@ -1,4 +1,5 @@
 import GozCard from "./GozCard"
+import { text } from '@storybook/addon-knobs';
 
 export default {
   title: "GozCard",
@@ -7,7 +8,12 @@ export default {
 
 export const normal = () => ({
   components: { GozCard },
+  props: {
+    imgSrc: {
+      default: text("Image URL", "/goz.jpg")
+    },
+  },
   template: `
-    <goz-card/>
+    <goz-card v-bind="{ imgSrc }" />
   `
 })
