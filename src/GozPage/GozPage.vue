@@ -78,6 +78,11 @@
 .card {
   padding-top: 4rem;
   padding-bottom: 7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 74rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card__narrow {
   max-width: 49rem;
