@@ -37,7 +37,8 @@ button:disabled {
 }
 .component__button:hover,
 .component__button:focus {
-  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08), 0px 8px 12px rgba(0, 0, 0, 0.06), 0px 1px 0px rgba(0, 0, 0, 0.05)
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08), 0px 8px 12px rgba(0, 0, 0, 0.06), 0px 1px 0px rgba(0, 0, 0, 0.05);
+  opacity: 0.8;
 }
 .button__size__xs {
   font-size: .75rem;

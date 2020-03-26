@@ -50,10 +50,13 @@ export const Goz = () => ({
     imgSrc: {
       default: text("Image URL", "/goz.jpg")
     },
+    logoSrc: {
+      default: text("Logo URL", "/goz-logo.svg")
+    }
   },
   template: `
     <div class="wrapper" style="background-color: var(--grey-14);">
-      <goz-hero v-bind="{ imgSrc }" />
+      <goz-hero v-bind="{ imgSrc, logoSrc }" />
     </div>
   `
 });
