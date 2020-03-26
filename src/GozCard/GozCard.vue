@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container" :style="{'background': `linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
+      <div class="container" :style="{'background': `linear-gradient(180deg, rgba(25, 52, 167, 0.9) 0%, rgba(14, 14, 86, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
         <div class="h1">Compete to win 100,000 ATOM</div>
         <div class="p">May the odds be ever in your favor…</div>
         <div class="footer">

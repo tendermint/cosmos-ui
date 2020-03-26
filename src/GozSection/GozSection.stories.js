@@ -1,6 +1,6 @@
 import GozSection from "./GozSection";
 import IconPlanet from "./../Icons/IconPlanet";
-import IconCalendar from "./../Icons/IconCalendar";
+import IconWorkout from "./../Icons/IconWorkout";
 
 export default {
   title: "GozSection",
@@ -27,7 +27,7 @@ export const normal = () => ({
 });
 
 export const notes = () => ({
-  components: { GozSection, IconCalendar },
+  components: { GozSection, IconWorkout },
   template: `
     <div>
       <goz-section>

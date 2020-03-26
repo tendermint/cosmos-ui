@@ -1,6 +1,7 @@
 import Hero from "./Hero.vue";
 import GozHero from "./GozHero.vue";
 import data from "./data"
+import { text } from '@storybook/addon-knobs';
 
 export default {
   title: "Hero",
@@ -45,9 +46,14 @@ export const wide = () => ({
 
 export const Goz = () => ({
   components: { GozHero },
+  props: {
+    imgSrc: {
+      default: text("Image URL", "/goz.jpg")
+    },
+  },
   template: `
     <div class="wrapper" style="background-color: var(--grey-14);">
-      <goz-hero />
+      <goz-hero v-bind="{ imgSrc }" />
     </div>
   `
 });
