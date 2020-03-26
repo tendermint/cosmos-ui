@@ -2,7 +2,7 @@
   <div class="component__hero__container" v-bind:style="{'background-image': `url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
     <div class="container">
       <div class="section">
-        <img class="section__img" src="https://cosmos-network-npfcgtew9.now.sh/img/goz-logo.7b3a49f5.svg" alt="">
+        <img class="section__img" v-bind:src="logoSrc" alt="">
         <div class="footer">
           <div class="subtitle">Compete to <b>win 100,000 ATOM</b> by building and running Cosmos Zones.</div>
           <text-button tag="a" href="https://forms.gle/umjGa9G3Q6hcq2iF7" target="_blank" size="l">
@@ -132,6 +132,10 @@ export default {
     imgSrc: {
       type: String,
       default: "https://cosmos-network-npfcgtew9.now.sh/img/section-gameofzones.bc705fc3.jpg"
+    },
+    logoSrc: {
+      type: String,
+      default: "/goz-logo.svg"
     }
   },
 };
