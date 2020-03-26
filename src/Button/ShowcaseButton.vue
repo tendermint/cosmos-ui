@@ -7,20 +7,6 @@
       <btn size="l">Button</btn>
       <btn size="xl">Button</btn>
     </div>
-    <div class="row">
-      <btn size="xs" background="regular">Button</btn>
-      <btn size="s" background="regular">Button</btn>
-      <btn size="m" background="regular">Button</btn>
-      <btn size="l" background="regular">Button</btn>
-      <btn size="xl" background="regular">Button</btn>
-    </div>
-    <div class="row">
-      <btn size="xs" background="danger">Button</btn>
-      <btn size="s" background="danger">Button</btn>
-      <btn size="m" background="danger">Button</btn>
-      <btn size="l" background="danger">Button</btn>
-      <btn size="xl" background="danger">Button</btn>
-    </div>
   </div>
 </template>
 

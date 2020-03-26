@@ -1,5 +1,7 @@
 import Hero from "./Hero.vue";
+import GozHero from "./GozHero.vue";
 import data from "./data"
+import { text } from '@storybook/addon-knobs';
 
 export default {
   title: "Hero",
@@ -38,6 +40,20 @@ export const wide = () => ({
       <div style="max-width: 1440px; margin: 0 auto;">
         <Hero :value="data" :alt="true" style="padding: 2rem"/>
       </div>
+    </div>
+  `
+});
+
+export const Goz = () => ({
+  components: { GozHero },
+  props: {
+    imgSrc: {
+      default: text("Image URL", "/goz.jpg")
+    },
+  },
+  template: `
+    <div class="wrapper" style="background-color: var(--grey-14);">
+      <goz-hero v-bind="{ imgSrc }" />
     </div>
   `
 });
