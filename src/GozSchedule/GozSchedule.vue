@@ -39,20 +39,20 @@
   padding-bottom: 1.5rem;
   line-height: 1.5;
 }
-/deep/ {
+::v-deep{
   font-size: 1rem;
 }
-/deep/ p {
+::v-deep p {
   margin: 0;
 }
-/deep/ a {
+::v-deep a {
   color: #66A1FF;
   text-decoration: none;
 }
-/deep/ ul {
+::v-deep ul {
   padding-left: 2em;
 }
-/deep/ li {
+::v-deep li {
   margin-top: .75rem;
   margin-bottom: .75rem;
   list-style-type: disc;
@@ -69,7 +69,7 @@
   .row__body {
     padding-top: 0;
   }
-  /deep/ {
+  ::v-deep {
     font-size: .875rem;
   }
 }
