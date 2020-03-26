@@ -1,4 +1,5 @@
 import Hero from "./Hero.vue";
+import GozHero from "./GozHero.vue";
 import data from "./data"
 
 export default {
@@ -38,6 +39,15 @@ export const wide = () => ({
       <div style="max-width: 1440px; margin: 0 auto;">
         <Hero :value="data" :alt="true" style="padding: 2rem"/>
       </div>
+    </div>
+  `
+});
+
+export const Goz = () => ({
+  components: { GozHero },
+  template: `
+    <div class="wrapper" style="background-color: var(--grey-14);">
+      <goz-hero />
     </div>
   `
 });
