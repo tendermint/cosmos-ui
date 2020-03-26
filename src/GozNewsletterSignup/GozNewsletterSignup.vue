@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container" v-bind:style="{'background': `linear-gradient(180deg, rgba(14, 14, 86, 0.9) 0%, rgba(25, 52, 167, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
+      <div class="container" v-bind:style="{'background': `linear-gradient(180deg, rgba(25, 52, 167, 0.9) 0%, rgba(14, 14, 86, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
         <div class="section">
           <transition name="fade" mode="out-in">
             <div v-if="state === 'success'" key="success">
@@ -90,7 +90,7 @@
   overflow-x: hidden;
 }
 .section {
-  max-width: 44rem;
+  max-width: 33rem;
   margin-left: auto;
   margin-right: auto;
 }

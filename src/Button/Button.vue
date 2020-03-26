@@ -1,5 +1,11 @@
 <template>
-  <component class="component__button" :is="tag" v-bind="{target, type, disabled, href}" :class="[`button__size__${size}`, `button__style__${buttonStyle}`]">
+  <component
+    class="component__button"
+    :is="tag"
+    :style="{'--background-color': backgroundColor}"
+    v-bind="{target, type, disabled, href}"
+    :class="[`button__size__${size}`, `button__style__${buttonStyle}`]"
+  >
     <slot/>
   </component>
 </template>
@@ -23,9 +29,15 @@
   line-height: 1.25;
   letter-spacing: 0.02em;
   text-decoration: none;
+  background-color: var(--background-color, rgb(80, 100, 251));
+  color: white;
 }
 button:disabled {
   opacity: .5;
+}
+.component__button:hover,
+.component__button:focus {
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08), 0px 8px 12px rgba(0, 0, 0, 0.06), 0px 1px 0px rgba(0, 0, 0, 0.05)
 }
 .button__size__xs {
   font-size: .75rem;
@@ -42,35 +54,6 @@ button:disabled {
 .button__size__xl {
   font-size: 1.5rem;
 }
-.button__style__standard {
-  color: var(--white-100);
-  background: var(--primary);
-}
-.button__style__standard:focus {
-  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
-}
-.button__style__regular {
-  background: var(--white-100);
-  color: var(--grey-14);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.05);
-}
-.button__style__regular:focus {
-  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.05), 0 0 0 4px rgba(0, 89, 255, 0.2), 0 0 0 1px rgba(0, 89, 255, 0.2);
-}
-.button__style__regular:hover {
-  color: var(--grey-14);
-  opacity: 0.5
-}
-.button__style__danger {
-  color: var(--white-100);
-  background: var(--danger);
-}
-.button__style__danger:focus {
-  box-shadow: 0 0 0 4px rgb(224, 36, 36, .2)
-}
-.button__style__danger:hover {
-  background: rgba(224, 36, 36, .85);
-}
 </style>
 
 <script>
@@ -86,7 +69,7 @@ export default {
     /**
      * CSS color of `regular` | `danger`
      */
-    background: {
+    backgroundColor: {
       type: String,
       default: "rgb(80, 100, 251)"
     },

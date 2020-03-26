@@ -9,9 +9,11 @@ export { default as GozCard } from "./GozCard/GozCard";
 export { default as GozSection } from "./GozSection/GozSection";
 export { default as GozMilestones } from "./GozMilestones/GozMilestones";
 export { default as GozRow } from "./GozRow/GozRow";
+export { default as GozSchedule } from "./GozSchedule/GozSchedule";
 
 export { default as IconArrowRight } from "./Icons/IconArrowRight";
 export { default as IconCalendar } from "./Icons/IconCalendar";
+export { default as IconWorkout } from "./Icons/IconWorkout";
 export { default as IconCup } from "./Icons/IconCup";
 export { default as IconError } from "./Icons/IconError";
 export { default as IconIbc } from "./Icons/IconIbc";
