@@ -124,6 +124,7 @@
 }
 .p {
   text-align: center;
+  font-size: 0.875rem;
   line-height: 1.25;
   color: var(--white-80);
 }

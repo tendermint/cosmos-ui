@@ -29,7 +29,7 @@ a {
 .section-content {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem;
   align-self: center;
   color: var(--white-100);
   background: var(--grey-14);
