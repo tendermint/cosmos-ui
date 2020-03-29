@@ -103,6 +103,7 @@
   padding: .75rem 1rem;
   line-height: 1.5;
   height: auto;
+  box-sizing: border-box;
 }
 .email__form__input__input:focus {
   box-shadow: inset 0 0 0 1.5px #66A1FF;
