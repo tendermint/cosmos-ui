@@ -14,7 +14,8 @@ export { default as GozHero } from "./Hero/GozHero";
 
 export { default as IconArrowRight } from "./Icons/IconArrowRight";
 export { default as IconCalendar } from "./Icons/IconCalendar";
-export { default as IconWorkout } from "./Icons/IconWorkout";
+export { default as IconChevron } from "./Icons/IconChevron";
+export { default as IconConfiguration } from "./Icons/IconConfiguration";
 export { default as IconCup } from "./Icons/IconCup";
 export { default as IconError } from "./Icons/IconError";
 export { default as IconIbc } from "./Icons/IconIbc";
@@ -24,3 +25,4 @@ export { default as IconPlanet } from "./Icons/IconPlanet";
 export { default as IconPlus } from "./Icons/IconPlus";
 export { default as IconSdk } from "./Icons/IconSdk";
 export { default as IconSpinner } from "./Icons/IconSpinner";
+export { default as IconWorkout } from "./Icons/IconWorkout";
