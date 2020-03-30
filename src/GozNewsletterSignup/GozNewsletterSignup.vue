@@ -74,10 +74,6 @@
 </template>
 
 <style scoped>
-.wrapper {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 .container {
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
@@ -124,6 +120,7 @@
 }
 .p {
   text-align: center;
+  font-size: 0.875rem;
   line-height: 1.25;
   color: var(--white-80);
 }
