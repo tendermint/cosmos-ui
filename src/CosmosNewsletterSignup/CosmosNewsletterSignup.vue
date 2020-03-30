@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="text">
-          <transition-group :name="transition"  @before-enter="setHeight">
+          <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
                 <div class="h1">Stay tuned for more</div>
@@ -58,7 +58,7 @@
                     General news and updates from the Cosmos ecosystem and community.
                   </card-checkbox>
                 </card-checkbox-list>
-                <ds-button size="l">
+                <ds-button size="l" @click.native="actionSubmit">
                   Get updates
                 </ds-button>
               </div>
@@ -66,8 +66,9 @@
             <div class="page" v-show="step === 2" ref="step2" key="step2">
               <div class="page__wrapper">
                 <div class="h1">Almost there…</div>
-                <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘Confirm Subscription’ so we can keep you updated.</div>
-                <div class="p2">Don’t see the confirmation email yet? It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
+                <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.</div>
+                <div class="h3">Don’t see the confirmation email yet?</div>
+                <div class="p2">It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
               </div>
             </div>
           </transition-group>
@@ -92,7 +93,6 @@ a {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
   grid-template-areas: "image form";
-  /* height: 665px; */
   align-items: center;
 }
 .image {
@@ -114,8 +114,8 @@ a {
   position: relative;
   width: 100%;
   overflow-y: hidden;
-  /* height: 100%; */
-  transition: min-height .5s;
+  transition: min-height .5s ease-in-out;
+  height: 100%;
   min-height: var(--page-min-height);
 }
 .page {
@@ -123,15 +123,17 @@ a {
   padding-top: 5rem;
   padding-bottom: 5rem;
   padding-right: 1rem;
-  /* position: absolute; */
-  /* height: 100%; */
   width: 100%;
   display: flex;
   align-items: center;
-  transition: min-height .5s;
 }
 .page__wrapper {
   width: 100%;
+}
+.page__container {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .h1 {
   font-size: 2rem;
@@ -148,11 +150,20 @@ a {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
+.h3 {
+  font-size: .875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.8);
+  text-transform: none;
+  margin: initial;
+  letter-spacing: initial;
+}
 .p1 {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.25rem;
   line-height: 1.4;
   font-weight: 400;
+  margin-bottom: 2rem;
 }
 .p2 {
   font-size: .875rem;
@@ -196,7 +207,7 @@ a {
 .forwards-leave-active,
 .backwards-enter-active,
 .backwards-leave-active {
-  transition: all .5s;
+  transition: all .5s ease-in-out;
   position: absolute;
 }
 .forwards-enter {
@@ -233,9 +244,13 @@ a {
 }
 @media screen and (max-width: 500px) {
   .wrapper {
-    display: block;
     padding-left: 1rem;
-    padding-right: 1rem;
+  }
+  .image {
+    display: none;
+  }
+  .text {
+    grid-column: 1/3;
   }
 }
 </style>
@@ -256,6 +271,15 @@ export default {
     banner: {
       type: Boolean,
       default: true
+    },
+    fullscreen: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    fullscreen() {
+      this.setHeight(`step${this.step}`)
     }
   },
   components: {
@@ -273,7 +297,7 @@ export default {
     return {
       step: 0,
       transition: "forwards",
-      pageMinHeight: 0,
+      pageMinHeight: null,
       subscriptions: {
         tools: false,
         ecosystem: false
@@ -288,7 +312,8 @@ export default {
       this.$nextTick(() => {
         const isString = s => (typeof s === 'string' || s instanceof String)
         const page = isString(el) ? this.$refs[el] : el
-        this.pageMinHeight = page.getBoundingClientRect().height + "px"
+        const height = this.fullscreen ? "800px" : page.getBoundingClientRect().height + "px"
+        this.pageMinHeight = height
       })
     },
     actionSubmit() {
