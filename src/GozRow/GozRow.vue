@@ -41,8 +41,6 @@
 <style scoped>
 .container {
   overflow-wrap: anywhere;
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 .row {
   background-color: var(--grey-23, rgb(46, 49, 72));
