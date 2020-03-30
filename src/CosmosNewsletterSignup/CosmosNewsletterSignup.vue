@@ -3,8 +3,11 @@
     <div class="container" :style="{'--page-min-height': pageMinHeight}">
       <div class="wrapper">
         <div class="image">
-          <div class="image__img">
+          <div class="image__img" v-if="step === 2" key="i1">
             <graphics-mail/>
+          </div>
+          <div class="image__img" v-else key="i2">
+            <graphics-planes/>
           </div>
         </div>
         <div class="text">
@@ -101,6 +104,7 @@ a {
   height: 100%;
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
 }
 .image__img {
   position: absolute;
@@ -241,6 +245,16 @@ a {
 .backwards-leave-to {
   opacity: 0;
   transform: translateY(50px);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave {
+  opacity: 1;
 }
 @media screen and (max-width: 500px) {
   .wrapper {
