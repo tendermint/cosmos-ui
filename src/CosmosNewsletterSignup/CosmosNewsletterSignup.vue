@@ -39,7 +39,7 @@
                 </ds-button>
                 <div class="h2">What are you interested in?</div>
                 <card-checkbox-list class="card-checkbox-list">
-                  <card-checkbox theme="dark">
+                  <card-checkbox v-model="subscriptions.tools" theme="dark">
                     <template v-slot:icon>
                       <icon-window-code/>
                     </template>
@@ -48,7 +48,7 @@
                     </template>
                     Engineering and development updates on Cosmos SDK, Tendermint, IBC and more.
                   </card-checkbox>
-                  <card-checkbox theme="dark">
+                  <card-checkbox v-model="subscriptions.ecosystem" theme="dark">
                     <template v-slot:icon>
                       <icon-network/>
                     </template>
@@ -273,7 +273,11 @@ export default {
     return {
       step: 0,
       transition: "forwards",
-      pageMinHeight: 0
+      pageMinHeight: 0,
+      subscriptions: {
+        tools: false,
+        ecosystem: false
+      },
     }
   },
   mounted() {
