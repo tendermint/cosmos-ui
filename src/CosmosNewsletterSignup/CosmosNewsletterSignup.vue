@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" :style="{'--page-min-height': pageMinHeight}">
       <div class="wrapper">
         <div class="image">
           <div class="image__img">
@@ -8,8 +8,8 @@
           </div>
         </div>
         <div class="text">
-          <transition :name="transition">
-            <div class="page" v-if="step === 0" key="1">
+          <transition-group :name="transition"  @before-enter="setHeight">
+            <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
                 <div class="h1">Stay tuned for more</div>
                 <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
@@ -29,7 +29,7 @@
                 </div>
               </div>
             </div>
-            <div class="page" v-else-if="step === 1" key="2">
+            <div class="page" v-show="step === 1" ref="step1" key="step1">
               <div class="page__wrapper">
                 <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionBack">
                   <template v-slot:left>
@@ -63,14 +63,14 @@
                 </ds-button>
               </div>
             </div>
-            <div class="page" v-else-if="step === 2" key="3">
+            <div class="page" v-show="step === 2" ref="step2" key="step2">
               <div class="page__wrapper">
                 <div class="h1">Almost there…</div>
                 <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘Confirm Subscription’ so we can keep you updated.</div>
                 <div class="p2">Don’t see the confirmation email yet? It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
               </div>
             </div>
-          </transition>
+          </transition-group>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@ a {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
   grid-template-areas: "image form";
-  height: 665px;
+  /* height: 665px; */
   align-items: center;
 }
 .image {
@@ -113,16 +113,22 @@ a {
   max-width: 36rem;
   position: relative;
   width: 100%;
-  height: 100%;
+  overflow-y: hidden;
+  /* height: 100%; */
+  transition: min-height .5s;
+  min-height: var(--page-min-height);
 }
 .page {
   box-sizing: border-box;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   padding-right: 1rem;
-  position: absolute;
-  height: 100%;
+  /* position: absolute; */
+  /* height: 100%; */
   width: 100%;
   display: flex;
   align-items: center;
+  transition: min-height .5s;
 }
 .page__wrapper {
   width: 100%;
@@ -191,6 +197,7 @@ a {
 .backwards-enter-active,
 .backwards-leave-active {
   transition: all .5s;
+  position: absolute;
 }
 .forwards-enter {
   opacity: 0;
@@ -224,11 +231,13 @@ a {
   opacity: 0;
   transform: translateY(50px);
 }
-/* @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .wrapper {
     display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-} */
+}
 </style>
 
 <script>
@@ -262,11 +271,22 @@ export default {
   },
   data: function() {
     return {
-      step: 1,
-      transition: "forwards"
+      step: 0,
+      transition: "forwards",
+      pageMinHeight: 0
     }
   },
+  mounted() {
+    this.setHeight(`step${this.step}`)
+  },
   methods: {
+    setHeight(el) {
+      this.$nextTick(() => {
+        const isString = s => (typeof s === 'string' || s instanceof String)
+        const page = isString(el) ? this.$refs[el] : el
+        this.pageMinHeight = page.getBoundingClientRect().height + "px"
+      })
+    },
     actionSubmit() {
       this.transition = "forwards"
       this.step += 1
