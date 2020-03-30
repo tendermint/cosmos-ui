@@ -103,7 +103,6 @@
 .checkbox__icon {
   width: 1.5rem;
   height: 1.5rem;
-  padding: .5rem;
 }
 .value__true .checkbox__icon {
   fill: #66A1FF;
