@@ -8,9 +8,9 @@
           </div>
         </div>
         <div class="text">
-          <transition name="forwards">
+          <transition :name="transition">
             <div class="page" v-if="step === 0" key="1">
-              <div>
+              <div class="page__wrapper">
                 <div class="h1">Stay tuned for more</div>
                 <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
                 <div class="email__form">
@@ -30,23 +30,45 @@
               </div>
             </div>
             <div class="page" v-else-if="step === 1" key="2">
-              <div>
-                <ds-button size="s" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionBack">
+              <div class="page__wrapper">
+                <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionBack">
                   <template v-slot:left>
                     <icon-chevron-left/>
                   </template>
                   Back
                 </ds-button>
                 <div class="h2">What are you interested in?</div>
-                <div class="buttons">
-                  <div class="buttons__button"></div>
-                </div>
+                <card-checkbox-list class="card-checkbox-list">
+                  <card-checkbox theme="dark">
+                    <template v-slot:icon>
+                      <icon-window-code/>
+                    </template>
+                    <template v-slot:h1>
+                      Tools & technology
+                    </template>
+                    Engineering and development updates on Cosmos SDK, Tendermint, IBC and more.
+                  </card-checkbox>
+                  <card-checkbox theme="dark">
+                    <template v-slot:icon>
+                      <icon-network/>
+                    </template>
+                    <template v-slot:h1>
+                      Ecosystem & community
+                    </template>
+                    General news and updates from the Cosmos ecosystem and community.
+                  </card-checkbox>
+                </card-checkbox-list>
+                <ds-button size="l">
+                  Get updates
+                </ds-button>
               </div>
             </div>
             <div class="page" v-else-if="step === 2" key="3">
-              <div class="h1">Almost there…</div>
-              <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘Confirm Subscription’ so we can keep you updated.</div>
-              <div class="p2">Don’t see the confirmation email yet? It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
+              <div class="page__wrapper">
+                <div class="h1">Almost there…</div>
+                <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘Confirm Subscription’ so we can keep you updated.</div>
+                <div class="p2">Don’t see the confirmation email yet? It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
+              </div>
             </div>
           </transition>
         </div>
@@ -70,7 +92,7 @@ a {
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
   grid-template-areas: "image form";
-  min-height: 411px;
+  height: 665px;
   align-items: center;
 }
 .image {
@@ -102,6 +124,9 @@ a {
   display: flex;
   align-items: center;
 }
+.page__wrapper {
+  width: 100%;
+}
 .h1 {
   font-size: 2rem;
   font-weight: 500;
@@ -114,6 +139,7 @@ a {
   color: white;
   font-weight: 400;
   line-height: 1.25;
+  margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
 .p1 {
@@ -156,6 +182,10 @@ a {
 .email__form__input__input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
+.card-checkbox-list {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
 .forwards-enter-active,
 .forwards-leave-active,
 .backwards-enter-active,
@@ -164,7 +194,7 @@ a {
 }
 .forwards-enter {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(50px);
 }
 .forwards-enter-to {
   opacity: 1;
@@ -176,8 +206,29 @@ a {
 }
 .forwards-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-50px);
 }
+.backwards-enter {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.backwards-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.backwards-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+.backwards-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+/* @media screen and (max-width: 500px) {
+  .wrapper {
+    display: block;
+  }
+} */
 </style>
 
 <script>
@@ -186,6 +237,10 @@ import GraphicsMail from "./GraphicsMail"
 import DsButton from "./DsButton"
 import IconArrowRight from "../Icons/IconArrowRight"
 import IconChevronLeft from "../Icons/IconChevronLeft"
+import IconWindowCode from "../Icons/IconWindowCode"
+import IconNetwork from "../Icons/IconNetwork"
+import CardCheckboxList from "./CardCheckboxList"
+import CardCheckbox from "./CardCheckbox"
 
 export default {
   props: {
@@ -199,11 +254,15 @@ export default {
     GraphicsMail,
     DsButton,
     IconArrowRight,
-    IconChevronLeft
+    IconChevronLeft,
+    IconWindowCode,
+    IconNetwork,
+    CardCheckboxList,
+    CardCheckbox
   },
   data: function() {
     return {
-      step: 0,
+      step: 1,
       transition: "forwards"
     }
   },
