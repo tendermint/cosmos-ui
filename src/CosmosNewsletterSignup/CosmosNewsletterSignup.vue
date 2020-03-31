@@ -18,9 +18,9 @@
                 <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
                 <div class="email__form">
                   <div class="email__form__input">
-                    <input class="email__form__input__input" type="text" placeholder="Your email">
+                    <input v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
                   </div>
-                  <ds-button @click.native="actionSubmit">
+                  <ds-button @click="actionSubmit" :disabled="emailInvalid">
                     Sign up
                     <template v-slot:right>
                       <icon-arrow-right/>
@@ -194,6 +194,11 @@ a {
   line-height: 1.5;
   height: auto;
   box-sizing: border-box;
+  transition: all .15s;
+  backdrop-filter: blur(5px);
+  font-family: var(--ds-font-family, sans-serif);
+  font-weight: 400;
+  margin: 0;
 }
 .email__form__input__input:focus {
   box-shadow: inset 0 0 0 1.5px #66A1FF;
@@ -312,6 +317,7 @@ export default {
       step: 0,
       transition: "forwards",
       pageMinHeight: null,
+      email: null,
       subscriptions: {
         tools: false,
         ecosystem: false
@@ -320,6 +326,12 @@ export default {
   },
   mounted() {
     this.setHeight(`step${this.step}`)
+  },
+  computed: {
+    emailInvalid() {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return !re.test(String(this.email))
+    }
   },
   methods: {
     setHeight(el) {

@@ -4,6 +4,8 @@
       :is="tag"
       :class="['button', `button__size__${size}`, `button__type__${type}`]"
       :style="{'background-color': backgroundColor, 'color': color}"
+      :disabled="disabled"
+      @click="click"
     >
       <div class="button__content">
         <div class="button__icon button__icon__left" :style="{'fill': color}" v-if="$slots.left">
@@ -37,6 +39,9 @@
   letter-spacing: 0.02em;
   text-decoration: none;
   padding: 0;
+}
+.button:disabled {
+  opacity: .5;
 }
 .button__content {
   white-space: nowrap;
@@ -156,5 +161,10 @@ export default {
       default: null
     }
   },
+  methods: {
+    click() {
+      this.$emit("click", true)
+    }
+  }
 }
 </script>
