@@ -14,11 +14,11 @@
           <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <div class="h1">Stay tuned for more</div>
+                <label for="newsletter_email" class="h1">Stay tuned for more</label>
                 <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
                 <div class="email__form">
                   <div class="email__form__input">
-                    <input v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
+                    <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
                   </div>
                   <ds-button @click="actionSubmitEmail" :disabled="emailInvalid">
                     Sign up
@@ -145,6 +145,7 @@ a {
   line-height: 1.25;
   color: white;
   margin-bottom: 1.5rem;
+  display: block;
 }
 .h2 {
   font-size: 2rem;
@@ -349,9 +350,9 @@ export default {
         zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d"
       },
       ecosystemFormData: {
-        lD: "16352f88325b24db",
-        zcld: "16352f88325b24db",
-        zc_formIx: "4ef47fbb86ab66681d4cb3275283cf70ab16e7ccaa8dd327"
+        lD: "16352f8832a25f5b",
+        zcld: "16352f8832a25f5b",
+        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
       }
     }
   },
@@ -366,7 +367,7 @@ export default {
   },
   methods: {
     actionSubmitEmail() {
-      this.actionGoForwards()
+      if (!this.emailInvalid) this.actionGoForwards()
     },
     actionSubscribe() {
       if (this.subscriptions.tools) this.subscribe(this.toolsFormData)
