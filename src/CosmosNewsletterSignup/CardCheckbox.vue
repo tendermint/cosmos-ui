@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="['container', `value__${value}`]" @click="$emit('input', !value)">
+    <div tabindex="0" @keypress.enter="$emit('input', !value)" :class="['container', `value__${value}`]" @click="$emit('input', !value)">
       <div class="icon">
         <div class="icon__image">
           <slot name="icon"/>
@@ -40,11 +40,14 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   box-sizing: border-box;
+  outline: none;
 }
-::v-deep .container:hover {
+::v-deep .container:hover,
+::v-deep .container:focus {
   background-color: rgba(255, 255, 255, 0.2);
 }
-::v-deep .value__false.container:hover .checkbox__icon {
+::v-deep .value__false.container:hover .checkbox__icon,
+::v-deep .value__false.container:focus .checkbox__icon {
   stroke: rgba(255, 255, 255, 0.8);
 }
 .container:active {

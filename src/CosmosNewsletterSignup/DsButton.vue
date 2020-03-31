@@ -42,6 +42,7 @@
 }
 .button:disabled {
   opacity: .5;
+  cursor: not-allowed;
 }
 .button__content {
   white-space: nowrap;

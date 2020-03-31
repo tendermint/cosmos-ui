@@ -20,7 +20,7 @@
                   <div class="email__form__input">
                     <input v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
                   </div>
-                  <ds-button @click="actionSubmit" :disabled="emailInvalid">
+                  <ds-button @click="actionSubmitEmail" :disabled="emailInvalid">
                     Sign up
                     <template v-slot:right>
                       <icon-arrow-right/>
@@ -34,7 +34,7 @@
             </div>
             <div class="page" v-show="step === 1" ref="step1" key="step1">
               <div class="page__wrapper">
-                <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionBack">
+                <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionGoBackwards">
                   <template v-slot:left>
                     <icon-chevron-left/>
                   </template>
@@ -61,7 +61,7 @@
                     General news and updates from the Cosmos ecosystem and community.
                   </card-checkbox>
                 </div>
-                <ds-button size="l" @click.native="actionSubmit">
+                <ds-button size="l" @click="actionSubscribe" :disabled="!(subscriptions.tools || subscriptions.ecosystem)">
                   Get updates
                 </ds-button>
               </div>
@@ -264,7 +264,13 @@ a {
 .fade-enter-to, .fade-leave {
   opacity: 1;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: 25% 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .wrapper {
     padding-left: 1rem;
   }
@@ -286,6 +292,7 @@ import IconChevronLeft from "../Icons/IconChevronLeft"
 import IconWindowCode from "../Icons/IconWindowCode"
 import IconNetwork from "../Icons/IconNetwork"
 import CardCheckbox from "./CardCheckbox"
+import querystring from "querystring"
 
 export default {
   props: {
@@ -323,6 +330,29 @@ export default {
         tools: false,
         ecosystem: false
       },
+      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
+      commonFormData: {
+        "zc_trackCode": "ZCFORMVIEW",
+        "viewFrom": "URL_ACTION",
+        "submitType": "optinCustomView",
+        "emailReportId": "",
+        "zx": "129a50c11",
+        "zcvers": "3.0",
+        "oldListIds": "",
+        "mode": "OptinCreateView",
+        "zctd": "",
+        "scriptless": "yes"
+      },
+      toolsFormData: {
+        lD: "16352f8832a25ec1",
+        zcld: "16352f8832a25ec1",
+        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d"
+      },
+      ecosystemFormData: {
+        lD: "16352f88325b24db",
+        zcld: "16352f88325b24db",
+        zc_formIx: "4ef47fbb86ab66681d4cb3275283cf70ab16e7ccaa8dd327"
+      }
     }
   },
   mounted() {
@@ -335,6 +365,14 @@ export default {
     }
   },
   methods: {
+    actionSubmitEmail() {
+      this.actionGoForwards()
+    },
+    actionSubscribe() {
+      if (this.subscriptions.tools) this.subscribe(this.toolsFormData)
+      if (this.subscriptions.ecosystem) this.subscribe(this.ecosystemFormData)
+      this.actionGoForwards()
+    },
     setHeight(el) {
       this.$nextTick(() => {
         const isString = s => (typeof s === 'string' || s instanceof String)
@@ -343,13 +381,28 @@ export default {
         this.pageMinHeight = height
       })
     },
-    actionSubmit() {
+    actionGoForwards() {
       this.transition = "forwards"
       this.step += 1
     },
-    actionBack() {
+    actionGoBackwards() {
       this.transition = "backwards"
       this.step -= 1
+    },
+    async subscribe(body) {
+      const options = {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: querystring.stringify({
+          "CONTACT_EMAIL": this.email,
+          ...this.commonFormData,
+          ...body
+        })
+      }
+      fetch(this.url, options)
     }
   }
 }
