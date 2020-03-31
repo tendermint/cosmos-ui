@@ -41,7 +41,7 @@
                   Back
                 </ds-button>
                 <div class="h2">What are you interested in?</div>
-                <card-checkbox-list class="card-checkbox-list">
+                <div class="card-checkbox-list">
                   <card-checkbox v-model="subscriptions.tools" theme="dark">
                     <template v-slot:icon>
                       <icon-window-code/>
@@ -60,7 +60,7 @@
                     </template>
                     General news and updates from the Cosmos ecosystem and community.
                   </card-checkbox>
-                </card-checkbox-list>
+                </div>
                 <ds-button size="l" @click.native="actionSubmit">
                   Get updates
                 </ds-button>
@@ -211,6 +211,9 @@ a {
 .card-checkbox-list {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1rem;
 }
 .forwards-enter-active,
 .forwards-leave-active,
@@ -282,7 +285,6 @@ import IconArrowRight from "../Icons/IconArrowRight"
 import IconChevronLeft from "../Icons/IconChevronLeft"
 import IconWindowCode from "../Icons/IconWindowCode"
 import IconNetwork from "../Icons/IconNetwork"
-import CardCheckboxList from "./CardCheckboxList"
 import CardCheckbox from "./CardCheckbox"
 
 export default {
@@ -309,7 +311,6 @@ export default {
     IconChevronLeft,
     IconWindowCode,
     IconNetwork,
-    CardCheckboxList,
     CardCheckbox
   },
   data: function() {
