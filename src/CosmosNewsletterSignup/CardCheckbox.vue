@@ -36,7 +36,7 @@
   min-height: 7.25rem;
   user-select: none;
   cursor: pointer;
-  transition: background-color .25s;
+  transition: background-color .25s, border-color .25s, box-shadow .15s ease-out, transform .15s ease-out;
   padding-top: 1rem;
   padding-bottom: 1rem;
   box-sizing: border-box;
@@ -44,14 +44,23 @@
 }
 ::v-deep .container:hover,
 ::v-deep .container:focus {
-  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.07), 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
 }
-::v-deep .value__false.container:hover .checkbox__icon,
-::v-deep .value__false.container:focus .checkbox__icon {
-  stroke: rgba(255, 255, 255, 0.8);
+::v-deep .container:hover {
+  transform: translateY(-2px);
+}
+::v-deep .value__false.container:hover .checkbox__icon {
+  stroke: rgba(255,255,255,0.8);
+}
+::v-deep .value__false.container:focus:not(:hover) .checkbox__icon {
+  stroke: #66A1FF;
+}
+::v-deep .value__true.container:focus:not(:hover) .checkbox__icon {
+  fill: #66A1FF;
 }
 .container:active {
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  transition-duration: 0s;
 }
 .value__true.container {
   background-color: #161931
@@ -108,7 +117,7 @@
   height: 1.5rem;
 }
 .value__true .checkbox__icon {
-  fill: #66A1FF;
+  fill: #FFFFFF;
 }
 .value__false .checkbox__icon {
   fill: none;

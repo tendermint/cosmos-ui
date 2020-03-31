@@ -162,6 +162,7 @@ a {
   text-transform: none;
   margin: initial;
   letter-spacing: initial;
+  line-height: 1.25rem;
 }
 .p1 {
   color: rgba(255, 255, 255, 0.8);
@@ -173,7 +174,7 @@ a {
 .p2 {
   font-size: .875rem;
   color: rgba(255, 255, 255, 0.5);
-  line-height: 1.125rem;
+  line-height: 1.25rem;
 }
 .email__form {
   display: grid;
@@ -201,13 +202,21 @@ a {
   font-weight: 400;
   margin: 0;
 }
+.email__form__input__input:hover {
+  background-color: rgba(255,255,255,0.13);
+}
 .email__form__input__input:focus {
   box-shadow: inset 0 0 0 1.5px #66A1FF;
-  background-color: #161931;
+  background-color: rgba(0,0,0,0.2);
 }
 .email__form__input__input::-webkit-input-placeholder,
 .email__form__input__input::placeholder {
   color: rgba(255, 255, 255, 0.5);
+  transition: color .15s;
+}
+.email__form__input__input:hover:not(:focus)::-webkit-input-placeholder,
+.email__form__input__input:hover:not(:focus)::placeholder {
+  color: rgba(255, 255, 255, 0.8);
 }
 .card-checkbox-list {
   margin-top: 2.5rem;
