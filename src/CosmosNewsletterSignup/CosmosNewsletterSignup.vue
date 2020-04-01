@@ -144,9 +144,10 @@ a {
   height: 100%;
 }
 .icon {
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   margin: 1.5rem 0;
+  color: var(--white-51);
 }
 .h1 {
   font-size: 2rem;
