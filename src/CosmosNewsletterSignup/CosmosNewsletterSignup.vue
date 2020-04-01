@@ -14,8 +14,11 @@
           <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <label for="newsletter_email" class="h1">Stay tuned for more</label>
-                <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
+                <div class="icon">
+                  <icon-ibc/>
+                </div>
+                <label for="newsletter_email" class="h1">Sign up for updates on IBC</label>
+                <div class="p1">Get engineering, development and ecosystem updates on IBC (Inter-Blockchain Communciation protocol) - straight to your inbox.</div>
                 <div class="email__form">
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
@@ -84,9 +87,10 @@
 <style scoped>
 a {
   color: #66A1FF;
+  text-decoration: none;
 }
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%);
+  background: url("./BackgroundStars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -139,11 +143,16 @@ a {
   align-items: center;
   height: 100%;
 }
+.icon {
+  width: 64px;
+  height: 64px;
+  margin: 1.5rem 0;
+}
 .h1 {
   font-size: 2rem;
   font-weight: 500;
   line-height: 1.25;
-  color: white;
+  color: var(--white-100);
   margin-bottom: 1.5rem;
   display: block;
 }
@@ -301,6 +310,7 @@ import IconArrowRight from "../Icons/IconArrowRight"
 import IconChevronLeft from "../Icons/IconChevronLeft"
 import IconWindowCode from "../Icons/IconWindowCode"
 import IconNetwork from "../Icons/IconNetwork"
+import IconIbc from "../Icons/IconIbc"
 import CardCheckbox from "./CardCheckbox"
 import querystring from "querystring"
 
@@ -328,6 +338,7 @@ export default {
     IconChevronLeft,
     IconWindowCode,
     IconNetwork,
+    IconIbc,
     CardCheckbox
   },
   data: function() {
