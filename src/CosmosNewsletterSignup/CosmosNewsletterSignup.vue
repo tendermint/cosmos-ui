@@ -207,6 +207,7 @@ a {
   height: auto;
   box-sizing: border-box;
   transition: all .15s;
+  backdrop-filter: blur(10px);
   font-family: var(--ds-font-family, sans-serif);
   font-weight: 400;
   margin: 0;
