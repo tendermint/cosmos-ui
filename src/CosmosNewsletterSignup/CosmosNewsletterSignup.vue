@@ -14,11 +14,11 @@
           <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <div class="icon">
+                <!-- <div class="icon">
                   <icon-ibc/>
-                </div>
-                <label for="newsletter_email" class="h1">Sign up for updates on IBC</label>
-                <div class="p1">Get engineering, development and ecosystem updates on IBC (Inter-Blockchain Communciation protocol) - straight to your inbox.</div>
+                </div> -->
+                <label for="newsletter_email" class="h1">Sign up for Cosmos updates</label>
+                <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
                 <div class="email__form">
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
@@ -90,7 +90,7 @@ a {
   text-decoration: none;
 }
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%);
+  background: url("./BackgroundStars.svg") repeat, linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -143,12 +143,12 @@ a {
   align-items: center;
   height: 100%;
 }
-.icon {
+/* .icon {
   width: 4rem;
   height: 4rem;
   margin: 1.5rem 0;
   color: var(--white-51);
-}
+} */
 .h1 {
   font-size: 2rem;
   font-weight: 500;
