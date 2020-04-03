@@ -3,10 +3,7 @@
     <div class="container" :style="{'--page-min-height': pageMinHeight}">
       <div class="wrapper">
         <div class="image">
-          <div class="image__img" v-if="step === 2" key="i1">
-            <graphics-mail/>
-          </div>
-          <div class="image__img" v-else key="i2">
+          <div class="image__img" key="i2">
             <graphics-planes/>
           </div>
         </div>
@@ -14,11 +11,17 @@
           <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <!-- <div class="icon">
-                  <icon-ibc/>
-                </div> -->
-                <label for="newsletter_email" class="h1">Sign up for Cosmos updates</label>
-                <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
+                <div class="icon" v-if="this.$slots['icon']">
+                  <div class="icon">
+                    <slot name="icon"/>
+                  </div>
+                </div>
+                <label for="newsletter_email" class="h1" v-if="this.$slots['h1']">
+                  <slot name="h1"/>
+                </label>
+                <div class="p1" v-if="this.$slots['p1']">
+                  <slot name="p1"/>
+                </div>
                 <div class="email__form">
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
@@ -36,40 +39,6 @@
               </div>
             </div>
             <div class="page" v-show="step === 1" ref="step1" key="step1">
-              <div class="page__wrapper">
-                <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionGoBackwards">
-                  <template v-slot:left>
-                    <icon-chevron-left/>
-                  </template>
-                  Back
-                </ds-button>
-                <div class="h2">What are you interested in?</div>
-                <div class="card-checkbox-list">
-                  <card-checkbox v-model="subscriptions.tools" theme="dark">
-                    <template v-slot:icon>
-                      <icon-window-code/>
-                    </template>
-                    <template v-slot:h1>
-                      Tools & technology
-                    </template>
-                    Engineering and development updates on Cosmos SDK, Tendermint, IBC and more.
-                  </card-checkbox>
-                  <card-checkbox v-model="subscriptions.ecosystem" theme="dark">
-                    <template v-slot:icon>
-                      <icon-network/>
-                    </template>
-                    <template v-slot:h1>
-                      Ecosystem & community
-                    </template>
-                    General news and updates from the Cosmos ecosystem and community.
-                  </card-checkbox>
-                </div>
-                <ds-button size="l" @click="actionSubscribe" :disabled="!(subscriptions.tools || subscriptions.ecosystem)">
-                  Get updates
-                </ds-button>
-              </div>
-            </div>
-            <div class="page" v-show="step === 2" ref="step2" key="step2">
               <div class="page__wrapper">
                 <div class="h1">Almost there…</div>
                 <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.</div>
@@ -90,7 +59,7 @@ a {
   text-decoration: none;
 }
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%);
+  background: url("./BackgroundStars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -143,12 +112,12 @@ a {
   align-items: center;
   height: 100%;
 }
-/* .icon {
+.icon {
   width: 4rem;
   height: 4rem;
   margin: 1.5rem 0;
   color: var(--white-51);
-} */
+}
 .h1 {
   font-size: 2rem;
   font-weight: 500;
@@ -228,13 +197,6 @@ a {
 .email__form__input__input:hover:not(:focus)::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
-.card-checkbox-list {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 1rem;
-}
 .forwards-enter-active,
 .forwards-leave-active,
 .backwards-enter-active,
@@ -289,7 +251,6 @@ a {
     grid-template-columns: 25% 75%;
   }
 }
-
 @media screen and (max-width: 600px) {
   .wrapper {
     padding-left: 1rem;
@@ -305,14 +266,9 @@ a {
 
 <script>
 import GraphicsPlanes from "./GraphicsPlanes"
-import GraphicsMail from "./GraphicsMail"
 import DsButton from "./DsButton"
 import IconArrowRight from "../Icons/IconArrowRight"
-import IconChevronLeft from "../Icons/IconChevronLeft"
-import IconWindowCode from "../Icons/IconWindowCode"
-import IconNetwork from "../Icons/IconNetwork"
 import IconIbc from "../Icons/IconIbc"
-import CardCheckbox from "./CardCheckbox"
 import querystring from "querystring"
 
 export default {
@@ -333,14 +289,9 @@ export default {
   },
   components: {
     GraphicsPlanes,
-    GraphicsMail,
     DsButton,
     IconArrowRight,
-    IconChevronLeft,
-    IconWindowCode,
-    IconNetwork,
-    IconIbc,
-    CardCheckbox
+    IconIbc
   },
   data: function() {
     return {
@@ -365,16 +316,6 @@ export default {
         "zctd": "",
         "scriptless": "yes"
       },
-      toolsFormData: {
-        lD: "16352f8832a25ec1",
-        zcld: "16352f8832a25ec1",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d"
-      },
-      ecosystemFormData: {
-        lD: "16352f8832a25f5b",
-        zcld: "16352f8832a25f5b",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
-      }
     }
   },
   mounted() {
@@ -388,11 +329,7 @@ export default {
   },
   methods: {
     actionSubmitEmail() {
-      if (!this.emailInvalid) this.actionGoForwards()
-    },
-    actionSubscribe() {
-      if (this.subscriptions.tools) this.subscribe(this.toolsFormData)
-      if (this.subscriptions.ecosystem) this.subscribe(this.ecosystemFormData)
+      if (!this.emailInvalid) this.subscribe(this.commonFormData)
       this.actionGoForwards()
     },
     setHeight(el) {
@@ -406,10 +343,6 @@ export default {
     actionGoForwards() {
       this.transition = "forwards"
       this.step += 1
-    },
-    actionGoBackwards() {
-      this.transition = "backwards"
-      this.step -= 1
     },
     async subscribe(body) {
       const options = {

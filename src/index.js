@@ -11,7 +11,8 @@ export { default as GozMilestones } from "./GozMilestones/GozMilestones";
 export { default as GozRow } from "./GozRow/GozRow";
 export { default as GozSchedule } from "./GozSchedule/GozSchedule";
 export { default as GozHero } from "./Hero/GozHero";
-export { default as CosmosNewsletterSignup } from "./CosmosNewsletterSignup/CosmosNewsletterSignup";
+export { default as CosmosNewsletterSignup } from "./NewsletterSignup/CosmosNewsletterSignup";
+export { default as IbcNewsletterSignup } from "./NewsletterSignup/IbcNewsletterSignup";
 
 export { default as IconArrowRight } from "./Icons/IconArrowRight";
 export { default as IconCalendar } from "./Icons/IconCalendar";
