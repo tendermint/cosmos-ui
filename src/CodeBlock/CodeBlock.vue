@@ -95,7 +95,7 @@ span {
   opacity: 1;
 }
 .body {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   overflow-x: scroll;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -104,19 +104,19 @@ span {
   overflow-y: hidden;
   position: relative;
   line-height: 1.75;
-  scrollbar-color: rgba(255,255,255,.2) rgba(255,255,255,.1);
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.1);
   scrollbar-width: thin;
   font-size: 0.8125rem;
   line-height: 1.25rem;
 }
 
 .body::-webkit-scrollbar {
-  background: rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.1);
   height: 6px;
 }
 
 .body::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 6px;
 }
 
@@ -128,7 +128,7 @@ span {
   max-height: var(--max-height);
 }
 .body__wrapper {
-  font-family: 'Menlo', 'Monaco', 'Fira Code', monospace;
+  font-family: "Menlo", "Monaco", "Fira Code", monospace;
   font-size: 0.8125rem;
   display: inline-block;
   line-height: 1.25rem;
@@ -174,7 +174,8 @@ span {
   height: 2rem;
   cursor: pointer;
   border-radius: 1000px;
-  box-shadow: 0px 16px 32px rgba(22,25,49,0.08), 0px 8px 12px rgba(22,25,49,0.06), 0px 1px 0px rgba(22,25,49,0.05);
+  box-shadow: 0px 16px 32px rgba(22, 25, 49, 0.08),
+    0px 8px 12px rgba(22, 25, 49, 0.06), 0px 1px 0px rgba(22, 25, 49, 0.05);
   box-sizing: border-box;
 }
 .expand__item__expand {
@@ -204,11 +205,11 @@ span {
   z-index: 100;
 }
 .icons__item {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   cursor: pointer;
   border-radius: 0.25rem;
   position: relative;
-  background: rgba(46,49,72,0.7);
+  background: rgba(46, 49, 72, 0.7);
 }
 .icons__item:active .icons__item__icon {
   fill: #66a1ff;
@@ -325,7 +326,7 @@ span {
 import Prism from "prismjs";
 import "prismjs/components/prism-go.js";
 import copy from "clipboard-copy";
-import { Base64 } from 'js-base64';
+import { Base64 } from "js-base64";
 
 export default {
   props: {
@@ -333,7 +334,7 @@ export default {
      * Code rendered in the body of the block
      */
     value: {
-      type: String,
+      type: String
     },
     /**
      * Code rendered in the body of the block in base64
@@ -345,13 +346,13 @@ export default {
      * URL for "View source" link and filename in the code-block's footer
      */
     url: {
-      type: String,
+      type: String
     },
     /**
      * Language for syntax highlighting
      */
     language: {
-      type: String,
+      type: String
     }
   },
   data: function() {
@@ -365,8 +366,8 @@ export default {
   },
   computed: {
     source() {
-      if (this.base64) return Base64.decode(this.base64)
-      return this.value
+      if (this.base64) return Base64.decode(this.base64);
+      return this.value;
     },
     out() {
       return this.$slots.default;
@@ -406,11 +407,11 @@ export default {
       }, 2000);
     },
     highlighted(source) {
-      const supportedSyntax = Prism.languages[this.language]
+      const supportedSyntax = Prism.languages[this.language];
       if (supportedSyntax) {
-        return Prism.highlight(source, supportedSyntax)
+        return Prism.highlight(source.replace(/&quot;/g, "\"").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&"), supportedSyntax);
       } else {
-        return source
+        return source;
       }
     },
     expand(bool, scroll) {
