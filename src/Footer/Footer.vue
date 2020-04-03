@@ -42,7 +42,7 @@ a {
 
 .component__footer__container {
   font-family: var(--ds-font-family, "Helvetica");
-  background-color: var(--grey-14, white);
+  background-color: var(--grey-14, rgb(21, 24, 49));
   color: var(--white-100, white);
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -84,8 +84,8 @@ a {
 }
 
 .header__links__popover__content {
-  background: var(--white-100, black);
-  color: var(--black, white);
+  background: var(--white-100, white);
+  color: var(--black, black);
   position: absolute;
   white-space: nowrap;
   transform: translateX(-50%);
@@ -100,7 +100,7 @@ a {
   width: 8px;
   height: 8px;
   display: block;
-  background-color: var(--white-100, black);
+  background-color: var(--white-100, white);
   mask-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24'><path d='M12 21l-12-18h24z'/></svg>");
   background-repeat: no-repeat;
   top: 100%;
@@ -109,7 +109,7 @@ a {
 }
 
 .header__links__item {
-  fill: var(--white-100, black);
+  fill: var(--white-100, white);
   margin-right: 0.75rem;
   margin-bottom: 0.75rem;
   display: block;
