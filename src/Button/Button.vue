@@ -17,7 +17,7 @@
   font-size: initial;
   margin: 0;
   padding: 0;
-  padding: .85em 1.15em;
+  padding: .875em 1.15em;
   border-radius: .35em;
   cursor: pointer;
   user-select: none;
@@ -31,6 +31,7 @@
   text-decoration: none;
   background-color: var(--background-color, rgb(80, 100, 251));
   color: white;
+  white-space: nowrap;
 }
 button:disabled {
   opacity: .5;
