@@ -316,6 +316,11 @@ export default {
         "zctd": "",
         "scriptless": "yes"
       },
+      ibcFormData: {
+        lD: "16352f88328053f9",
+        zcld: "16352f88328053f9",
+        zc_formIx: "4ef47fbb86ab6668b78ce576d7aa791940fbf6cd35f5c50c"
+      }
     }
   },
   mounted() {
@@ -329,7 +334,7 @@ export default {
   },
   methods: {
     actionSubmitEmail() {
-      if (!this.emailInvalid) this.subscribe(this.commonFormData)
+      if (!this.emailInvalid) this.subscribe(this.ibcFormData)
       this.actionGoForwards()
     },
     setHeight(el) {
