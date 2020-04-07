@@ -334,6 +334,7 @@ export default {
   },
   methods: {
     adjustVertically() {
+      if (!this.$refs.content) return
       const
         content = this.$refs.content.offsetHeight,
         height = window.innerHeight,
