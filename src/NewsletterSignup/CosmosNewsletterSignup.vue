@@ -3,11 +3,14 @@
     <div class="container" :style="{'--page-min-height': pageMinHeight}">
       <div class="wrapper">
         <div class="image">
+          <!-- TODO: test if necessary to have overlay or one graphics -->
           <div class="image__img" v-if="step === 2" key="i1">
             <graphics-mail/>
+            <!-- <graphics-stream/> -->
           </div>
           <div class="image__img" v-else key="i2">
             <graphics-planes/>
+            <!-- <graphics-stream/> -->
           </div>
         </div>
         <div class="text">
@@ -20,7 +23,7 @@
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
                   </div>
-                  <ds-button @click="actionSubmitEmail" :disabled="emailInvalid">
+                  <ds-button class="email__form__button" size="block" @click="actionSubmitEmail" :disabled="emailInvalid">
                     Sign up
                     <template v-slot:right>
                       <icon-arrow-right/>
@@ -61,7 +64,7 @@
                     General news and updates from the Cosmos ecosystem and community.
                   </card-checkbox>
                 </div>
-                <ds-button size="l" @click="actionSubscribe" :disabled="!(subscriptions.tools || subscriptions.ecosystem)">
+                <ds-button size="block" @click="actionSubscribe" :disabled="!(subscriptions.tools || subscriptions.ecosystem)">
                   Get updates
                 </ds-button>
               </div>
@@ -127,6 +130,7 @@ a {
   box-sizing: border-box;
   padding-top: 5rem;
   padding-bottom: 5rem;
+  padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
   display: flex;
@@ -275,21 +279,35 @@ a {
 .fade-enter-to, .fade-leave {
   opacity: 1;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 719px) {
   .wrapper {
     grid-template-columns: 25% 75%;
   }
-}
-
-@media screen and (max-width: 600px) {
-  .wrapper {
-    padding-left: 1rem;
+  .h1 {
+    text-align: center;
   }
+  .p1 {
+    text-align: center;
+  }
+  .h3 {
+    text-align: center;
+  }
+  .p2 {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 600px) {
   .image {
-    display: none;
+    position: absolute;
   }
   .text {
     grid-column: 1/3;
+  }
+  .email__form {
+    display: block;
+  }
+  .email__form__button {
+    margin-top: 1rem;
   }
 }
 </style>
@@ -297,6 +315,7 @@ a {
 <script>
 import GraphicsPlanes from "./GraphicsPlanes"
 import GraphicsMail from "./GraphicsMail"
+import GraphicsStream from "./GraphicsStream"
 import DsButton from "./DsButton"
 import IconArrowRight from "../Icons/IconArrowRight"
 import IconChevronLeft from "../Icons/IconChevronLeft"
@@ -325,6 +344,7 @@ export default {
   components: {
     GraphicsPlanes,
     GraphicsMail,
+    GraphicsStream,
     DsButton,
     IconArrowRight,
     IconChevronLeft,
