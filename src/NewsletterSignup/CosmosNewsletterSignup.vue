@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" :style="{'--page-min-height': pageMinHeight}">
+    <div class="container" :style="{'--page-min-height': pageMinHeight, 'background': `url(${backgroundImage}) repeat, ${backgroundGradient}`}">
       <div class="wrapper">
         <div class="image">
           <!-- TODO: test if necessary to have overlay or one graphics -->
@@ -90,7 +90,6 @@ a {
   text-decoration: none;
 }
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -334,7 +333,15 @@ export default {
     fullscreen: {
       type: Boolean,
       default: false
-    }
+    },
+    backgroundImage: {
+      type: String,
+      default: "https://cosmos-ui.netlify.com/static/media/BackgroundStars.d8924548.svg"
+    },
+    backgroundGradient: {
+      type: String,
+      default: "linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%)"
+    },
   },
   watch: {
     fullscreen() {
