@@ -3,7 +3,6 @@
     <div class="container" :style="{'--page-min-height': pageMinHeight, 'background': `url(${backgroundImage}) repeat, ${backgroundGradient}`}">
       <div class="wrapper">
         <div class="image">
-          <!-- TODO: test if necessary to have overlay or one graphics -->
           <div class="image__img" v-if="step === 2" key="i1">
             <graphics-mail/>
             <!-- <graphics-stream/> -->
@@ -102,21 +101,18 @@ a {
   align-items: center;
 }
 .image {
-  grid-column-start: 1;
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  transform: translateZ(0);
 }
 .image__img {
   position: absolute;
   top: 50%;
   left: 100%;
-  transform: translate(-85%, -50%);
+  transform: translate(-77%, -50%);
 }
 .text {
-  grid-column-start: 2;
   max-width: 36rem;
   position: relative;
   width: 100%;
@@ -182,9 +178,8 @@ a {
 }
 .email__form {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr min-content;
-  gap: 1rem;
+  grid-gap: 10px;
+  grid-template-columns: minmax(auto, 1fr) 143px;
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
 }
@@ -279,8 +274,26 @@ a {
   opacity: 1;
 }
 @media screen and (max-width: 719px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .page__container {
+    min-height: 80vh;
+  }
   .wrapper {
-    grid-template-columns: 25% 75%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .image {
+    position: unset;
+  }
+  .image__img {
+    top: 30%;
+    left: auto;
+    transform: translate(-85%, -50%);
+  }
+  .page {
+    padding-top: 15rem;
   }
   .h1 {
     text-align: center;
@@ -295,15 +308,19 @@ a {
     text-align: center;
   }
 }
-@media screen and (max-width: 600px) {
-  .image {
-    position: absolute;
+/* @media screen and (max-width: 600px) {
+  .image__img {
+    transform: translate(-85%, -50%);
   }
-  .text {
-    grid-column: 1/3;
+} */
+@media screen and (max-width: 414px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   .email__form {
     display: block;
+    width: 100%;
   }
   .email__form__button {
     margin-top: 1rem;
