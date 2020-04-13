@@ -5,11 +5,9 @@
         <div class="image">
           <div class="image__img" v-if="step === 2" key="i1">
             <graphics-mail/>
-            <!-- <graphics-stream/> -->
           </div>
           <div class="image__img" v-else key="i2">
             <graphics-planes/>
-            <!-- <graphics-stream/> -->
           </div>
         </div>
         <div class="text">
@@ -108,9 +106,11 @@ a {
 }
 .image__img {
   position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translate(-77%, -50%);
+  top: 30%;
+  left: 20%;
+  transform: translate(-5%, -35%);
+  max-width: 53.625rem;
+  width: 100%;
 }
 .text {
   max-width: 36rem;
@@ -178,8 +178,8 @@ a {
 }
 .email__form {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: minmax(auto, 1fr) 143px;
+  grid-gap: 0.625rem;
+  grid-template-columns: minmax(auto, 1fr) 8.9375rem;
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
 }
@@ -278,9 +278,6 @@ a {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .page__container {
-    min-height: 80vh;
-  }
   .wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -288,35 +285,27 @@ a {
     position: unset;
   }
   .image__img {
-    top: 30%;
-    left: auto;
-    transform: translate(-85%, -50%);
+    top: 20%;
+    left: 5%;
+    max-width: 34.625rem;
+  }
+  .text {
+    max-width: unset;
   }
   .page {
     padding-top: 15rem;
   }
-  .h1 {
-    text-align: center;
-  }
-  .p1 {
-    text-align: center;
-  }
-  .h3 {
-    text-align: center;
-  }
-  .p2 {
+  .h1, .p1, .p2, .h3 {
     text-align: center;
   }
 }
-/* @media screen and (max-width: 600px) {
-  .image__img {
-    transform: translate(-85%, -50%);
-  }
-} */
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 425px) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .image__img {
+    top: 15%;
   }
   .email__form {
     display: block;
@@ -331,7 +320,6 @@ a {
 <script>
 import GraphicsPlanes from "./GraphicsPlanes"
 import GraphicsMail from "./GraphicsMail"
-import GraphicsStream from "./GraphicsStream"
 import DsButton from "./DsButton"
 import IconArrowRight from "../Icons/IconArrowRight"
 import IconChevronLeft from "../Icons/IconChevronLeft"
@@ -368,7 +356,6 @@ export default {
   components: {
     GraphicsPlanes,
     GraphicsMail,
-    GraphicsStream,
     DsButton,
     IconArrowRight,
     IconChevronLeft,
