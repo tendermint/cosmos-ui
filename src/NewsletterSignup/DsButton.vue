@@ -108,14 +108,13 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-/* TODO: revise */
 .button__size__block {
+  display: block;
+  width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
-  display: block;
-  width: 100%;
 }
 .button__size__block .button__content {
   gap: .5rem;
@@ -124,10 +123,6 @@
   width: 1.5rem;
   height: 1.5rem;
   padding-left: 0.3rem;
-}
-.button__size__block.button__type__contained {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 </style>
 
