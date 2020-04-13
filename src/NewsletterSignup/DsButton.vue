@@ -123,6 +123,7 @@
 .button__size__block .button__icon {
   width: 1.5rem;
   height: 1.5rem;
+  padding-left: 0.3rem;
 }
 .button__size__block.button__type__contained {
   padding-left: 1rem;
