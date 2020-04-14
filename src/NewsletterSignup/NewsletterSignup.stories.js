@@ -20,7 +20,14 @@ export const cosmos = () => ({
   },
   template: `
     <div>
-      <cosmos-newsletter-signup v-bind="{fullscreen}"/>
+      <cosmos-newsletter-signup v-bind="{fullscreen}">
+        <template v-slot:h1>
+          Sign up for Cosmos updates
+        </template>
+        <template v-slot:p1>
+          Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.
+        </template>
+      </cosmos-newsletter-signup>
     </div>
   `
 });
@@ -46,33 +53,6 @@ export const ibc = () => ({
         </template>
         <template v-slot:p1>
           Get engineering, development and ecosystem updates on IBC (Inter-Blockchain Communciation protocol) - straight to your inbox.
-        </template>
-      </ibc-newsletter-signup>
-    </div>
-  `
-});
-
-export const tools_and_tech = () => ({
-  props: {
-    fullscreen: {
-      default: boolean("fullscreen", false)
-    }
-  },
-  components: {
-    IbcNewsletterSignup,
-    IconIbc
-  },
-  template: `
-    <div>
-      <ibc-newsletter-signup v-bind="{fullscreen}">
-        <template v-slot:icon>
-          <icon-ibc/>
-        </template>
-        <template v-slot:h1>
-          Sign up for Cosmos tools & technology updates
-        </template>
-        <template v-slot:p1>
-          Get engineering and development updates on Cosmos SDK, Tendermint Core, IBC and more - straight to your inbox.
         </template>
       </ibc-newsletter-signup>
     </div>

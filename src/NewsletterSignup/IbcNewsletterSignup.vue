@@ -26,7 +26,7 @@
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
                   </div>
-                  <ds-button @click="actionSubmitEmail" :disabled="emailInvalid">
+                  <ds-button class="email__form__button" size="block" @click="actionSubmitEmail" :disabled="emailInvalid">
                     Sign up
                     <template v-slot:right>
                       <icon-arrow-right/>
@@ -157,9 +157,8 @@ a {
 }
 .email__form {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr min-content;
-  gap: 1rem;
+  grid-gap: 0.625rem;
+  grid-template-columns: minmax(auto, 1fr) 8.9375rem;
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
 }
@@ -260,6 +259,15 @@ a {
   }
   .text {
     grid-column: 1/3;
+  }
+}
+@media screen and (max-width: 425px) {
+  .email__form {
+    display: block;
+    width: 100%;
+  }
+  .email__form__button {
+    margin-top: 1rem;
   }
 }
 </style>

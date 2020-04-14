@@ -14,8 +14,17 @@
           <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <label for="newsletter_email" class="h1">Sign up for Cosmos updates</label>
-                <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
+                <div class="icon" v-if="this.$slots['icon']">
+                  <div class="icon">
+                    <slot name="icon"/>
+                  </div>
+                </div>
+                <label for="newsletter_email" class="h1" v-if="this.$slots['h1']">
+                  <slot name="h1"/>
+                </label>
+                <div class="p1" v-if="this.$slots['p1']">
+                  <slot name="p1"/>
+                </div>
                 <div class="email__form">
                   <div class="email__form__input">
                     <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
@@ -109,7 +118,6 @@ a {
   top: 30%;
   left: 20%;
   transform: translate(-5%, -35%);
-  max-width: 53.625rem;
   width: 100%;
 }
 .text {
@@ -138,6 +146,12 @@ a {
   display: flex;
   align-items: center;
   height: 100%;
+}
+.icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 1.5rem 0;
+  color: var(--white-51);
 }
 .h1 {
   font-size: 2rem;
@@ -287,7 +301,6 @@ a {
   .image__img {
     top: 20%;
     left: 5%;
-    max-width: 34.625rem;
   }
   .text {
     max-width: unset;
