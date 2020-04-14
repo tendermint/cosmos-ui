@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" :style="{'--page-min-height': pageMinHeight}">
+    <div class="container" :style="{'--page-min-height': pageMinHeight, 'background': `url(${backgroundImage}) repeat, ${backgroundGradient}`}">
       <div class="wrapper">
         <div class="image">
           <div class="image__img" key="i2">
@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="text">
-          <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
+          <transition-group class="page__container" :name="transition" @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
                 <div class="icon" v-if="this.$slots['icon']">
@@ -59,7 +59,6 @@ a {
   text-decoration: none;
 }
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -72,33 +71,33 @@ a {
   align-items: center;
 }
 .image {
-  grid-column-start: 1;
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  transform: translateZ(0);
 }
 .image__img {
   position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translate(-85%, -50%);
+  top: 30%;
+  left: 20%;
+  transform: translate(-5%, -35%);
+  width: 100%;
 }
 .text {
-  grid-column-start: 2;
   max-width: 36rem;
   position: relative;
   width: 100%;
   overflow-y: hidden;
   transition: min-height .5s ease-in-out;
   height: 100%;
-  min-height: var(--page-min-height);
+  /* TODO */
+  /* min-height: var(--page-min-height); */
 }
 .page {
   box-sizing: border-box;
   padding-top: 5rem;
   padding-bottom: 5rem;
+  padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
   display: flex;
@@ -196,6 +195,13 @@ a {
 .email__form__input__input:hover:not(:focus)::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
+.card-checkbox-list {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1rem;
+}
 .forwards-enter-active,
 .forwards-leave-active,
 .backwards-enter-active,
@@ -245,23 +251,42 @@ a {
 .fade-enter-to, .fade-leave {
   opacity: 1;
 }
-@media screen and (max-width: 800px) {
-  .wrapper {
-    grid-template-columns: 25% 75%;
+@media screen and (max-width: 719px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
-}
-@media screen and (max-width: 600px) {
   .wrapper {
-    padding-left: 1rem;
+    grid-template-columns: repeat(1, 1fr);
   }
   .image {
-    display: none;
+    position: unset;
+  }
+  .image__img {
+    top: 20%;
+    left: 5%;
   }
   .text {
-    grid-column: 1/3;
+    max-width: unset;
+  }
+  .page {
+    padding-top: 15rem;
+  }
+  .icon {
+    display: none;
+  }
+  .h1, .p1, .p2, .h3 {
+    text-align: center;
   }
 }
 @media screen and (max-width: 425px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .image__img {
+    top: 15%;
+  }
   .email__form {
     display: block;
     width: 100%;
@@ -288,7 +313,15 @@ export default {
     fullscreen: {
       type: Boolean,
       default: false
-    }
+    },
+    backgroundImage: {
+      type: String,
+      default: "https://cosmos-ui.netlify.com/static/media/BackgroundStars.d8924548.svg"
+    },
+    backgroundGradient: {
+      type: String,
+      default: "linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%)"
+    },
   },
   watch: {
     fullscreen() {

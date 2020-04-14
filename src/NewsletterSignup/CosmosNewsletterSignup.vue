@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="text">
-          <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
+          <transition-group class="page__container" :name="transition" @before-enter="setHeight">
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
                 <div class="icon" v-if="this.$slots['icon']">
@@ -409,6 +409,11 @@ export default {
         lD: "16352f8832a25f5b",
         zcld: "16352f8832a25f5b",
         zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
+      },
+      ibcFormData: {
+        lD: "16352f88328053f9",
+        zcld: "16352f88328053f9",
+        zc_formIx: "4ef47fbb86ab6668b78ce576d7aa791940fbf6cd35f5c50c"
       }
     }
   },
