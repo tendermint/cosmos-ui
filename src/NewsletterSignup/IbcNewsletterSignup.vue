@@ -75,12 +75,12 @@ a {
   height: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .image__img {
   position: absolute;
-  top: 30%;
   left: 20%;
-  transform: translate(-5%, -35%);
   width: 100%;
 }
 .text {
@@ -90,8 +90,7 @@ a {
   overflow-y: hidden;
   transition: min-height .5s ease-in-out;
   height: 100%;
-  /* TODO */
-  /* min-height: var(--page-min-height); */
+  min-height: var(--page-min-height);
 }
 .page {
   box-sizing: border-box;
@@ -265,6 +264,7 @@ a {
   .image__img {
     top: 20%;
     left: 5%;
+    transform: translate(-5%, -35%);
   }
   .text {
     max-width: unset;

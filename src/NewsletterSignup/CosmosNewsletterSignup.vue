@@ -112,12 +112,12 @@ a {
   height: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .image__img {
   position: absolute;
-  top: 30%;
   left: 20%;
-  transform: translate(-5%, -35%);
   width: 100%;
 }
 .text {
@@ -301,6 +301,7 @@ a {
   .image__img {
     top: 20%;
     left: 5%;
+    transform: translate(-5%, -35%);
   }
   .text {
     max-width: unset;
