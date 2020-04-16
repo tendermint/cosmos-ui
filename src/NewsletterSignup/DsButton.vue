@@ -54,7 +54,7 @@
   padding-right: .25rem;
 }
 .button__type__text .button__text {
-  padding-left: 0;
+  padding-left: 0.3rem;
   padding-right: 0;
 }
 .button__size__s {

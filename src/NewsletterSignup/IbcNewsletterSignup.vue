@@ -3,7 +3,7 @@
     <div class="container" :style="{'--page-min-height': pageMinHeight, 'background': `url(${backgroundImage}) repeat, ${backgroundGradient}`}">
       <div class="wrapper">
         <div class="image">
-          <div class="image__img" key="i2">
+          <div class="image__img">
             <graphics-planes/>
           </div>
         </div>
@@ -67,7 +67,6 @@ a {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
-  grid-template-areas: "image form";
   align-items: center;
 }
 .image {
@@ -80,7 +79,7 @@ a {
 }
 .image__img {
   position: absolute;
-  left: 20%;
+  left: 16%;
   width: 100%;
 }
 .text {
