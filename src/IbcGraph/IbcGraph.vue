@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pre>{{byType}}</pre>
+    <pre>{{createClient}}</pre>
     <div id="chart" style="width: 100%; height: 90vh"></div>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <style scoped>
 #chart {
   background: #111;
-  display: none;
+  overflow: hidden;
 }
 </style>
 
@@ -16,80 +16,101 @@
 import axios from "axios";
 import echarts from "echarts";
 import { v4 as uuidv4 } from "uuid";
+import { find, groupBy } from "lodash";
+
+const API = "http://localhost";
 
 export default {
   data: function() {
     return {
-      events: null
+      txsAll: []
     };
   },
-  methods: {
-    eventsByType(type) {
-      const events = this.events || [];
-      return events.filter(e => e.event_type === type);
-    }
-  },
   computed: {
-    byType() {
-      return this.eventsByType("message").filter(
-        e => e.module === "ibc_client"
-      );
+    createClient() {
+      let data = {};
+      this.txs.forEach(tx => {
+        const create_client = find(tx.events.events, {
+          action: "create_client"
+        });
+        if (create_client) {
+          const sender = find(tx.events.events, "sender").sender;
+          data[sender] = tx.blockchain;
+        }
+      });
+      return data;
     },
-    eventsSendPacket() {
-      return this.eventsByType("send_packet").map(e => {
-        const v = e.packet_data.value;
+    blockchainNodes() {
+      const data = [...new Set(this.txs.map(tx => tx.blockchain))];
+      return data.map(blockchain => {
         return {
-          amount: v.amount[0].amount,
-          sender: v.sender,
-          receiver: v.receiver,
-          blockchain: e.blockchain
+          id: blockchain,
+          symbolSize: 20
         };
       });
     },
-    // eventsData() {
-    //   let wallets = new Set();
-    //   this.eventsSendPacket.forEach(e => {
-    //     wallets.add(e.sender);
-    //     wallets.add(e.receiver);
-    //   });
-    //   return Array.from(wallets).map(a => {
-    //     return {
-    //       id: a,
-    //       name: a
-    //     };
-    //   });
-    // },
-    // eventsEdges() {
-    //   return this.eventsSendPacket.map(e => {
-    //     return {
-    //       source: e.sender,
-    //       target: e.receiver,
-    //       symbol: [null, "arrow"],
-    //       symbolSize: 6
-    //     };
-    //   });
-    // },
-    blockchains() {
-      if (!this.events) return [];
-      return Array.from(
-        new Set(Object.values(this.events.map(e => e.blockchain)))
-      ).map(b => {
+    blockchainCategories() {
+      const data = [...new Set(this.txs.map(tx => tx.blockchain))];
+      return data.map(b => {
         return {
           name: b,
-          uuid: uuidv4()
+          base: b
         };
       });
+    },
+    addressNodes() {
+      let nodes = [];
+      this.txs.forEach(tx => {
+        const send = find(tx.events.events, { action: "send" });
+        if (send) {
+          const recipient = find(tx.events.events, "recipient").recipient;
+          const sender = find(tx.events.events, "sender").sender;
+          nodes.push(recipient);
+          nodes.push(sender);
+        }
+      });
+      nodes = [...new Set(nodes)];
+      return nodes.map(address => {
+        return {
+          id: address,
+          symbolSize: 3,
+          category: this.blockchainAddress[address]
+        };
+      });
+    },
+    blockchainAddress() {
+      let nodes = {};
+      this.txs.forEach(tx => {
+        const send = find(tx.events.events, { action: "send" });
+        if (send) {
+          const sender = find(tx.events.events, "sender").sender;
+          const blockchain = tx.blockchain;
+          nodes[sender] = blockchain;
+        }
+      });
+      return nodes;
+    },
+    addressLinks() {
+      let sends = this.txs.filter(tx => {
+        return find(tx.events.events, { action: "send" });
+      });
+      return sends.map(tx => {
+        return {
+          target: find(tx.events.events, "recipient").recipient,
+          source: find(tx.events.events, "sender").sender,
+          lineStyle: {
+            color: "source",
+            curveness: 0.3
+          }
+        };
+      });
+    },
+    txs() {
+      return this.txsAll;
     }
   },
   async mounted() {
-    this.events = (await axios.get("http://161.35.13.141/txs/events")).data.map(
-      e => {
-        return {
-          ...e,
-          uuid: uuidv4()
-        };
-      }
-    );
+    this.txsAll = (await axios.get(`${API}/txs`)).data;
     const chart = echarts.init(document.getElementById("chart"));
     chart.setOption({
       series: [
@@ -97,42 +118,9 @@ export default {
           type: "graph",
           layout: "force",
           roam: true,
-          data: [
-            ...this.events.map(e => {
-              return {
-                id: e.uuid,
-                category: this.blockchains.filter(
-                  b => b.name === e.blockchain
-                )[0].uuid,
-                symbolSize: 5
-              };
-            }),
-            ...this.blockchains.map(b => {
-              return {
-                id: b.uuid,
-                symbolSize: 25,
-                category: b.uuid
-              };
-            })
-          ],
-          categories: this.blockchains.map(b => {
-            return {
-              name: b.uuid,
-              base: b
-            };
-          }),
-          links: [
-            ...this.events.map(e => {
-              return {
-                source: this.blockchains.filter(b => b.name === e.blockchain)[0]
-                  .uuid,
-                target: e.uuid,
-                lineStyle: {
-                  opacity: 0
-                }
-              };
-            })
-          ],
+          data: [...this.addressNodes],
+          links: [...this.addressLinks],
+          categories: [...this.blockchainCategories],
           force: {
             edgeLength: 5,
             repulsion: 20,
