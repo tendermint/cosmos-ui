@@ -17,7 +17,7 @@ import echarts from "echarts";
 import { v4 as uuidv4 } from "uuid";
 import { find, groupBy } from "lodash";
 
-const API = "http://localhost";
+const API = "http://138.197.229.7";
 
 export default {
   data: function() {
