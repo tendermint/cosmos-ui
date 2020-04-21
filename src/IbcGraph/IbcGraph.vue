@@ -1,6 +1,5 @@
 <template>
   <div>
-    <pre>{{createClient}}</pre>
     <div id="chart" style="width: 100%; height: 90vh"></div>
   </div>
 </template>
@@ -27,19 +26,6 @@ export default {
     };
   },
   computed: {
-    createClient() {
-      let data = {};
-      this.txs.forEach(tx => {
-        const create_client = find(tx.events.events, {
-          action: "create_client"
-        });
-        if (create_client) {
-          const sender = find(tx.events.events, "sender").sender;
-          data[sender] = tx.blockchain;
-        }
-      });
-      return data;
-    },
     blockchainNodes() {
       const data = [...new Set(this.txs.map(tx => tx.blockchain))];
       return data.map(blockchain => {
@@ -78,14 +64,29 @@ export default {
         };
       });
     },
+    blockchainAddress12() {
+      let nodes = {};
+      this.txs.forEach(tx => {
+        const create_client = find(tx.events.events, {
+          action: "update_client"
+        });
+        if (create_client) {
+          const address = find(tx.events.events, "sender").sender;
+          nodes[address] = tx.blockchain;
+        }
+      });
+      return nodes;
+    },
     blockchainAddress() {
       let nodes = {};
       this.txs.forEach(tx => {
+        const create_client = find(tx.events.events, {
+          action: "create_client"
+        });
         const send = find(tx.events.events, { action: "send" });
-        if (send) {
-          const sender = find(tx.events.events, "sender").sender;
-          const blockchain = tx.blockchain;
-          nodes[sender] = blockchain;
+        if (create_client || send) {
+          const address = find(tx.events.events, "sender").sender;
+          nodes[address] = tx.blockchain;
         }
       });
       return nodes;
