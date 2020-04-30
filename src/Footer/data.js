@@ -71,6 +71,10 @@ export default {
           h1: "Design & Assets",
           href: "/design"
         },
+        {
+          h1: "Newsletters",
+          href: "/newsletters"
+        },
       ]
     },
     {
