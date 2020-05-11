@@ -336,6 +336,13 @@ export default {
       fullscreenComputed: null,
     };
   },
+  watch: {
+    visible(newVal) {
+      if (newVal) {
+        this.visibleLocal = true;
+      }
+    },
+  },
   computed: {
     deltaX() {
       return this.currentX - this.startX;
