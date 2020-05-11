@@ -1,59 +1,132 @@
 <template>
   <span>
-    <span class="container" ref="container" :class="[`codeblock__hasfooter__${!!url}`, `codeblock__is-expandable__${!!(isExpandable)}`, `codeblock__expanded__${!!expanded}`]">
+    <span
+      class="container"
+      ref="container"
+      :class="[
+        `codeblock__hasfooter__${!!url}`,
+        `codeblock__is-expandable__${!!isExpandable}`,
+        `codeblock__expanded__${!!expanded}`,
+      ]"
+    >
       <span class="body__container">
         <span class="body__block">
           <span class="icons">
-            <span class="icons__item" v-if="height &gt; 300 &amp;&amp; expanded">
-              <svg class="icons__item__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                xmlns="http://www.w3.org/2000/svg" @click="expand(false)">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5303 10.7803L12 11.3107L11.4697 10.7803L6.96967 6.28033C6.67678 5.98744 6.67678 5.51256 6.96967 5.21967C7.26256 4.92678 7.73744 4.92678 8.03033 5.21967L11.25 8.43934L11.25 1.5C11.25 1.08579 11.5858 0.75 12 0.75C12.4142 0.75 12.75 1.08579 12.75 1.5L12.75 8.43934L15.9697 5.21967C16.2626 4.92678 16.7374 4.92678 17.0303 5.21967C17.3232 5.51256 17.3232 5.98744 17.0303 6.28033L12.5303 10.7803ZM12.5303 13.2197L12 12.6893L11.4697 13.2197L6.96967 17.7197C6.67678 18.0126 6.67678 18.4874 6.96967 18.7803C7.26256 19.0732 7.73744 19.0732 8.03033 18.7803L11.25 15.5607L11.25 22.5C11.25 22.9142 11.5858 23.25 12 23.25C12.4142 23.25 12.75 22.9142 12.75 22.5L12.75 15.5607L15.9697 18.7803C16.2626 19.0732 16.7374 19.0732 17.0303 18.7803C17.3232 18.4874 17.3232 18.0126 17.0303 17.7197L12.5303 13.2197Z"></path>
+            <span
+              class="icons__item"
+              v-if="height &gt; 300 &amp;&amp; expanded"
+            >
+              <svg
+                class="icons__item__icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                @click="expand(false)"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.5303 10.7803L12 11.3107L11.4697 10.7803L6.96967 6.28033C6.67678 5.98744 6.67678 5.51256 6.96967 5.21967C7.26256 4.92678 7.73744 4.92678 8.03033 5.21967L11.25 8.43934L11.25 1.5C11.25 1.08579 11.5858 0.75 12 0.75C12.4142 0.75 12.75 1.08579 12.75 1.5L12.75 8.43934L15.9697 5.21967C16.2626 4.92678 16.7374 4.92678 17.0303 5.21967C17.3232 5.51256 17.3232 5.98744 17.0303 6.28033L12.5303 10.7803ZM12.5303 13.2197L12 12.6893L11.4697 13.2197L6.96967 17.7197C6.67678 18.0126 6.67678 18.4874 6.96967 18.7803C7.26256 19.0732 7.73744 19.0732 8.03033 18.7803L11.25 15.5607L11.25 22.5C11.25 22.9142 11.5858 23.25 12 23.25C12.4142 23.25 12.75 22.9142 12.75 22.5L12.75 15.5607L15.9697 18.7803C16.2626 19.0732 16.7374 19.0732 17.0303 18.7803C17.3232 18.4874 17.3232 18.0126 17.0303 17.7197L12.5303 13.2197Z"
+                ></path>
               </svg>
               <span class="icons__item__tooltip">
                 Collapse
               </span>
             </span>
             <span class="icons__item">
-              <svg class="icons__item__icon" width="24" height="24" viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg" @click="copy(source)">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 0.25C10.0335 0.25 9.25 1.0335 9.25 2V4.5H10.75V2C10.75 1.86193 10.8619 1.75 11 1.75H21C21.1381 1.75 21.25 1.86193 21.25 2V16C21.25 16.1381 21.1381 16.25 21 16.25H16.5V17.75H21C21.9665 17.75 22.75 16.9665 22.75 16V2C22.75 1.0335 21.9665 0.25 21 0.25H11ZM3 6.25C2.0335 6.25 1.25 7.0335 1.25 8V22C1.25 22.9665 2.0335 23.75 3 23.75H13C13.9665 23.75 14.75 22.9665 14.75 22V8C14.75 7.0335 13.9665 6.25 13 6.25H3ZM2.75 8C2.75 7.86193 2.86193 7.75 3 7.75H13C13.1381 7.75 13.25 7.86193 13.25 8V22C13.25 22.1381 13.1381 22.25 13 22.25H3C2.86193 22.25 2.75 22.1381 2.75 22V8Z"></path>
+              <svg
+                class="icons__item__icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                @click="copy(source)"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11 0.25C10.0335 0.25 9.25 1.0335 9.25 2V4.5H10.75V2C10.75 1.86193 10.8619 1.75 11 1.75H21C21.1381 1.75 21.25 1.86193 21.25 2V16C21.25 16.1381 21.1381 16.25 21 16.25H16.5V17.75H21C21.9665 17.75 22.75 16.9665 22.75 16V2C22.75 1.0335 21.9665 0.25 21 0.25H11ZM3 6.25C2.0335 6.25 1.25 7.0335 1.25 8V22C1.25 22.9665 2.0335 23.75 3 23.75H13C13.9665 23.75 14.75 22.9665 14.75 22V8C14.75 7.0335 13.9665 6.25 13 6.25H3ZM2.75 8C2.75 7.86193 2.86193 7.75 3 7.75H13C13.1381 7.75 13.25 7.86193 13.25 8V22C13.25 22.1381 13.1381 22.25 13 22.25H3C2.86193 22.25 2.75 22.1381 2.75 22V8Z"
+                ></path>
               </svg>
               <span class="icons__item__tooltip">
-                {{copied ? 'Copied!' : 'Copy'}}
+                {{ copied ? "Copied!" : "Copy" }}
               </span>
             </span>
           </span>
-          <span class="body" :style="{'--max-height': maxHeight}" ref="body">
+          <span class="body" :style="{ '--max-height': maxHeight }" ref="body">
             <span class="body__wrapper">
               <span class="body__code" v-html="highlighted(source)"></span>
             </span>
           </span>
         </span>
         <span class="expand" v-if="isExpandable">
-          <span class="expand__item expand__item__expand" @click="expand(true)" v-if="!expanded">
+          <span
+            class="expand__item expand__item__expand"
+            @click="expand(true)"
+            v-if="!expanded"
+          >
             <span>Expand</span>
-            <svg class="expand__item__icon" width="100%" height="100%" viewBox="0 0 16 16" fill="none" 
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.25 0.99998C7.25 0.585766 7.58578 0.24998 8 0.24998C8.41421 0.24998 8.75 0.585766 8.75 0.99998L7.25 0.99998ZM8 14.8333L8.53033 15.3636L8 15.894L7.46967 15.3636L8 14.8333ZM2.46967 10.3636C2.17678 10.0708 2.17678 9.59588 2.46967 9.30298C2.76256 9.01009 3.23744 9.01009 3.53033 9.30298L2.46967 10.3636ZM12.4697 9.30298C12.7626 9.01009 13.2374 9.01009 13.5303 9.30298C13.8232 9.59587 13.8232 10.0707 13.5303 10.3636L12.4697 9.30298ZM8.75 0.99998L8.75 14.8333L7.25 14.8333L7.25 0.99998L8.75 0.99998ZM7.46967 15.3636L2.46967 10.3636L3.53033 9.30298L8.53033 14.303L7.46967 15.3636ZM13.5303 10.3636L8.53033 15.3636L7.46967 14.303L12.4697 9.30298L13.5303 10.3636Z" fill="black"></path>
+            <svg
+              class="expand__item__icon"
+              width="100%"
+              height="100%"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.25 0.99998C7.25 0.585766 7.58578 0.24998 8 0.24998C8.41421 0.24998 8.75 0.585766 8.75 0.99998L7.25 0.99998ZM8 14.8333L8.53033 15.3636L8 15.894L7.46967 15.3636L8 14.8333ZM2.46967 10.3636C2.17678 10.0708 2.17678 9.59588 2.46967 9.30298C2.76256 9.01009 3.23744 9.01009 3.53033 9.30298L2.46967 10.3636ZM12.4697 9.30298C12.7626 9.01009 13.2374 9.01009 13.5303 9.30298C13.8232 9.59587 13.8232 10.0707 13.5303 10.3636L12.4697 9.30298ZM8.75 0.99998L8.75 14.8333L7.25 14.8333L7.25 0.99998L8.75 0.99998ZM7.46967 15.3636L2.46967 10.3636L3.53033 9.30298L8.53033 14.303L7.46967 15.3636ZM13.5303 10.3636L8.53033 15.3636L7.46967 14.303L12.4697 9.30298L13.5303 10.3636Z"
+                fill="black"
+              ></path>
             </svg>
           </span>
-          <span class="expand__item expand__item__collapse" @click="expand(false, true)" v-if="height &gt; 300 &amp;&amp; expanded">
-            <svg width="100%" height="100%" viewBox="0 0 12 24" fill="none" 
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.53033 10.7803L6 11.3107L5.46967 10.7803L0.96967 6.28033C0.676777 5.98744 0.676777 5.51256 0.96967 5.21967C1.26256 4.92678 1.73744 4.92678 2.03033 5.21967L5.25 8.43934L5.25 1.5C5.25 1.08579 5.58578 0.75 6 0.75C6.41421 0.75 6.75 1.08579 6.75 1.5L6.75 8.43934L9.96967 5.21967C10.2626 4.92678 10.7374 4.92678 11.0303 5.21967C11.3232 5.51256 11.3232 5.98744 11.0303 6.28033L6.53033 10.7803ZM6.53033 13.2197L6 12.6893L5.46967 13.2197L0.96967 17.7197C0.676777 18.0126 0.676777 18.4874 0.96967 18.7803C1.26256 19.0732 1.73744 19.0732 2.03033 18.7803L5.25 15.5607L5.25 22.5C5.25 22.9142 5.58578 23.25 6 23.25C6.41421 23.25 6.75 22.9142 6.75 22.5L6.75 15.5607L9.96967 18.7803C10.2626 19.0732 10.7374 19.0732 11.0303 18.7803C11.3232 18.4874 11.3232 18.0126 11.0303 17.7197L6.53033 13.2197Z" fill="#2E3148"></path>
+          <span
+            class="expand__item expand__item__collapse"
+            @click="expand(false, true)"
+            v-if="height &gt; 300 &amp;&amp; expanded"
+          >
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 12 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.53033 10.7803L6 11.3107L5.46967 10.7803L0.96967 6.28033C0.676777 5.98744 0.676777 5.51256 0.96967 5.21967C1.26256 4.92678 1.73744 4.92678 2.03033 5.21967L5.25 8.43934L5.25 1.5C5.25 1.08579 5.58578 0.75 6 0.75C6.41421 0.75 6.75 1.08579 6.75 1.5L6.75 8.43934L9.96967 5.21967C10.2626 4.92678 10.7374 4.92678 11.0303 5.21967C11.3232 5.51256 11.3232 5.98744 11.0303 6.28033L6.53033 10.7803ZM6.53033 13.2197L6 12.6893L5.46967 13.2197L0.96967 17.7197C0.676777 18.0126 0.676777 18.4874 0.96967 18.7803C1.26256 19.0732 1.73744 19.0732 2.03033 18.7803L5.25 15.5607L5.25 22.5C5.25 22.9142 5.58578 23.25 6 23.25C6.41421 23.25 6.75 22.9142 6.75 22.5L6.75 15.5607L9.96967 18.7803C10.2626 19.0732 10.7374 19.0732 11.0303 18.7803C11.3232 18.4874 11.3232 18.0126 11.0303 17.7197L6.53033 13.2197Z"
+                fill="#2E3148"
+              ></path>
             </svg>
           </span>
         </span>
       </span>
       <span class="footer" v-if="url">
         <span class="footer__filename">
-        {{filename(url)}}
+          {{ filename(url) }}
         </span>
-        <a class="footer__source" :href="url" target="_blank" rel="noreferrer noopener">
+        <a
+          class="footer__source"
+          :href="url"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <span>View source</span>
-          <svg class="footer__source__icon" width="16" height="16" viewBox="0 0 16 16" 
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 2.5L10.5 8L5 13.5" stroke-width="1.5" stroke-linecap="round"></path>
+          <svg
+            class="footer__source__icon"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 2.5L10.5 8L5 13.5"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>
           </svg>
         </a>
       </span>
@@ -334,26 +407,26 @@ export default {
      * Code rendered in the body of the block
      */
     value: {
-      type: String
+      type: String,
     },
     /**
      * Code rendered in the body of the block in base64
      */
     base64: {
-      type: String
+      type: String,
     },
     /**
      * URL for "View source" link and filename in the code-block's footer
      */
     url: {
-      type: String
+      type: String,
     },
     /**
      * Language for syntax highlighting
      */
     language: {
-      type: String
-    }
+      type: String,
+    },
   },
   data: function() {
     return {
@@ -361,7 +434,7 @@ export default {
       maxHeight: null,
       copied: null,
       height: null,
-      isExpandable: null
+      isExpandable: null,
     };
   },
   computed: {
@@ -371,7 +444,7 @@ export default {
     },
     out() {
       return this.$slots.default;
-    }
+    },
   },
   mounted() {
     if (this.$refs.body) {
@@ -393,15 +466,20 @@ export default {
           tokens[1],
           "...",
           tokens.slice(-2)[0],
-          tokens.slice(-2)[1]
+          tokens.slice(-2)[1],
         ].join(" / ");
       } else {
         return tokens.join(" / ");
       }
     },
     copy(value) {
+      const val = value
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&");
       this.copied = true;
-      copy(value);
+      copy(val);
       setTimeout(() => {
         this.copied = false;
       }, 2000);
@@ -409,7 +487,14 @@ export default {
     highlighted(source) {
       const supportedSyntax = Prism.languages[this.language];
       if (supportedSyntax) {
-        return Prism.highlight(source.replace(/&quot;/g, "\"").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&"), supportedSyntax);
+        return Prism.highlight(
+          source
+            .replace(/&quot;/g, '"')
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&amp;/g, "&"),
+          supportedSyntax
+        );
       } else {
         return source;
       }
@@ -418,7 +503,7 @@ export default {
       const container = this.$refs.container;
       this.expanded = bool;
       if (!bool && container && scroll) container.scrollIntoView();
-    }
-  }
+    },
+  },
 };
 </script>
