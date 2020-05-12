@@ -204,7 +204,6 @@ a {
   font-size: .8125rem;
 }
 .box {
-  border: 1px solid var(--white-20);
   box-sizing: border-box;
   border-radius: 8px;
   padding: 1.5rem;
