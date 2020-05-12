@@ -4,7 +4,6 @@ export { default as PageHeader } from "./PageHeader/PageHeader";
 export { default as CookieBanner } from "./CookieBanner/CookieBanner";
 export { default as Footer } from "./Footer/Footer";
 export { default as CodeBlock } from "./CodeBlock/CodeBlock";
-export { default as GozNewsletterSignup } from "./GozNewsletterSignup/GozNewsletterSignup";
 export { default as GozCard } from "./GozCard/GozCard";
 export { default as GozSection } from "./GozSection/GozSection";
 export { default as GozMilestones } from "./GozMilestones/GozMilestones";
@@ -13,6 +12,7 @@ export { default as GozSchedule } from "./GozSchedule/GozSchedule";
 export { default as GozHero } from "./Hero/GozHero";
 export { default as CosmosNewsletterSignup } from "./NewsletterSignup/CosmosNewsletterSignup";
 export { default as IbcNewsletterSignup } from "./NewsletterSignup/IbcNewsletterSignup";
+export { default as SeriesSignup } from "./SeriesSignup/SeriesSignup";
 
 export { default as IconArrowRight } from "./Icons/IconArrowRight";
 export { default as IconCalendar } from "./Icons/IconCalendar";
