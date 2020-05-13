@@ -118,7 +118,7 @@
 import GozHero from "../Hero/GozHero"
 import GozCard from "../GozCard/GozCard"
 // import GozMilestones from "../GozMilestones/GozMilestones"
-import GozNewsletterSignup from "../GozNewsletterSignup/GozNewsletterSignup"
+import SeriesSignup from "../SeriesSignup/SeriesSignup"
 import GozSchedule from "../GozSchedule/GozSchedule"
 import GozSection from "../GozSection/GozSection"
 import GozRow from "../GozRow/GozRow"
@@ -133,7 +133,7 @@ export default {
     GozHero,
     GozCard,
     // GozMilestones,
-    GozNewsletterSignup,
+    SeriesSignup,
     GozSchedule,
     GozSection,
     GozRow,
