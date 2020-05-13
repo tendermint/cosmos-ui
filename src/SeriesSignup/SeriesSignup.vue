@@ -189,7 +189,7 @@ a {
   }
 }
 .form__button__icon {
-  fill: var(--primary);
+  fill: #FFFFFF;
   width: 1.5rem;
   height: 1.5rem;
 }
