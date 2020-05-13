@@ -50,7 +50,7 @@
                     <div class="form__input">
                       <input name="CONTACT_EMAIL" v-model="email" class="form__input__input" type="email" placeholder="Your email">
                     </div>
-                    <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m" backgroundColor="yellow">
+                    <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
                       <div :class="['form__button__content', `form__button__content__in-flight__${!!requestInFlight}`]">
                         sign up
                         <icon-arrow-right class="form__button__icon"/>
@@ -298,15 +298,15 @@ export default {
         "zc_trackCode": "ZCFORMVIEW",
         "viewFrom": "URL_ACTION",
         "submitType": "optinCustomView",
-        "lD": "16352f8832928bf9",
+        "lD": "16352f8832aab779",
         "emailReportId": "",
         "zx": "129a50c11",
         "zcvers": "3.0",
         "oldListIds": "",
         "mode": "OptinCreateView",
-        "zcld": "16352f8832928bf9",
+        "zcld": "16352f8832aab779",
         "zctd": "",
-        "zc_formIx": "4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575",
+        "zc_formIx": "4ef47fbb86ab66687c16fd8c3bffbbb740fbf6cd35f5c50c",
         "scriptless": "yes"
       }
     }
