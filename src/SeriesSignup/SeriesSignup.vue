@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container" v-bind:style="{'background': `linear-gradient(180deg, rgba(25, 52, 167, 0.9) 0%, rgba(14, 14, 86, 0.9) 100%), url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
+      <div class="container" v-bind:style="{'background': `#fffff, url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
         <div class="section">
           <transition name="fade" mode="out-in">
             <div v-if="state === 'success'" key="success">
               <div class="icon">
-                <icon-paper-plane class="icon__icon icon__icon__active"/>
+                <icon-letter-heart class="icon__icon icon__icon__active"/>
               </div>
               <div class="h1">
-                Thanks! Now check your inbox.
+                Almost there...
               </div>
               <div class="p">
-                You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.
+                You should get a confirmation email shortly. Open it up and ‘<strong>Confirm Registration</strong>’ to save your spot in the upcoming workshops.
               </div>
               <div class="box">
                 <div class="box__h1">
@@ -36,13 +36,13 @@
             </div>
             <div v-else key="default">
               <div class="icon">
-                <icon-letter-heart class="icon__icon"/>
+                <icon-code class="icon__icon"/>
               </div>
               <div class="h1">
-                Stay tuned for GoZ updates
+                Sign up for Code with Us
               </div>
               <div class="p">
-                More information on the Game of Zones competition will be coming soon. Subscribe to stay updated by email.
+                We'll send you email notifications before each workshop, a link to add the program to your calendar, and handy tips to prepare for the workshops.
               </div>
               <div class="form__wrapper">
                 <form :action="url" method="POST" target="_blank" rel="noreferrer noopener" @submit.prevent="submit">
@@ -52,7 +52,7 @@
                     </div>
                     <text-button type="submit" :disabled="emailInvalid || requestInFlight" class="form__button" size="m">
                       <div :class="['form__button__content', `form__button__content__in-flight__${!!requestInFlight}`]">
-                        Get updates
+                        sign up
                         <icon-arrow-right class="form__button__icon"/>
                       </div>
                       <div class="form__button__spinner" v-if="requestInFlight">
@@ -61,7 +61,7 @@
                     </text-button>
                   </div>
                   <div class="form__p">
-                    You can unsubscribe at any time.
+                    Zero spam. Unsubscribe at any time. <a href="https://cosmos.network/privacy" target="blank_" rel="noopener noreferrer">Privacy policy</a>
                   </div>
                 </form>
               </div>
@@ -74,13 +74,15 @@
 </template>
 
 <style scoped>
+a {
+  color: #5064FB;
+  text-decoration: none;
+}
 .container {
   color: var(--white-100);
   font-family: var(--ds-font-family, sans-serif);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
-  border-radius: .75rem;
-  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
   overflow-x: hidden;
@@ -109,20 +111,21 @@
   opacity: 1;
 }
 .h1 {
-  color: var(--white-100);
   text-align: center;
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 3rem;
   letter-spacing: -0.03em;
+  color: #000000;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
 .p {
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
   text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.25;
-  color: var(--white-80);
+  letter-spacing: -0.01em;
+  color: rgba(0, 0, 0, 0.8);
 }
 .form {
   margin-top: 3rem;
@@ -136,7 +139,7 @@
 }
 .form__input__input {
   background: none;
-  border: 1px solid var(--white-32);
+  border: 2px solid rgba(59, 66, 125, 0.12);
   padding: .75rem 1rem;
   font-size: 1rem;
   font-family: var(--ds-font-family, sans-serif);
@@ -144,11 +147,11 @@
   border-radius: .25rem;
   width: 100%;
   box-sizing: border-box;
-  color: var(--white-100);
+  color: rgba(0, 0, 0, 0.667);
+  opacity: 0.7;
 }
 .form__input__input:focus {
   outline: none;
-  border: 1px solid var(--primary-light);
 }
 .form__button {
   position: relative;
@@ -163,10 +166,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  color: var(--primary);
+  color: #FFFFFF;
 }
 .button__style__standard {
-  background: var(--white-100);
+  background: #5064FB;
 }
 .form__button__content.form__button__content__in-flight__true {
   opacity: 0
@@ -191,16 +194,16 @@
   height: 1.5rem;
 }
 .form__input__input::placeholder {
-  color: var(--white-51);
+  color: rgba(0, 0, 0, 0.667);
+  opacity: 0.7;
 }
 .form__p {
   text-align: center;
-  color: var(--white-51);
+  color: rgba(0, 0, 0, 0.667);
   margin-top: 1.5rem;
   font-size: .8125rem;
 }
 .box {
-  border: 1px solid var(--white-20);
   box-sizing: border-box;
   border-radius: 8px;
   padding: 1.5rem;
@@ -213,9 +216,10 @@
 }
 .box__h1 {
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.667);
 }
 .box__p {
-  color: var(--white-80);
+  color: rgba(0, 0, 0, 0.667);
 }
 .fade-enter-active {
   transition: all .4s ease-out;
@@ -241,7 +245,9 @@
 }
 @media screen and (max-width: 600px) {
   .h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2.5rem;
   }
   .form {
     margin-top: 2rem;
@@ -263,6 +269,7 @@ import IconArrowRight from "./../Icons/IconArrowRight"
 import IconPaperPlane from "./../Icons/IconPaperPlane"
 import IconError from "./../Icons/IconError"
 import IconSpinner from "./../Icons/IconSpinner"
+import IconCode from "./../Icons/IconCode"
 import Button from "../Button/Button"
 
 export default {
@@ -272,6 +279,7 @@ export default {
     IconPaperPlane,
     IconError,
     IconSpinner,
+    IconCode,
     "text-button": Button
   },
   props: {
@@ -290,15 +298,15 @@ export default {
         "zc_trackCode": "ZCFORMVIEW",
         "viewFrom": "URL_ACTION",
         "submitType": "optinCustomView",
-        "lD": "16352f8832928bf9",
+        "lD": "16352f8832aab779",
         "emailReportId": "",
         "zx": "129a50c11",
         "zcvers": "3.0",
         "oldListIds": "",
         "mode": "OptinCreateView",
-        "zcld": "16352f8832928bf9",
+        "zcld": "16352f8832aab779",
         "zctd": "",
-        "zc_formIx": "4ef47fbb86ab6668d0c9b9e1544dfffb47f0687152a57575",
+        "zc_formIx": "4ef47fbb86ab66687c16fd8c3bffbbb740fbf6cd35f5c50c",
         "scriptless": "yes"
       }
     }
