@@ -172,10 +172,11 @@ a {
   min-height: var(--page-min-height);
 }
 .page {
+  padding-left: 1rem;
+  padding-right: 1rem;
   box-sizing: border-box;
   padding-top: 5rem;
   padding-bottom: 5rem;
-  padding-right: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -345,7 +346,14 @@ a {
     transform: translateY(-130px);
   }
   .text {
-    max-width: initial;
+    justify-self: center;
+    max-width: 560px;
+  }
+  .h1,
+  .p1,
+  .p2,
+  .h3 {
+    text-align: center;
   }
 }
 </style>
