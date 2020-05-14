@@ -47,6 +47,9 @@
   letter-spacing: 0.02em;
   text-decoration: none;
   padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .button:disabled {
   opacity: 0.5;

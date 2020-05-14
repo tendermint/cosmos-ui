@@ -11,10 +11,10 @@
       <div class="wrapper">
         <div class="image">
           <div class="image__img" v-if="step === 2" key="i1">
-            <graphics-mail />
+            <graphics-mail class="image__img__img" />
           </div>
           <div class="image__img" v-else key="i2">
-            <graphics-planes />
+            <graphics-planes class="image__img__img" />
           </div>
         </div>
         <div class="text">
@@ -40,6 +40,7 @@
                     />
                   </div>
                   <ds-button
+                    class="button-sign-up"
                     @click="actionSubmitEmail"
                     :disabled="emailInvalid"
                   >
@@ -59,18 +60,20 @@
             </div>
             <div class="page" v-show="step === 1" ref="step1" key="step1">
               <div class="page__wrapper">
-                <ds-button
-                  size="s"
-                  color="#66A1FF"
-                  backgroundColor="rgba(0,0,0,0)"
-                  type="text"
-                  @click.native="actionGoBackwards"
-                >
-                  <template v-slot:left>
-                    <icon-chevron-left />
-                  </template>
-                  Back
-                </ds-button>
+                <div style="display: inline-block">
+                  <ds-button
+                    size="s"
+                    color="#66A1FF"
+                    backgroundColor="rgba(0,0,0,0)"
+                    type="text"
+                    @click.native="actionGoBackwards"
+                  >
+                    <template v-slot:left>
+                      <icon-chevron-left />
+                    </template>
+                    Back
+                  </ds-button>
+                </div>
                 <div class="h2">What are you interested in?</div>
                 <div class="card-checkbox-list">
                   <card-checkbox
@@ -89,13 +92,15 @@
                     {{ topic.h2 }}
                   </card-checkbox>
                 </div>
-                <ds-button
-                  size="l"
-                  @click="actionSubscribe"
-                  :disabled="!selected.some((t) => t)"
-                >
-                  Get updates
-                </ds-button>
+                <div style="display: inline-block">
+                  <ds-button
+                    size="l"
+                    @click="actionSubscribe"
+                    :disabled="!selected.some((t) => t)"
+                  >
+                    Get updates
+                  </ds-button>
+                </div>
               </div>
             </div>
             <div class="page" v-show="step === 2" ref="step2" key="step2">
@@ -137,9 +142,6 @@ a {
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
-  /* min-height: var(--page-min-height);
-  display: flex;
-  align-items: center; */
 }
 .wrapper {
   display: grid;
@@ -326,7 +328,7 @@ a {
 .fade-leave {
   opacity: 1;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
   .wrapper {
     grid-template-columns: 1fr;
   }
@@ -339,21 +341,32 @@ a {
     justify-content: center;
   }
   .image__img {
-    overflow-y: visible;
     position: relative;
     left: 0;
     top: 0;
-    transform: translateY(-130px);
+    width: 100%;
+    transform: translateY(-130px) translateX(-75px);
+  }
+  .image__img__img {
+    width: 150%;
   }
   .text {
+    transform: translateY(-75px);
     justify-self: center;
     max-width: 560px;
+    height: auto;
   }
   .h1,
   .p1,
   .p2,
   .h3 {
     text-align: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .email__form {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
   }
 }
 </style>
