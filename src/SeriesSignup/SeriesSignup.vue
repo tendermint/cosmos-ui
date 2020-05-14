@@ -117,7 +117,7 @@ a {
   line-height: 3rem;
   letter-spacing: -0.03em;
   color: #000000;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 .p {
