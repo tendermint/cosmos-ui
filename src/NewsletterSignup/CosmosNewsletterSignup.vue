@@ -137,16 +137,18 @@ a {
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
+  /* min-height: var(--page-min-height);
+  display: flex;
+  align-items: center; */
 }
 .wrapper {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 1fr;
-  grid-template-areas: "image form";
   align-items: center;
+  width: 100%;
 }
 .image {
-  grid-column-start: 1;
   width: 100%;
   height: 100%;
   position: relative;
@@ -160,7 +162,7 @@ a {
   transform: translate(-85%, -50%);
 }
 .text {
-  grid-column-start: 2;
+  /* grid-column-start: 2; */
   max-width: 36rem;
   position: relative;
   width: 100%;
@@ -323,21 +325,27 @@ a {
 .fade-leave {
   opacity: 1;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 720px) {
   .wrapper {
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 1fr;
   }
-}
-
-@media screen and (max-width: 600px) {
-  .wrapper {
-    padding-left: 1rem;
+  .page__container {
+    align-items: flex-start;
   }
   .image {
-    display: none;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+  }
+  .image__img {
+    overflow-y: visible;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: translateY(-130px);
   }
   .text {
-    grid-column: 1/3;
+    max-width: initial;
   }
 }
 </style>
@@ -412,10 +420,7 @@ export default {
       email: null,
       selected: this.topics.map((t) => false),
       icons: [],
-      subscriptions: {
-        tools: false,
-        ecosystem: false,
-      },
+      ready: false,
       iconHero: false,
       url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
       commonFormData: {
@@ -430,16 +435,6 @@ export default {
         zctd: "",
         scriptless: "yes",
       },
-      toolsFormData: {
-        lD: "16352f8832a25ec1",
-        zcld: "16352f8832a25ec1",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d",
-      },
-      ecosystemFormData: {
-        lD: "16352f8832a25f5b",
-        zcld: "16352f8832a25f5b",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39",
-      },
     };
   },
   async mounted() {
@@ -447,6 +442,7 @@ export default {
       this.iconHero = (await axios.get(this.svg)).data;
     }
     this.setHeight(`step${this.step}`);
+    this.ready = true;
     this.topics.forEach(async (topic) => {
       let icon = false;
       try {
