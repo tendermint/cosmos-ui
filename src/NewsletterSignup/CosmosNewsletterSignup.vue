@@ -1,67 +1,99 @@
 <template>
   <div>
-    <div class="container" :style="{'--page-min-height': pageMinHeight}">
+    <div
+      class="container"
+      :style="{
+        '--page-min-height': pageMinHeight,
+        background: background || 'none',
+      }"
+    >
+      <background-stars v-if="!background" />
       <div class="wrapper">
         <div class="image">
           <div class="image__img" v-if="step === 2" key="i1">
-            <graphics-mail/>
+            <graphics-mail />
           </div>
           <div class="image__img" v-else key="i2">
-            <graphics-planes/>
+            <graphics-planes />
           </div>
         </div>
         <div class="text">
-          <transition-group class="page__container" :name="transition"  @before-enter="setHeight">
+          <transition-group
+            class="page__container"
+            :name="transition"
+            @before-enter="setHeight"
+          >
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <label for="newsletter_email" class="h1">Sign up for Cosmos updates</label>
-                <div class="p1">Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.</div>
+                <div class="icon-hero" v-if="iconHero" v-html="iconHero"></div>
+                <label for="newsletter_email" class="h1">{{ h1 }}</label>
+                <div class="p1">{{ h2 }}</div>
                 <div class="email__form">
                   <div class="email__form__input">
-                    <input @keypress.enter="actionSubmitEmail" id="newsletter_email" v-model="email" class="email__form__input__input" type="text" placeholder="Your email">
+                    <input
+                      @keypress.enter="actionSubmitEmail"
+                      id="newsletter_email"
+                      v-model="email"
+                      class="email__form__input__input"
+                      type="text"
+                      placeholder="Your email"
+                    />
                   </div>
-                  <ds-button @click="actionSubmitEmail" :disabled="emailInvalid">
+                  <ds-button
+                    @click="actionSubmitEmail"
+                    :disabled="emailInvalid"
+                  >
                     Sign up
                     <template v-slot:right>
-                      <icon-arrow-right/>
+                      <icon-arrow-right />
                     </template>
                   </ds-button>
                 </div>
                 <div class="p2">
-                  You can unsubscribe at any time. <a href="https://cosmos.network/privacy" target="_blank">Privacy Policy</a>
+                  You can unsubscribe at any time.
+                  <a href="https://cosmos.network/privacy" target="_blank"
+                    >Privacy Policy</a
+                  >
                 </div>
               </div>
             </div>
             <div class="page" v-show="step === 1" ref="step1" key="step1">
               <div class="page__wrapper">
-                <ds-button size="s" color="#66A1FF" backgroundColor="rgba(0,0,0,0)" type="text" @click.native="actionGoBackwards">
+                <ds-button
+                  size="s"
+                  color="#66A1FF"
+                  backgroundColor="rgba(0,0,0,0)"
+                  type="text"
+                  @click.native="actionGoBackwards"
+                >
                   <template v-slot:left>
-                    <icon-chevron-left/>
+                    <icon-chevron-left />
                   </template>
                   Back
                 </ds-button>
                 <div class="h2">What are you interested in?</div>
                 <div class="card-checkbox-list">
-                  <card-checkbox v-model="subscriptions.tools" theme="dark">
+                  <card-checkbox
+                    v-for="(topic, i) in topics"
+                    :key="topic.h1"
+                    v-model="selected[i]"
+                    theme="dark"
+                  >
                     <template v-slot:icon>
-                      <icon-window-code/>
+                      <div v-if="icons[i]" v-html="icons[i]"></div>
+                      <icon-network v-else />
                     </template>
                     <template v-slot:h1>
-                      Tools & technology
+                      {{ topic.h1 }}
                     </template>
-                    Engineering and development updates on Cosmos SDK, Tendermint, IBC and more.
-                  </card-checkbox>
-                  <card-checkbox v-model="subscriptions.ecosystem" theme="dark">
-                    <template v-slot:icon>
-                      <icon-network/>
-                    </template>
-                    <template v-slot:h1>
-                      Ecosystem & community
-                    </template>
-                    General news and updates from the Cosmos ecosystem and community.
+                    {{ topic.h2 }}
                   </card-checkbox>
                 </div>
-                <ds-button size="l" @click="actionSubscribe" :disabled="!(subscriptions.tools || subscriptions.ecosystem)">
+                <ds-button
+                  size="l"
+                  @click="actionSubscribe"
+                  :disabled="!selected.some((t) => t)"
+                >
                   Get updates
                 </ds-button>
               </div>
@@ -69,9 +101,17 @@
             <div class="page" v-show="step === 2" ref="step2" key="step2">
               <div class="page__wrapper">
                 <div class="h1">Almost there…</div>
-                <div class="p1">You should get a confirmation email for each of your selected interests. Open it up and click ‘<strong>Confirm Subscription</strong>’ so we can keep you updated.</div>
+                <div class="p1">
+                  You should get a confirmation email for each of your selected
+                  interests. Open it up and click ‘<strong
+                    >Confirm Subscription</strong
+                  >’ so we can keep you updated.
+                </div>
                 <div class="h3">Don’t see the confirmation email yet?</div>
-                <div class="p2">It might be in your spam folder. If so, make sure to mark it as “not spam”.</div>
+                <div class="p2">
+                  It might be in your spam folder. If so, make sure to mark it
+                  as “not spam”.
+                </div>
               </div>
             </div>
           </transition-group>
@@ -83,11 +123,17 @@
 
 <style scoped>
 a {
-  color: #66A1FF;
+  color: #66a1ff;
   text-decoration: none;
 }
+.icon-hero {
+  width: 4rem;
+  height: 4rem;
+  margin: 1.5rem 0;
+  color: rgba(255, 255, 255, 0.5);
+}
 .container {
-  background: url("./BackgroundStars.svg") repeat, linear-gradient(145.11deg, #202854 9.49%, #171B39 91.06%);
+  background: var(--newsletter-background);
   font-family: var(--ds-font-family, sans-serif);
   color: white;
   position: relative;
@@ -119,7 +165,7 @@ a {
   position: relative;
   width: 100%;
   overflow-y: hidden;
-  transition: min-height .5s ease-in-out;
+  transition: min-height 0.5s ease-in-out;
   height: 100%;
   min-height: var(--page-min-height);
 }
@@ -157,9 +203,9 @@ a {
   margin-bottom: 2.5rem;
 }
 .h3 {
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255,255,255,.8);
+  color: rgba(255, 255, 255, 0.8);
   text-transform: none;
   margin: initial;
   letter-spacing: initial;
@@ -173,7 +219,7 @@ a {
   margin-bottom: 2rem;
 }
 .p2 {
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.25rem;
 }
@@ -188,32 +234,32 @@ a {
 .email__form__input__input {
   outline: none;
   width: 100%;
-  background: rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: white;
   font-size: 1rem;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   line-height: 1.5;
   height: auto;
   box-sizing: border-box;
-  transition: all .15s;
+  transition: all 0.15s;
   backdrop-filter: blur(10px);
   font-family: var(--ds-font-family, sans-serif);
   font-weight: 400;
   margin: 0;
 }
 .email__form__input__input:hover {
-  background-color: rgba(255,255,255,0.13);
+  background-color: rgba(255, 255, 255, 0.13);
 }
 .email__form__input__input:focus {
-  box-shadow: inset 0 0 0 1.5px #66A1FF;
-  background-color: rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 0 1.5px #66a1ff;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .email__form__input__input::-webkit-input-placeholder,
 .email__form__input__input::placeholder {
   color: rgba(255, 255, 255, 0.5);
-  transition: color .15s;
+  transition: color 0.15s;
 }
 .email__form__input__input:hover:not(:focus)::-webkit-input-placeholder,
 .email__form__input__input:hover:not(:focus)::placeholder {
@@ -230,7 +276,7 @@ a {
 .forwards-leave-active,
 .backwards-enter-active,
 .backwards-leave-active {
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   position: absolute;
 }
 .forwards-enter {
@@ -269,10 +315,12 @@ a {
 .fade-leave-active {
   transition: opacity 5s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
-.fade-enter-to, .fade-leave {
+.fade-enter-to,
+.fade-leave {
   opacity: 1;
 }
 @media screen and (max-width: 800px) {
@@ -295,32 +343,55 @@ a {
 </style>
 
 <script>
-import GraphicsPlanes from "./GraphicsPlanes"
-import GraphicsMail from "./GraphicsMail"
-import DsButton from "./DsButton"
-import IconArrowRight from "../Icons/IconArrowRight"
-import IconChevronLeft from "../Icons/IconChevronLeft"
-import IconWindowCode from "../Icons/IconWindowCode"
-import IconNetwork from "../Icons/IconNetwork"
-import IconIbc from "../Icons/IconIbc"
-import CardCheckbox from "./CardCheckbox"
-import querystring from "querystring"
+import GraphicsPlanes from "./GraphicsPlanes";
+import GraphicsMail from "./GraphicsMail";
+import DsButton from "./DsButton";
+import IconArrowRight from "../Icons/IconArrowRight";
+import IconChevronLeft from "../Icons/IconChevronLeft";
+import IconNetwork from "../Icons/IconNetwork";
+import IconIbc from "../Icons/IconIbc";
+import CardCheckbox from "./CardCheckbox";
+import querystring from "querystring";
+import axios from "axios";
+import BackgroundStars from "./BackgroundStars";
 
 export default {
   props: {
+    h1: {
+      default: "Sign up for Cosmos updates",
+    },
+    h2: {
+      default:
+        "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.",
+    },
+    zcld: {
+      default: "16352f8832a25f5b",
+    },
+    zc_formIx: {
+      default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39",
+    },
+    svg: {
+      default: false,
+    },
+    background: {
+      default: false,
+    },
+    topics: {
+      default: () => [],
+    },
     banner: {
       type: Boolean,
-      default: true
+      default: true,
     },
     fullscreen: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   watch: {
     fullscreen() {
-      this.setHeight(`step${this.step}`)
-    }
+      this.setHeight(`step${this.step}`);
+    },
   },
   components: {
     GraphicsPlanes,
@@ -328,10 +399,10 @@ export default {
     DsButton,
     IconArrowRight,
     IconChevronLeft,
-    IconWindowCode,
-    IconNetwork,
     IconIbc,
-    CardCheckbox
+    CardCheckbox,
+    IconNetwork,
+    BackgroundStars,
   },
   data: function() {
     return {
@@ -339,84 +410,123 @@ export default {
       transition: "forwards",
       pageMinHeight: null,
       email: null,
+      selected: this.topics.map((t) => false),
+      icons: [],
       subscriptions: {
         tools: false,
-        ecosystem: false
+        ecosystem: false,
       },
+      iconHero: false,
       url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
       commonFormData: {
-        "zc_trackCode": "ZCFORMVIEW",
-        "viewFrom": "URL_ACTION",
-        "submitType": "optinCustomView",
-        "emailReportId": "",
-        "zx": "129a50c11",
-        "zcvers": "3.0",
-        "oldListIds": "",
-        "mode": "OptinCreateView",
-        "zctd": "",
-        "scriptless": "yes"
+        zc_trackCode: "ZCFORMVIEW",
+        viewFrom: "URL_ACTION",
+        submitType: "optinCustomView",
+        emailReportId: "",
+        zx: "129a50c11",
+        zcvers: "3.0",
+        oldListIds: "",
+        mode: "OptinCreateView",
+        zctd: "",
+        scriptless: "yes",
       },
       toolsFormData: {
         lD: "16352f8832a25ec1",
         zcld: "16352f8832a25ec1",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d"
+        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d",
       },
       ecosystemFormData: {
         lD: "16352f8832a25f5b",
         zcld: "16352f8832a25f5b",
-        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
-      }
-    }
+        zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39",
+      },
+    };
   },
-  mounted() {
-    this.setHeight(`step${this.step}`)
+  async mounted() {
+    if (this.svg) {
+      this.iconHero = (await axios.get(this.svg)).data;
+    }
+    this.setHeight(`step${this.step}`);
+    this.topics.forEach(async (topic) => {
+      let icon = false;
+      try {
+        icon = (await axios.get(topic.svg)).data;
+      } catch {
+        console.error(`Can't load icon from ${topic.svg}.`);
+      }
+      this.icons.push(icon);
+    });
   },
   computed: {
     emailInvalid() {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return !re.test(String(this.email))
-    }
+      return !re.test(String(this.email));
+    },
   },
   methods: {
     actionSubmitEmail() {
-      if (!this.emailInvalid) this.actionGoForwards()
+      if (!this.emailInvalid) {
+        if (this.topics.length <= 0) {
+          this.actionSubscribe();
+          this.step = 2;
+        } else {
+          this.actionGoForwards();
+        }
+      }
     },
-    actionSubscribe() {
-      if (this.subscriptions.tools) this.subscribe(this.toolsFormData)
-      if (this.subscriptions.ecosystem) this.subscribe(this.ecosystemFormData)
-      this.actionGoForwards()
+    actionSubscribe(selected) {
+      if (this.topics.length <= 0) {
+        this.subscribe({
+          lD: this.zcld,
+          zcld: this.zcld,
+          zc_formIx: this.zc_formIx,
+        });
+      } else {
+        this.selected.forEach((topicSelected, i) => {
+          if (topicSelected) {
+            this.subscribe({
+              lD: this.topics[i].zcld,
+              zcld: this.topics[i].zcld,
+              zc_formIx: this.topics[i].zc_formIx,
+            });
+          }
+        });
+      }
+      this.actionGoForwards();
     },
     setHeight(el) {
       this.$nextTick(() => {
-        const isString = s => (typeof s === 'string' || s instanceof String)
-        const page = isString(el) ? this.$refs[el] : el
-        const height = this.fullscreen ? "800px" : page.getBoundingClientRect().height + "px"
-        this.pageMinHeight = height
-      })
+        const isString = (s) => typeof s === "string" || s instanceof String;
+        const page = isString(el) ? this.$refs[el] : el;
+        const height = this.fullscreen
+          ? "800px"
+          : page.getBoundingClientRect().height + "px";
+        this.pageMinHeight = height;
+      });
     },
     actionGoForwards() {
-      this.transition = "forwards"
-      this.step += 1
+      this.transition = "forwards";
+      this.step += 1;
     },
     actionGoBackwards() {
-      this.transition = "backwards"
-      this.step -= 1
+      this.transition = "backwards";
+      this.step -= 1;
     },
     async subscribe(body) {
       const options = {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: querystring.stringify({
-          "CONTACT_EMAIL": this.email,
+          CONTACT_EMAIL: this.email,
           ...this.commonFormData,
-          ...body
-        })
-      }
-      fetch(this.url, options)
-    }
-  }
-}
+          ...body,
+        }),
+      };
+      fetch(this.url, options);
+    },
+  },
+};
 </script>

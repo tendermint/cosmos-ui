@@ -9,7 +9,7 @@
   "repository": "https://github.com/tendermint/cosmos-ui",
   "scripts": {
     "serve": "start-storybook -p 9999 -s ./public",
-    "build": "build-storybook -c .storybook -o dist"
+    "build": "build-storybook -c .storybook -o dist -s ./public"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

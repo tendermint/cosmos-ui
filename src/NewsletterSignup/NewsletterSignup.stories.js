@@ -1,80 +1,81 @@
 import CosmosNewsletterSignup from "./CosmosNewsletterSignup.vue";
-import IbcNewsletterSignup from "./IbcNewsletterSignup.vue";
-import IconIbc from "../Icons/IconIbc";
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean } from "@storybook/addon-knobs";
 
 export default {
   title: "NewsletterSignup",
   component: CosmosNewsletterSignup,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const cosmos = () => ({
   props: {
     fullscreen: {
-      default: boolean("fullscreen", false)
-    }
+      default: boolean("fullscreen", false),
+    },
+  },
+  data() {
+    return {
+      value: {
+        h1: "Sign up for Cosmos updates",
+        h2:
+          "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.",
+        topics: [
+          {
+            h1: "Tools & technology",
+            h2:
+              "Engineering and development updates on Cosmos SDK, Tendermint, IBC and more.",
+            zcld: "16352f8832a25ec1",
+            zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbf4ad4b279730a79d",
+            svg: "/icon-window-code.svg",
+          },
+          {
+            h1: "Ecosystem & community",
+            h2:
+              "General news and updates from the Cosmos ecosystem and community.",
+            zcld: "16352f8832a25f5b",
+            zc_formIx: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39",
+            svg: "/icon-network.svg",
+          },
+        ],
+      },
+    };
   },
   components: {
-    CosmosNewsletterSignup
+    CosmosNewsletterSignup,
   },
   template: `
     <div>
-      <cosmos-newsletter-signup v-bind="{fullscreen}"/>
+      <cosmos-newsletter-signup v-bind="{...value, fullscreen}"/>
     </div>
-  `
+  `,
 });
 
 export const ibc = () => ({
   props: {
     fullscreen: {
-      default: boolean("fullscreen", false)
-    }
+      default: boolean("fullscreen", false),
+    },
   },
   components: {
-    IbcNewsletterSignup,
-    IconIbc
+    CosmosNewsletterSignup,
+  },
+  data() {
+    return {
+      value: {
+        h1: "Sign up for IBC updates",
+        h2:
+          "Get engineering, development and ecosystem updates on IBC (Inter-Blockchain Communciation protocol) - straight to your inbox.",
+        zcld: "16352f88328053f9",
+        zc_formIx: "4ef47fbb86ab6668b78ce576d7aa791940fbf6cd35f5c50c",
+        svg: "/icon-ibc.svg",
+        background:
+          'url("/stars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%)',
+      },
+    };
   },
   template: `
     <div>
-      <ibc-newsletter-signup v-bind="{fullscreen}">
-        <template v-slot:icon>
-          <icon-ibc/>
-        </template>
-        <template v-slot:h1>
-          Sign up for IBC updates
-        </template>
-        <template v-slot:p1>
-          Get engineering, development and ecosystem updates on IBC (Inter-Blockchain Communciation protocol) - straight to your inbox.
-        </template>
-      </ibc-newsletter-signup>
+      <cosmos-newsletter-signup v-bind="{...value, fullscreen}"/>
     </div>
-  `
-});
-
-export const tools_and_tech = () => ({
-  props: {
-    fullscreen: {
-      default: boolean("fullscreen", false)
-    }
-  },
-  components: {
-    IbcNewsletterSignup,
-    IconIbc
-  },
-  template: `
-    <div>
-      <ibc-newsletter-signup v-bind="{fullscreen}">
-        <template v-slot:icon>
-          <icon-ibc/>
-        </template>
-        <template v-slot:h1>
-          Sign up for Cosmos tools & technology updates
-        </template>
-        <template v-slot:p1>
-          Get engineering and development updates on Cosmos SDK, Tendermint Core, IBC and more - straight to your inbox.
-        </template>
-      </ibc-newsletter-signup>
-    </div>
-  `
+  `,
 });
