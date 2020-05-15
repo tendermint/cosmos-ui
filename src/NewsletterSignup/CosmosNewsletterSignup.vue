@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="container"
+      :class="['container', `fullscreen__${!!fullscreen}`]"
       :style="{
         '--page-min-height': pageMinHeight,
         background: background || 'none',
@@ -28,6 +28,7 @@
                 <div class="icon-hero" v-if="iconHero">
                   <div v-html="iconHero"></div>
                 </div>
+                <div class="h4" v-if="fullscreen">Email communications</div>
                 <label for="newsletter_email" class="h1">{{ h1 }}</label>
                 <div class="p1">{{ h2 }}</div>
                 <div class="email__form">
@@ -200,6 +201,9 @@ a {
   margin-bottom: 1.5rem;
   display: block;
 }
+.fullscreen__true .h1 {
+  font-size: 2.5rem;
+}
 .h2 {
   font-size: 2rem;
   color: white;
@@ -216,6 +220,14 @@ a {
   margin: initial;
   letter-spacing: initial;
   line-height: 1.25rem;
+}
+.h4 {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
 }
 .p1 {
   color: rgba(255, 255, 255, 0.8);
@@ -368,7 +380,8 @@ a {
   .h1,
   .p1,
   .p2,
-  .h3 {
+  .h3,
+  .h4 {
     text-align: center;
   }
 }
@@ -422,8 +435,7 @@ export default {
       default: true
     },
     fullscreen: {
-      type: String,
-      default: "100vh"
+      type: String
     }
   },
   watch: {
