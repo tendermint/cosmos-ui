@@ -98,7 +98,7 @@ a {
 }
 .icon__icon {
   stroke: var(--white-100);
-  opacity: .32;
+  opacity: 0.5;
   width: 4rem;
   height: 4rem;
 }
@@ -150,8 +150,12 @@ a {
   color: rgba(0, 0, 0, 0.667);
   opacity: 0.7;
 }
+.form__input__input:hover {
+  background-color: rgba(255,255,255,0.13);
+}
 .form__input__input:focus {
   outline: none;
+  box-shadow: inset 0 0 0 1.5px #66A1FF;
 }
 .form__button {
   position: relative;
@@ -253,11 +257,6 @@ a {
     margin-top: 2rem;
     grid-auto-flow: row;
     grid-template-columns: 1fr;
-  }
-}
-@media screen and (max-width: 320px) {
-  .h1 {
-    font-size: 1rem;
   }
 }
 </style>
