@@ -524,9 +524,10 @@ export default {
       this.$nextTick(() => {
         const isString = s => typeof s === "string" || s instanceof String;
         const page = isString(el) ? this.$refs[el] : el;
-        const height = this.fullscreen
-          ? this.fullscreen
-          : page.getBoundingClientRect().height + "px";
+        const height =
+          this.fullscreen && window.innerWidth > 800
+            ? this.fullscreen
+            : page.getBoundingClientRect().height + "px";
         this.pageMinHeight = height;
       });
     },
