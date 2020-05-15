@@ -422,8 +422,8 @@ export default {
       default: true
     },
     fullscreen: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: "100vh"
     }
   },
   watch: {
@@ -525,7 +525,7 @@ export default {
         const isString = s => typeof s === "string" || s instanceof String;
         const page = isString(el) ? this.$refs[el] : el;
         const height = this.fullscreen
-          ? "800px"
+          ? this.fullscreen
           : page.getBoundingClientRect().height + "px";
         this.pageMinHeight = height;
       });

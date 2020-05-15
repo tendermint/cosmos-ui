@@ -1,5 +1,5 @@
 import CosmosNewsletterSignup from "./CosmosNewsletterSignup.vue";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
   title: "NewsletterSignup",
@@ -10,7 +10,7 @@ export default {
 export const cosmos = () => ({
   props: {
     fullscreen: {
-      default: boolean("fullscreen", false),
+      default: text("fullscreen", "100vh"),
     },
   },
   data() {
