@@ -69,7 +69,7 @@ export const ibc = () => ({
         zc_formIx: "4ef47fbb86ab6668b78ce576d7aa791940fbf6cd35f5c50c",
         svg: "/icon-ibc.svg",
         background:
-          'url("/stars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%)',
+          'url("/img/bg-tile-stars.svg") repeat, linear-gradient(137.58deg, #161931 9.49%, #2D1731 91.06%)',
       },
     };
   },

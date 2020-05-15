@@ -25,7 +25,9 @@
           >
             <div class="page" v-show="step === 0" ref="step0" key="step0">
               <div class="page__wrapper">
-                <div class="icon-hero" v-if="iconHero" v-html="iconHero"></div>
+                <div class="icon-hero" v-if="iconHero">
+                  <div v-html="iconHero"></div>
+                </div>
                 <label for="newsletter_email" class="h1">{{ h1 }}</label>
                 <div class="p1">{{ h2 }}</div>
                 <div class="email__form">
@@ -134,7 +136,7 @@ a {
 .icon-hero {
   width: 4rem;
   height: 4rem;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 2rem;
   color: rgba(255, 255, 255, 0.5);
 }
 .container {
@@ -328,6 +330,11 @@ a {
   opacity: 1;
 }
 @media screen and (max-width: 800px) {
+  .icon-hero {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   .wrapper {
     grid-template-columns: 1fr;
   }
