@@ -164,7 +164,6 @@ a {
   transform: translate(-85%, -50%);
 }
 .text {
-  /* grid-column-start: 2; */
   max-width: 36rem;
   position: relative;
   width: 100%;
@@ -335,6 +334,9 @@ a {
   .page__container {
     align-items: flex-start;
   }
+  .page {
+    padding-bottom: 0;
+  }
   .image {
     height: 400px;
     display: flex;
@@ -387,40 +389,40 @@ import BackgroundStars from "./BackgroundStars";
 export default {
   props: {
     h1: {
-      default: "Sign up for Cosmos updates",
+      default: "Sign up for Cosmos updates"
     },
     h2: {
       default:
-        "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox.",
+        "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox."
     },
     zcld: {
-      default: "16352f8832a25f5b",
+      default: "16352f8832a25f5b"
     },
     zc_formIx: {
-      default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39",
+      default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
     },
     svg: {
-      default: false,
+      default: false
     },
     background: {
-      default: false,
+      default: false
     },
     topics: {
-      default: () => [],
+      default: () => []
     },
     banner: {
       type: Boolean,
-      default: true,
+      default: true
     },
     fullscreen: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   watch: {
     fullscreen() {
       this.setHeight(`step${this.step}`);
-    },
+    }
   },
   components: {
     GraphicsPlanes,
@@ -431,7 +433,7 @@ export default {
     IconIbc,
     CardCheckbox,
     IconNetwork,
-    BackgroundStars,
+    BackgroundStars
   },
   data: function() {
     return {
@@ -439,7 +441,7 @@ export default {
       transition: "forwards",
       pageMinHeight: null,
       email: null,
-      selected: this.topics.map((t) => false),
+      selected: this.topics.map(t => false),
       icons: [],
       ready: false,
       iconHero: false,
@@ -454,8 +456,8 @@ export default {
         oldListIds: "",
         mode: "OptinCreateView",
         zctd: "",
-        scriptless: "yes",
-      },
+        scriptless: "yes"
+      }
     };
   },
   async mounted() {
@@ -464,7 +466,7 @@ export default {
     }
     this.setHeight(`step${this.step}`);
     this.ready = true;
-    this.topics.forEach(async (topic) => {
+    this.topics.forEach(async topic => {
       let icon = false;
       try {
         icon = (await axios.get(topic.svg)).data;
@@ -478,7 +480,7 @@ export default {
     emailInvalid() {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return !re.test(String(this.email));
-    },
+    }
   },
   methods: {
     actionSubmitEmail() {
@@ -496,7 +498,7 @@ export default {
         this.subscribe({
           lD: this.zcld,
           zcld: this.zcld,
-          zc_formIx: this.zc_formIx,
+          zc_formIx: this.zc_formIx
         });
       } else {
         this.selected.forEach((topicSelected, i) => {
@@ -504,7 +506,7 @@ export default {
             this.subscribe({
               lD: this.topics[i].zcld,
               zcld: this.topics[i].zcld,
-              zc_formIx: this.topics[i].zc_formIx,
+              zc_formIx: this.topics[i].zc_formIx
             });
           }
         });
@@ -513,7 +515,7 @@ export default {
     },
     setHeight(el) {
       this.$nextTick(() => {
-        const isString = (s) => typeof s === "string" || s instanceof String;
+        const isString = s => typeof s === "string" || s instanceof String;
         const page = isString(el) ? this.$refs[el] : el;
         const height = this.fullscreen
           ? "800px"
@@ -534,16 +536,16 @@ export default {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
           CONTACT_EMAIL: this.email,
           ...this.commonFormData,
-          ...body,
-        }),
+          ...body
+        })
       };
       fetch(this.url, options);
-    },
-  },
+    }
+  }
 };
 </script>
