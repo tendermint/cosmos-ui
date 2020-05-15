@@ -98,7 +98,6 @@ a {
 }
 .icon__icon {
   stroke: var(--white-100);
-  opacity: 0.5;
   width: 4rem;
   height: 4rem;
 }
@@ -155,7 +154,7 @@ a {
 }
 .form__input__input:focus {
   outline: none;
-  box-shadow: inset 0 0 0 1.5px #66A1FF;
+  border: 2px solid #5064FB;
 }
 .form__button {
   position: relative;
