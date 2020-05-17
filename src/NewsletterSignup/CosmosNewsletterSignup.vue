@@ -213,7 +213,7 @@ a {
   margin-bottom: 2.5rem;
 }
 .h3 {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   text-transform: none;
@@ -237,7 +237,7 @@ a {
   margin-bottom: 2rem;
 }
 .p2 {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.25rem;
 }
@@ -357,7 +357,7 @@ a {
     padding-bottom: 0;
   }
   .image {
-    height: 400px;
+    height: 250px;
     display: flex;
     justify-content: center;
   }
@@ -365,11 +365,13 @@ a {
     position: relative;
     left: 0;
     top: 0;
-    width: 100%;
-    transform: translateY(-130px) translateX(-75px);
+    transform: translateY(-100%);
   }
   .image__img__img {
-    width: 150%;
+    width: 500px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
   }
   .text {
     transform: translateY(-75px);
@@ -389,6 +391,21 @@ a {
   .email__form {
     grid-template-columns: 1fr;
     grid-auto-flow: row;
+  }
+  .h1,
+  .h2,
+  .fullscreen__true .h1 {
+    font-size: 1.5rem;
+  }
+  .h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .p1 {
+    font-size: 1rem;
+  }
+  .h4 {
+    font-size: 0.8125rem;
   }
 }
 </style>
