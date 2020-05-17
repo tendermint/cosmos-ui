@@ -99,7 +99,7 @@
   left: 0;
   right: initial;
   width: var(--sidebar-width, 300px);
-  max-width: var(--sidebar-width, 75%);
+  max-width: var(--sidebar-max-width, 75%);
   height: var(--sidebar-height, 100%);
   max-height: var(--sidebar-max-height, 100%);
   box-shadow: var(--sidebar-box-shadow);
@@ -109,7 +109,7 @@
   left: initial;
   right: 0;
   width: var(--sidebar-width, 300px);
-  max-width: var(--sidebar-width, 75%);
+  max-width: var(--sidebar-max-width, 75%);
   height: var(--sidebar-height, 100%);
   max-height: var(--sidebar-max-height, 100%);
   box-shadow: var(--sidebar-box-shadow);
@@ -260,25 +260,25 @@ export default {
      * Width of the sidebar.
      */
     width: {
-      type: String,
+      type: String
     },
     /**
      * Maximum width of the sidebar.
      */
     maxWidth: {
-      type: String,
+      type: String
     },
     /**
      * Height of the sidebar.
      */
     height: {
-      type: String,
+      type: String
     },
     /**
      * Maximum height of the sidebar.
      */
     maxHeight: {
-      type: String,
+      type: String
     },
     /**
      * `left` | `right` | `bottom`
@@ -333,7 +333,7 @@ export default {
       translateY: null,
       isScrolling: null,
       marginTopComputed: null,
-      fullscreenComputed: null,
+      fullscreenComputed: null
     };
   },
   watch: {
@@ -445,7 +445,7 @@ export default {
       this.currentY = null;
       this.translateX = null;
       this.isScrolling = null;
-    },
-  },
+    }
+  }
 };
 </script>
