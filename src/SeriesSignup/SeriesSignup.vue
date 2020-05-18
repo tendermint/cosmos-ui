@@ -38,8 +38,8 @@
               <div class="icon">
                 <icon-code class="icon__icon"/>
               </div>
-              <div class="h1">
-                Sign up for Code with Us
+              <div class="h1" v-if="this.$slots['h1']">
+                <slot name="h1"/>
               </div>
               <div class="p">
                 We'll send you email notifications before each workshop, a link to add the program to your calendar, and handy tips to prepare for the workshops.
@@ -197,7 +197,7 @@ a {
   height: 1.5rem;
 }
 .form__input__input::placeholder {
-  color: rgba(0, 0, 0, 0.667);
+  color: inherit;
   opacity: 0.7;
 }
 .form__p {

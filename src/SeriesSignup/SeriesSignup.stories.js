@@ -14,6 +14,10 @@ export const normal = () => ({
     },
   },
   template: `
-    <series-signup v-bind="{ imgSrc }" />
+    <series-signup>
+      <template v-slot:h1>
+        Sign up for Code with Us
+      </template>
+    </series-signup>
   `
 })
