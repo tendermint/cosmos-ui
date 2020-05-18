@@ -36,7 +36,8 @@
   min-height: 7.25rem;
   user-select: none;
   cursor: pointer;
-  transition: background-color .25s, border-color .25s, box-shadow .15s ease-out, transform .15s ease-out;
+  transition: background-color 0.25s, border-color 0.25s,
+    box-shadow 0.15s ease-out, transform 0.15s ease-out;
   padding-top: 1rem;
   padding-bottom: 1rem;
   box-sizing: border-box;
@@ -44,26 +45,27 @@
 }
 ::v-deep .container:hover,
 ::v-deep .container:focus {
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.07), 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.07), 0px 4px 8px rgba(0, 0, 0, 0.05),
+    0px 1px 0px rgba(0, 0, 0, 0.05);
 }
 ::v-deep .container:hover {
   transform: translateY(-2px);
 }
 ::v-deep .value__false.container:hover .checkbox__icon {
-  stroke: rgba(255,255,255,0.8);
+  stroke: rgba(255, 255, 255, 0.8);
 }
 ::v-deep .value__false.container:focus:not(:hover) .checkbox__icon {
-  stroke: #66A1FF;
+  stroke: #66a1ff;
 }
 ::v-deep .value__true.container:focus:not(:hover) .checkbox__icon {
-  fill: #66A1FF;
+  fill: #66a1ff;
 }
 .container:active {
   transform: translateY(0);
   transition-duration: 0s;
 }
 .value__true.container {
-  background-color: #161931
+  background-color: #161931;
 }
 .icon {
   grid-column-start: 1;
@@ -79,13 +81,13 @@
   margin: 1rem;
 }
 .value__true .icon__image {
-  stroke: #66A1FF;
+  stroke: #66a1ff;
 }
 ::v-deep .container:active .icon__image,
 ::v-deep .container:active .h1,
 ::v-deep .container:active .p,
 ::v-deep .container:active .checkbox {
-  opacity: .6;
+  opacity: 0.6;
 }
 .body {
   grid-column-start: 2;
@@ -97,11 +99,11 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
-  margin-bottom: .5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
 }
 .p {
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: 0.01em;
   color: rgba(255, 255, 255, 0.8);
@@ -117,17 +119,25 @@
   height: 1.5rem;
 }
 .value__true .checkbox__icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 .value__false .checkbox__icon {
   fill: none;
   stroke: rgba(255, 255, 255, 0.32);
 }
+@media screen and (max-width: 400px) {
+  .h1 {
+    font-size: 1rem;
+  }
+  .p {
+    font-size: 0.8125rem;
+  }
+}
 </style>
 
 <script>
-import IconCheck from "../Icons/IconCheck"
-import IconUncheck from "../Icons/IconUncheck"
+import IconCheck from "../Icons/IconCheck";
+import IconUncheck from "../Icons/IconUncheck";
 
 export default {
   components: {
@@ -144,5 +154,5 @@ export default {
       default: false
     }
   }
-}
+};
 </script>
