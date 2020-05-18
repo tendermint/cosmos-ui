@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-      <div class="container" v-bind:style="{'background': `#fffff, url(${imgSrc})`, 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center center'}">
+      <div class="container">
         <div class="section">
           <transition name="fade" mode="out-in">
             <div v-if="state === 'success'" key="success">
@@ -279,12 +279,6 @@ export default {
     IconSpinner,
     IconCode,
     "text-button": Button
-  },
-  props: {
-    imgSrc: {
-      type: String,
-      default: "/goz.jpg"
-    }
   },
   data: function() {
     return {
