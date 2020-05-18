@@ -1,32 +1,59 @@
 <template>
   <div>
     <transition name="overlay" appear>
-      <div class="overlay"
-           ref="overlay"
-           :style="{'background-color': backgroundColor || 'rgba(0, 0, 0, 0.35)'}"
-           v-if="visible && visibleLocal"
-           @click="close"
-           @touchstart="touchstart"
-           @touchmove="touchmove"
-           @touchend="touchend">
-      </div>
+      <div
+        class="overlay"
+        ref="overlay"
+        :style="{
+          'background-color': backgroundColor || 'rgba(0, 0, 0, 0.35)',
+        }"
+        v-if="visible && visibleLocal"
+        @click="close"
+        @touchstart="touchstart"
+        @touchmove="touchmove"
+        @touchend="touchend"
+      ></div>
     </transition>
     <transition :name="`sidebar__${side}`" @after-leave="emitVisible()" appear>
-      <div :class="['sidebar', `sidebar__side__${side}`]"
-           ref="sidebar"
-           v-if="visible && visibleLocal"
-           :style="style"
-           @click.self="sidebarClick"
-           @touchstart="touchstart"
-           @touchmove="touchmove"
-           @touchend="touchend">
+      <div
+        :class="['sidebar', `sidebar__side__${side}`]"
+        ref="sidebar"
+        v-if="visible && visibleLocal"
+        :style="style"
+        @click.self="sidebarClick"
+        @touchstart="touchstart"
+        @touchmove="touchmove"
+        @touchend="touchend"
+      >
         <!-- @slot Contents of the sidebar. -->
-        <div @scroll="setScrolling(true)" ref="content" :class="[`sidebar__content`, `sidebar__content__side__${side}`, `sidebar__fullscreen__${!!(fullscreenComputed)}`]">
-          <slot/>
+        <div
+          @scroll="setScrolling(true)"
+          ref="content"
+          :class="[
+            `sidebar__content`,
+            `sidebar__content__side__${side}`,
+            `sidebar__fullscreen__${!!fullscreenComputed}`,
+          ]"
+        >
+          <slot />
         </div>
-        <div class="close" v-if="side === 'center' && buttonClose" @click="close">
-          <svg class="close__icon" width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4l16 16m0-16L4 20" stroke-width="1.5" stroke-linecap="round" />
+        <div
+          class="close"
+          v-if="side === 'center' && buttonClose"
+          @click="close"
+        >
+          <svg
+            class="close__icon"
+            width="100%"
+            height="100%"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 4l16 16m0-16L4 20"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
           </svg>
         </div>
       </div>
@@ -213,6 +240,13 @@
   opacity: 1;
   transform: scale(1);
 }
+
+@media screen and (max-width: 500px) {
+  /* TODO: hotfix for https://github.com/cosmos/cosmos.network/pull/832#pullrequestreview-413650189 */
+  .sidebar__content.sidebar__content__side__center {
+    margin-top: 3rem;
+  }
+}
 </style>
 
 <script>
@@ -227,7 +261,7 @@ export default {
      */
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Width of the sidebar.
@@ -258,42 +292,42 @@ export default {
      */
     side: {
       type: String,
-      default: "left"
+      default: "left",
     },
     /**
      * CSS `background-color` of the overlay.
      */
     backgroundColor: {
       type: String,
-      default: "rgba(0, 0, 0, 0.35)"
+      default: "rgba(0, 0, 0, 0.35)",
     },
     /**
      * CSS `box-shadow` of the sidebar sheet.
      */
     boxShadow: {
       type: String,
-      default: "none"
+      default: "none",
     },
     /**
      * Vertical height of overlay
      */
     marginTop: {
-      type: String
+      type: String,
     },
     /**
      * Go fullscreen when viewport is narrower than width
      */
     fullscreen: {
       type: Boolean,
-      default: false
+      default: false,
     },
     /**
      * Add default close button for centered modal
      */
     buttonClose: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: function() {
     return {
@@ -308,6 +342,13 @@ export default {
       marginTopComputed: null,
       fullscreenComputed: null
     };
+  },
+  watch: {
+    visible(newVal) {
+      if (newVal) {
+        this.visibleLocal = true;
+      }
+    },
   },
   computed: {
     deltaX() {
@@ -325,9 +366,9 @@ export default {
         "--sidebar-box-shadow": this.boxShadow,
         "--sidebar-margin-top": this.marginTopComputed + "px",
         "--sidebar-translate-x": `${this.translateX || 0}px`,
-        "--sidebar-translate-y": `${this.translateY || 0}px`
+        "--sidebar-translate-y": `${this.translateY || 0}px`,
       };
-    }
+    },
   },
   mounted() {
     this.adjustVertically();
@@ -414,4 +455,4 @@ export default {
     }
   }
 };
-</script> 
+</script>
