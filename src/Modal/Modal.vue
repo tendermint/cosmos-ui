@@ -240,6 +240,13 @@
   opacity: 1;
   transform: scale(1);
 }
+
+@media screen and (max-width: 500px) {
+  /* TODO: hotfix for https://github.com/cosmos/cosmos.network/pull/832#pullrequestreview-413650189 */
+  .sidebar__content.sidebar__content__side__center {
+    margin-top: 3rem;
+  }
+}
 </style>
 
 <script>
