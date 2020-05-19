@@ -307,17 +307,12 @@ export default {
     emailInvalid() {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return !re.test(String(this.email))
-    },
-    getUtm() {
-      const url = window.location.toString()
-      const splitUrl = url.split("?")
-      const splitSources = splitUrl[1].split("&")
-      return splitSources
     }
   },
   methods: {
     async submit() {
       this.requestInFlight = true
+      const urlParams = new URLSearchParams(window.location.search)
       const options = {
         method: "POST",
         mode: "no-cors",
@@ -326,8 +321,9 @@ export default {
         },
         body: querystring.stringify({
           "CONTACT_EMAIL": this.email,
-          ...this.formData,
-          ...this.getUtm
+          "CONTACT_CF15": urlParams.get("utm_event"),
+          "CONTACT_CF31": urlParams.get("utm_source"),
+          ...this.formData
         })
       }
       fetch(this.url, options).then(_ => {
