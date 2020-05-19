@@ -312,6 +312,7 @@ export default {
   methods: {
     async submit() {
       this.requestInFlight = true
+      const urlParams = new URLSearchParams(window.location.search)
       const options = {
         method: "POST",
         mode: "no-cors",
@@ -320,6 +321,8 @@ export default {
         },
         body: querystring.stringify({
           "CONTACT_EMAIL": this.email,
+          "CONTACT_CF15": urlParams.get("utm_event"),
+          "CONTACT_CF31": urlParams.get("utm_source"),
           ...this.formData
         })
       }
