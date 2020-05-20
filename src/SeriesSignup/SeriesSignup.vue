@@ -321,7 +321,7 @@ export default {
         },
         body: querystring.stringify({
           "CONTACT_EMAIL": this.email,
-          "CONTACT_CF15": urlParams.get("utm_event"),
+          "CONTACT_CF15": urlParams.get("utm_campaign"),
           "CONTACT_CF31": urlParams.get("utm_source"),
           ...this.formData
         })
