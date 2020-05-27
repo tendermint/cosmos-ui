@@ -1,7 +1,5 @@
 node_modules/
 dist/
 npm-debug.log
-.storybook-dist
 .DS_Store
 .vscode
-.now

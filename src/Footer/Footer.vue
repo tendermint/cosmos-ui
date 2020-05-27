@@ -42,8 +42,8 @@ a {
 
 .component__footer__container {
   font-family: var(--ds-font-family, "Helvetica");
-  background-color: var(--ds-background-color, white);
-  color: var(--ds-color-alt, black);
+  background-color: var(--grey-14, rgb(21, 24, 49));
+  color: var(--white-100, white);
   padding-top: 2rem;
   padding-bottom: 2rem;
   overflow-x: hidden;
@@ -57,6 +57,7 @@ a {
 
 .header {
   display: grid;
+  gap: 1rem;
   grid-auto-flow: row;
   align-content: space-between;
   justify-content: space-between;
@@ -83,8 +84,8 @@ a {
 }
 
 .header__links__popover__content {
-  background: var(--ds-color-alt, black);
-  color: var(--ds-color, white);
+  background: var(--white-100, white);
+  color: var(--black, black);
   position: absolute;
   white-space: nowrap;
   transform: translateX(-50%);
@@ -99,7 +100,7 @@ a {
   width: 8px;
   height: 8px;
   display: block;
-  background-color: var(--ds-color-alt, black);
+  background-color: var(--white-100, white);
   mask-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24'><path d='M12 21l-12-18h24z'/></svg>");
   background-repeat: no-repeat;
   top: 100%;
@@ -108,7 +109,7 @@ a {
 }
 
 .header__links__item {
-  fill: var(--ds-color-alt, black);
+  fill: var(--white-100, white);
   margin-right: 0.75rem;
   margin-bottom: 0.75rem;
   display: block;
@@ -235,11 +236,11 @@ const iconUnknown =
  * 
  * `--ds-font-family`
  * 
- * `--ds-background-color`
+ * `--grey-14`
  * 
- * `--ds-color-alt` — main text color.
+ * `--white-100` — main text color.
  * 
- * `--ds-color` — text color in popups.
+ * `--black` — text color in popups.
  * 
  * `--ds-h6-*` — menu subsection headings.
  * 

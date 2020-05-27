@@ -1,7 +1,10 @@
 /* Colors from Design System 1.0 */
 
 :root {
-  --grey-tertiary: #161931;
+  /* to be removed */
+  --black: black;
+
+  --grey-14: #161931;
   --grey-23: #2e3148;
   --grey-44: #686a79;
   --grey-66: #a2a3ad;
