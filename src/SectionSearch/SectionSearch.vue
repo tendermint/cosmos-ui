@@ -47,25 +47,25 @@ strong {
 
 <script>
 import Fuse from "fuse.js";
-import MarkdownIt from "markdown-it"
+import MarkdownIt from "markdown-it";
 import hotkeys from "hotkeys-js";
-import SectionShortcuts from "./SectionShortcuts.vue"
-import SectionResultsEmpty from "./SectionResultsEmpty.vue"
-import SectionInput from "./SectionInput.vue"
-import SectionResultsList from "./SectionResultsList.vue"
-import algoliasearch from 'algoliasearch';
+import SectionShortcuts from "./SectionShortcuts.vue";
+import SectionResultsEmpty from "./SectionResultsEmpty.vue";
+import SectionInput from "./SectionInput.vue";
+import SectionResultsList from "./SectionResultsList.vue";
+import algoliasearch from "algoliasearch";
 
-const algoliaInit = (config) => {
+const algoliaInit = config => {
   if (config && config.id && config.key && config.index) {
-    const algoliaClient = algoliasearch(config.id, config.key)
-    const algolia = algoliaClient.initIndex(config.index)
-    return algolia
+    const algoliaClient = algoliasearch(config.id, config.key);
+    const algolia = algoliaClient.initIndex(config.index);
+    return algolia;
   } else {
-    return false
+    return false;
   }
-}
+};
 
-const fuseInit = (site) => {
+const fuseInit = site => {
   return new Fuse(
     site.pages
       .map(doc => {
@@ -79,9 +79,7 @@ const fuseInit = (site) => {
       })
       .filter(doc => {
         return !(
-          Object.keys(site.locales || {}).indexOf(
-            doc.path.split("/")[1]
-          ) > -1
+          Object.keys(site.locales || {}).indexOf(doc.path.split("/")[1]) > -1
         );
       }),
     {
@@ -91,32 +89,37 @@ const fuseInit = (site) => {
       includeMatches: true
     }
   );
-}
+};
 
-const fuseFormat = (results) => {
+const fuseFormat = results => {
   return results.map(result => {
     return {
       title: result.item && result.item.title && md(result.item.title),
-      desc: result.item && result.item.description && md(result.item.description),
+      desc:
+        result.item && result.item.description && md(result.item.description),
       id: result.item && result.item.key
     };
   });
-}
+};
 
-const algoliaFormat = (results) => {
+const algoliaFormat = results => {
   return results.map(result => {
+    const title = Object.values(result.hierarchy)
+      .filter(e => e)
+      .map(e => e.replace(/^#/, ""))
+      .join(" › ");
     return {
-      title: Object.values(result.hierarchy).filter(e => e).slice(-1)[0],
+      title,
       desc: result.content,
       url: result.url
-    }
-  })
-}
+    };
+  });
+};
 
 const md = string => {
   const md = new MarkdownIt({ html: true, linkify: true });
   return `<div>${md.renderInline(string)}</div>`;
-}
+};
 
 export default {
   props: {
@@ -147,61 +150,66 @@ export default {
   },
   watch: {
     query() {
-      this.search(this.query)
+      this.search(this.query);
     }
   },
   computed: {
     resultsAvailable() {
-      return this.results && this.results.length > 0
+      return this.results && this.results.length > 0;
     }
   },
   mounted() {
-    hotkeys("down", (e) => {
-      this.inputKeypress(e)
+    hotkeys("down", e => {
+      this.inputKeypress(e);
       e.preventDefault();
     });
-    hotkeys("up", (e) => {
-      this.inputKeypress(e)
+    hotkeys("up", e => {
+      this.inputKeypress(e);
       e.preventDefault();
     });
-    this.algolia = algoliaInit(this.algoliaConfig)
-    this.fuse = fuseInit(this.site)
-    this.search(this.query)
+    hotkeys("enter", e => {
+      this.inputKeypress(e);
+      e.preventDefault();
+    });
+    this.algolia = algoliaInit(this.algoliaConfig);
+    this.fuse = fuseInit(this.site);
+    this.search(this.query);
   },
   methods: {
     querySet(string) {
-      this.$emit("query", string)
+      this.$emit("query", string);
     },
     inputKeypress(e) {
       if (e.key) {
-        if (e.key === "ArrowUp") this.selectResult(-1)
-        if (e.key === "ArrowDown") this.selectResult(+1)
+        if (e.key === "ArrowUp") this.selectResult(-1);
+        if (e.key === "ArrowDown") this.selectResult(+1);
         if (e.key === "Enter") {
-          this.$emit("select", {...(this.results[this.selectedIndex])})
+          this.$emit("select", { ...this.results[this.selectedIndex] });
         }
       }
     },
     selectResult(delta) {
-      const
-        index = this.selectedIndex,
+      const index = this.selectedIndex,
         indexNew = index + delta,
-        isValidIndex = Number.isInteger(index) && index >= 0
+        isValidIndex = Number.isInteger(index) && index >= 0;
       if (isValidIndex) {
-        this.selectedIndex = indexNew >= 0 ? indexNew : 0
+        this.selectedIndex = indexNew >= 0 ? indexNew : 0;
       } else {
-        this.selectedIndex = 0
+        this.selectedIndex = 0;
       }
     },
     async search(query) {
-      this.searchInFlight = true
+      this.searchInFlight = true;
       if (!query) return;
       if (this.algolia) {
-        this.results = algoliaFormat((await this.algolia.search(query)).hits)
-        this.searchInFlight = false
+        const params = { hitsPerPage: 100 };
+        const results = (await this.algolia.search(query, params)).hits;
+        this.results = algoliaFormat(results);
+        this.searchInFlight = false;
       } else {
-        this.results = fuseFormat(this.fuse.search(query))
+        this.results = fuseFormat(this.fuse.search(query));
       }
-    },
+    }
   }
 };
 </script>

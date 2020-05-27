@@ -8,7 +8,7 @@
       @click="$emit('activate', {...item})"
     >
       <div class="results__item__title" v-if="item.title" v-html="item.title"></div>
-      <div class="results__item__desc" v-if="item.desc" v-html="item.desc"></div>
+      <div class="results__item__desc" v-if="item.desc || item.url" v-html="item.desc || formatURL(item.url)"></div>
     </div>
   </div>
 </template>
@@ -34,12 +34,12 @@
   display: inline-block;
 }
 .results__item__h2__item:after {
-  content: '>';
+  content: ">";
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
 .results__item__h2__item:last-child:after {
-  content: '';
+  content: "";
 }
 .results__item__desc {
   opacity: 0.5;
@@ -49,8 +49,8 @@
   font-size: 0.875rem;
 }
 .results__item__desc:after {
-  content: '';
-  background: linear-gradient(to right, rgba(248,249,252,0.5) 0%, #f8f9fc);
+  content: "";
+  background: linear-gradient(to right, rgba(248, 249, 252, 0.5) 0%, #f8f9fc);
   height: 1em;
   width: 2em;
   padding-bottom: 0.25rem;
@@ -72,5 +72,14 @@ export default {
       type: Number
     }
   },
-}
+  methods: {
+    formatURL(url) {
+      return new URL(url).pathname
+        .split("/")
+        .filter(e => e)
+        .join(" › ")
+        .replace(".html", "");
+    }
+  }
+};
 </script>
