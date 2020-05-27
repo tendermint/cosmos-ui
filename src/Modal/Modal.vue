@@ -261,7 +261,7 @@ export default {
      */
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Width of the sidebar.
@@ -292,42 +292,49 @@ export default {
      */
     side: {
       type: String,
-      default: "left",
+      default: "left"
     },
     /**
      * CSS `background-color` of the overlay.
      */
     backgroundColor: {
       type: String,
-      default: "rgba(0, 0, 0, 0.35)",
+      default: "rgba(0, 0, 0, 0.35)"
     },
     /**
      * CSS `box-shadow` of the sidebar sheet.
      */
     boxShadow: {
       type: String,
-      default: "none",
+      default: "none"
     },
     /**
      * Vertical height of overlay
      */
     marginTop: {
-      type: String,
+      type: String
     },
     /**
      * Go fullscreen when viewport is narrower than width
      */
     fullscreen: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /**
      * Add default close button for centered modal
      */
     buttonClose: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
+  },
+  watch: {
+    visible(becomesVisible) {
+      if (becomesVisible) {
+        this.visibleLocal = true;
+      }
+    }
   },
   data: function() {
     return {
@@ -348,7 +355,7 @@ export default {
       if (newVal) {
         this.visibleLocal = true;
       }
-    },
+    }
   },
   computed: {
     deltaX() {
@@ -366,9 +373,9 @@ export default {
         "--sidebar-box-shadow": this.boxShadow,
         "--sidebar-margin-top": this.marginTopComputed + "px",
         "--sidebar-translate-x": `${this.translateX || 0}px`,
-        "--sidebar-translate-y": `${this.translateY || 0}px`,
+        "--sidebar-translate-y": `${this.translateY || 0}px`
       };
-    },
+    }
   },
   mounted() {
     this.adjustVertically();
