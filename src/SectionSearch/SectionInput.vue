@@ -31,7 +31,7 @@
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  box-shadow: inset 0 -1px 0 0 rgba(176,180,207,0.2);
+  box-shadow: inset 0 -1px 0 0 rgba(176, 180, 207, 0.2);
   padding-left: 2rem;
   padding-right: 2rem;
   grid-template-columns: 1.5rem 1fr 1.25rem;
@@ -48,21 +48,21 @@
   padding: 1.5rem 0.5rem;
 }
 .search-box__input__input::-webkit-input-placeholder {
-  color: rgba(14,33,37,0.26);
+  color: rgba(14, 33, 37, 0.26);
 }
 .search-box__clear__icon {
   cursor: pointer;
-  fill: rgba(0,0,0,0.15);
+  fill: rgba(0, 0, 0, 0.15);
   margin-top: 0.25rem;
 }
 .search-box__clear__icon:hover,
 .search-box__clear__icon:focus {
-  fill: rgba(0,0,0,0.25);
+  fill: rgba(0, 0, 0, 0.25);
   outline: none;
 }
 .search-box__button {
   text-transform: uppercase;
-  color: var(--ds-color-primary, black);
+  color: var(--accent-color, black);
   font-weight: 500;
   cursor: pointer;
   height: 100%;
@@ -72,8 +72,8 @@
 </style>
 
 <script>
-import IconSearch from "./IconSearch.vue"
-import IconCircleCross from "./IconCircleCross.vue"
+import IconSearch from "./IconSearch.vue";
+import IconCircleCross from "./IconCircleCross.vue";
 
 export default {
   components: {
@@ -86,7 +86,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$refs.search) this.$refs.search.focus()
+    if (this.$refs.search) this.$refs.search.focus();
   }
-}
+};
 </script>

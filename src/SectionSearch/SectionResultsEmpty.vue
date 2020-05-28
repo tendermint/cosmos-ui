@@ -43,22 +43,22 @@
   fill: #ccc;
 }
 .results__noresults__h1 {
-  color: rgba(22,25,49,0.65);
+  color: rgba(22, 25, 49, 0.65);
   font-size: 1.5rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 .results__noresults__p {
-  color: rgba(22,25,49,0.65);
+  color: rgba(22, 25, 49, 0.65);
 }
 .results__noresults__a {
   cursor: pointer;
-  color: var(--ds-color-primary, black);
+  color: var(--accent-color, black);
 }
 </style>
 
 <script>
-import IconSearch from "./IconSearch.vue"
+import IconSearch from "./IconSearch.vue";
 
 export default {
   components: {
@@ -71,8 +71,8 @@ export default {
   },
   methods: {
     querySet(string) {
-      this.$emit("query", string)
+      this.$emit("query", string);
     }
   }
-}
+};
 </script>
