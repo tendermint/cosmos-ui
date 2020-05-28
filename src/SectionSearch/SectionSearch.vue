@@ -13,6 +13,7 @@
           @activate="$emit('select', $event)"
           :selected="selectedIndex"
           :value="results"
+          :base="base"
         />
         <section-shortcuts v-else-if="!query"/>
         <section-results-empty
@@ -131,6 +132,9 @@ export default {
     },
     algoliaConfig: {
       type: Object
+    },
+    base: {
+      default: "/master/"
     }
   },
   components: {

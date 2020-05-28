@@ -8,7 +8,8 @@
       @click="$emit('activate', {...item})"
     >
       <div class="results__item__title" v-if="item.title" v-html="item.title"></div>
-      <div class="results__item__desc" v-if="item.desc || item.url" v-html="item.desc || formatURL(item.url)"></div>
+      <div class="results__item__desc" v-if="item.url" v-html="formatURL(item.url)"></div>
+      <div class="results__item__desc" v-if="item.desc" v-html="item.desc"></div>
     </div>
   </div>
 </template>
@@ -22,7 +23,7 @@
   background-color: #fff;
 }
 .results__item__title {
-  color: var(--ds-color-primary, black);
+  color: var(--accent-color, black);
 }
 .results__item__h2 {
   margin-top: 0.25rem;
@@ -70,11 +71,15 @@ export default {
     },
     selected: {
       type: Number
+    },
+    base: {
+      default: ""
     }
   },
   methods: {
     formatURL(url) {
       return new URL(url).pathname
+        .replace(this.base, "")
         .split("/")
         .filter(e => e)
         .join(" › ")
