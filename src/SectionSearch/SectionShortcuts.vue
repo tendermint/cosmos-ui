@@ -40,7 +40,7 @@
   flex-direction: column;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
 }
 .shortcuts__h1 {
   text-align: center;

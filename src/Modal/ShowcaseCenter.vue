@@ -26,7 +26,7 @@
 
 <style scoped>
 .container {
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
 }
 .contents {
   display: grid;

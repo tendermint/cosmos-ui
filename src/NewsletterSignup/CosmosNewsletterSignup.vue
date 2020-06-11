@@ -142,7 +142,7 @@ a {
 }
 .container {
   background: var(--newsletter-background);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   color: white;
   position: relative;
 }
@@ -263,7 +263,7 @@ a {
   box-sizing: border-box;
   transition: all 0.15s;
   backdrop-filter: blur(10px);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   font-weight: 400;
   margin: 0;
 }

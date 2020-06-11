@@ -33,7 +33,7 @@ a {
   align-self: center;
   color: var(--white-100);
   background: var(--grey-14);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
 }
 .container {
   display: flex;

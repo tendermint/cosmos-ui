@@ -41,7 +41,7 @@ a {
 }
 
 .component__footer__container {
-  font-family: var(--ds-font-family, "Helvetica");
+  font-family: var(--ds-font-family, inherit);
   background-color: var(--grey-14, rgb(21, 24, 49));
   color: var(--white-100, white);
   padding-top: 2rem;

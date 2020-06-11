@@ -14,7 +14,7 @@
 <style scoped>
 .container {
   color: white;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   margin-left: 2rem;
   margin-right: 2rem;
 }

@@ -47,7 +47,7 @@
 .row {
   background-color: var(--grey-23, rgb(46, 49, 72));
   color: var(--white-100);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: min-content 1fr;
