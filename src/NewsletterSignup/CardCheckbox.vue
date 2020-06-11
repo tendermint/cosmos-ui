@@ -95,7 +95,7 @@
   align-items: center;
 }
 .h1 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.75rem;
   letter-spacing: -0.02em;

@@ -195,7 +195,7 @@ a {
 }
 .h1 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   color: var(--white-100);
   margin-bottom: 1.5rem;
@@ -207,14 +207,14 @@ a {
 .h2 {
   font-size: 2rem;
   color: white;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.25;
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
 .h3 {
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   text-transform: none;
   margin: initial;
@@ -223,7 +223,7 @@ a {
 }
 .h4 {
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-weight: 800;
   line-height: 20px;
   letter-spacing: 0.07em;
   text-transform: uppercase;

@@ -129,7 +129,7 @@ a {
 
 .menu__item__title {
   margin-bottom: 1rem;
-  font-weight: var(--ds-h6-font-weight, 600);
+  font-weight: var(--ds-h6-font-weight, 800);
   font-size: var(--ds-h6-font-size, 0.75rem);
   text-transform: var(--ds-h6-text-transform, uppercase);
   letter-spacing: var(--ds-h6-letter-spacing, 0.2em);
@@ -230,42 +230,42 @@ const iconUnknown =
  * of the website, at the bottom of a page. `Footer` takes
  * the full width of the page, a parent container can be used
  * to center the footer and set `max-width`.
- * 
+ *
  * The following CSS custom variables are used to theme the
  * component:
- * 
+ *
  * `--ds-font-family`
- * 
+ *
  * `--grey-14`
- * 
+ *
  * `--white-100` — main text color.
- * 
+ *
  * `--black` — text color in popups.
- * 
+ *
  * `--ds-h6-*` — menu subsection headings.
- * 
+ *
  * `--ds-h6-font-weight`
- * 
+ *
  * `--ds-h6-font-size`
- * 
+ *
  * `--ds-h6-text-transform`
- * 
+ *
  * `--ds-h6-letter-spacing`
- * 
+ *
  * `--ds-p2-font-size` — menu subsection items.
- * 
+ *
  * `--ds-p3-font-size` — text at the bottom of the component.
  */
 export default {
   props: {
-    /** 
+    /**
      * Title in the top left corner of the component.
      */
     h1: {
       type: String,
       default: ""
     },
-    /** 
+    /**
      * An element of the array can be a `String`, in which case the string
      * is used as a URL for the link and default icon is used.
      * An element can also be an object with the following properties:
@@ -276,7 +276,7 @@ export default {
       type: Array,
       default: () => []
     },
-    /** 
+    /**
      * An element of the array is an object `{h1: String, children: Array}`.
      * `h1` is a title of a subsection. Element of a `children` array is
      * an object `{h1: String, href: String}`. `h1` is the text of a link
@@ -286,7 +286,7 @@ export default {
       type: Array,
       default: () => []
     },
-    /** 
+    /**
      * Text that appears at the bottom of the component.
      */
     smallprint: {
