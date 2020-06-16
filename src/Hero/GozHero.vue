@@ -19,7 +19,7 @@
 
 <style scoped>
 .component__hero__container {
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   position: relative;
   min-height: 100vh;
 }

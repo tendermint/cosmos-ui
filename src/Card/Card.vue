@@ -27,7 +27,7 @@
 .card {
   display: flex;
   flex-direction: var(--card-grid-auto-flow);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   border-radius: var(--card-border-radius, 8px);
   position: relative;
   background: var(--white-100);

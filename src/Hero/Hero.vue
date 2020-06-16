@@ -29,7 +29,7 @@ a {
 }
 
 .component__hero__container {
-  font-family: var(--ds-font-family, "Helvetica");
+  font-family: var(--ds-font-family, inherit);
   background-size: cover;
   color: var(--black, black);
 }

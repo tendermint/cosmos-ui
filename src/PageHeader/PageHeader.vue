@@ -57,7 +57,7 @@ export default {
 }
 
 .page-header__project-title {
-  font-family: var(--ds-font-family, "Helvetica");
+  font-family: var(--ds-font-family, inherit);
   font-weight: 500;
   font-size: var(--ds-h4-font-size);
   line-height: 1.25rem;
