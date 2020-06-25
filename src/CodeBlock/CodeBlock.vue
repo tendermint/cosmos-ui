@@ -202,6 +202,9 @@ span {
 }
 .body__wrapper {
   font-family: 'JetBrains Mono', 'arial', 'Menlo', 'Monaco', monospace;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-size: 0.8125rem;
   display: inline-block;
   line-height: 1.25rem;
