@@ -201,7 +201,7 @@ span {
   max-height: var(--max-height);
 }
 .body__wrapper {
-  font-family: "Menlo", "Monaco", "Fira Code", monospace;
+  font-family: 'JetBrains Mono', 'arial', 'Menlo', 'Monaco', monospace;
   font-size: 0.8125rem;
   display: inline-block;
   line-height: 1.25rem;
