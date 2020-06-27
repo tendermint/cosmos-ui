@@ -402,7 +402,10 @@ span {
 import Prism from "prismjs";
 import "prismjs/components/prism-go.min.js";
 import "prismjs/components/prism-rust.min.js";
-// import "prismjs/components/prism-python.min.js";
+import "prismjs/components/prism-markdown.min.js";
+import "prismjs/components/prism-bash.min.js";
+import "prismjs/components/prism-json.min.js";
+import "prismjs/components/prism-protobuf.min.js";
 import copy from "clipboard-copy";
 import { Base64 } from "js-base64";
 
