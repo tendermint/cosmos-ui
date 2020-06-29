@@ -37,7 +37,7 @@
   grid-template-columns: 1.5rem 1fr 1.25rem;
   gap: 1rem;
   box-sizing: border-box;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
 }
 .search-box__input__input {
   border: none;

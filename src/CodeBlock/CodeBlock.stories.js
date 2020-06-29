@@ -25,6 +25,10 @@ export const normal = () => ({
       <code-block :value="data.long" :url="url" language="xyz"/>
       <p>Base64:</p>
       <code-block :base64="base64" language="go"/>
+      <p>Rust source:</p>
+      <code-block :value="data.rust" language="rust"/>
+      <p>Python prismjs package is not imported:</p>
+      <code-block :value="data.python" language="python"/>
     </div>
   `
 });

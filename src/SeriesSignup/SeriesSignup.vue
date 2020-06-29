@@ -80,7 +80,7 @@ a {
 }
 .container {
   color: var(--white-100);
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
   margin-left: auto;
@@ -141,7 +141,7 @@ a {
   border: 2px solid rgba(59, 66, 125, 0.12);
   padding: .75rem 1rem;
   font-size: 1rem;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   line-height: 1.5;
   border-radius: .25rem;
   width: 100%;

@@ -33,7 +33,7 @@
 <style scoped>
 .button {
   border: none;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   font-size: initial;
   margin: 0;
   border-radius: 0.35em;

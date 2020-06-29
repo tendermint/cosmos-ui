@@ -24,7 +24,7 @@ a {
 }
 
 .component__cards__container {
-  font-family: var(--ds-font-family, "Helvetica");
+  font-family: var(--ds-font-family, inherit);
   color: var(--black, black);
 }
 

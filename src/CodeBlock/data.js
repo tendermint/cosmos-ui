@@ -1,5 +1,13 @@
 export default {
   short: 'type AppModuleBasic struct{}" "',
+  rust: `
+pub trait Actor {
+  fn handle(msgPayload: &[u8]) -> Vec<Msg>;
+}
+  `,
+  python: `
+  print("hello, world.")
+  `,
   medium: `// BeginBlocker sets the proposer for determining distribution during endblock
 // and distribute rewards for the previous block
 func \"BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock, k keeper.Keeper) {

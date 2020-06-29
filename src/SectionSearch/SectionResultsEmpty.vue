@@ -27,7 +27,7 @@
   padding-bottom: 4rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   overflow-x: hidden;
   word-break: break-all;
 }

@@ -1,38 +1,38 @@
 body {
-  --ds-font-family: "Gotham A", "Gotham B", "Gotham", sans-serif;
+  --ds-font-family: "Metropolis", sans-serif;
 
   --ds-d1-font-size: 5rem;
-  --ds-d1-font-weight: bold;
+  --ds-d1-font-weight: 600;
   --ds-d1-line-height: 6rem;
   --ds-d1-letter-spacing: -0.075em;
 
   --ds-d2-font-size: 4rem;
-  --ds-d2-font-weight: bold;
+  --ds-d2-font-weight: 600;
   --ds-d2-line-height: 5rem;
   --ds-d2-letter-spacing: -0.075em;
 
   --ds-d3-font-size: 3rem;
-  --ds-d3-font-weight: bold;
+  --ds-d3-font-weight: 600;
   --ds-d3-line-height: 4rem;
   --ds-d3-letter-spacing: -0.07em;
 
   --ds-h1-font-size: 3rem;
-  --ds-h1-font-weight: bold;
+  --ds-h1-font-weight: 600;
   --ds-h1-line-height: 3.25rem;
   --ds-h1-letter-spacing: -0.065em;
 
   --ds-h2-font-size: 2.5rem;
-  --ds-h2-font-weight: bold;
+  --ds-h2-font-weight: 600;
   --ds-h2-line-height: 3.25rem;
   --ds-h2-letter-spacing: -0.065em;
 
   --ds-h3-font-size: 1.5rem;
-  --ds-h3-font-weight: bold;
+  --ds-h3-font-weight: 600;
   --ds-h3-line-height: 2rem;
   --ds-h3-letter-spacing: -0.05em;
 
   --ds-h4-font-size: 1.25rem;
-  --ds-h4-font-weight: bold;
+  --ds-h4-font-weight: 600;
   --ds-h4-line-height: 2rem;
   --ds-h4-letter-spacing: -0.045em;
 

@@ -201,7 +201,10 @@ span {
   max-height: var(--max-height);
 }
 .body__wrapper {
-  font-family: "Menlo", "Monaco", "Fira Code", monospace;
+  font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-size: 0.8125rem;
   display: inline-block;
   line-height: 1.25rem;
@@ -221,7 +224,7 @@ span {
   color: #161931;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   box-sizing: border-box;
 }
 .codeblock__expanded__false .expand {
@@ -294,7 +297,7 @@ span {
   opacity: 0;
 }
 .icons__item__tooltip {
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
   color: #fff;
   position: absolute;
   top: -2.05rem;
@@ -342,7 +345,7 @@ span {
   border-bottom-right-radius: 0.5rem;
   font-size: 0.8125rem;
   line-height: 1;
-  font-family: var(--ds-font-family, sans-serif);
+  font-family: var(--ds-font-family, inherit);
 }
 .footer__source {
   color: #66a1ff;
@@ -397,7 +400,12 @@ span {
 
 <script>
 import Prism from "prismjs";
-import "prismjs/components/prism-go.js";
+import "prismjs/components/prism-go.min.js";
+import "prismjs/components/prism-rust.min.js";
+import "prismjs/components/prism-markdown.min.js";
+import "prismjs/components/prism-bash.min.js";
+import "prismjs/components/prism-json.min.js";
+import "prismjs/components/prism-protobuf.min.js";
 import copy from "clipboard-copy";
 import { Base64 } from "js-base64";
 
