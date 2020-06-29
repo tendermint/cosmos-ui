@@ -201,7 +201,10 @@ span {
   max-height: var(--max-height);
 }
 .body__wrapper {
-  font-family: "Menlo", "Monaco", "Fira Code", monospace;
+  font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-size: 0.8125rem;
   display: inline-block;
   line-height: 1.25rem;
@@ -397,7 +400,12 @@ span {
 
 <script>
 import Prism from "prismjs";
-import "prismjs/components/prism-go.js";
+import "prismjs/components/prism-go.min.js";
+import "prismjs/components/prism-rust.min.js";
+import "prismjs/components/prism-markdown.min.js";
+import "prismjs/components/prism-bash.min.js";
+import "prismjs/components/prism-json.min.js";
+import "prismjs/components/prism-protobuf.min.js";
 import copy from "clipboard-copy";
 import { Base64 } from "js-base64";
 
