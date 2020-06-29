@@ -201,7 +201,7 @@ span {
   max-height: var(--max-height);
 }
 .body__wrapper {
-  font-family: "JetBrains Mono", "arial", "Menlo", "Monaco", monospace;
+  font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
   -webkit-font-feature-settings: "liga" on, "calt" on;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
