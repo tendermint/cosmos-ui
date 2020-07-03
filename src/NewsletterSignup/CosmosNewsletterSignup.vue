@@ -432,11 +432,14 @@ export default {
       default:
         "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox."
     },
-    zcld: {
-      default: "16352f8832a25f5b"
-    },
-    zc_formIx: {
-      default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
+    // zcld: {
+    //   default: "16352f8832a25f5b"
+    // },
+    // zc_formIx: {
+    //   default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
+    // },
+    groups: {
+      default: false
     },
     svg: {
       default: false
@@ -481,18 +484,24 @@ export default {
       icons: [],
       ready: false,
       iconHero: false,
-      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
+      url: "https://app.mailerlite.com/webforms/submit/w9t0v0",
       commonFormData: {
-        zc_trackCode: "ZCFORMVIEW",
-        viewFrom: "URL_ACTION",
-        submitType: "optinCustomView",
-        emailReportId: "",
-        zx: "129a50c11",
-        zcvers: "3.0",
-        oldListIds: "",
-        mode: "OptinCreateView",
-        zctd: "",
-        scriptless: "yes"
+        // zc_trackCode: "ZCFORMVIEW",
+        // viewFrom: "URL_ACTION",
+        // submitType: "optinCustomView",
+        // emailReportId: "",
+        // zx: "129a50c11",
+        // zcvers: "3.0",
+        // oldListIds: "",
+        // mode: "OptinCreateView",
+        // zctd: "",
+        // scriptless: "yes"
+        "callback": "jQuery18302855323526872857_1593738704348",
+        "groups[]": "103441063",
+        "ml-submit": "1",
+        "ajax": "1",
+        "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3",
+        "_": "1593736004427"
       }
     };
   },
@@ -532,17 +541,19 @@ export default {
     actionSubscribe(selected) {
       if (this.topics.length <= 0) {
         this.subscribe({
-          lD: this.zcld,
-          zcld: this.zcld,
-          zc_formIx: this.zc_formIx
+          // lD: this.zcld,
+          // zcld: this.zcld,
+          // zc_formIx: this.zc_formIx
+          "groups[]": this.groups
         });
       } else {
         this.selected.forEach((topicSelected, i) => {
           if (topicSelected) {
             this.subscribe({
-              lD: this.topics[i].zcld,
-              zcld: this.topics[i].zcld,
-              zc_formIx: this.topics[i].zc_formIx
+              // lD: this.topics[i].zcld,
+              // zcld: this.topics[i].zcld,
+              // zc_formIx: this.topics[i].zc_formIx
+              "groups[]": this.topics[i].groups
             });
           }
         });
@@ -576,7 +587,7 @@ export default {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
-          CONTACT_EMAIL: this.email,
+          "fields[email]": this.email,
           ...this.commonFormData,
           ...body
         })
