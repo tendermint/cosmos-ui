@@ -26,7 +26,7 @@
   "full-node": "# Full-Node \n A full-node is a node that stores and verifies the entire state of a blockchain. ",
   "gaia": "# Gaia \n  Gaia is the name of the Cosmos SDK application for the Cosmos Hub.",
   "governance": "# Governance \n Blockchain governance is a process that allows participants to vote on-chain using their bonded tokens.",
-  "hub": "# Hub \n A Hub is a blockchain whose purpose is to connect Zones together while limiting the number of connexions and preventing double-spend attacks among Zones. ",
+  "hub": "# Hub \n A Hub is a blockchain whose purpose is to connect Zones together while limiting the number of connections and preventing double-spend attacks among Zones. ",
   "ibc": "# IBC \n IBC is the interblockchain communication protocol which can be thought of as the TCP/IP for blockchains. It allows fast-finality blockchains to exchange value and data with each other in a decentralized way. ",
   "ibc-packet": "# IBC packet \n IBC packets are packets of data which carry messages and fraud proofs from one blockchain to another.",
   "light-client": "# Light Client  \n A light-client is a blockchain client that only downloads the headers of the blocks. It verifies the result of its queries against these headers (see Merkle Proof). This gives users a lightweight alternative to full-nodes with good security guarantees. ",
