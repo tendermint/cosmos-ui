@@ -30,7 +30,7 @@
   font-family: var(--ds-font-family, inherit);
   border-radius: var(--card-border-radius, 8px);
   position: relative;
-  background: var(--white-100);
+  background: var(--white-100, white);
 }
 .card:before {
   border-radius: var(--card-border-radius, 8px);

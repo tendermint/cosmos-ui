@@ -46,7 +46,7 @@
 }
 .row {
   background-color: var(--grey-23, rgb(46, 49, 72));
-  color: var(--white-100);
+  color: var(--white-100, white);
   font-family: var(--ds-font-family, inherit);
   display: grid;
   grid-auto-flow: column;
@@ -82,7 +82,7 @@
   grid-column-start: 1;
   width: 4rem;
   height: 4rem;
-  fill: var(--white-100);
+  fill: var(--white-100, white);
   opacity: .32;
   margin: 1.5rem 3rem;
   display: flex;
@@ -107,7 +107,7 @@
   font-size: 1.25rem;
   line-height: var(--ds-h5-line-height);
   letter-spacing: -0.01em;
-  color: var(--white-100);
+  color: var(--white-100, white);
   display: block;
   text-decoration: none;
 }

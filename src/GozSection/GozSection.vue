@@ -31,7 +31,7 @@ a {
   flex-direction: column;
   padding: 1rem;
   align-self: center;
-  color: var(--white-100);
+  color: var(--white-100, white);
   background: var(--grey-14);
   font-family: var(--ds-font-family, inherit);
 }
@@ -63,7 +63,7 @@ a {
   font-weight: 500;
   font-size: 2.5rem;
   line-height: 1.3;
-  color: var(--white-100);
+  color: var(--white-100, white);
   text-align: center;
   letter-spacing: -0.04em;
   margin: 2rem 0;
