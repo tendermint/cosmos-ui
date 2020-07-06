@@ -41,7 +41,7 @@
   line-height: 2.5rem;
   text-align: center;
   letter-spacing: -0.04em;
-  color: var(--white-100);
+  color: var(--white-100, white);
   margin-bottom: 2rem;
 }
 .p {

@@ -197,7 +197,7 @@ a {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--white-100);
+  color: var(--white-100, white);
   margin-bottom: 1.5rem;
   display: block;
 }
