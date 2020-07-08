@@ -432,12 +432,15 @@ export default {
       default:
         "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox."
     },
-    // zcld: {
-    //   default: "16352f8832a25f5b"
-    // },
-    // zc_formIx: {
-    //   default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
-    // },
+    requestURL: {
+      default: "https://app.mailerlite.com/webforms/submit/o0t6d7"
+    },
+    callback: {
+      default: "jQuery18307296239382192573_1594158619276"
+    },
+    _: {
+      default: "1594158625563"
+    },
     groups: {
       default: false
     },
@@ -484,24 +487,10 @@ export default {
       icons: [],
       ready: false,
       iconHero: false,
-      url: "https://app.mailerlite.com/webforms/submit/w9t0v0",
       commonFormData: {
-        // zc_trackCode: "ZCFORMVIEW",
-        // viewFrom: "URL_ACTION",
-        // submitType: "optinCustomView",
-        // emailReportId: "",
-        // zx: "129a50c11",
-        // zcvers: "3.0",
-        // oldListIds: "",
-        // mode: "OptinCreateView",
-        // zctd: "",
-        // scriptless: "yes"
-        "callback": "jQuery18302855323526872857_1593738704348",
-        "groups[]": "103441063",
         "ml-submit": "1",
         "ajax": "1",
-        "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3",
-        "_": "1593736004427"
+        "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3"
       }
     };
   },
@@ -541,18 +530,18 @@ export default {
     actionSubscribe(selected) {
       if (this.topics.length <= 0) {
         this.subscribe({
-          // lD: this.zcld,
-          // zcld: this.zcld,
-          // zc_formIx: this.zc_formIx
+          requestURL: this.requestURL,
+          callback: this.callback,
+          _: this._,
           "groups[]": this.groups
         });
       } else {
         this.selected.forEach((topicSelected, i) => {
           if (topicSelected) {
             this.subscribe({
-              // lD: this.topics[i].zcld,
-              // zcld: this.topics[i].zcld,
-              // zc_formIx: this.topics[i].zc_formIx
+              requestURL: this.topics[i].requestURL,
+              callback: this.topics[i].callback,
+              _: this.topics[i]._,
               "groups[]": this.topics[i].groups
             });
           }
@@ -592,7 +581,7 @@ export default {
           ...body
         })
       };
-      fetch(this.url, options);
+      fetch(this.requestURL, options);
     }
   }
 };

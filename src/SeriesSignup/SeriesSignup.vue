@@ -285,26 +285,13 @@ export default {
       email: null,
       state: "default",
       requestInFlight: null,
-      url: "https://app.mailerlite.com/webforms/submit/n1k5k3",
+      url: "https://app.mailerlite.com/webforms/submit/d7i4g7",
       formData: {
-        // "zc_trackCode": "ZCFORMVIEW",
-        // "viewFrom": "URL_ACTION",
-        // "submitType": "optinCustomView",
-        // "lD": "16352f8832aab779",
-        // "emailReportId": "",
-        // "zx": "129a50c11",
-        // "zcvers": "3.0",
-        // "oldListIds": "",
-        // "mode": "OptinCreateView",
-        // "zcld": "16352f8832aab779",
-        // "zctd": "",
-        // "zc_formIx": "4ef47fbb86ab66687c16fd8c3bffbbb740fbf6cd35f5c50c",
-        // "scriptless": "yes"
-        "callback": "jQuery18309959714920669389_1593648015440",
+        "callback": "jQuery1830520133881537445_1594145870016",
         "ml-submit": "1",
         "ajax": "1",
         "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3",
-        "_": "1593648020190"
+        "_": "1594145875469"
       }
     }
   },
@@ -326,8 +313,6 @@ export default {
         },
         body: querystring.stringify({
           "fields[email]": this.email,
-          // "CONTACT_CF15": urlParams.get("utm_campaign"),
-          // "CONTACT_CF31": urlParams.get("utm_source"),
           ...this.formData
         })
       }
