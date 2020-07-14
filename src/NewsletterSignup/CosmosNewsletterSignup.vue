@@ -112,7 +112,7 @@
                 <div class="p1">
                   You should get a confirmation email for each of your selected
                   interests. Open it up and click ‘<strong
-                    >Confirm Subscription</strong
+                    >Confirm your email</strong
                   >’ so we can keep you updated.
                 </div>
                 <div class="h3">Don’t see the confirmation email yet?</div>

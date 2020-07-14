@@ -12,7 +12,7 @@
                 Almost there...
               </div>
               <div class="p">
-                You should get a confirmation email shortly. Open it up and ‘<strong>Confirm Registration</strong>’ to save your spot in the upcoming workshops.
+                You should get a confirmation email shortly. Open it up and ‘<strong>Confirm your email</strong>’ to save your spot in the upcoming workshops.
               </div>
               <div class="box">
                 <div class="box__h1">
