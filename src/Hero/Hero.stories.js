@@ -1,9 +1,11 @@
 import Hero from "./Hero.vue";
-import "../theme-cosmos.css"
+import GozHero from "./GozHero.vue";
 import data from "./data"
+import { text } from '@storybook/addon-knobs';
 
 export default {
-  title: "Hero"
+  title: "Hero",
+  component: Hero
 };
 
 export const normal = () => ({
@@ -38,6 +40,23 @@ export const wide = () => ({
       <div style="max-width: 1440px; margin: 0 auto;">
         <Hero :value="data" :alt="true" style="padding: 2rem"/>
       </div>
+    </div>
+  `
+});
+
+export const Goz = () => ({
+  components: { GozHero },
+  props: {
+    imgSrc: {
+      default: text("Image URL", "/goz.jpg")
+    },
+    logoSrc: {
+      default: text("Logo URL", "/goz-logo.svg")
+    }
+  },
+  template: `
+    <div class="wrapper" style="background-color: var(--grey-14);">
+      <goz-hero v-bind="{ imgSrc, logoSrc }" />
     </div>
   `
 });

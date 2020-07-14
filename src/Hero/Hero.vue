@@ -29,9 +29,9 @@ a {
 }
 
 .component__hero__container {
-  font-family: var(--ds-font-family, "Helvetica");
+  font-family: var(--ds-font-family, inherit);
   background-size: cover;
-  color: var(--ds-color, black);
+  color: var(--black, black);
 }
 
 .wrapper {
@@ -42,7 +42,7 @@ a {
 }
 
 .component__hero__container.component__hero__container__alt__true {
-  color: var(--ds-color-alt, white);
+  color: var(--white-100, white);
 }
 
 .text {

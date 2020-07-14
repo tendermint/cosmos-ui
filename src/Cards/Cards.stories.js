@@ -1,9 +1,9 @@
 import Cards from "./Cards.vue";
-import "../theme-cosmos.css"
 import data from "./data"
 
 export default {
-  title: "Cards"
+  title: "Cards",
+  component: Cards
 };
 
 export const normal = () => ({

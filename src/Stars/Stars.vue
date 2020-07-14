@@ -8,8 +8,8 @@
 
 <style scoped>
 .container {
-  background: linear-gradient(-110deg, #6944b7, #1c1c40, black);
-  height: 500px;
+  background: radial-gradient(#18154c, #08091e 80%);
+  height: 500px;;
 }
 </style>
 
@@ -17,6 +17,17 @@
 import { isEqual } from "lodash"
 
 export default {
+  props: {
+    vertical: {
+      type: Number
+    },
+    horizontal: {
+      type: Number
+    },
+    flickering: {
+      type: Number
+    }
+  },
   data: function() {
     return {
       canvas: {
@@ -29,30 +40,34 @@ export default {
     }
   },
   mounted() {
-    const circlePath = new Path2D("M3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5Z")
-    const starPath = new Path2D("M2.5 0C2.5 1.38071 1.38071 2.5 0 2.5C1.38071 2.5 2.5 3.61929 2.5 5C2.5 3.61929 3.61929 2.5 5 2.5C3.61929 2.5 2.5 1.38071 2.5 0Z")
+    const circlePath = new Path2D("M5 2.5C5 3.88071 3.88071 5 2.5 5C1.11929 5 0 3.88071 0 2.5C0 1.11929 1.11929 0 2.5 0C3.88071 0 5 1.11929 5 2.5Z")
     let timestampLast = 0;
-    const renderStart = (timestamp) => {
+    const scrollHorizontally = (timestamp, c) => {
       if (timestamp - timestampLast > 10) {
         for (let i=0; i < stars.length; i++) {
-          const colorIsGray = isEqual(stars[i].color, [67, 78, 125])
-          const xPosDelta = colorIsGray ? .2 : .1
-          const xPosNew = stars[i].x < 0 ? this.canvas.width : stars[i].x - xPosDelta
+          const
+            opacity = Math.sin(timestamp * stars[i].random / (this.flickering || 600)),
+            xPosNew = stars[i].x > this.canvas.width ? 0 : stars[i].x + (this.horizontal || .25),
+            yPosNew = stars[i].y +  Math.sin(opacity / (this.vertical || 20)) * (stars[i].random > .5 ? 1 : -1)
           stars[i] = {
             ...stars[i],
-            x: xPosNew
+            x: xPosNew,
+            y: yPosNew
           }
         }
         timestampLast = timestamp
       }
-      let c = this.context
       c.clearRect(0, 0, this.canvas.width, this.canvas.height)
       for (let i = 0; i < stars.length; i++) {
-        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / 600)].join(",")})`
+        c.fillStyle = `rgba(${[...stars[i].color, Math.sin(timestamp * stars[i].random / (this.flickering || 600))].join(",")})`
         c.translate(stars[i].x , stars[i].y)
-        c.fill(stars[i].random > .25 ? starPath : circlePath)
+        c.fill(circlePath)
         c.translate(-stars[i].x , -stars[i].y)
       }
+    }
+    const renderStart = (timestamp) => {
+      let c = this.context
+      scrollHorizontally(timestamp, c)
       this.requestAnimationFrameId = requestAnimationFrame(renderStart)
     }
     const canvasResize = () => {
@@ -61,13 +76,16 @@ export default {
       this.canvas.height = this.canvasCalc().height
     }
     const starsGenerate = () => {
-      const colors = [[230, 144, 9], [186, 62, 217], [102, 160, 255], [90, 199, 91] ]
+      const colors = [[227, 109, 37], [205, 6, 10], [208, 222, 204], [67, 189, 155], [220, 189, 45] ]
       let result = []
-      for (let i=0; i < this.canvasCalc().width; i++) {
+      for (let i=0; i < this.canvasCalc().width / 3; i++) {
+        const
+          x = Math.floor(Math.random() * this.canvasCalc().width),
+          y =  Math.floor(Math.random() * this.canvasCalc().height)
         result.push({
-          x: Math.floor(Math.random() * this.canvasCalc().width),
-          y: Math.floor(Math.random() * this.canvasCalc().height),
-          color: Math.random() > 0.5 ? [67, 78, 125] : colors[Math.floor(Math.random() * colors.length)],
+          x,
+          y,
+          color: colors[Math.floor(Math.random() * colors.length)],
           random: Math.random()
         })
       }

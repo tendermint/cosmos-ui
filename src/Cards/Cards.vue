@@ -24,8 +24,8 @@ a {
 }
 
 .component__cards__container {
-  font-family: var(--ds-font-family, "Helvetica");
-  color: var(--ds-color, black);
+  font-family: var(--ds-font-family, inherit);
+  color: var(--black, black);
 }
 
 .cards {
@@ -90,7 +90,7 @@ a {
   align-items: center;
   justify-items: center;
   background-color: rgba(0, 0, 0, 0.2);
-  color: var(--ds-color-alt, white);
+  color: var(--white-100, white);
   grid-area: 1/1/1/1;
   font-size: var(--ds-h2-font-size, 2rem);
 }
