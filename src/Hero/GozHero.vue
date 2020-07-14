@@ -70,7 +70,7 @@
   white-space: nowrap;
   gap: .75rem;
   box-sizing: border-box;
-  color: var(--white-100);
+  color: var(--white-100, white);
 }
 .button__style__standard {
   background: var(--secondary-dark);
@@ -86,7 +86,7 @@
 .button__icon {
   width: 1.75rem;
   height: 2rem;
-  fill: var(--white-100);
+  fill: var(--white-100, white);
 }
 @media screen and (max-width: 600px) {
   .footer {

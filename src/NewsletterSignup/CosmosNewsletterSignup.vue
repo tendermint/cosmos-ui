@@ -112,7 +112,7 @@
                 <div class="p1">
                   You should get a confirmation email for each of your selected
                   interests. Open it up and click ‘<strong
-                    >Confirm Subscription</strong
+                    >Confirm your email</strong
                   >’ so we can keep you updated.
                 </div>
                 <div class="h3">Don’t see the confirmation email yet?</div>
@@ -197,7 +197,7 @@ a {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--white-100);
+  color: var(--white-100, white);
   margin-bottom: 1.5rem;
   display: block;
 }
@@ -432,11 +432,17 @@ export default {
       default:
         "Get the latest from the Cosmos ecosystem and engineering updates, straight to your inbox."
     },
-    zcld: {
-      default: "16352f8832a25f5b"
+    requestURL: {
+      default: "https://app.mailerlite.com/webforms/submit/o0t6d7"
     },
-    zc_formIx: {
-      default: "4ef47fbb86ab6668aa0d5017850d35fbcd58b642c14f9e39"
+    callback: {
+      default: "jQuery18307296239382192573_1594158619276"
+    },
+    _: {
+      default: "1594158625563"
+    },
+    groups: {
+      default: false
     },
     svg: {
       default: false
@@ -481,18 +487,10 @@ export default {
       icons: [],
       ready: false,
       iconHero: false,
-      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
       commonFormData: {
-        zc_trackCode: "ZCFORMVIEW",
-        viewFrom: "URL_ACTION",
-        submitType: "optinCustomView",
-        emailReportId: "",
-        zx: "129a50c11",
-        zcvers: "3.0",
-        oldListIds: "",
-        mode: "OptinCreateView",
-        zctd: "",
-        scriptless: "yes"
+        "ml-submit": "1",
+        "ajax": "1",
+        "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3"
       }
     };
   },
@@ -532,17 +530,19 @@ export default {
     actionSubscribe(selected) {
       if (this.topics.length <= 0) {
         this.subscribe({
-          lD: this.zcld,
-          zcld: this.zcld,
-          zc_formIx: this.zc_formIx
+          requestURL: this.requestURL,
+          callback: this.callback,
+          _: this._,
+          "groups[]": this.groups
         });
       } else {
         this.selected.forEach((topicSelected, i) => {
           if (topicSelected) {
             this.subscribe({
-              lD: this.topics[i].zcld,
-              zcld: this.topics[i].zcld,
-              zc_formIx: this.topics[i].zc_formIx
+              requestURL: this.topics[i].requestURL,
+              callback: this.topics[i].callback,
+              _: this.topics[i]._,
+              "groups[]": this.topics[i].groups
             });
           }
         });
@@ -576,12 +576,12 @@ export default {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
-          CONTACT_EMAIL: this.email,
+          "fields[email]": this.email,
           ...this.commonFormData,
           ...body
         })
       };
-      fetch(this.url, options);
+      fetch(this.requestURL, options);
     }
   }
 };

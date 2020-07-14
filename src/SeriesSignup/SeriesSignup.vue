@@ -12,7 +12,7 @@
                 Almost there...
               </div>
               <div class="p">
-                You should get a confirmation email shortly. Open it up and ‘<strong>Confirm Registration</strong>’ to save your spot in the upcoming workshops.
+                You should get a confirmation email shortly. Open it up and ‘<strong>Confirm your email</strong>’ to save your spot in the upcoming workshops.
               </div>
               <div class="box">
                 <div class="box__h1">
@@ -79,7 +79,7 @@ a {
   text-decoration: none;
 }
 .container {
-  color: var(--white-100);
+  color: var(--white-100, white);
   font-family: var(--ds-font-family, inherit);
   padding: 4rem 1rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 1px 0px rgba(0, 0, 0, 0.05);
@@ -97,7 +97,7 @@ a {
   justify-content: center;
 }
 .icon__icon {
-  stroke: var(--white-100);
+  stroke: var(--white-100, white);
   width: 4rem;
   height: 4rem;
 }
@@ -285,21 +285,13 @@ export default {
       email: null,
       state: "default",
       requestInFlight: null,
-      url: "https://zcs1.maillist-manage.com/campaigns/weboptin.zc",
+      url: "https://app.mailerlite.com/webforms/submit/d7i4g7",
       formData: {
-        "zc_trackCode": "ZCFORMVIEW",
-        "viewFrom": "URL_ACTION",
-        "submitType": "optinCustomView",
-        "lD": "16352f8832aab779",
-        "emailReportId": "",
-        "zx": "129a50c11",
-        "zcvers": "3.0",
-        "oldListIds": "",
-        "mode": "OptinCreateView",
-        "zcld": "16352f8832aab779",
-        "zctd": "",
-        "zc_formIx": "4ef47fbb86ab66687c16fd8c3bffbbb740fbf6cd35f5c50c",
-        "scriptless": "yes"
+        "callback": "jQuery1830520133881537445_1594145870016",
+        "ml-submit": "1",
+        "ajax": "1",
+        "guid": "6ca22b31-4124-e926-cf4f-272ff9f44ec3",
+        "_": "1594145875469"
       }
     }
   },
@@ -320,9 +312,7 @@ export default {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
-          "CONTACT_EMAIL": this.email,
-          "CONTACT_CF15": urlParams.get("utm_campaign"),
-          "CONTACT_CF31": urlParams.get("utm_source"),
+          "fields[email]": this.email,
           ...this.formData
         })
       }
