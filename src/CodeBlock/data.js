@@ -1,5 +1,21 @@
 export default {
   short: 'type AppModuleBasic struct{}" "',
+  solidity: `
+  pragma solidity >=0.4.22 <0.6.0;
+
+  /// @title Voting with delegation.
+  contract Ballot {
+    // This declares a new complex type which will
+    // be used for variables later.
+    // It will represent a single voter.
+    struct Voter {
+      uint weight; // weight is accumulated by delegation
+      bool voted;  // if true, that person already voted
+      address delegate; // person delegated to
+      uint vote;   // index of the voted proposal
+    }
+  }
+  `,
   rust: `
 pub trait Actor {
   fn handle(msgPayload: &[u8]) -> Vec<Msg>;
