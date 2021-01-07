@@ -13,6 +13,7 @@ export { default as GozHero } from "./Hero/GozHero";
 export { default as CosmosNewsletterSignup } from "./NewsletterSignup/CosmosNewsletterSignup";
 export { default as SeriesSignup } from "./SeriesSignup/SeriesSignup";
 export { default as SectionSearch } from "./SectionSearch/SectionSearch";
+export { default as SolarSystem } from "./SolarSystem/SolarSystem";
 
 export { default as IconArrowRight } from "./Icons/IconArrowRight";
 export { default as IconCalendar } from "./Icons/IconCalendar";
