@@ -1,4 +1,5 @@
 import CosmosNewsletterSignup from "./CosmosNewsletterSignup.vue";
+import ValidatorNewsletterSignup from "./ValidatorNewsletterSignup.vue";
 import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
@@ -100,6 +101,34 @@ export const tools = () => ({
   template: `
     <div>
       <cosmos-newsletter-signup v-bind="{...value}"/>
+    </div>
+  `,
+});
+
+export const validators = () => ({
+  props: {
+    validator: {
+      default: true
+    },
+  },
+  components: {
+    ValidatorNewsletterSignup,
+  },
+  data() {
+    return {
+      value: {
+        h1: "Cosmos Hub Validator Updates",
+        h2:
+          "Are you a Cosmos Hub Validator? Sign up for the latest on Cosmos Hub – straight to your inbox.",
+        requestURL: "https://app.mailerlite.com/webforms/submit/i6u0c7",
+        callback: "jQuery183011071425776505928_1611970246127",
+        _: "1611970257061"
+      },
+    };
+  },
+  template: `
+    <div>
+      <validator-newsletter-signup v-bind="{...value, validator}"/>
     </div>
   `,
 });
