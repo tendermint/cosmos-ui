@@ -11,6 +11,7 @@ export { default as GozRow } from "./GozRow/GozRow";
 export { default as GozSchedule } from "./GozSchedule/GozSchedule";
 export { default as GozHero } from "./Hero/GozHero";
 export { default as CosmosNewsletterSignup } from "./NewsletterSignup/CosmosNewsletterSignup";
+export { default as ValidatorNewsletterSignup } from "./NewsletterSignup/ValidatorNewsletterSignup";
 export { default as SeriesSignup } from "./SeriesSignup/SeriesSignup";
 export { default as SectionSearch } from "./SectionSearch/SectionSearch";
 export { default as SolarSystem } from "./SolarSystem/SolarSystem";
