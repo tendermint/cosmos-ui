@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span class="notranslate">
     <span
       class="container"
       ref="container"
