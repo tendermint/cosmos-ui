@@ -16,7 +16,7 @@
   "cosmos-sdk": "# Cosmos SDK \n A modular framework that simplifies the process of building secure blockchain applications.",
   "cosmos-voyager": "# Cosmos Voyager \n The user interface to delegate, stake, and engage in governance with the Cosmos Network.",
   "delegator": "# delegator \n Staking token holders that contribute to the security of a blockchain network by delegating the voting power they obtain from bonding to secure and highly available validators.",
-  "double-signing": "# double signing \n When a validator signs more than two blocks at the same height that share a common ancestor. Double signing is a fraud and triggers slashing. ",",
+  "double-signing": "# double signing \n When a validator signs more than two blocks at the same height that share a common ancestor. Double signing is a fraud and triggers slashing. ",
   "elliptic-curve": "# elliptic curve \n In elliptic curve cryptography, a huge curve is generated to derive a public key from a private key. The chance of collision is 1 in several billions, making it near impossible to derive the private key from the public key.",
   "ethermint": "# Ethermint \n Software that takes the Ethereum Virtual Machine (EVM) and turns it into a Cosmos SDK module. This module can be combined with other SDK modules like staking to create fully-functional Proof-of-Stake (PoS) blockchains that can run Ethereum Smart Contracts.  Ethermint chains are natively compatible with Cosmos. ",
   "fraud": "# fraud \n Faulty behavior committed by a validator as defined by the protocol.",
