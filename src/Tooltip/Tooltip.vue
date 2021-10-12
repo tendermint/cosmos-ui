@@ -91,7 +91,16 @@ export default {
   },
   computed: {
     definition() {
-      return new MarkdownIt().render(dict[this.value]);
+      var glossary = this.$store.state.glossary;
+      if (!glossary) {
+        return new MarkdownIt().render(dict[this.value]);
+      } else {
+        var slug = this.value;
+        var title = glossary.dict[slug].title;
+        var description = glossary.dict[slug].description;
+        var value = '# ' + title + '\n' + description;
+        return new MarkdownIt().render(value);
+      }
     }
   },
   methods: {
