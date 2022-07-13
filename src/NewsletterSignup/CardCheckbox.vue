@@ -43,21 +43,21 @@
   box-sizing: border-box;
   outline: none;
 }
-::v-deep .container:hover,
-::v-deep .container:focus {
+:deep(.container:hover),
+:deep(.container:focus) {
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.07), 0px 4px 8px rgba(0, 0, 0, 0.05),
     0px 1px 0px rgba(0, 0, 0, 0.05);
 }
-::v-deep .container:hover {
+:deep(.container:hover) {
   transform: translateY(-2px);
 }
-::v-deep .value__false.container:hover .checkbox__icon {
+:deep(.value__false.container:hover .checkbox__icon) {
   stroke: rgba(255, 255, 255, 0.8);
 }
-::v-deep .value__false.container:focus:not(:hover) .checkbox__icon {
+:deep(.value__false.container:focus:not(:hover) .checkbox__icon) {
   stroke: #66a1ff;
 }
-::v-deep .value__true.container:focus:not(:hover) .checkbox__icon {
+:deep(.value__true.container:focus:not(:hover) .checkbox__icon) {
   fill: #66a1ff;
 }
 .container:active {
@@ -83,10 +83,10 @@
 .value__true .icon__image {
   stroke: #66a1ff;
 }
-::v-deep .container:active .icon__image,
-::v-deep .container:active .h1,
-::v-deep .container:active .p,
-::v-deep .container:active .checkbox {
+:deep(.container:active .icon__image),
+:deep(.container:active .h1),
+:deep(.container:active .p),
+:deep(.container:active .checkbox) {
   opacity: 0.6;
 }
 .body {

@@ -375,25 +375,25 @@ span {
 .footer__source__icon {
   margin-left: 0.5rem;
 }
-::v-deep .token.keyword {
+:deep(.token.keyword) {
   color: #c678dd;
 }
-::v-deep .token.comment {
+:deep(.token.comment) {
   opacity: 0.5;
 }
-::v-deep .token.function {
+:deep(.token.function) {
   color: #61afef;
 }
-::v-deep .token.builtin {
+:deep(.token.builtin) {
   color: #e06c75;
 }
-::v-deep .token.string {
+:deep(.token.string) {
   color: #98c379;
 }
-::v-deep .token.operator {
+:deep(.token.operator) {
   color: #56b6c2;
 }
-::v-deep .token.boolean {
+:deep(.token.boolean) {
   color: #d19a66;
 }
 </style>

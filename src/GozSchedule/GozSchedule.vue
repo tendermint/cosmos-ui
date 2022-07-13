@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="(item, i) in value" :key="i" class="row">
         <div class="row__aside">
-          {{item.date}}
+          {{ item.date }}
         </div>
         <div class="row__body" v-html="md(item.body)"></div>
       </div>
@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="css">
 .container {
   color: white;
   font-family: var(--ds-font-family, inherit);
@@ -39,20 +39,20 @@
   padding-bottom: 1.5rem;
   line-height: 1.5;
 }
-::v-deep{
+:deep(){
   font-size: 1rem;
 }
-::v-deep p {
+:deep(p) {
   margin: 0;
 }
-::v-deep a {
+:deep(a) {
   color: #66A1FF;
   text-decoration: none;
 }
-::v-deep ul {
+:deep(ul) {
   padding-left: 2em;
 }
-::v-deep li {
+:deep(li) {
   margin-top: .75rem;
   margin-bottom: .75rem;
   list-style-type: disc;
@@ -69,26 +69,26 @@
   .row__body {
     padding-top: 0;
   }
-  ::v-deep {
+  :deep() {
     font-size: .875rem;
   }
 }
 </style>
 
 <script>
-import MarkdownIt from "markdown-it"
+import MarkdownIt from "markdown-it";
 
 export default {
   props: {
     value: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   methods: {
     md(string) {
-      const md = new MarkdownIt()
-      return md.render(string)
-    }
-  }
-}
+      const md = new MarkdownIt();
+      return md.render(string);
+    },
+  },
+};
 </script>
