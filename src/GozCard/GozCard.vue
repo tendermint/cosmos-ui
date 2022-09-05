@@ -14,7 +14,7 @@
         <div class="h1">Join the discussion</div>
         <div class="p">Get involved in the Game of Zones chat room.</div>
         <div class="footer">
-          <text-button tag="a" href="https://discord.gg/cr7N47p" target="_blank" size="m">
+          <text-button tag="a" href="https://discord.gg/cosmosnetwork" target="_blank" size="m">
             Discuss GoZ
           </text-button>
         </div>
