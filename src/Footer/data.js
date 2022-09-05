@@ -6,7 +6,7 @@ export default {
     { title: "LinkedIn", url: "https://www.linkedin.com/company/tendermint/" },
     { title: "Reddit", url: "https://reddit.com/r/cosmosnetwork" },
     { title: "Telegram", url: "https://t.me/cosmosproject" },
-    { title: "Discord", url: "https://discord.gg/cr7N47p" },
+    { title: "Discord", url: "https://discord.gg/cosmosnetwork" },
     { title: "YouTube", url: "https://www.youtube.com/c/CosmosProject" },
   ],
   menu: [
